@@ -5,16 +5,16 @@ import bit;
 struct SegmentDescriptor {
 	ushort limit_low;
 	ushort base_low;
-	uchar base_mid;
-	uchar access;
-	uchar limit_high_flags;
-	uchar base_high;
+	char base_mid;
+	char access;
+	char limit_high_flags;
+	char base_high;
 }
 
 fn ulong get_base(ulong gdt_base, ushort selector) {
 	if (selector == 0) return 0;
 
-	ulong addr = gdt_base + (selector & 0xFFF8);
+	ulong addr = gdt_base + (ulong)(selector & 0xFFF8);
 	SegmentDescriptor* desc = (SegmentDescriptor*)addr;
 
 	ulong base = (ulong)desc.base_low;
@@ -27,7 +27,7 @@ fn ulong get_base(ulong gdt_base, ushort selector) {
 fn ulong get_limit(ulong gdt_base, ushort selector) {
 	if (selector == 0) return 0;
 
-	ulong addr = gdt_base + (selector & 0xFFF8);
+	ulong addr = gdt_base + (ulong)(selector & 0xFFF8);
 	SegmentDescriptor* desc = (SegmentDescriptor*)addr;
 
 	ulong limit = (ulong)desc.limit_low;
@@ -44,7 +44,7 @@ fn ulong get_limit(ulong gdt_base, ushort selector) {
 fn uint get_access_rights(ulong gdt_base, ushort selector) {
 	if (selector == 0) return 0x10000; // unusable
 
-	ulong addr = gdt_base + (selector & 0xFFF8);
+	ulong addr = gdt_base + (ulong)(selector & 0xFFF8);
 	SegmentDescriptor* desc = (SegmentDescriptor*)addr;
 
 	uint access = (uint)desc.access;

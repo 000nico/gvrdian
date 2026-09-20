@@ -8113,6 +8113,7 @@ extern fn void* rtl_secure_zero_memory2(void* destination, usz length) @cname("R
 extern fn void* rtl_fill_device_memory(void* destination, usz length, int fill) @cname("RtlFillDeviceMemory");
 extern fn void* rtl_zero_device_memory(void* destination, usz length) @cname("RtlZeroDeviceMemory");
 extern fn int rtl_constant_time_equal_memory(void* v1, void* v2, CULong len) @cname("RtlConstantTimeEqualMemory");
+extern fn void rtl_zero_memory(Pvoid ptr, SIZET_t cnt) @cname("RtlZeroMemory");
 extern fn Pvoid rtl_secure_zero_memory(Pvoid ptr, SIZET_t cnt) @cname("RtlSecureZeroMemory");
 extern fn void rtl_copy_memory_non_temporal(void* destination, void* source, SIZET_t length) @cname("RtlCopyMemoryNonTemporal");
 extern fn void rtl_fill_memory_non_temporal(void* destination, SIZET_t length, Uchar value) @cname("RtlFillMemoryNonTemporal");
@@ -8571,6 +8572,7 @@ extern fn Pvoid mm_allocate_contiguous_memory_specify_cache(SIZET_t number_of_by
 extern fn Pvoid mm_allocate_contiguous_memory_specify_cache_node(SIZET_t number_of_bytes, PHYSICALADDRESS_t lowest_acceptable_address, PHYSICALADDRESS_t highest_acceptable_address, PHYSICALADDRESS_t boundary_address_multiple, MEMORYCACHINGTYPE_t cache_type, NODEREQUIREMENT_t preferred_node) @cname("MmAllocateContiguousMemorySpecifyCacheNode");
 extern fn Pvoid mm_allocate_contiguous_node_memory(SIZET_t number_of_bytes, PHYSICALADDRESS_t lowest_acceptable_address, PHYSICALADDRESS_t highest_acceptable_address, PHYSICALADDRESS_t boundary_address_multiple, Ulong protect, NODEREQUIREMENT_t preferred_node) @cname("MmAllocateContiguousNodeMemory");
 extern fn Ntstatus mm_allocate_contiguous_memory_ex(PSIZET_t number_of_bytes, PHYSICALADDRESS_t lowest_acceptable_address, PHYSICALADDRESS_t highest_acceptable_address, PHYSICALADDRESS_t boundary_address_multiple, NODEREQUIREMENT_t preferred_node, Ulong protect, Pvoid partition_object, Ulong tag, Ulong flags, Pvoid* base_address) @cname("MmAllocateContiguousMemoryEx");
+extern fn PHYSICALADDRESS_t mm_get_physical_address(Pvoid base_address) @cname("MmGetPhysicalAddress");
 extern fn void mm_free_contiguous_memory(Pvoid base_address) @cname("MmFreeContiguousMemory");
 extern fn void mm_free_contiguous_memory_specify_cache(Pvoid base_address, SIZET_t number_of_bytes, MEMORYCACHINGTYPE_t cache_type) @cname("MmFreeContiguousMemorySpecifyCache");
 extern fn SIZET_t mm_size_of_mdl(Pvoid base, SIZET_t length) @cname("MmSizeOfMdl");

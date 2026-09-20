@@ -24,7 +24,7 @@ struct GuestRegisters {
 
 fn void exit_handler(GuestRegisters* regs) @export("exit_handler_dispatch") {
 	ulong reason;
-	asembly::vm_read(vmcs_fields::VM_EXIT_REASON, &reason);
+	assembly::vm_read(vmcs_fields::VM_EXIT_REASON, &reason);
 
 	dispatcher(reason);
 

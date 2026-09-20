@@ -1,21 +1,21 @@
 module bit;
 
-fn bool bit_get(Type value, int bit) @if(types::is_int(Type))
+macro bool bit_get(value, bit)
 {
-	return (value & (Type)(1 << bit)) != 0;
+	return ((ulong)value & ((ulong)1 << bit)) != 0;
 }
 
-fn Type bit_set(Type value, int bit) @if(types::is_int(Type))
+macro ulong bit_set(value, bit)
 {
-	return value | (Type)(1 << bit);
+	return ((ulong)value | ((ulong)1 << bit));
 }
 
-fn Type bit_clear(Type value, int bit) @if(types::is_int(Type))
+macro ulong bit_clear(value, bit)
 {
-	return value & ~((Type)(1 << bit));
+	return ((ulong)value & ~((ulong)1 << bit));
 }
 
-fn Type bit_toggle(Type value, int bit) @if(types::is_int(Type))
+macro ulong bit_toggle(value, bit)
 {
-	return value ^ (Type)(1 << bit);
+	return ((ulong)value ^ ((ulong)1 << bit));
 }

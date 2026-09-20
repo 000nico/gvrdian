@@ -1,11 +1,12 @@
 module pre_vmxon;
 
-import std::core::cpudetect;
 import assembly;
 import bit;
+import wdm;
 
 fn bool isVmxSupported(){
-	CpuId regs = cpudetect::x86_cpuid(1, 0);
+	assembly::CpuId regs;
+	assembly::get_cpuid(1, 0, &regs);
 	if(!bit::bit_get(regs.ecx, 5)) return false;
 
 	ulong ia32_feature_control = assembly::readmsr(0x3A);
@@ -26,8 +27,8 @@ fn void enable_vmx_operation() {
 }
 
 fn void* allocate_vmxon_region(){
-	PHYSICALADDRESS_t max_addr;
-	max_addr.QuadPart = 0xFFFFFFFFFFFFFFFF;
+	wdm::PHYSICALADDRESS_t max_addr;
+	max_addr.quad_part = (wdm::Longlong)0xFFFFFFFFFFFFFFFF;
 
 	return wdm::mm_allocate_contiguous_memory(4096, max_addr);
 }

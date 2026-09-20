@@ -20,6 +20,8 @@ if errorlevel 1 ( echo ERROR: getters.asm failed & goto :error )
 if errorlevel 1 ( echo ERROR: setters.asm failed & goto :error )
 "%ML64%" /nologo /c /Fo"%BUILD%\vmx.obj" "%ASM_DIR%\vmx.asm"
 if errorlevel 1 ( echo ERROR: vmx.asm failed & goto :error )
+"%ML64%" /nologo /c /Fo"%BUILD%\exit_handler.obj" "%ASM_DIR%\exit_handler.asm"
+if errorlevel 1 ( echo ERROR: exit_handler.asm failed & goto :error )
 
 echo [2/4] Compiling C3 sources...
 "%C3C%" build
@@ -43,6 +45,7 @@ set "RSP=%BUILD%\link.rsp"
 (echo "%BUILD%\getters.obj")>> "%RSP%"
 (echo "%BUILD%\setters.obj")>> "%RSP%"
 (echo "%BUILD%\vmx.obj")>> "%RSP%"
+(echo "%BUILD%\exit_handler.obj")>> "%RSP%"
 for %%f in ("%C3_OBJ_DIR%\*.obj") do (echo "%ROOT%%%f")>> "%RSP%"
 
 echo [3/4] Linking gvrdian.sys...

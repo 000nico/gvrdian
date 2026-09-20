@@ -35,13 +35,13 @@ fn void setup_register_state() {
 	ushort gs_sel = assembly::readgs();
 
 	assembly::vm_write(vmcs_fields::GUEST_FS_SELECTOR, fs_sel);
-	assembly::vm_write(vmcs_fields::GUEST_FS_LIMIT, segment_descriptor::get_limit(gdt_base, fs_sel));
-	assembly::vm_write(vmcs_fields::GUEST_FS_AR_BYTES, segment_descriptor::get_access_rights(gdt_base, fs_sel));
+	assembly::vm_write(vmcs_fields::GUEST_FS_LIMIT, segments::get_limit(gdt_base, fs_sel));
+	assembly::vm_write(vmcs_fields::GUEST_FS_AR_BYTES, segments::get_access_rights(gdt_base, fs_sel));
 	assembly::vm_write(vmcs_fields::GUEST_FS_BASE, assembly::readmsr(0xC0000100));
 
 	assembly::vm_write(vmcs_fields::GUEST_GS_SELECTOR, gs_sel);
-	assembly::vm_write(vmcs_fields::GUEST_GS_LIMIT, segment_descriptor::get_limit(gdt_base, gs_sel));
-	assembly::vm_write(vmcs_fields::GUEST_GS_AR_BYTES, segment_descriptor::get_access_rights(gdt_base, gs_sel));
+	assembly::vm_write(vmcs_fields::GUEST_GS_LIMIT, segments::get_limit(gdt_base, gs_sel));
+	assembly::vm_write(vmcs_fields::GUEST_GS_AR_BYTES, segments::get_access_rights(gdt_base, gs_sel));
 	assembly::vm_write(vmcs_fields::GUEST_GS_BASE, assembly::readmsr(0xC0000101));
 
 	// gdtr, idtr

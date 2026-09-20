@@ -123,6 +123,7 @@ const ulong GUEST_DR7            = 0x681A;
 const ulong GUEST_RSP            = 0x681C;
 const ulong GUEST_RIP            = 0x681E;
 const ulong GUEST_RFLAGS         = 0x6820;
+const ulong GUEST_PENDING_DEBUG_EXCEPTIONS = 0x6822;
 const ulong GUEST_SYSENTER_ESP   = 0x6824;
 const ulong GUEST_SYSENTER_EIP   = 0x6826;
 

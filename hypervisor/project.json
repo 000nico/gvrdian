@@ -9,8 +9,9 @@
   // are fully resolved — the hypervisor only needs wdm types for now.
   "sources": [
     "src/**",
-    "sdk/ctypes.c3",
-    "sdk/wdm.c3"
+    "sdk/**",
+    "libs/ctypes.c3",
+    "libs/wdm.c3"
   ],
 
   "build-dir": "build",

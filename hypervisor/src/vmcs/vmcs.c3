@@ -7,15 +7,15 @@ import setup_host_state;
 import setup_execution_control_fields;
 import setup_exit_control_fields;
 import setup_entry_control_fields;
-import ntddk;
+import wdm;
 import assembly;
 
 fn void setup_vmcs() {
-	void* vmcs_virtual_addr = allocate_vmcs();
-	void* vmcs_phys_addr = ntddk::mm_get_physical_address(vmcs_virtual_addr);
+	void* vmcs_virtual_addr = allocate_vmcs::allocate_vmcs();
+	ulong vmcs_phys_addr = (ulong)wdm::mm_get_physical_address(vmcs_virtual_addr).quad_part;
 
 	// configurate vmcs
-	setup_vmcs_identifier::identifier(0, vmcs_phys_addr, vmcs_virtual_addr); // vmclear and vmptrld are executed here
+	setup_vmcs_identifier::identifier(false, vmcs_phys_addr, vmcs_virtual_addr); // vmclear and vmptrld are executed here
 
 	setup_guest_state::setup_register_state();
 	setup_guest_state::setup_non_register_state();
