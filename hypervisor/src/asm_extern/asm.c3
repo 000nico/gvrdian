@@ -20,8 +20,6 @@ extern fn ushort reades();
 extern fn ushort readfs();
 extern fn ushort readgs();
 extern fn ushort readtr();
-extern fn ulong readgdtbase();
-extern fn ulong readidtbase();
 
 // --- VMX primitives ---
 extern fn bool vmx_on(ulong* phys_addr);
@@ -31,3 +29,21 @@ extern fn bool vm_read(ulong field, ulong* value);
 extern fn bool vm_write(ulong field, ulong value);
 extern fn bool vm_launch();
 extern fn bool vm_resume();
+
+extern fn ulong readdr7();
+extern fn void writedr7(ulong value);
+
+extern fn ulong readrflags();
+extern fn void writerflags(ulong value);
+
+extern fn ulong readrip();
+extern fn ulong readrsp();
+
+extern fn ulong readgdtbase();
+extern fn ulong readgdtlimit();
+extern fn ulong readidtbase();
+extern fn ulong readidtlimit();
+
+// exit handler
+extern fn void exit_handler_entry();
+extern fn ulong get_exit_handler_address();

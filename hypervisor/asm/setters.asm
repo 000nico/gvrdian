@@ -31,4 +31,15 @@ writemsr PROC
     ret
 writemsr ENDP
 
+writedr7 PROC
+    mov dr7, rcx
+    ret
+writedr7 ENDP
+
+write_rflags PROC
+    push rcx
+    popfq
+    ret
+write_rflags ENDP
+
 END

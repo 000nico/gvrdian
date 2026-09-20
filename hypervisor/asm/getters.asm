@@ -66,17 +66,55 @@ readtr ENDP
 readgdtbase PROC
     sub rsp, 16
     sgdt [rsp]
-    mov rax, [rsp + 2]   ; base its 2 after limit
+    mov rax, [rsp + 2]
     add rsp, 16
     ret
 readgdtbase ENDP
 
+readgdtlimit PROC
+    sub rsp, 16
+    sgdt [rsp]
+    movzx rax, word ptr [rsp]
+    add rsp, 16
+    ret
+readgdtlimit ENDP
+
 readidtbase PROC
     sub rsp, 16
     sidt [rsp]
-    mov rax, [rsp + 2]     ; base its 2 after limit
+    mov rax, [rsp + 2]
     add rsp, 16
     ret
 readidtbase ENDP
+
+readidtlimit PROC
+    sub rsp, 16
+    sidt [rsp]
+    movzx rax, word ptr [rsp]
+    add rsp, 16
+    ret
+readidtlimit ENDP
+
+readdr7 PROC
+    mov rax, dr7
+    ret
+readdr7 ENDP
+
+readrflags PROC
+    pushfq
+    pop rax
+    ret
+readrflags ENDP
+
+readrsp PROC
+    lea rax, [rsp + 8]   
+    ret
+readrsp ENDP
+
+; read rip of the next instruction, not actual rip
+readrip PROC
+    mov rax, [rsp]       
+    ret
+readrip ENDP
 
 END
