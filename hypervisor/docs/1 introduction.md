@@ -1,24 +1,28 @@
-Virtual Machine Monitors (VMM): Acts as a host and has full controlf of processors. Present guest software with an abstraction of virtual processor. Allowws it to execute directly on logical processor. Can do selective control of resources and phyisical memory
-Guest software: Each VM is a guest software enviroment that supports an OS and appliocation software. Independent to each other
+## Virtual Machine Monitors (VMM) & Architecture
 
-Support for virtualization is provided by a form of processor opreation called VMX Operation. There are two kinds
-    - VMX Root operation
-    - VMX non-root operation
+### Core Concepts
+* **Virtual Machine Monitor (VMM):** Acts as the host, possessing full control of the processors. It presents guest software with an abstract virtual processor, allowing it to execute directly on logical processors with selective control over system resources and physical memory.
+* **Guest Software:** Each virtual machine (VM) provides a guest environment supporting an operating system and application software, isolated and independent from one another.
 
-Transitinos between these are called VMX Transitions
-    - VM Entries: VMX Root -> Vmx non-root
-    - VM Exit:    VMX non-root -> VMX Root
+### VMX Operation
+Processor-level hardware virtualization support is provided via **VMX (Virtual Machine Extensions) Operation**, which consists of two distinct modes:
+* **VMX Root Operation:** Used by the VMM/hypervisor, maintaining full control over the hardware.
+* **VMX Non-Root Operation:** Used by guest software, where processor behavior is restricted and specific instructions automatically trigger a transition back to the root.
 
-Processor behavior in non-root its limited and some instructions triger a VM Exit
+### VMX Transitions
+Transitions between VMX root and non-root operations are known as **VMX Transitions**:
+* **VM Entries:** Transitions from **VMX Root** to **VMX Non-Root** (entering the guest).
+* **VM Exits:** Transitions from **VMX Non-Root** to **VMX Root** (returning control to the VMM via an exit handler).
 
-Life cycle
-Driver enters VMX operation by executing VMXON
-Using VM entries, a VMM enter guests into virtual machine. The VMM effects a VM Entry using VMLAUNCH and VMRESUME. It regains control using VM Exits
-VM Exits transfer control to an entry point specified by the VMM (exit handler). The VMM handles the VM Exit and return to the Virtual Machine using a VM Entry
-Eventually the VMM may decide to shutdown and it does so by using VMXOFF operation
+### Lifecycle Overview
+1. **Initialization:** The driver or hypervisor enters VMX operation by executing the `VMXON` instruction.
+2. **VM Entry:** The VMM launches or resumes execution inside the guest using `VMLAUNCH` or `VMRESUME`.
+3. **VM Exit Handling:** Certain instructions or events trigger a VM Exit, transferring control to a pre-defined exit handler entry point in the VMM.
+4. **Resumption / Shutdown:** The VMM processes the exit and returns to the guest via another VM Entry, or eventually shuts down VMX operation using the `VMXOFF` instruction.
 
-Virtual-Machine Control Structure
-Both VMX non-root and VMX transitions are managed by this data structure
-Access to VMCS is managed through VMCS Pointer, set with VMPTRST and readen by VMPTRLD (VMPTRLD activates it in a core)
-Its configured through VMREAD, VMWRITE and VMCLEAR (VMCLEAR saves the states of VMCS in memory, marks the VMCS as "inactive". Mandatory before VMPTRLD or VMLAUNCH)
-VMM could use different VMCS for every VM. not our use case
+### Virtual-Machine Control Structure (VMCS)
+Both VMX non-root execution and VMX transitions are managed by the **VMCS** data structure.
+* **Pointer Management:** Access to the VMCS is managed through the VMCS pointer, retrieved/stored using `VMPTRST` and loaded/activated on a core using `VMPTRLD`.
+* **Configuration & State:** Configured via `VMREAD` and `VMWRITE`. 
+* **Clearing:** `VMCLEAR` saves the VMCS state to memory and marks it as "inactive" (mandatory before executing `VMPTRLD` or `VMLAUNCH`).
+* *Note:* While a full VMM can use a separate VMCS for every VM, a lean or thin-hypervisor implementation may streamline this approach.
