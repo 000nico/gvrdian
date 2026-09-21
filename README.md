@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.png" alt="blue-pill" width="600">
+<img src="assets/gvrdian.jpg" alt="blue-pill" width="600">
 
 <br><br>
 
@@ -19,9 +19,9 @@
 
 ---
 
-## Overview
+## what is gvrdian?
 
-**Gvrdian** is an ultra-lightweight Type-1 hypervisor engineered to run directly on bare metal by taking advantage of Intel VT-x hardware-assisted virtualization. By initializing VMX root and non-root operation modes, it wraps the host operating system on the fly, providing hardware-level isolation, exceptional performance, and minimal footprint
+**gvrdian** is an ultra-lightweight, type-1, thin, late-launch hypervisor engineered to run be util for reverse engineering, memory introspection, explotation, among others
 
 ## Features
 ### Hooks
