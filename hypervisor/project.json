@@ -4,9 +4,6 @@
   "authors": [ "Nicolas Carlinos <nicolascarlino@proton.me>" ],
   "version": "0.1.0",
 
-  // Source files: our driver code + only the WDM SDK binding we need.
-  // ntddk.c3 and ntifs.c3 are excluded until their CLong/CULong shims
-  // are fully resolved — the hypervisor only needs wdm types for now.
   "sources": [
     "src/**",
     "sdk/**",
@@ -19,24 +16,22 @@
 
   "targets": {
     "gvrdian": {
-      // Emit raw .obj files; linking into .sys is done by build.bat
       "type": "object-files",
-
-      // Kernel mode: no stdlib, no libc, no CRT
       "use-stdlib": false,
       "link-libc": false,
-
-      // No C runtime entry point wrapper
       "no-entry": true,
-
-      // Disable runtime safety (no panic handler in kernel mode)
       "safe": false,
-
-      // Windows x64 target
       "target": "windows-x64",
-
       "opt": "O0",
-      "debug-info": "none"
+      "debug-info": "none",
+
+      // Repeat sources here so the LSP picks them up per-target
+      "sources": [
+        "src/**",
+        "sdk/**",
+        "libs/ctypes.c3",
+        "libs/wdm.c3"
+      ]
     }
   },
 

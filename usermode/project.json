@@ -1,20 +1,26 @@
 {
   "langrev": "1",
   "warnings": [ "no-unused" ],
-  "dependency-search-paths": [ "lib" ],
-  "dependencies": [ ],
   "authors": [ "Nicolas Carlino <nicolascarlino@proton.me>" ],
   "version": "0.1.0",
-  "sources": [ "src/**" ],
-  "test-sources": [ "test/**" ],
-
+  "sources": [
+    "src/**",
+    "libs/**"
+  ],
   "build-dir": "build",
   "output": "build",
+
+  "linked-libraries": ["advapi32", "kernel32"], 
 
   "targets": {
     "usermode": {
       "type": "executable",
-    },
+      "sources": [
+        "src/**",
+        "libs/**"
+      ],
+      "linked-libraries": ["advapi32", "kernel32"] 
+    }
   },
   "cpu": "generic",
   "opt": "O0"

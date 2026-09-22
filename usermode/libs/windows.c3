@@ -1,2 +1,8 @@
-module windows;
+module win32;
 
+const uint SC_MANAGER_ALL_ACCESS = 0xF003F;
+
+const uint SERVICE_ALL_ACCESS    = 0xF01FF;
+const uint SERVICE_KERNEL_DRIVER = 0x00000001; 
+const uint SERVICE_DEMAND_START  = 0x00000003; 
+const uint SERVICE_ERROR_NORMAL  = 0x00000001;
