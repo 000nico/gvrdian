@@ -46,6 +46,7 @@ exit_handler_entry PROC
     pop r15
 
     vmresume
+
     ; if we got here, vmresume failed
     int 3
 exit_handler_entry ENDP

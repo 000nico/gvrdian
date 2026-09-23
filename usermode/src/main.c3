@@ -3,14 +3,12 @@ module usermode;
 import win32;
 import loader;
 import global;
-
 import std::io;
 
 fn void main()
 {
     io::printn("[*] Starting driver loader...");
 
-    // try unload first
     io::printn("[*] Attempting cleanup of any existing service...");
     loader::unload_driver();
 
@@ -26,10 +24,7 @@ fn void main()
 
     io::printn("[+] Ready to send IOCTLs.");
 
-    
-	/*
     io::printn("[*] Cleaning up...");
-    unload_driver();
+    loader::unload_driver();
     io::printn("[+] Done.");
-	*/
 }

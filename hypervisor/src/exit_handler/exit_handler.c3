@@ -2,6 +2,7 @@ module exit_handler;
 
 import assembly;
 import vmcs_fields;
+import wdm;
 
 struct GuestRegisters {
 	ulong rax;
@@ -25,7 +26,8 @@ struct GuestRegisters {
 fn void exit_handler(GuestRegisters* regs) @export("exit_handler_dispatch") {
 	ulong reason;
 	assembly::vm_read(vmcs_fields::VM_EXIT_REASON, &reason);
-
+	wdm::dbg_print("Entering exit handler, reason: %d", reason);
+	
 	dispatcher(reason);
 
 	// advance rip

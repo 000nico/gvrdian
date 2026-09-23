@@ -12,6 +12,17 @@ vmx_on_fail:
     ret
 vmx_on ENDP
 
+; vmxoff
+vmx_off PROC
+    vmxoff
+    jc vmxoff_fail      ; CF=1 -> VMfailInvalid
+    jz vmxoff_fail       ; ZF=1 -> VMfailValid
+    mov eax, 1           
+    ret
+vmxoff_fail:
+    xor eax, eax         
+    ret
+vmx_off ENDP
 ; vmclear
 vm_clear PROC
     vmclear QWORD PTR [rcx]

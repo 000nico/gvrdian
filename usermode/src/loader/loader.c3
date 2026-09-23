@@ -7,10 +7,10 @@ import std::os::win32;
 
 fn bool open_driver(win32::Handle* h_driver)
 {
-    io::printfn("[*] Opening handle to device '%s'...", global::DRIVER_PATH);
+    io::printfn("[*] Opening handle to device '%s'...", global::DEVICE_PATH);
     
     *h_driver = win32::file::create_file_w(
-        (win32::file::Lpcwstr)global::DRIVER_PATH,
+        (win32::file::Lpcwstr)global::DEVICE_PATH,
         win32::GENERIC_READ | win32::GENERIC_WRITE,
         win32::FILE_SHARE_READ | win32::FILE_SHARE_WRITE,
         null,
@@ -80,7 +80,7 @@ fn void load_driver(String driver_name, String driver_path)
     if (ok == 0)
     {
         uint err = win32::getLastError();
-        if (err == 1056) // ERROR_SERVICE_ALREADY_RUNNING
+        if (err == 1056)
         {
             io::printn("[!] Driver is already running in kernel.");
         }

@@ -4,20 +4,35 @@ import wdm;
 import pre_vmxon;
 import vmcs;
 import assembly;
+import communication_setup;
 
 const wdm::Ntstatus STATUS_SUCCESS = 0;
 const wdm::Ntstatus STATUS_FAILED  = (wdm::Ntstatus)0xC0000001;
 
-
 fn void driver_unload(wdm::DRIVEROBJECT_t* driver_object) @export("DriverUnload")
 {
-    wdm::dbg_print("driver unloaded");
-}
+    wdm::UNICODESTRING_t symbolic_link;
 
+    wdm::rtl_init_unicode_string(&symbolic_link, string::@wstring("\\DosDevices\\gvrdiandevice"));
+
+    wdm::io_delete_symbolic_link(&symbolic_link);
+    wdm::io_delete_device(driver_object.device_object);
+
+	assembly::vmx_off();
+    wdm::dbg_print("driver unloaded\n");
+}
 
 fn wdm::Ntstatus driver_entry(wdm::DRIVEROBJECT_t* driver_object, wdm::PUNICODESTRING_t registry_path) @export("DriverEntry")
 {
-    driver_object.driver_unload = &driver_unload;
+	driver_object.major_function[wdm::IRP_MJ_CREATE] = &communication_setup::create_close;
+	driver_object.major_function[wdm::IRP_MJ_CLOSE]  = &communication_setup::create_close;
+	driver_object.driver_unload = &driver_unload;
+	
+	wdm::Ntstatus status = communication_setup::setup_device(driver_object);
+    if (status != wdm::STATUS_SUCCESS) {
+        wdm::dbg_print("failed to create device or symbolic link");
+        return status;
+    }
 
     // pre-vmxon
     if(!pre_vmxon::isVmxSupported()) {
@@ -50,6 +65,7 @@ fn wdm::Ntstatus driver_entry(wdm::DRIVEROBJECT_t* driver_object, wdm::PUNICODES
         wdm::dbg_print("vmlaunch failed");
         return STATUS_FAILED;
     }
+
 	wdm::dbg_print("vm launch");
 
     return STATUS_SUCCESS;

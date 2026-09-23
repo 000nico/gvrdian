@@ -2988,6 +2988,21 @@ enum OBPREOPCALLBACKSTATUS_t
 	OB_PREOP_SUCCESS
 }
 
+alias NtStatus = int;
+alias DeviceType = uint;
+
+const NtStatus STATUS_SUCCESS = 0x00000000;
+
+const DeviceType FILE_DEVICE_UNKNOWN = 0x00000022;
+
+const int IO_NO_INCREMENT = 0;
+
+const uint IRP_MJ_CREATE = 0x00;
+const uint IRP_MJ_CLOSE = 0x02;
+const uint IRP_MJ_DEVICE_CONTROL = 0x0E;
+
+const uint FILE_DEVICE_SECURE_OPEN = 0x00000100;
+
 enum CLSCONTEXTMODE_t
 {
 	CLSCONTEXTNONE,
