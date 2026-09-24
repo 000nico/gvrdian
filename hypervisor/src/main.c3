@@ -30,13 +30,13 @@ fn wdm::Ntstatus driver_entry(wdm::DRIVEROBJECT_t* driver_object, wdm::PUNICODES
 	
 	wdm::Ntstatus status = communication_setup::setup_device(driver_object);
     if (status != wdm::STATUS_SUCCESS) {
-        wdm::dbg_print("failed to create device or symbolic link");
+        wdm::dbg_print("failed to create device or symbolic link\n");
         return status;
     }
 
     // pre-vmxon
     if(!pre_vmxon::isVmxSupported()) {
-		wdm::dbg_print("vmx not supported");
+		wdm::dbg_print("vmx not supported\n");
 		return STATUS_FAILED;
 	}
 
@@ -44,29 +44,35 @@ fn wdm::Ntstatus driver_entry(wdm::DRIVEROBJECT_t* driver_object, wdm::PUNICODES
 
     void* vmxon_virtual = pre_vmxon::allocate_vmxon_region();
     if (vmxon_virtual == null) {
-        wdm::dbg_print("failed to allocate vmxon region");
+        wdm::dbg_print("failed to allocate vmxon region\n");
         return STATUS_FAILED;
     }
+
+	ulong vmx_basic = assembly::readmsr(0x480);
+    uint vmx_revision_id = (uint)(vmx_basic & 0x7FFFFFFF);
+
+    *((uint*)vmxon_virtual) = vmx_revision_id;
+
     ulong vmxon_physical = (ulong)wdm::mm_get_physical_address(vmxon_virtual).quad_part;
 
     // vmxon
     if (!assembly::vmx_on(&vmxon_physical)) {
-        wdm::dbg_print("vmxon failed");
+        wdm::dbg_print("vmxon failed\n");
         return STATUS_FAILED;
     }
-    wdm::dbg_print("vmxon success");
+    wdm::dbg_print("vmxon success\n");
 
 	// vmcs
 	vmcs::setup_vmcs();
-	wdm::dbg_print("vmcs setup");
+	wdm::dbg_print("vmcs setup\n");
 	
 	// launch
     if (!assembly::vm_launch()) {
-        wdm::dbg_print("vmlaunch failed");
+        wdm::dbg_print("vmlaunch failed\n");
         return STATUS_FAILED;
     }
 
-	wdm::dbg_print("vm launch");
+	wdm::dbg_print("vm launch\n");
 
     return STATUS_SUCCESS;
 }

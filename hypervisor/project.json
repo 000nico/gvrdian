@@ -29,9 +29,7 @@
       "sources": [
         "src/**",
         "sdk/**",
-        "libs/ctypes.c3",
-        "libs/wdm.c3",
-        "libs/string.c3"
+        "libs/**"
       ]
     }
   },

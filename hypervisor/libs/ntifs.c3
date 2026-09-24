@@ -1,5 +1,5 @@
 module ntifs;
-
+import wdm;
 // Type Aliases & Callbacks
 alias PBUSHANDLER_t = BUSHANDLER_t*;
 alias PCALLBACKOBJECT_t = CALLBACKOBJECT_t*;
