@@ -5,6 +5,7 @@ import pre_vmxon;
 import vmcs;
 import assembly;
 import communication_setup;
+import global;
 
 const wdm::Ntstatus STATUS_SUCCESS = 0;
 const wdm::Ntstatus STATUS_FAILED  = (wdm::Ntstatus)0xC0000001;
@@ -24,6 +25,7 @@ fn void driver_unload(wdm::DRIVEROBJECT_t* driver_object) @export("DriverUnload"
 
 fn wdm::Ntstatus driver_entry(wdm::DRIVEROBJECT_t* driver_object, wdm::PUNICODESTRING_t registry_path) @export("DriverEntry")
 {
+	global::driver_object = driver_object;
 	driver_object.major_function[wdm::IRP_MJ_CREATE] = &communication_setup::create_close;
 	driver_object.major_function[wdm::IRP_MJ_CLOSE]  = &communication_setup::create_close;
 	driver_object.driver_unload = &driver_unload;

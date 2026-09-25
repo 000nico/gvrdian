@@ -4,6 +4,9 @@ import assembly;
 import vmcs_fields;
 import wdm;
 
+import h_cpuid;
+import h_vmcall;
+
 struct GuestRegisters {
 	ulong rax;
 	ulong rbx;
@@ -28,7 +31,7 @@ fn void exit_handler(GuestRegisters* regs) @export("exit_handler_dispatch") {
 	assembly::vm_read(vmcs_fields::VM_EXIT_REASON, &reason);
 	wdm::dbg_print("Entering exit handler, reason: %d", reason);
 	
-	dispatcher(reason);
+	dispatcher(reason, regs);
 
 	// advance rip
 	ulong rip, instr_len;
@@ -37,10 +40,10 @@ fn void exit_handler(GuestRegisters* regs) @export("exit_handler_dispatch") {
 	assembly::vm_write(vmcs_fields::GUEST_RIP, rip + instr_len);
 }
 
-fn void dispatcher(ulong reason) {
+fn void dispatcher(ulong reason, GuestRegisters* regs) {
 	switch(reason & 0xFFFF) {
-		case 10: // cpuid
-		case 18: // vmcall
+		case 10: h_cpuid::handler(regs);
+		case 18: h_vmcall::handler(regs);
 		default: // unhandled
 	}
 }

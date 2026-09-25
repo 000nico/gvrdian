@@ -3,7 +3,6 @@
 EXTERN exit_handler_dispatch:PROC
 
 exit_handler_entry PROC
-    ; guardar TODOS los registros generales antes de que C3 toque nada
     push r15
     push r14
     push r13
@@ -15,6 +14,7 @@ exit_handler_entry PROC
     push rdi
     push rsi
     push rbp
+    sub rsp, 8           
     push rdx
     push rcx
     push rbx
@@ -23,7 +23,7 @@ exit_handler_entry PROC
     sub rsp, 32
 
     mov rcx, rsp
-    add rcx, 32          ; rcx = pointer to struct of guest registers
+    add rcx, 32          
 
     call exit_handler_dispatch
 
@@ -33,6 +33,7 @@ exit_handler_entry PROC
     pop rbx
     pop rcx
     pop rdx
+    add rsp, 8             
     pop rbp
     pop rsi
     pop rdi
