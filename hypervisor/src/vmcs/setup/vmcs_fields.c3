@@ -41,6 +41,8 @@ const ulong VMCS_LINK_POINTER      = 0x2800;
 const ulong GUEST_IA32_DEBUGCTL    = 0x2802;
 const ulong GUEST_IA32_EFER        = 0x2806;
 
+const ulong TSC_OFFSETTING_ENABLE = 1UL << 3;
+const ulong TSC_OFFSET = 0x2010;
 // ============================================================
 // 32-Bit Fields
 // ============================================================

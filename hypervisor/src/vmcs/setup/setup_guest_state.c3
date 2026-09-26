@@ -58,8 +58,8 @@ fn void setup_register_state() {
 }
 
 fn void setup_non_register_state() {
-assembly::vm_write(vmcs_fields::GUEST_ACTIVITY_STATE, 0);
-assembly::vm_write(vmcs_fields::GUEST_INTERRUPTIBILITY_INFO, 0);
-assembly::vm_write(vmcs_fields::GUEST_PENDING_DEBUG_EXCEPTIONS, 0);
-assembly::vm_write(vmcs_fields::VMCS_LINK_POINTER, 0xFFFFFFFFFFFFFFFF);
+	assembly::vm_write(vmcs_fields::GUEST_ACTIVITY_STATE, 0);
+	assembly::vm_write(vmcs_fields::GUEST_INTERRUPTIBILITY_INFO, 0);
+	assembly::vm_write(vmcs_fields::GUEST_PENDING_DEBUG_EXCEPTIONS, 0);
+	assembly::vm_write(vmcs_fields::VMCS_LINK_POINTER, 0xFFFFFFFFFFFFFFFF);
 }
