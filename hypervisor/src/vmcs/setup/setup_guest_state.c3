@@ -55,6 +55,7 @@ fn void setup_register_state() {
 	assembly::vm_write(vmcs_fields::GUEST_SYSENTER_ESP, assembly::readmsr(0x175));
 	assembly::vm_write(vmcs_fields::GUEST_SYSENTER_EIP, assembly::readmsr(0x176));
 	assembly::vm_write(vmcs_fields::GUEST_IA32_EFER, assembly::readmsr(0xC0000080));
+	assembly::vm_write(vmcs_fields::GUEST_IA32_PAT, assembly::readmsr(0x277));
 }
 
 fn void setup_non_register_state() {
@@ -62,4 +63,9 @@ fn void setup_non_register_state() {
 	assembly::vm_write(vmcs_fields::GUEST_INTERRUPTIBILITY_INFO, 0);
 	assembly::vm_write(vmcs_fields::GUEST_PENDING_DEBUG_EXCEPTIONS, 0);
 	assembly::vm_write(vmcs_fields::VMCS_LINK_POINTER, 0xFFFFFFFFFFFFFFFF);
+
+    assembly::vm_write(vmcs_fields::GUEST_LDTR_SELECTOR, 0);
+    assembly::vm_write(vmcs_fields::GUEST_LDTR_BASE, 0);
+    assembly::vm_write(vmcs_fields::GUEST_LDTR_LIMIT, 0);
+    assembly::vm_write(vmcs_fields::GUEST_LDTR_AR_BYTES, 0x10000);
 }

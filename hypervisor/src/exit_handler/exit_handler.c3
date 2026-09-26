@@ -29,6 +29,8 @@ struct GuestRegisters {
 }
 
 fn void exit_handler(GuestRegisters* regs) @export("exit_handler_dispatch") {
+	ulong tsc_start = assembly::read_tsc();
+
 	ulong reason;
 	assembly::vm_read(vmcs_fields::VM_EXIT_REASON, &reason);
 	wdm::dbg_print("Entering exit handler, reason: %d", reason);
@@ -41,6 +43,13 @@ fn void exit_handler(GuestRegisters* regs) @export("exit_handler_dispatch") {
 		assembly::vm_read(vmcs_fields::VM_EXIT_INSTRUCTION_LEN, &instr_len);
 		assembly::vm_write(vmcs_fields::GUEST_RIP, rip + instr_len);
 	}
+
+	ulong tsc_end = assembly::read_tsc();
+	ulong exit_cost = tsc_end - tsc_start;
+
+	ulong current_offset;
+	assembly::vm_read(vmcs_fields::TSC_OFFSET, &current_offset);
+	assembly::vm_write(vmcs_fields::TSC_OFFSET, current_offset - exit_cost);
 }
 
 // if 1 -> advances rip, if 0 -> does not advance rip
@@ -74,6 +83,10 @@ fn bool dispatcher(ulong reason, GuestRegisters* regs) {
 
 		case 31:
 			rdmsr::handler(regs);
+			return true;
+
+		case 28: // MOV CRx, RAX fault
+			h_cr_fault::handler(regs);
 			return true;
 			
 		default: // unhandled
