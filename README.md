@@ -26,15 +26,10 @@
 ### Hooks
 - [ ] Hidden syscall hooks via SSDT
 - [ ] Hidden kernel inline hooks
-- [ ] Hidden MSR hooks
+- [ ] Hidden pages for guests
 
 ### Memory
 - [ ] Extended Page Tables (EPT) manipulation and protection
-
-### Spoofing
-- [ ] VBS (Virtualization-Based Security) spoofing
-- [ ] HVCI (Hypervisor-Protected Code Integrity) spoofing
-- [ ] Secure Boot state spoofing
 
 ### Exit Handlers 
 - [ ] `CPUID` interception and handling
