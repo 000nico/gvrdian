@@ -12,7 +12,7 @@
 
 **[install](#install) · [architecture](#architecture) · [features](#features) · [docs](docs/) · [contribute](#contribute)**
 
-*blazing fast Type-1 blue pill thin hypervisor for reverse engineering, callbacks, memory introspection, hooking, among others.*
+*blazing fast Type-1 blue pill thin hypervisor.*
 
 </div>
 
@@ -20,7 +20,7 @@
 
 ## what is gvrdian?
 
-**gvrdian** is an ultra-lightweight, type-1, thin, late-launch hypervisor engineered to run be util for reverse engineering, memory introspection, explotation, among others
+**gvrdian** is an ultra-lightweight, type-1, thin, late-launch hypervisor built in the C3 lang
 
 ## Features
 ### Hooks
@@ -32,11 +32,8 @@
 - [ ] Extended Page Tables (EPT) manipulation and protection
 
 ### Exit Handlers 
-- [ ] `CPUID` interception and handling
+- [x] `CPUID` interception and handling
 - [ ] `VMCALL` communication interface
-
-### RedPill Mitigations 
-- [ ] Comprehensive hypervisor detection vector mitigations
 
 ## Architecture
 
