@@ -9,7 +9,7 @@ const uint CPUID_HV_ECX = 0x666F736F; // "osof"
 const uint CPUID_HV_EDX = 0x76682074; // "t hv"
 
 
-fn void handler(GuestRegisters* regs) {
+fn void handler(exit_handler::GuestRegisters* regs) {
 	uint leaf = (uint)regs.rax;
 	uint subleaf = (uint)regs.rcx;
 

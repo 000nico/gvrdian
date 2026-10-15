@@ -4,7 +4,7 @@ import assembly;
 import vmcs_fields;
 import exit_handler;
 
-fn void handler(GuestRegisters* registers) {
+fn void handler(exit_handler::GuestRegisters* registers) {
     ulong qualification;
     assembly::vm_read(vmcs_fields::EXIT_QUALIFICATION, &qualification);
 
@@ -22,27 +22,27 @@ fn void handler(GuestRegisters* registers) {
     }
 }
 
-fn void h_cr0_write(GuestRegisters* registers, ulong new_value) {
-    ulong real_cr0 = assembly::readcr0();
+fn void h_cr0_write(exit_handler::GuestRegisters* registers, ulong new_value) {
+    ulong real_cr0 = assembly::read_cr0();
     ulong wp_bit   = (1UL << 16);
 
     ulong hw_value = (real_cr0 & wp_bit) | (new_value & ~wp_bit);
-    assembly::writecr0(hw_value);
+    assembly::write_cr0(hw_value);
 
     assembly::vm_write(vmcs_fields::CR0_READ_SHADOW, new_value);
 }
 
-fn void h_cr4_write(GuestRegisters* registers, ulong new_value) {
-    ulong real_cr4  = assembly::readcr4();
+fn void h_cr4_write(exit_handler::GuestRegisters* registers, ulong new_value) {
+    ulong real_cr4  = assembly::read_cr4();
     ulong vmxe_bit  = (1UL << 13);
 
     ulong hw_value = (real_cr4 & vmxe_bit) | (new_value & ~vmxe_bit);
-    assembly::writecr4(hw_value);
+    assembly::write_cr4(hw_value);
 
     assembly::vm_write(vmcs_fields::CR4_READ_SHADOW, new_value);
 }
 
-fn ulong get_gpr(GuestRegisters* registers, ulong index) {
+fn ulong get_gpr(exit_handler::GuestRegisters* registers, ulong index) {
     switch(index) {
         case 0:  return registers.rax;
         case 1:  return registers.rcx;

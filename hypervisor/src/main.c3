@@ -37,7 +37,7 @@ fn wdm::Ntstatus driver_entry(wdm::DRIVEROBJECT_t* driver_object, wdm::PUNICODES
     }
 
     // pre-vmxon
-    if(!pre_vmxon::isVmxSupported()) {
+    if(!pre_vmxon::is_vmx_supported()) {
 		wdm::dbg_print("vmx not supported\n");
 		return STATUS_FAILED;
 	}
@@ -50,7 +50,7 @@ fn wdm::Ntstatus driver_entry(wdm::DRIVEROBJECT_t* driver_object, wdm::PUNICODES
         return STATUS_FAILED;
     }
 
-	ulong vmx_basic = assembly::readmsr(0x480);
+	ulong vmx_basic = assembly::read_msr(0x480);
     uint vmx_revision_id = (uint)(vmx_basic & 0x7FFFFFFF);
 
     *((uint*)vmxon_virtual) = vmx_revision_id;

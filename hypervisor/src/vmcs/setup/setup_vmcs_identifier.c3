@@ -6,7 +6,7 @@ import assembly;
 
 fn void identifier(bool shadow_vmcs, ulong vmcs_region_physical, void* vmcs_region_virtual) {
 	// bits 0.30
-	ulong ia32_vmx_basic = assembly::readmsr(0x480);
+	ulong ia32_vmx_basic = assembly::read_msr(0x480);
 	uint identifier = 0;
 
 	for(uint i = 0; i < 31; i++) {

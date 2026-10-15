@@ -82,7 +82,7 @@ fn bool dispatcher(ulong reason, GuestRegisters* regs) {
 			return true;
 
 		case 31:
-			rdmsr::handler(regs);
+			h_rdmsr::handler(regs);
 			return true;
 
 		case 28: // MOV CRx, RAX fault

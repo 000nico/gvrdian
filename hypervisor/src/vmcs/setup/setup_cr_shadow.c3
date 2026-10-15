@@ -4,8 +4,8 @@ import assembly;
 import vmcs_fields;
 
 fn void setup_cr_shadow() {
-    ulong cr0_real = assembly::readcr0();
-    ulong cr4_real = assembly::readcr4();
+    ulong cr0_real = assembly::read_cr0();
+    ulong cr4_real = assembly::read_cr4();
 
     // CR0 
 	ulong wp_bit = (1UL << 16);

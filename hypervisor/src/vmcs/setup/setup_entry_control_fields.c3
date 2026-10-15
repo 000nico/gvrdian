@@ -13,6 +13,6 @@ fn void setup_entry_control_fields() {
 	vm_entry_desired = (uint)bit::bit_set(vm_entry_desired, 14);  // load ia32_pat
 	vm_entry_desired = (uint)bit::bit_set(vm_entry_desired, 18); // load IA32_EFER
 	
-	uint vm_entry_final = vmcs_utils::adjust_controls(vm_entry_desired,bassembly::readmsr(0x490)); // IA32_VMX_TRUE_ENTRY_CTLS
+	uint vm_entry_final = vmcs_utils::adjust_controls(vm_entry_desired,assembly::read_msr(0x490)); // IA32_VMX_TRUE_ENTRY_CTLS
 	assembly::vm_write(vmcs_fields::VM_ENTRY_CONTROLS, vm_entry_final);
 }

@@ -15,6 +15,6 @@ fn void setup_exit_control_fields() {
 	vm_exit_desired = (uint)bit::bit_set(vm_exit_desired, 14); 
 	vm_exit_desired = (uint)bit::bit_set(vm_exit_desired, 20); // save IA32_EFER
 	vm_exit_desired = (uint)bit::bit_set(vm_exit_desired, 21); // load IA32_EFER
-	uint vm_exit_final = vmcs_utils::adjust_controls(vm_exit_desired, assembly::readmsr(0x48F)); // IA32_VMX_TRUE_EXIT_CTLS
+	uint vm_exit_final = vmcs_utils::adjust_controls(vm_exit_desired, assembly::read_msr(0x48F)); // IA32_VMX_TRUE_EXIT_CTLS
 	assembly::vm_write(vmcs_fields::VM_EXIT_CONTROLS, vm_exit_final);
 }

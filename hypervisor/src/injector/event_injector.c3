@@ -21,29 +21,6 @@ const uint VECTOR_SS  = 12;  // stack fault
 const uint VECTOR_GP  = 13;  // general protection
 const uint VECTOR_PF  = 14;  // page fault
 
-module event_injector;
-
-import assembly;
-import vmcs_fields;
-
-// tipos de evento
-const uint EVENT_TYPE_EXTERNAL_INTERRUPT = 0;
-const uint EVENT_TYPE_NMI                = 2;
-const uint EVENT_TYPE_HARDWARE_EXCEPTION = 3;
-const uint EVENT_TYPE_SOFTWARE_INTERRUPT = 4;
-const uint EVENT_TYPE_SOFTWARE_EXCEPTION = 6;
-
-// vectores de excepcion comunes
-const uint VECTOR_DE  = 0;   // divide error
-const uint VECTOR_DB  = 1;   // debug
-const uint VECTOR_NMI = 2;   // non maskable interrupt
-const uint VECTOR_BP  = 3;   // breakpoint
-const uint VECTOR_UD  = 6;   // invalid opcode
-const uint VECTOR_NP  = 11;  // segment not present
-const uint VECTOR_SS  = 12;  // stack fault
-const uint VECTOR_GP  = 13;  // general protection
-const uint VECTOR_PF  = 14;  // page fault
-
 fn void inject_event(uint vector, uint type, bool has_error_code, uint error_code) {
     ulong info = 0;
     info |= (ulong)vector;           // bits 7:0

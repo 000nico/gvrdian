@@ -10,7 +10,7 @@ import global;
 // r8  = arg 2
 // r9  = arg 3
 // rax = return value
-fn void handler(GuestRegisters* registers) {
+fn void handler(exit_handler::GuestRegisters* registers) {
 	ulong opcode    = registers.rcx;
 	ulong arg1      = registers.rdx;
 	ulong arg2      = registers.r8;
