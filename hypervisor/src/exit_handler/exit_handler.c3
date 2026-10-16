@@ -8,13 +8,14 @@ import event_injector;
 import h_cpuid;
 import h_vmcall;
 import h_rdmsr;
+import h_cr_fault;
 
 struct GuestRegisters {
 	ulong rax;
 	ulong rbx;
 	ulong rcx;
 	ulong rdx;
-	ulong rsp_dummy;  // push rbp
+	ulong rsp_dummy;  // push rbp slot
 	ulong rbp;
 	ulong rsi;
 	ulong rdi;
@@ -62,7 +63,7 @@ fn bool dispatcher(ulong reason, GuestRegisters* regs) {
 			h_vmcall::handler(regs);
 			return true;
 
-		// vmx, and others that fall on UD no advance rip
+		// vmx and others that fall on UD do not advance rip
 		case 19: // vmclear
         case 20: // vmlaunch
         case 21: // vmptrld

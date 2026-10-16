@@ -19,7 +19,7 @@ readcr4 PROC
 readcr4 ENDP
 
 ; msr
-; parameter msd id its stored into ecx
+; the msr id parameter is passed in ecx
 readmsr PROC
     rdmsr
     shl rdx, 32
@@ -111,7 +111,7 @@ readrsp PROC
     ret
 readrsp ENDP
 
-; read rip of the next instruction, not actual rip
+; read rip of the next instruction, not the actual rip
 readrip PROC
     mov rax, [rsp]       
     ret

@@ -15,8 +15,8 @@ alias Pethread = Kthread*;
 alias POBJECTTYPE_t = OBJECTTYPE_t*;
 alias Ppeb = Peb*;
 alias Pacl = Acl*;
-alias LSAUNICODESTRING_t = UNICODESTRING_t;
-alias PLSAUNICODESTRING_t = UNICODESTRING_t*;
+alias LSAUNICODESTRING_t = UnicodeString_t;
+alias PLSAUNICODESTRING_t = UnicodeString_t*;
 alias LSASTRING_t = String;
 alias PLSASTRING_t = String*;
 alias LSAOBJECTATTRIBUTES_t = OBJECTATTRIBUTES_t;
@@ -89,16 +89,16 @@ alias PCLAIMSECURITYATTRIBUTEOCTETSTRINGVALUE_t = CLAIMSECURITYATTRIBUTEOCTETSTR
 alias PCLAIMSECURITYATTRIBUTEV1_t = CLAIMSECURITYATTRIBUTEV1_t*;
 alias PCLAIMSECURITYATTRIBUTERELATIVEV1_t = CLAIMSECURITYATTRIBUTERELATIVEV1_t*;
 alias PCLAIMSECURITYATTRIBUTESINFORMATION_t = CLAIMSECURITYATTRIBUTESINFORMATION_t*;
-alias RTLHEAPCOMMITROUTINE_t = fn Ntstatus(Pvoid, Pvoid*, PSIZET_t);
-alias PRTLHEAPCOMMITROUTINE_t = fn Ntstatus(Pvoid, Pvoid*, PSIZET_t);
+alias RTLHEAPCOMMITROUTINE_t = fn NtStatus(Pvoid, Pvoid*, PSIZET_t);
+alias PRTLHEAPCOMMITROUTINE_t = fn NtStatus(Pvoid, Pvoid*, PSIZET_t);
 alias PRTLHEAPPARAMETERS_t = RTLHEAPPARAMETERS_t*;
 alias PRTLMEMORYTYPE_t = RTLMEMORYTYPE_t*;
-alias ALLOCATEVIRTUALMEMORYEXCALLBACK_t = fn Ntstatus(Handle, Handle, Pvoid*, PSIZET_t, Ulong, Ulong, PMEMEXTENDEDPARAMETER_t, Ulong);
-alias PALLOCATEVIRTUALMEMORYEXCALLBACK_t = fn Ntstatus(Handle, Handle, Pvoid*, PSIZET_t, Ulong, Ulong, PMEMEXTENDEDPARAMETER_t, Ulong);
-alias FREEVIRTUALMEMORYEXCALLBACK_t = fn Ntstatus(Handle, Handle, Pvoid*, PSIZET_t, Ulong);
-alias PFREEVIRTUALMEMORYEXCALLBACK_t = fn Ntstatus(Handle, Handle, Pvoid*, PSIZET_t, Ulong);
-alias QUERYVIRTUALMEMORYCALLBACK_t = fn Ntstatus(Handle, Handle, Pvoid, HEAPMEMORYINFOCLASS_t, Pvoid, SIZET_t, PSIZET_t);
-alias PQUERYVIRTUALMEMORYCALLBACK_t = fn Ntstatus(Handle, Handle, Pvoid, HEAPMEMORYINFOCLASS_t, Pvoid, SIZET_t, PSIZET_t);
+alias ALLOCATEVIRTUALMEMORYEXCALLBACK_t = fn NtStatus(Handle, Handle, Pvoid*, PSIZET_t, Ulong, Ulong, PMEMEXTENDEDPARAMETER_t, Ulong);
+alias PALLOCATEVIRTUALMEMORYEXCALLBACK_t = fn NtStatus(Handle, Handle, Pvoid*, PSIZET_t, Ulong, Ulong, PMEMEXTENDEDPARAMETER_t, Ulong);
+alias FREEVIRTUALMEMORYEXCALLBACK_t = fn NtStatus(Handle, Handle, Pvoid*, PSIZET_t, Ulong);
+alias PFREEVIRTUALMEMORYEXCALLBACK_t = fn NtStatus(Handle, Handle, Pvoid*, PSIZET_t, Ulong);
+alias QUERYVIRTUALMEMORYCALLBACK_t = fn NtStatus(Handle, Handle, Pvoid, HEAPMEMORYINFOCLASS_t, Pvoid, SIZET_t, PSIZET_t);
+alias PQUERYVIRTUALMEMORYCALLBACK_t = fn NtStatus(Handle, Handle, Pvoid, HEAPMEMORYINFOCLASS_t, Pvoid, SIZET_t, PSIZET_t);
 alias PRTLSEGMENTHEAPVACALLBACKS_t = RTLSEGMENTHEAPVACALLBACKS_t*;
 alias PRTLSEGMENTHEAPMEMORYSOURCE_t = RTLSEGMENTHEAPMEMORYSOURCE_t*;
 alias PRTLSEGMENTHEAPPARAMETERS_t = RTLSEGMENTHEAPPARAMETERS_t*;
@@ -524,10 +524,10 @@ alias Pkqueue = Kqueue*;
 alias Prkqueue = Kqueue*;
 alias CASSERT_t = char[1];
 alias PSEEXPORTS_t = SEEXPORTS_t*;
-alias SELOGONSESSIONTERMINATEDROUTINE_t = fn Ntstatus(Pluid);
-alias PSELOGONSESSIONTERMINATEDROUTINE_t = fn Ntstatus(Pluid);
-alias SELOGONSESSIONTERMINATEDROUTINEEX_t = fn Ntstatus(Pluid, Pesilo, Pvoid);
-alias PSELOGONSESSIONTERMINATEDROUTINEEX_t = fn Ntstatus(Pluid, Pesilo, Pvoid);
+alias SELOGONSESSIONTERMINATEDROUTINE_t = fn NtStatus(Pluid);
+alias PSELOGONSESSIONTERMINATEDROUTINE_t = fn NtStatus(Pluid);
+alias SELOGONSESSIONTERMINATEDROUTINEEX_t = fn NtStatus(Pluid, Pesilo, Pvoid);
+alias PSELOGONSESSIONTERMINATEDROUTINEEX_t = fn NtStatus(Pluid, Pesilo, Pvoid);
 alias DRIVERFSNOTIFICATION_t = fn void(DEVICEOBJECT_t*, Boolean);
 alias PDRIVERFSNOTIFICATION_t = fn void(DEVICEOBJECT_t*, Boolean);
 alias PFSFILTERSECTIONSYNCTYPE_t = FSFILTERSECTIONSYNCTYPE_t*;
@@ -536,16 +536,16 @@ alias PFSFILTERSTREAMFONOTIFICATIONTYPE_t = FSFILTERSTREAMFONOTIFICATIONTYPE_t*;
 alias Pirp = Irp*;
 alias PFSFILTERPARAMETERS_t = FSFILTERPARAMETERS_t*;
 alias PFSFILTERCALLBACKDATA_t = FSFILTERCALLBACKDATA_t*;
-alias PFSFILTERCALLBACK_t = fn Ntstatus(PFSFILTERCALLBACKDATA_t, Pvoid*);
-alias PFSFILTERCOMPLETIONCALLBACK_t = fn void(PFSFILTERCALLBACKDATA_t, Ntstatus, Pvoid);
+alias PFSFILTERCALLBACK_t = fn NtStatus(PFSFILTERCALLBACKDATA_t, Pvoid*);
+alias PFSFILTERCOMPLETIONCALLBACK_t = fn void(PFSFILTERCALLBACKDATA_t, NtStatus, Pvoid);
 alias PFSFILTERCALLBACKS_t = FSFILTERCALLBACKS_t*;
 alias PIOCREATESTREAMFILEOPTIONS_t = IOCREATESTREAMFILEOPTIONS_t*;
 alias PIOPRIORITYINFO_t = IOPRIORITYINFO_t*;
 alias PIOIRPEXTPROCESSTRACKEDOFFSETCALLBACK_t = fn void(IOIRPEXTTRACKOFFSETHEADER_t*, IOIRPEXTTRACKOFFSETHEADER_t*, Longlong);
 alias PIOIRPEXTTRACKOFFSETHEADER_t = IOIRPEXTTRACKOFFSETHEADER_t*;
 alias PCOPYINFORMATION_t = COPYINFORMATION_t*;
-alias POWERSETTINGCALLBACK_t = fn Ntstatus(Lpcguid, Pvoid, Ulong, Pvoid);
-alias PPOWERSETTINGCALLBACK_t = fn Ntstatus(Lpcguid, Pvoid, Ulong, Pvoid);
+alias POWERSETTINGCALLBACK_t = fn NtStatus(Lpcguid, Pvoid, Ulong, Pvoid);
+alias PPOWERSETTINGCALLBACK_t = fn NtStatus(Lpcguid, Pvoid, Ulong, Pvoid);
 alias PREADLIST_t = READLIST_t*;
 alias PMMPREFETCHFLAGS_t = MMPREFETCHFLAGS_t*;
 alias PPHYSICALMEMORYRUN_t = PHYSICALMEMORYRUN_t*;
@@ -564,7 +564,7 @@ alias PFSRTLADVANCEDFCBHEADER_t = FSRTLADVANCEDFCBHEADER_t*;
 alias PEOFWAITBLOCK_t = EOFWAITBLOCK_t*;
 alias PFSRTLAUXILIARYBUFFER_t = FSRTLAUXILIARYBUFFER_t*;
 alias PFILELOCKINFO_t = FILELOCKINFO_t*;
-alias PCOMPLETELOCKIRPROUTINE_t = fn Ntstatus(Pvoid, Pirp);
+alias PCOMPLETELOCKIRPROUTINE_t = fn NtStatus(Pvoid, Pirp);
 alias PUNLOCKROUTINE_t = fn void(Pvoid, PFILELOCKINFO_t);
 alias PFILELOCK_t = FILELOCK_t*;
 alias Ptunnel = Tunnel*;
@@ -620,7 +620,7 @@ alias PFILETIMESTAMPS_t = FILETIMESTAMPS_t*;
 alias PATOMICCREATEECPCONTEXT_t = ATOMICCREATEECPCONTEXT_t*;
 alias PECPOPENPARAMETERS_t = ECPOPENPARAMETERS_t*;
 alias POPLOCKNOTIFYPARAMS_t = OPLOCKNOTIFYPARAMS_t*;
-alias POPLOCKNOTIFYROUTINE_t = fn Ntstatus(POPLOCKNOTIFYPARAMS_t);
+alias POPLOCKNOTIFYROUTINE_t = fn NtStatus(POPLOCKNOTIFYPARAMS_t);
 alias PQUERYONCREATEFILESTATINFORMATION_t = QUERYONCREATEFILESTATINFORMATION_t*;
 alias PQUERYONCREATEFILELXINFORMATION_t = QUERYONCREATEFILELXINFORMATION_t*;
 alias PQUERYONCREATEEAINFORMATION_t = QUERYONCREATEEAINFORMATION_t*;
@@ -661,8 +661,8 @@ alias SECURITYINTEGER_t = LARGEINTEGER_t;
 alias PSECURITYINTEGER_t = LARGEINTEGER_t*;
 alias TimeStamp = SECURITYINTEGER_t;
 alias PTimeStamp = SECURITYINTEGER_t*;
-alias SECURITYSTRING_t = UNICODESTRING_t;
-alias PSECURITYSTRING_t = UNICODESTRING_t*;
+alias SECURITYSTRING_t = UnicodeString_t;
+alias PSECURITYSTRING_t = UnicodeString_t*;
 alias PSecPkgInfoW = SecPkgInfoW*;
 alias PSecBuffer = SecBuffer*;
 alias PSecBufferDesc = SecBufferDesc*;
@@ -761,7 +761,7 @@ alias Phandle = Handle*;
 alias UintVT = ulong;
 alias PKWAITBLOCK_t = KWAITBLOCK_t*;
 alias Pwchar = Wchar*;
-alias PCUNICODESTRING_t = UNICODESTRING_t*;
+alias PCUNICODESTRING_t = UnicodeString_t*;
 alias PCLIENTID_t = CLIENTID_t*;
 alias ULONGPTR_t = ulong;
 alias Ulonglong = ulong;
@@ -777,12 +777,12 @@ alias Logical = CULong;
 alias PKSPINLOCK_t = KSPINLOCK_t*;
 alias Pesilo = Ejob*;
 alias Int = int;
-alias PDEVICEOBJECT_t = DEVICEOBJECT_t*;
+alias PDeviceObject_t = DEVICEOBJECT_t*;
 alias KSPINLOCK_t = ulong;
 alias Pchar = Char*;
 alias PSEADTPARAMETERARRAY_t = SEADTPARAMETERARRAY_t*;
 alias SECURITYSTATUS_t = CLong;
-alias Pntstatus = Ntstatus*;
+alias Pntstatus = NtStatus*;
 alias EXECUTIONSTATE_t = CULong;
 alias PDRIVERCANCEL_t = DRIVERCANCEL_t*;
 alias Prkmutant = Kmutant*;
@@ -799,7 +799,7 @@ alias Lpstr = Char*;
 alias Pkirql = Kirql*;
 alias PTARGETDEVICECUSTOMNOTIFICATION_t = TARGETDEVICECUSTOMNOTIFICATION_t*;
 alias ACCESSMASK_t = CULong;
-alias PDRIVEROBJECT_t = DRIVEROBJECT_t*;
+alias PDRIVEROBJECT_t = DriverObject_t*;
 alias Pstring = String*;
 alias PACCESSMASK_t = ACCESSMASK_t*;
 alias PSECURITYINFORMATION_t = Ulong*;
@@ -812,13 +812,13 @@ alias Plonglong = Longlong*;
 alias POBJECTATTRIBUTES_t = OBJECTATTRIBUTES_t*;
 alias PCONFIGURATIONINFORMATION_t = CONFIGURATIONINFORMATION_t*;
 alias Ushort = ushort;
-alias Ntstatus = CLong;
+alias NtStatus = CLong;
 alias Uchar = char;
 alias PEXPANDSTACKCALLOUT_t = EXPANDSTACKCALLOUT_t*;
 alias PulongSR = uint*;
 alias PLARGEINTEGER_t = LARGEINTEGER_t*;
 alias Kirql = char;
-alias PUNICODESTRING_t = UNICODESTRING_t*;
+alias PUnicodeString_t = UnicodeString_t*;
 alias PSECTIONOBJECTPOINTERS_t = SECTIONOBJECTPOINTERS_t*;
 alias PSECURITYIMPERSONATIONLEVEL_t = SECURITYIMPERSONATIONLEVEL_t*;
 alias PFILEOBJECT_t = FILEOBJECT_t*;
@@ -1956,9 +1956,9 @@ struct SEAUDITINFO_t
 	AUDITEVENTTYPE_t audit_type;
 	SEAUDITOPERATION_t audit_operation;
 	Ulong audit_flags;
-	UNICODESTRING_t subsystem_name;
-	UNICODESTRING_t object_type_name;
-	UNICODESTRING_t object_name;
+	UnicodeString_t subsystem_name;
+	UnicodeString_t object_type_name;
+	UnicodeString_t object_name;
 	Pvoid handle_id;
 	Guid* transaction_id;
 	Luid* operation_id;
@@ -2271,7 +2271,7 @@ struct UNICODEPREFIXTABLEENTRY_t
 	UNICODEPREFIXTABLEENTRY_t* next_prefix_tree;
 	UNICODEPREFIXTABLEENTRY_t* case_match;
 	RTLSPLAYLINKS_t links;
-	PUNICODESTRING_t prefix;
+	PUnicodeString_t prefix;
 }
 
 struct UNICODEPREFIXTABLE_t
@@ -2296,9 +2296,9 @@ struct COMPRESSEDDATAINFO_t
 struct MSV10INTERACTIVELOGON_t
 {
 	MSV10LOGONSUBMITTYPE_t message_type;
-	UNICODESTRING_t logon_domain_name;
-	UNICODESTRING_t user_name;
-	UNICODESTRING_t password;
+	UnicodeString_t logon_domain_name;
+	UnicodeString_t user_name;
+	UnicodeString_t password;
 }
 
 struct MSV10INTERACTIVEPROFILE_t
@@ -2312,21 +2312,21 @@ struct MSV10INTERACTIVEPROFILE_t
 	LARGEINTEGER_t password_last_set;
 	LARGEINTEGER_t password_can_change;
 	LARGEINTEGER_t password_must_change;
-	UNICODESTRING_t logon_script;
-	UNICODESTRING_t home_directory;
-	UNICODESTRING_t full_name;
-	UNICODESTRING_t profile_path;
-	UNICODESTRING_t home_directory_drive;
-	UNICODESTRING_t logon_server;
+	UnicodeString_t logon_script;
+	UnicodeString_t home_directory;
+	UnicodeString_t full_name;
+	UnicodeString_t profile_path;
+	UnicodeString_t home_directory_drive;
+	UnicodeString_t logon_server;
 	Ulong user_flags;
 }
 
 struct MSV10LM20LOGON_t
 {
 	MSV10LOGONSUBMITTYPE_t message_type;
-	UNICODESTRING_t logon_domain_name;
-	UNICODESTRING_t user_name;
-	UNICODESTRING_t workstation;
+	UnicodeString_t logon_domain_name;
+	UnicodeString_t user_name;
+	UnicodeString_t workstation;
 	Uchar[8] challenge_to_client;
 	String case_sensitive_challenge_response;
 	String case_insensitive_challenge_response;
@@ -2336,9 +2336,9 @@ struct MSV10LM20LOGON_t
 struct MSV10SUBAUTHLOGON_t
 {
 	MSV10LOGONSUBMITTYPE_t message_type;
-	UNICODESTRING_t logon_domain_name;
-	UNICODESTRING_t user_name;
-	UNICODESTRING_t workstation;
+	UnicodeString_t logon_domain_name;
+	UnicodeString_t user_name;
+	UnicodeString_t workstation;
 	Uchar[8] challenge_to_client;
 	String authentication_info1;
 	String authentication_info2;
@@ -2350,8 +2350,8 @@ struct MSV10S4ULOGON_t
 {
 	MSV10LOGONSUBMITTYPE_t message_type;
 	Ulong flags;
-	UNICODESTRING_t user_principal_name;
-	UNICODESTRING_t domain_name;
+	UnicodeString_t user_principal_name;
+	UnicodeString_t domain_name;
 }
 
 struct MSV10LM20LOGONPROFILE_t
@@ -2361,10 +2361,10 @@ struct MSV10LM20LOGONPROFILE_t
 	LARGEINTEGER_t logoff_time;
 	Ulong user_flags;
 	Uchar[16] user_session_key;
-	UNICODESTRING_t logon_domain_name;
+	UnicodeString_t logon_domain_name;
 	Uchar[8] lanman_session_key;
-	UNICODESTRING_t logon_server;
-	UNICODESTRING_t user_parameters;
+	UnicodeString_t logon_server;
+	UnicodeString_t user_parameters;
 }
 
 struct MSV10CREDENTIALKEY_t
@@ -2450,7 +2450,7 @@ struct MSV10GETCHALLENRESPREQUESTV1_t
 	MSV10PROTOCOLMESSAGETYPE_t message_type;
 	Ulong parameter_control;
 	Luid logon_id;
-	UNICODESTRING_t password;
+	UnicodeString_t password;
 	Uchar[8] challenge_to_client;
 }
 
@@ -2459,11 +2459,11 @@ struct MSV10GETCHALLENRESPREQUEST_t
 	MSV10PROTOCOLMESSAGETYPE_t message_type;
 	Ulong parameter_control;
 	Luid logon_id;
-	UNICODESTRING_t password;
+	UnicodeString_t password;
 	Uchar[8] challenge_to_client;
-	UNICODESTRING_t user_name;
-	UNICODESTRING_t logon_domain_name;
-	UNICODESTRING_t server_name;
+	UnicodeString_t user_name;
+	UnicodeString_t logon_domain_name;
+	UnicodeString_t server_name;
 }
 
 struct MSV10GETCHALLENRESPRESPONSE_t
@@ -2471,8 +2471,8 @@ struct MSV10GETCHALLENRESPRESPONSE_t
 	MSV10PROTOCOLMESSAGETYPE_t message_type;
 	String case_sensitive_challenge_response;
 	String case_insensitive_challenge_response;
-	UNICODESTRING_t user_name;
-	UNICODESTRING_t logon_domain_name;
+	UnicodeString_t user_name;
+	UnicodeString_t logon_domain_name;
 	Uchar[16] user_session_key;
 	Uchar[8] lanman_session_key;
 }
@@ -2500,9 +2500,9 @@ struct MSV10GETUSERINFORESPONSE_t
 {
 	MSV10PROTOCOLMESSAGETYPE_t message_type;
 	Psid user_sid;
-	UNICODESTRING_t user_name;
-	UNICODESTRING_t logon_domain_name;
-	UNICODESTRING_t logon_server;
+	UnicodeString_t user_name;
+	UnicodeString_t logon_domain_name;
+	UnicodeString_t logon_server;
 	SECURITYLOGONTYPE_t logon_type;
 }
 
@@ -3831,7 +3831,7 @@ struct FILEINITIATEREPAIROUTPUTBUFFER_t
 	Ulonglong hint1;
 	Ulonglong hint2;
 	Clsn clsn;
-	Ntstatus status;
+	NtStatus status;
 }
 
 struct SHRINKVOLUMEINFORMATION_t
@@ -4460,7 +4460,7 @@ struct REPAIRCOPIESINPUT_t
 struct REPAIRCOPIESOUTPUT_t
 {
 	Ulong size;
-	Ntstatus status;
+	NtStatus status;
 	LARGEINTEGER_t resume_file_offset;
 }
 
@@ -4650,7 +4650,7 @@ struct REFSSMRVOLUMEINFOOUTPUT_t
 	LARGEINTEGER_t free_space_in_smr_tier;
 	LARGEINTEGER_t usable_free_space_in_smr_tier;
 	REFSSMRVOLUMEGCSTATE_t volume_gc_state;
-	Ntstatus volume_gc_last_status;
+	NtStatus volume_gc_last_status;
 	Ulong current_gc_band_fill_percentage;
 	Ulonglong[6] unused;
 }
@@ -4870,7 +4870,7 @@ struct FSBPIOINPUT_t
 
 struct FSBPIORESULTS_t
 {
-	Ntstatus op_status;
+	NtStatus op_status;
 	Ushort failing_driver_name_len;
 	Wchar[32] failing_driver_name;
 	Ushort failure_reason_len;
@@ -5465,7 +5465,7 @@ struct REFSQUERYVOLUMECOMPRESSIONINFOOUTPUTBUFFER_t
 	Ulong compression_tuning;
 	Ulong recompression_tuning;
 	Ulong decompression_tuning;
-	Ntstatus last_compression_status;
+	NtStatus last_compression_status;
 	Ulong[8] reserved;
 }
 
@@ -5622,7 +5622,7 @@ struct PUBLICOBJECTBASICINFORMATION_t
 
 struct PUBLICOBJECTTYPEINFORMATION_t
 {
-	UNICODESTRING_t type_name;
+	UnicodeString_t type_name;
 	Ulong[22] reserved;
 }
 
@@ -5802,7 +5802,7 @@ struct IOCREATESTREAMFILEOPTIONS_t
 {
 	Ushort size;
 	Ushort flags;
-	PDEVICEOBJECT_t target_device_object;
+	PDeviceObject_t target_device_object;
 }
 
 struct IOPRIORITYINFO_t
@@ -5987,7 +5987,7 @@ struct FSRTLMUPPROVIDERINFOLEVEL1_t
 struct FSRTLMUPPROVIDERINFOLEVEL2_t
 {
 	UlongSR provider_id;
-	UNICODESTRING_t provider_name;
+	UnicodeString_t provider_name;
 }
 
 struct FSRTLPERFILECONTEXT_t
@@ -6045,13 +6045,13 @@ struct SockaddrStorage { void* _unused; }
 
 struct NFSOPENECPCONTEXT_t
 {
-	PUNICODESTRING_t export_alias;
+	PUnicodeString_t export_alias;
 	PSOCKADDRSTORAGENFS_t client_socket_address;
 }
 
 struct SRVOPENECPCONTEXT_t
 {
-	PUNICODESTRING_t share_name;
+	PUnicodeString_t share_name;
 	PSOCKADDRSTORAGENFS_t socket_address;
 	Boolean oplock_block_state;
 	Boolean oplock_app_state;
@@ -6068,8 +6068,8 @@ struct RKFBYPASSECPCONTEXT_t
 
 struct IODEVICEHINTECPCONTEXT_t
 {
-	PDEVICEOBJECT_t target_device;
-	UNICODESTRING_t remaining_name;
+	PDeviceObject_t target_device;
+	UnicodeString_t remaining_name;
 }
 
 struct CSVDOWNLEVELOPENECPCONTEXT_t
@@ -6171,7 +6171,7 @@ struct OPLOCKNOTIFYPARAMS_t
 	OPLOCKNOTIFYREASON_t notify_reason;
 	Pvoid notify_context;
 	Pirp irp;
-	Ntstatus status;
+	NtStatus status;
 }
 
 struct QUERYONCREATEFILESTATINFORMATION_t
@@ -6304,7 +6304,7 @@ struct CCASYNCREADCONTEXT_t
 struct CCERRORCALLBACKCONTEXT_t
 {
 	Cshort node_byte_size;
-	Ntstatus error_code;
+	NtStatus error_code;
 }
 
 struct CCDIRTYPAGESINFO_t
@@ -6769,8 +6769,8 @@ struct QUERYPATHREQUESTEX_t
 	PIOSECURITYCONTEXT_t p_security_context;
 	Ulong ea_length;
 	Pvoid p_ea_buffer;
-	UNICODESTRING_t path_name;
-	UNICODESTRING_t domain_service_name;
+	UnicodeString_t path_name;
+	UnicodeString_t domain_service_name;
 	PECPLIST_t ecp_list;
 	Pesilo silo;
 	ULONGPTR_t reserved;
@@ -6779,6 +6779,12 @@ struct QUERYPATHREQUESTEX_t
 struct QUERYPATHRESPONSE_t
 {
 	Ulong length_accepted;
+}
+
+struct IOSTATUSBLOCK_t
+{
+    void* _field1;
+    ULONGPTR_t information;
 }
 
 struct Irp
@@ -6865,7 +6871,7 @@ struct OBJECTATTRIBUTES_t
 {
 	Ulong length;
 	Handle root_directory;
-	PUNICODESTRING_t object_name;
+	PUnicodeString_t object_name;
 	Ulong attributes;
 	Pvoid security_descriptor;
 	Pvoid security_quality_of_service;
@@ -6882,7 +6888,7 @@ struct RTLSPLAYLINKS_t
 	RTLSPLAYLINKS_t* right_child;
 }
 
-struct UNICODESTRING_t
+struct UnicodeString_t
 {
 	Ushort length;
 	Ushort maximum_length;
@@ -6896,7 +6902,7 @@ struct DEVICEOBJECT_t
 	Cshort type;
 	Ushort size;
 	Long reference_count;
-	DRIVEROBJECT_t* driver_object;
+	DriverObject_t* driver_object;
 	DEVICEOBJECT_t* next_device;
 	DEVICEOBJECT_t* attached_device;
 	Irp* current_irp;
@@ -6936,12 +6942,6 @@ struct SECURITYQUALITYOFSERVICE_t
 	Boolean effective_only;
 }
 
-struct IOSTATUSBLOCK_t
-{
-	void* _field1;
-	ULONGPTR_t information;
-}
-
 struct FASTMUTEX_t
 {
 	Long count;
@@ -6970,18 +6970,18 @@ union FILESEGMENTELEMENT_t
 	Ulonglong alignment;
 }
 
-struct DRIVEROBJECT_t
+struct DriverObject_t
 {
 	Cshort type;
 	Cshort size;
-	PDEVICEOBJECT_t device_object;
+	PDeviceObject_t device_object;
 	Ulong flags;
 	Pvoid driver_start;
 	Ulong driver_size;
 	Pvoid driver_section;
 	PDRIVEREXTENSION_t driver_extension;
-	UNICODESTRING_t driver_name;
-	PUNICODESTRING_t hardware_database;
+	UnicodeString_t driver_name;
+	PUnicodeString_t hardware_database;
 	PFASTIODISPATCH_t fast_io_dispatch;
 	PDRIVERINITIALIZE_t driver_init;
 	PDRIVERSTARTIO_t driver_start_io;
@@ -7020,13 +7020,13 @@ struct FILEOBJECT_t
 {
 	Cshort type;
 	Cshort size;
-	PDEVICEOBJECT_t device_object;
+	PDeviceObject_t device_object;
 	Pvpb vpb;
 	Pvoid fs_context;
 	Pvoid fs_context2;
 	PSECTIONOBJECTPOINTERS_t section_object_pointer;
 	Pvoid private_cache_map;
-	Ntstatus final_status;
+	NtStatus final_status;
 	FILEOBJECT_t* related_file_object;
 	Boolean lock_operation;
 	Boolean delete_pending;
@@ -7037,7 +7037,7 @@ struct FILEOBJECT_t
 	Boolean shared_write;
 	Boolean shared_delete;
 	Ulong flags;
-	UNICODESTRING_t file_name;
+	UnicodeString_t file_name;
 	LARGEINTEGER_t current_byte_offset;
 	Ulong waiters;
 	Ulong busy;
@@ -7155,28 +7155,28 @@ struct Cptableinfo { void* _unused; }
 struct FREEFUNCTION_t { void* _unused; }
 
 // Functions
-extern fn Ntstatus nt_open_thread_token(Handle thread_handle, ACCESSMASK_t desired_access, Boolean open_as_self, Phandle token_handle) @cname("NtOpenThreadToken");
-extern fn Ntstatus nt_open_thread_token_ex(Handle thread_handle, ACCESSMASK_t desired_access, Boolean open_as_self, Ulong handle_attributes, Phandle token_handle) @cname("NtOpenThreadTokenEx");
-extern fn Ntstatus nt_open_process_token(Handle process_handle, ACCESSMASK_t desired_access, Phandle token_handle) @cname("NtOpenProcessToken");
-extern fn Ntstatus nt_open_process_token_ex(Handle process_handle, ACCESSMASK_t desired_access, Ulong handle_attributes, Phandle token_handle) @cname("NtOpenProcessTokenEx");
-extern fn Ntstatus nt_open_job_object_token(Handle job_handle, ACCESSMASK_t desired_access, Phandle token_handle) @cname("NtOpenJobObjectToken");
-extern fn Ntstatus nt_duplicate_token(Handle existing_token_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, Boolean effective_only, TOKENTYPE_t token_type, Phandle new_token_handle) @cname("NtDuplicateToken");
-extern fn Ntstatus nt_filter_token(Handle existing_token_handle, Ulong flags, PTOKENGROUPS_t sids_to_disable, PTOKENPRIVILEGES_t privileges_to_delete, PTOKENGROUPS_t restricted_sids, Phandle new_token_handle) @cname("NtFilterToken");
-extern fn Ntstatus nt_impersonate_anonymous_token(Handle thread_handle) @cname("NtImpersonateAnonymousToken");
-extern fn Ntstatus nt_query_information_token(Handle token_handle, TOKENINFORMATIONCLASS_t token_information_class, Pvoid token_information, Ulong token_information_length, Pulong return_length) @cname("NtQueryInformationToken");
-extern fn Ntstatus nt_set_information_token(Handle token_handle, TOKENINFORMATIONCLASS_t token_information_class, Pvoid token_information, Ulong token_information_length) @cname("NtSetInformationToken");
-extern fn Ntstatus nt_adjust_privileges_token(Handle token_handle, Boolean disable_all_privileges, PTOKENPRIVILEGES_t new_state, Ulong buffer_length, PTOKENPRIVILEGES_t previous_state, Pulong return_length) @cname("NtAdjustPrivilegesToken");
-extern fn Ntstatus nt_adjust_groups_token(Handle token_handle, Boolean reset_to_default, PTOKENGROUPS_t new_state, Ulong buffer_length, PTOKENGROUPS_t previous_state, Pulong return_length) @cname("NtAdjustGroupsToken");
-extern fn Ntstatus nt_privilege_check(Handle client_token, PPRIVILEGESET_t required_privileges, Pboolean result) @cname("NtPrivilegeCheck");
-extern fn Ntstatus nt_access_check_and_audit_alarm(PUNICODESTRING_t subsystem_name, Pvoid handle_id, PUNICODESTRING_t object_type_name, PUNICODESTRING_t object_name, PSECURITYDESCRIPTOR_t security_descriptor, ACCESSMASK_t desired_access, PGENERICMAPPING_t generic_mapping, Boolean object_creation, PACCESSMASK_t granted_access, Pntstatus access_status, Pboolean generate_on_close) @cname("NtAccessCheckAndAuditAlarm");
-extern fn Ntstatus nt_access_check_by_type_and_audit_alarm(PUNICODESTRING_t subsystem_name, Pvoid handle_id, PUNICODESTRING_t object_type_name, PUNICODESTRING_t object_name, PSECURITYDESCRIPTOR_t security_descriptor, Psid principal_self_sid, ACCESSMASK_t desired_access, AUDITEVENTTYPE_t audit_type, Ulong flags, POBJECTTYPELIST_t object_type_list, Ulong object_type_list_length, PGENERICMAPPING_t generic_mapping, Boolean object_creation, PACCESSMASK_t granted_access, Pntstatus access_status, Pboolean generate_on_close) @cname("NtAccessCheckByTypeAndAuditAlarm");
-extern fn Ntstatus nt_access_check_by_type_result_list_and_audit_alarm(PUNICODESTRING_t subsystem_name, Pvoid handle_id, PUNICODESTRING_t object_type_name, PUNICODESTRING_t object_name, PSECURITYDESCRIPTOR_t security_descriptor, Psid principal_self_sid, ACCESSMASK_t desired_access, AUDITEVENTTYPE_t audit_type, Ulong flags, POBJECTTYPELIST_t object_type_list, Ulong object_type_list_length, PGENERICMAPPING_t generic_mapping, Boolean object_creation, PACCESSMASK_t granted_access, Pntstatus access_status, Pboolean generate_on_close) @cname("NtAccessCheckByTypeResultListAndAuditAlarm");
-extern fn Ntstatus nt_access_check_by_type_result_list_and_audit_alarm_by_handle(PUNICODESTRING_t subsystem_name, Pvoid handle_id, Handle client_token, PUNICODESTRING_t object_type_name, PUNICODESTRING_t object_name, PSECURITYDESCRIPTOR_t security_descriptor, Psid principal_self_sid, ACCESSMASK_t desired_access, AUDITEVENTTYPE_t audit_type, Ulong flags, POBJECTTYPELIST_t object_type_list, Ulong object_type_list_length, PGENERICMAPPING_t generic_mapping, Boolean object_creation, PACCESSMASK_t granted_access, Pntstatus access_status, Pboolean generate_on_close) @cname("NtAccessCheckByTypeResultListAndAuditAlarmByHandle");
-extern fn Ntstatus nt_open_object_audit_alarm(PUNICODESTRING_t subsystem_name, Pvoid handle_id, PUNICODESTRING_t object_type_name, PUNICODESTRING_t object_name, PSECURITYDESCRIPTOR_t security_descriptor, Handle client_token, ACCESSMASK_t desired_access, ACCESSMASK_t granted_access, PPRIVILEGESET_t privileges, Boolean object_creation, Boolean access_granted, Pboolean generate_on_close) @cname("NtOpenObjectAuditAlarm");
-extern fn Ntstatus nt_privilege_object_audit_alarm(PUNICODESTRING_t subsystem_name, Pvoid handle_id, Handle client_token, ACCESSMASK_t desired_access, PPRIVILEGESET_t privileges, Boolean access_granted) @cname("NtPrivilegeObjectAuditAlarm");
-extern fn Ntstatus nt_close_object_audit_alarm(PUNICODESTRING_t subsystem_name, Pvoid handle_id, Boolean generate_on_close) @cname("NtCloseObjectAuditAlarm");
-extern fn Ntstatus nt_delete_object_audit_alarm(PUNICODESTRING_t subsystem_name, Pvoid handle_id, Boolean generate_on_close) @cname("NtDeleteObjectAuditAlarm");
-extern fn Ntstatus nt_privileged_service_audit_alarm(PUNICODESTRING_t subsystem_name, PUNICODESTRING_t service_name, Handle client_token, PPRIVILEGESET_t privileges, Boolean access_granted) @cname("NtPrivilegedServiceAuditAlarm");
+extern fn NtStatus nt_open_thread_token(Handle thread_handle, ACCESSMASK_t desired_access, Boolean open_as_self, Phandle token_handle) @cname("NtOpenThreadToken");
+extern fn NtStatus nt_open_thread_token_ex(Handle thread_handle, ACCESSMASK_t desired_access, Boolean open_as_self, Ulong handle_attributes, Phandle token_handle) @cname("NtOpenThreadTokenEx");
+extern fn NtStatus nt_open_process_token(Handle process_handle, ACCESSMASK_t desired_access, Phandle token_handle) @cname("NtOpenProcessToken");
+extern fn NtStatus nt_open_process_token_ex(Handle process_handle, ACCESSMASK_t desired_access, Ulong handle_attributes, Phandle token_handle) @cname("NtOpenProcessTokenEx");
+extern fn NtStatus nt_open_job_object_token(Handle job_handle, ACCESSMASK_t desired_access, Phandle token_handle) @cname("NtOpenJobObjectToken");
+extern fn NtStatus nt_duplicate_token(Handle existing_token_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, Boolean effective_only, TOKENTYPE_t token_type, Phandle new_token_handle) @cname("NtDuplicateToken");
+extern fn NtStatus nt_filter_token(Handle existing_token_handle, Ulong flags, PTOKENGROUPS_t sids_to_disable, PTOKENPRIVILEGES_t privileges_to_delete, PTOKENGROUPS_t restricted_sids, Phandle new_token_handle) @cname("NtFilterToken");
+extern fn NtStatus nt_impersonate_anonymous_token(Handle thread_handle) @cname("NtImpersonateAnonymousToken");
+extern fn NtStatus nt_query_information_token(Handle token_handle, TOKENINFORMATIONCLASS_t token_information_class, Pvoid token_information, Ulong token_information_length, Pulong return_length) @cname("NtQueryInformationToken");
+extern fn NtStatus nt_set_information_token(Handle token_handle, TOKENINFORMATIONCLASS_t token_information_class, Pvoid token_information, Ulong token_information_length) @cname("NtSetInformationToken");
+extern fn NtStatus nt_adjust_privileges_token(Handle token_handle, Boolean disable_all_privileges, PTOKENPRIVILEGES_t new_state, Ulong buffer_length, PTOKENPRIVILEGES_t previous_state, Pulong return_length) @cname("NtAdjustPrivilegesToken");
+extern fn NtStatus nt_adjust_groups_token(Handle token_handle, Boolean reset_to_default, PTOKENGROUPS_t new_state, Ulong buffer_length, PTOKENGROUPS_t previous_state, Pulong return_length) @cname("NtAdjustGroupsToken");
+extern fn NtStatus nt_privilege_check(Handle client_token, PPRIVILEGESET_t required_privileges, Pboolean result) @cname("NtPrivilegeCheck");
+extern fn NtStatus nt_access_check_and_audit_alarm(PUnicodeString_t subsystem_name, Pvoid handle_id, PUnicodeString_t object_type_name, PUnicodeString_t object_name, PSECURITYDESCRIPTOR_t security_descriptor, ACCESSMASK_t desired_access, PGENERICMAPPING_t generic_mapping, Boolean object_creation, PACCESSMASK_t granted_access, Pntstatus access_status, Pboolean generate_on_close) @cname("NtAccessCheckAndAuditAlarm");
+extern fn NtStatus nt_access_check_by_type_and_audit_alarm(PUnicodeString_t subsystem_name, Pvoid handle_id, PUnicodeString_t object_type_name, PUnicodeString_t object_name, PSECURITYDESCRIPTOR_t security_descriptor, Psid principal_self_sid, ACCESSMASK_t desired_access, AUDITEVENTTYPE_t audit_type, Ulong flags, POBJECTTYPELIST_t object_type_list, Ulong object_type_list_length, PGENERICMAPPING_t generic_mapping, Boolean object_creation, PACCESSMASK_t granted_access, Pntstatus access_status, Pboolean generate_on_close) @cname("NtAccessCheckByTypeAndAuditAlarm");
+extern fn NtStatus nt_access_check_by_type_result_list_and_audit_alarm(PUnicodeString_t subsystem_name, Pvoid handle_id, PUnicodeString_t object_type_name, PUnicodeString_t object_name, PSECURITYDESCRIPTOR_t security_descriptor, Psid principal_self_sid, ACCESSMASK_t desired_access, AUDITEVENTTYPE_t audit_type, Ulong flags, POBJECTTYPELIST_t object_type_list, Ulong object_type_list_length, PGENERICMAPPING_t generic_mapping, Boolean object_creation, PACCESSMASK_t granted_access, Pntstatus access_status, Pboolean generate_on_close) @cname("NtAccessCheckByTypeResultListAndAuditAlarm");
+extern fn NtStatus nt_access_check_by_type_result_list_and_audit_alarm_by_handle(PUnicodeString_t subsystem_name, Pvoid handle_id, Handle client_token, PUnicodeString_t object_type_name, PUnicodeString_t object_name, PSECURITYDESCRIPTOR_t security_descriptor, Psid principal_self_sid, ACCESSMASK_t desired_access, AUDITEVENTTYPE_t audit_type, Ulong flags, POBJECTTYPELIST_t object_type_list, Ulong object_type_list_length, PGENERICMAPPING_t generic_mapping, Boolean object_creation, PACCESSMASK_t granted_access, Pntstatus access_status, Pboolean generate_on_close) @cname("NtAccessCheckByTypeResultListAndAuditAlarmByHandle");
+extern fn NtStatus nt_open_object_audit_alarm(PUnicodeString_t subsystem_name, Pvoid handle_id, PUnicodeString_t object_type_name, PUnicodeString_t object_name, PSECURITYDESCRIPTOR_t security_descriptor, Handle client_token, ACCESSMASK_t desired_access, ACCESSMASK_t granted_access, PPRIVILEGESET_t privileges, Boolean object_creation, Boolean access_granted, Pboolean generate_on_close) @cname("NtOpenObjectAuditAlarm");
+extern fn NtStatus nt_privilege_object_audit_alarm(PUnicodeString_t subsystem_name, Pvoid handle_id, Handle client_token, ACCESSMASK_t desired_access, PPRIVILEGESET_t privileges, Boolean access_granted) @cname("NtPrivilegeObjectAuditAlarm");
+extern fn NtStatus nt_close_object_audit_alarm(PUnicodeString_t subsystem_name, Pvoid handle_id, Boolean generate_on_close) @cname("NtCloseObjectAuditAlarm");
+extern fn NtStatus nt_delete_object_audit_alarm(PUnicodeString_t subsystem_name, Pvoid handle_id, Boolean generate_on_close) @cname("NtDeleteObjectAuditAlarm");
+extern fn NtStatus nt_privileged_service_audit_alarm(PUnicodeString_t subsystem_name, PUnicodeString_t service_name, Handle client_token, PPRIVILEGESET_t privileges, Boolean access_granted) @cname("NtPrivilegedServiceAuditAlarm");
 extern fn Pvoid rtl_create_heap(Ulong flags, Pvoid heap_base, SIZET_t reserve_size, SIZET_t commit_size, Pvoid lock, PRTLHEAPPARAMETERS_t parameters) @cname("RtlCreateHeap");
 extern fn Ulong heap_make_tag_flags(Ulong tag_base, Ulong tag) @cname("HEAP_MAKE_TAG_FLAGS");
 extern fn Pvoid rtl_destroy_heap(Pvoid heap_handle) @cname("RtlDestroyHeap");
@@ -7184,43 +7184,43 @@ extern fn Pvoid rtl_allocate_heap(Pvoid heap_handle, Ulong flags, SIZET_t size) 
 extern fn Logical rtl_free_heap(Pvoid heap_handle, Ulong flags, Pvoid base_address) @cname("RtlFreeHeap");
 extern fn Ulong rtl_random(Pulong seed) @cname("RtlRandom");
 extern fn Ulong rtl_random_ex(Pulong seed) @cname("RtlRandomEx");
-extern fn Ntstatus rtl_init_unicode_string_ex(PUNICODESTRING_t destination_string, Pcwstr source_string) @cname("RtlInitUnicodeStringEx");
-extern fn Ntstatus rtl_init_ansi_string_ex(PANSISTRING_t destination_string, Pcsz source_string) @cname("RtlInitAnsiStringEx");
-extern fn Ntstatus rtl_init_string_ex(Pstring destination_string, Pcsz source_string) @cname("RtlInitStringEx");
-extern fn Ntstatus rtl_init_utf8_string_ex(PUTF8STRING_t destination_string, Pcsz source_string) @cname("RtlInitUTF8StringEx");
-extern fn Boolean rtl_create_unicode_string(PUNICODESTRING_t destination_string, Pcwstr source_string) @cname("RtlCreateUnicodeString");
+extern fn NtStatus rtl_init_unicode_string_ex(PUnicodeString_t destination_string, Pcwstr source_string) @cname("RtlInitUnicodeStringEx");
+extern fn NtStatus rtl_init_ansi_string_ex(PANSISTRING_t destination_string, Pcsz source_string) @cname("RtlInitAnsiStringEx");
+extern fn NtStatus rtl_init_string_ex(Pstring destination_string, Pcsz source_string) @cname("RtlInitStringEx");
+extern fn NtStatus rtl_init_utf8_string_ex(PUTF8STRING_t destination_string, Pcsz source_string) @cname("RtlInitUTF8StringEx");
+extern fn Boolean rtl_create_unicode_string(PUnicodeString_t destination_string, Pcwstr source_string) @cname("RtlCreateUnicodeString");
 extern fn Boolean rtl_prefix_string(String* string1, String* string2, Boolean case_in_sensitive) @cname("RtlPrefixString");
-extern fn Ntstatus rtl_append_string_to_string(Pstring destination, String* source) @cname("RtlAppendStringToString");
-extern fn Ntstatus rtl_oem_string_to_unicode_string(PUNICODESTRING_t destination_string, PCOEMSTRING_t source_string, Boolean allocate_destination_string) @cname("RtlOemStringToUnicodeString");
-extern fn Ntstatus rtl_unicode_string_to_oem_string(POEMSTRING_t destination_string, PCUNICODESTRING_t source_string, Boolean allocate_destination_string) @cname("RtlUnicodeStringToOemString");
-extern fn Ntstatus rtl_upcase_unicode_string_to_oem_string(POEMSTRING_t destination_string, PCUNICODESTRING_t source_string, Boolean allocate_destination_string) @cname("RtlUpcaseUnicodeStringToOemString");
-extern fn Ntstatus rtl_oem_string_to_counted_unicode_string(PUNICODESTRING_t destination_string, PCOEMSTRING_t source_string, Boolean allocate_destination_string) @cname("RtlOemStringToCountedUnicodeString");
-extern fn Ntstatus rtl_unicode_string_to_counted_oem_string(POEMSTRING_t destination_string, PCUNICODESTRING_t source_string, Boolean allocate_destination_string) @cname("RtlUnicodeStringToCountedOemString");
-extern fn Ntstatus rtl_upcase_unicode_string_to_counted_oem_string(POEMSTRING_t destination_string, PCUNICODESTRING_t source_string, Boolean allocate_destination_string) @cname("RtlUpcaseUnicodeStringToCountedOemString");
-extern fn Ntstatus rtl_validate_unicode_string(Ulong flags, PCUNICODESTRING_t string) @cname("RtlValidateUnicodeString");
-extern fn Ntstatus rtl_duplicate_unicode_string(Ulong flags, PCUNICODESTRING_t string_in, PUNICODESTRING_t string_out) @cname("RtlDuplicateUnicodeString");
-extern fn Ntstatus rtl_downcase_unicode_string(PUNICODESTRING_t destination_string, PCUNICODESTRING_t source_string, Boolean allocate_destination_string) @cname("RtlDowncaseUnicodeString");
+extern fn NtStatus rtl_append_string_to_string(Pstring destination, String* source) @cname("RtlAppendStringToString");
+extern fn NtStatus rtl_oem_string_to_unicode_string(PUnicodeString_t destination_string, PCOEMSTRING_t source_string, Boolean allocate_destination_string) @cname("RtlOemStringToUnicodeString");
+extern fn NtStatus rtl_unicode_string_to_oem_string(POEMSTRING_t destination_string, PCUNICODESTRING_t source_string, Boolean allocate_destination_string) @cname("RtlUnicodeStringToOemString");
+extern fn NtStatus rtl_upcase_unicode_string_to_oem_string(POEMSTRING_t destination_string, PCUNICODESTRING_t source_string, Boolean allocate_destination_string) @cname("RtlUpcaseUnicodeStringToOemString");
+extern fn NtStatus rtl_oem_string_to_counted_unicode_string(PUnicodeString_t destination_string, PCOEMSTRING_t source_string, Boolean allocate_destination_string) @cname("RtlOemStringToCountedUnicodeString");
+extern fn NtStatus rtl_unicode_string_to_counted_oem_string(POEMSTRING_t destination_string, PCUNICODESTRING_t source_string, Boolean allocate_destination_string) @cname("RtlUnicodeStringToCountedOemString");
+extern fn NtStatus rtl_upcase_unicode_string_to_counted_oem_string(POEMSTRING_t destination_string, PCUNICODESTRING_t source_string, Boolean allocate_destination_string) @cname("RtlUpcaseUnicodeStringToCountedOemString");
+extern fn NtStatus rtl_validate_unicode_string(Ulong flags, PCUNICODESTRING_t string) @cname("RtlValidateUnicodeString");
+extern fn NtStatus rtl_duplicate_unicode_string(Ulong flags, PCUNICODESTRING_t string_in, PUnicodeString_t string_out) @cname("RtlDuplicateUnicodeString");
+extern fn NtStatus rtl_downcase_unicode_string(PUnicodeString_t destination_string, PCUNICODESTRING_t source_string, Boolean allocate_destination_string) @cname("RtlDowncaseUnicodeString");
 extern fn void rtl_free_oem_string(POEMSTRING_t oem_string) @cname("RtlFreeOemString");
 extern fn Ulong rtlx_unicode_string_to_oem_size(PCUNICODESTRING_t unicode_string) @cname("RtlxUnicodeStringToOemSize");
 extern fn Ulong rtlx_oem_string_to_unicode_size(PCOEMSTRING_t oem_string) @cname("RtlxOemStringToUnicodeSize");
-extern fn Ntstatus rtl_multi_byte_to_unicode_n(Pwch unicode_string, Ulong max_bytes_in_unicode_string, Pulong bytes_in_unicode_string, Char* multi_byte_string, Ulong bytes_in_multi_byte_string) @cname("RtlMultiByteToUnicodeN");
-extern fn Ntstatus rtl_multi_byte_to_unicode_size(Pulong bytes_in_unicode_string, Char* multi_byte_string, Ulong bytes_in_multi_byte_string) @cname("RtlMultiByteToUnicodeSize");
-extern fn Ntstatus rtl_unicode_to_multi_byte_size(Pulong bytes_in_multi_byte_string, Pcwch unicode_string, Ulong bytes_in_unicode_string) @cname("RtlUnicodeToMultiByteSize");
-extern fn Ntstatus rtl_unicode_to_multi_byte_n(Pchar multi_byte_string, Ulong max_bytes_in_multi_byte_string, Pulong bytes_in_multi_byte_string, Pcwch unicode_string, Ulong bytes_in_unicode_string) @cname("RtlUnicodeToMultiByteN");
-extern fn Ntstatus rtl_unicode_to_utf8n(Pchar utf8_string_destination, Ulong utf8_string_max_byte_count, Pulong utf8_string_actual_byte_count, Pcwch unicode_string_source, Ulong unicode_string_byte_count) @cname("RtlUnicodeToUTF8N");
-extern fn Ntstatus rtl_utf8_to_unicode_n(Pwstr unicode_string_destination, Ulong unicode_string_max_byte_count, Pulong unicode_string_actual_byte_count, Pcch utf8_string_source, Ulong utf8_string_byte_count) @cname("RtlUTF8ToUnicodeN");
-extern fn Ntstatus rtl_unicode_string_to_utf8_string(PUTF8STRING_t destination_string, PCUNICODESTRING_t source_string, Boolean allocate_destination_string) @cname("RtlUnicodeStringToUTF8String");
-extern fn Ntstatus rtl_utf8_string_to_unicode_string(PUNICODESTRING_t destination_string, PUTF8STRING_t source_string, Boolean allocate_destination_string) @cname("RtlUTF8StringToUnicodeString");
-extern fn Ntstatus rtl_upcase_unicode_to_multi_byte_n(Pchar multi_byte_string, Ulong max_bytes_in_multi_byte_string, Pulong bytes_in_multi_byte_string, Pcwch unicode_string, Ulong bytes_in_unicode_string) @cname("RtlUpcaseUnicodeToMultiByteN");
-extern fn Ntstatus rtl_oem_to_unicode_n(Pwch unicode_string, Ulong max_bytes_in_unicode_string, Pulong bytes_in_unicode_string, Pcch oem_string, Ulong bytes_in_oem_string) @cname("RtlOemToUnicodeN");
-extern fn Ntstatus rtl_unicode_to_oem_n(Pchar oem_string, Ulong max_bytes_in_oem_string, Pulong bytes_in_oem_string, Pcwch unicode_string, Ulong bytes_in_unicode_string) @cname("RtlUnicodeToOemN");
-extern fn Ntstatus rtl_upcase_unicode_to_oem_n(Pchar oem_string, Ulong max_bytes_in_oem_string, Pulong bytes_in_oem_string, Pcwch unicode_string, Ulong bytes_in_unicode_string) @cname("RtlUpcaseUnicodeToOemN");
-extern fn Ntstatus rtl_normalize_string(Ulong norm_form, Pcwstr source_string, Long source_string_length, Pwstr destination_string, Plong destination_string_length) @cname("RtlNormalizeString");
-extern fn Ntstatus rtl_is_normalized_string(Ulong norm_form, Pcwstr source_string, Long source_string_length, Pboolean normalized) @cname("RtlIsNormalizedString");
-extern fn Ntstatus rtl_idn_to_ascii(Ulong flags, Pcwstr source_string, Long source_string_length, Pwstr destination_string, Plong destination_string_length) @cname("RtlIdnToAscii");
-extern fn Ntstatus rtl_idn_to_unicode(Ulong flags, Pcwstr source_string, Long source_string_length, Pwstr destination_string, Plong destination_string_length) @cname("RtlIdnToUnicode");
-extern fn Ntstatus rtl_idn_to_nameprep_unicode(Ulong flags, Pcwstr source_string, Long source_string_length, Pwstr destination_string, Plong destination_string_length) @cname("RtlIdnToNameprepUnicode");
-extern fn Ntstatus rtl_generate8dot3_name(PCUNICODESTRING_t name, Boolean allow_extended_characters, PGENERATENAMECONTEXT_t context, PUNICODESTRING_t name8dot3) @cname("RtlGenerate8dot3Name");
+extern fn NtStatus rtl_multi_byte_to_unicode_n(Pwch unicode_string, Ulong max_bytes_in_unicode_string, Pulong bytes_in_unicode_string, Char* multi_byte_string, Ulong bytes_in_multi_byte_string) @cname("RtlMultiByteToUnicodeN");
+extern fn NtStatus rtl_multi_byte_to_unicode_size(Pulong bytes_in_unicode_string, Char* multi_byte_string, Ulong bytes_in_multi_byte_string) @cname("RtlMultiByteToUnicodeSize");
+extern fn NtStatus rtl_unicode_to_multi_byte_size(Pulong bytes_in_multi_byte_string, Pcwch unicode_string, Ulong bytes_in_unicode_string) @cname("RtlUnicodeToMultiByteSize");
+extern fn NtStatus rtl_unicode_to_multi_byte_n(Pchar multi_byte_string, Ulong max_bytes_in_multi_byte_string, Pulong bytes_in_multi_byte_string, Pcwch unicode_string, Ulong bytes_in_unicode_string) @cname("RtlUnicodeToMultiByteN");
+extern fn NtStatus rtl_unicode_to_utf8n(Pchar utf8_string_destination, Ulong utf8_string_max_byte_count, Pulong utf8_string_actual_byte_count, Pcwch unicode_string_source, Ulong unicode_string_byte_count) @cname("RtlUnicodeToUTF8N");
+extern fn NtStatus rtl_utf8_to_unicode_n(Pwstr unicode_string_destination, Ulong unicode_string_max_byte_count, Pulong unicode_string_actual_byte_count, Pcch utf8_string_source, Ulong utf8_string_byte_count) @cname("RtlUTF8ToUnicodeN");
+extern fn NtStatus rtl_unicode_string_to_utf8_string(PUTF8STRING_t destination_string, PCUNICODESTRING_t source_string, Boolean allocate_destination_string) @cname("RtlUnicodeStringToUTF8String");
+extern fn NtStatus rtl_utf8_string_to_unicode_string(PUnicodeString_t destination_string, PUTF8STRING_t source_string, Boolean allocate_destination_string) @cname("RtlUTF8StringToUnicodeString");
+extern fn NtStatus rtl_upcase_unicode_to_multi_byte_n(Pchar multi_byte_string, Ulong max_bytes_in_multi_byte_string, Pulong bytes_in_multi_byte_string, Pcwch unicode_string, Ulong bytes_in_unicode_string) @cname("RtlUpcaseUnicodeToMultiByteN");
+extern fn NtStatus rtl_oem_to_unicode_n(Pwch unicode_string, Ulong max_bytes_in_unicode_string, Pulong bytes_in_unicode_string, Pcch oem_string, Ulong bytes_in_oem_string) @cname("RtlOemToUnicodeN");
+extern fn NtStatus rtl_unicode_to_oem_n(Pchar oem_string, Ulong max_bytes_in_oem_string, Pulong bytes_in_oem_string, Pcwch unicode_string, Ulong bytes_in_unicode_string) @cname("RtlUnicodeToOemN");
+extern fn NtStatus rtl_upcase_unicode_to_oem_n(Pchar oem_string, Ulong max_bytes_in_oem_string, Pulong bytes_in_oem_string, Pcwch unicode_string, Ulong bytes_in_unicode_string) @cname("RtlUpcaseUnicodeToOemN");
+extern fn NtStatus rtl_normalize_string(Ulong norm_form, Pcwstr source_string, Long source_string_length, Pwstr destination_string, Plong destination_string_length) @cname("RtlNormalizeString");
+extern fn NtStatus rtl_is_normalized_string(Ulong norm_form, Pcwstr source_string, Long source_string_length, Pboolean normalized) @cname("RtlIsNormalizedString");
+extern fn NtStatus rtl_idn_to_ascii(Ulong flags, Pcwstr source_string, Long source_string_length, Pwstr destination_string, Plong destination_string_length) @cname("RtlIdnToAscii");
+extern fn NtStatus rtl_idn_to_unicode(Ulong flags, Pcwstr source_string, Long source_string_length, Pwstr destination_string, Plong destination_string_length) @cname("RtlIdnToUnicode");
+extern fn NtStatus rtl_idn_to_nameprep_unicode(Ulong flags, Pcwstr source_string, Long source_string_length, Pwstr destination_string, Plong destination_string_length) @cname("RtlIdnToNameprepUnicode");
+extern fn NtStatus rtl_generate8dot3_name(PCUNICODESTRING_t name, Boolean allow_extended_characters, PGENERATENAMECONTEXT_t context, PUnicodeString_t name8dot3) @cname("RtlGenerate8dot3Name");
 extern fn Boolean rtl_is_name_legal_dos8dot3(PCUNICODESTRING_t name, POEMSTRING_t oem_name, Pboolean name_contains_spaces) @cname("RtlIsNameLegalDOS8Dot3");
 extern fn Boolean rtl_is_valid_oem_character(Pwchar char_) @cname("RtlIsValidOemCharacter");
 extern fn void pfx_initialize(PPREFIXTABLE_t prefix_table) @cname("PfxInitialize");
@@ -7228,21 +7228,21 @@ extern fn Boolean pfx_insert_prefix(PPREFIXTABLE_t prefix_table, Pstring prefix,
 extern fn void pfx_remove_prefix(PPREFIXTABLE_t prefix_table, PPREFIXTABLEENTRY_t prefix_table_entry) @cname("PfxRemovePrefix");
 extern fn PPREFIXTABLEENTRY_t pfx_find_prefix(PPREFIXTABLE_t prefix_table, Pstring full_name) @cname("PfxFindPrefix");
 extern fn void rtl_initialize_unicode_prefix(PUNICODEPREFIXTABLE_t prefix_table) @cname("RtlInitializeUnicodePrefix");
-extern fn Boolean rtl_insert_unicode_prefix(PUNICODEPREFIXTABLE_t prefix_table, PUNICODESTRING_t prefix, PUNICODEPREFIXTABLEENTRY_t prefix_table_entry) @cname("RtlInsertUnicodePrefix");
+extern fn Boolean rtl_insert_unicode_prefix(PUNICODEPREFIXTABLE_t prefix_table, PUnicodeString_t prefix, PUNICODEPREFIXTABLEENTRY_t prefix_table_entry) @cname("RtlInsertUnicodePrefix");
 extern fn void rtl_remove_unicode_prefix(PUNICODEPREFIXTABLE_t prefix_table, PUNICODEPREFIXTABLEENTRY_t prefix_table_entry) @cname("RtlRemoveUnicodePrefix");
 extern fn PUNICODEPREFIXTABLEENTRY_t rtl_find_unicode_prefix(PUNICODEPREFIXTABLE_t prefix_table, PCUNICODESTRING_t full_name, Ulong case_insensitive_index) @cname("RtlFindUnicodePrefix");
 extern fn PUNICODEPREFIXTABLEENTRY_t rtl_next_unicode_prefix(PUNICODEPREFIXTABLE_t prefix_table, Boolean restart) @cname("RtlNextUnicodePrefix");
-extern fn Ntstatus rtl_get_compression_work_space_size(Ushort compression_format_and_engine, Pulong compress_buffer_work_space_size, Pulong compress_fragment_work_space_size) @cname("RtlGetCompressionWorkSpaceSize");
-extern fn Ntstatus rtl_compress_buffer(Ushort compression_format_and_engine, Puchar uncompressed_buffer, Ulong uncompressed_buffer_size, Puchar compressed_buffer, Ulong compressed_buffer_size, Ulong uncompressed_chunk_size, Pulong final_compressed_size, Pvoid work_space) @cname("RtlCompressBuffer");
-extern fn Ntstatus rtl_decompress_buffer(Ushort compression_format, Puchar uncompressed_buffer, Ulong uncompressed_buffer_size, Puchar compressed_buffer, Ulong compressed_buffer_size, Pulong final_uncompressed_size) @cname("RtlDecompressBuffer");
-extern fn Ntstatus rtl_decompress_buffer_ex(Ushort compression_format, Puchar uncompressed_buffer, Ulong uncompressed_buffer_size, Puchar compressed_buffer, Ulong compressed_buffer_size, Pulong final_uncompressed_size, Pvoid work_space) @cname("RtlDecompressBufferEx");
-extern fn Ntstatus rtl_decompress_buffer_ex2(Ushort compression_format, Puchar uncompressed_buffer, Ulong uncompressed_buffer_size, Puchar compressed_buffer, Ulong compressed_buffer_size, Ulong uncompressed_chunk_size, Pulong final_uncompressed_size, Pvoid work_space) @cname("RtlDecompressBufferEx2");
-extern fn Ntstatus rtl_decompress_fragment(Ushort compression_format, Puchar uncompressed_fragment, Ulong uncompressed_fragment_size, Puchar compressed_buffer, Ulong compressed_buffer_size, Ulong fragment_offset, Pulong final_uncompressed_size, Pvoid work_space) @cname("RtlDecompressFragment");
-extern fn Ntstatus rtl_decompress_fragment_ex(Ushort compression_format, Puchar uncompressed_fragment, Ulong uncompressed_fragment_size, Puchar compressed_buffer, Ulong compressed_buffer_size, Ulong fragment_offset, Ulong uncompressed_chunk_size, Pulong final_uncompressed_size, Pvoid work_space) @cname("RtlDecompressFragmentEx");
-extern fn Ntstatus rtl_describe_chunk(Ushort compression_format, Puchar* compressed_buffer, Puchar end_of_compressed_buffer_plus1, Puchar* chunk_buffer, Pulong chunk_size) @cname("RtlDescribeChunk");
-extern fn Ntstatus rtl_reserve_chunk(Ushort compression_format, Puchar* compressed_buffer, Puchar end_of_compressed_buffer_plus1, Puchar* chunk_buffer, Ulong chunk_size) @cname("RtlReserveChunk");
-extern fn Ntstatus rtl_decompress_chunks(Puchar uncompressed_buffer, Ulong uncompressed_buffer_size, Puchar compressed_buffer, Ulong compressed_buffer_size, Puchar compressed_tail, Ulong compressed_tail_size, PCOMPRESSEDDATAINFO_t compressed_data_info) @cname("RtlDecompressChunks");
-extern fn Ntstatus rtl_compress_chunks(Puchar uncompressed_buffer, Ulong uncompressed_buffer_size, Puchar compressed_buffer, Ulong compressed_buffer_size, PCOMPRESSEDDATAINFO_t compressed_data_info, Ulong compressed_data_info_length, Pvoid work_space) @cname("RtlCompressChunks");
+extern fn NtStatus rtl_get_compression_work_space_size(Ushort compression_format_and_engine, Pulong compress_buffer_work_space_size, Pulong compress_fragment_work_space_size) @cname("RtlGetCompressionWorkSpaceSize");
+extern fn NtStatus rtl_compress_buffer(Ushort compression_format_and_engine, Puchar uncompressed_buffer, Ulong uncompressed_buffer_size, Puchar compressed_buffer, Ulong compressed_buffer_size, Ulong uncompressed_chunk_size, Pulong final_compressed_size, Pvoid work_space) @cname("RtlCompressBuffer");
+extern fn NtStatus rtl_decompress_buffer(Ushort compression_format, Puchar uncompressed_buffer, Ulong uncompressed_buffer_size, Puchar compressed_buffer, Ulong compressed_buffer_size, Pulong final_uncompressed_size) @cname("RtlDecompressBuffer");
+extern fn NtStatus rtl_decompress_buffer_ex(Ushort compression_format, Puchar uncompressed_buffer, Ulong uncompressed_buffer_size, Puchar compressed_buffer, Ulong compressed_buffer_size, Pulong final_uncompressed_size, Pvoid work_space) @cname("RtlDecompressBufferEx");
+extern fn NtStatus rtl_decompress_buffer_ex2(Ushort compression_format, Puchar uncompressed_buffer, Ulong uncompressed_buffer_size, Puchar compressed_buffer, Ulong compressed_buffer_size, Ulong uncompressed_chunk_size, Pulong final_uncompressed_size, Pvoid work_space) @cname("RtlDecompressBufferEx2");
+extern fn NtStatus rtl_decompress_fragment(Ushort compression_format, Puchar uncompressed_fragment, Ulong uncompressed_fragment_size, Puchar compressed_buffer, Ulong compressed_buffer_size, Ulong fragment_offset, Pulong final_uncompressed_size, Pvoid work_space) @cname("RtlDecompressFragment");
+extern fn NtStatus rtl_decompress_fragment_ex(Ushort compression_format, Puchar uncompressed_fragment, Ulong uncompressed_fragment_size, Puchar compressed_buffer, Ulong compressed_buffer_size, Ulong fragment_offset, Ulong uncompressed_chunk_size, Pulong final_uncompressed_size, Pvoid work_space) @cname("RtlDecompressFragmentEx");
+extern fn NtStatus rtl_describe_chunk(Ushort compression_format, Puchar* compressed_buffer, Puchar end_of_compressed_buffer_plus1, Puchar* chunk_buffer, Pulong chunk_size) @cname("RtlDescribeChunk");
+extern fn NtStatus rtl_reserve_chunk(Ushort compression_format, Puchar* compressed_buffer, Puchar end_of_compressed_buffer_plus1, Puchar* chunk_buffer, Ulong chunk_size) @cname("RtlReserveChunk");
+extern fn NtStatus rtl_decompress_chunks(Puchar uncompressed_buffer, Ulong uncompressed_buffer_size, Puchar compressed_buffer, Ulong compressed_buffer_size, Puchar compressed_tail, Ulong compressed_tail_size, PCOMPRESSEDDATAINFO_t compressed_data_info) @cname("RtlDecompressChunks");
+extern fn NtStatus rtl_compress_chunks(Puchar uncompressed_buffer, Ulong uncompressed_buffer_size, Puchar compressed_buffer, Ulong compressed_buffer_size, PCOMPRESSEDDATAINFO_t compressed_data_info, Ulong compressed_data_info_length, Pvoid work_space) @cname("RtlCompressChunks");
 extern fn SIZET_t rtl_compare_memory_ulong(Pvoid source, SIZET_t length, Ulong pattern) @cname("RtlCompareMemoryUlong");
 extern fn void rtl_fill_memory_ulong(Pvoid destination, SIZET_t length, Ulong pattern) @cname("RtlFillMemoryUlong");
 extern fn Boolean rtl_time_to_seconds_since1980(PLARGEINTEGER_t time, Pulong elapsed_seconds) @cname("RtlTimeToSecondsSince1980");
@@ -7254,51 +7254,51 @@ extern fn Boolean rtl_equal_sid(Psid sid1, Psid sid2) @cname("RtlEqualSid");
 extern fn Boolean rtl_equal_prefix_sid(Psid sid1, Psid sid2) @cname("RtlEqualPrefixSid");
 extern fn Ulong rtl_length_required_sid(Ulong sub_authority_count) @cname("RtlLengthRequiredSid");
 extern fn Pvoid rtl_free_sid(Psid sid) @cname("RtlFreeSid");
-extern fn Ntstatus rtl_allocate_and_initialize_sid(PSIDIDENTIFIERAUTHORITY_t identifier_authority, Uchar sub_authority_count, Ulong sub_authority0, Ulong sub_authority1, Ulong sub_authority2, Ulong sub_authority3, Ulong sub_authority4, Ulong sub_authority5, Ulong sub_authority6, Ulong sub_authority7, Psid* sid) @cname("RtlAllocateAndInitializeSid");
-extern fn Ntstatus rtl_allocate_and_initialize_sid_ex(PSIDIDENTIFIERAUTHORITY_t identifier_authority, Uchar sub_authority_count, Pulong sub_authorities, Psid* sid) @cname("RtlAllocateAndInitializeSidEx");
-extern fn Ntstatus rtl_initialize_sid(Psid sid, PSIDIDENTIFIERAUTHORITY_t identifier_authority, Uchar sub_authority_count) @cname("RtlInitializeSid");
-extern fn Ntstatus rtl_initialize_sid_ex(Psid sid, PSIDIDENTIFIERAUTHORITY_t identifier_authority, Uchar sub_authority_count, ...) @cname("RtlInitializeSidEx");
+extern fn NtStatus rtl_allocate_and_initialize_sid(PSIDIDENTIFIERAUTHORITY_t identifier_authority, Uchar sub_authority_count, Ulong sub_authority0, Ulong sub_authority1, Ulong sub_authority2, Ulong sub_authority3, Ulong sub_authority4, Ulong sub_authority5, Ulong sub_authority6, Ulong sub_authority7, Psid* sid) @cname("RtlAllocateAndInitializeSid");
+extern fn NtStatus rtl_allocate_and_initialize_sid_ex(PSIDIDENTIFIERAUTHORITY_t identifier_authority, Uchar sub_authority_count, Pulong sub_authorities, Psid* sid) @cname("RtlAllocateAndInitializeSidEx");
+extern fn NtStatus rtl_initialize_sid(Psid sid, PSIDIDENTIFIERAUTHORITY_t identifier_authority, Uchar sub_authority_count) @cname("RtlInitializeSid");
+extern fn NtStatus rtl_initialize_sid_ex(Psid sid, PSIDIDENTIFIERAUTHORITY_t identifier_authority, Uchar sub_authority_count, ...) @cname("RtlInitializeSidEx");
 extern fn PSIDIDENTIFIERAUTHORITY_t rtl_identifier_authority_sid(Psid sid) @cname("RtlIdentifierAuthoritySid");
 extern fn Pulong rtl_sub_authority_sid(Psid sid, Ulong sub_authority) @cname("RtlSubAuthoritySid");
 extern fn Puchar rtl_sub_authority_count_sid(Psid sid) @cname("RtlSubAuthorityCountSid");
 extern fn Ulong rtl_length_sid(Psid sid) @cname("RtlLengthSid");
-extern fn Ntstatus rtl_copy_sid(Ulong destination_sid_length, Psid destination_sid, Psid source_sid) @cname("RtlCopySid");
-extern fn Ntstatus rtl_create_service_sid(PUNICODESTRING_t service_name, Psid service_sid, Pulong service_sid_length) @cname("RtlCreateServiceSid");
-extern fn Ntstatus rtl_get_sacl_security_descriptor(PSECURITYDESCRIPTOR_t security_descriptor, Pboolean sacl_present, Pacl* sacl, Pboolean sacl_defaulted) @cname("RtlGetSaclSecurityDescriptor");
-extern fn Ntstatus rtl_replace_sid_in_sd(PSECURITYDESCRIPTOR_t security_descriptor, Psid old_sid, Psid new_sid, Ulong* num_changes) @cname("RtlReplaceSidInSd");
-extern fn Ntstatus rtl_create_virtual_account_sid(PCUNICODESTRING_t name, Ulong base_sub_authority, Psid sid, Pulong sid_length) @cname("RtlCreateVirtualAccountSid");
-extern fn Ntstatus rtl_convert_sid_to_unicode_string(PUNICODESTRING_t unicode_string, Psid sid, Boolean allocate_destination_string) @cname("RtlConvertSidToUnicodeString");
+extern fn NtStatus rtl_copy_sid(Ulong destination_sid_length, Psid destination_sid, Psid source_sid) @cname("RtlCopySid");
+extern fn NtStatus rtl_create_service_sid(PUnicodeString_t service_name, Psid service_sid, Pulong service_sid_length) @cname("RtlCreateServiceSid");
+extern fn NtStatus rtl_get_sacl_security_descriptor(PSECURITYDESCRIPTOR_t security_descriptor, Pboolean sacl_present, Pacl* sacl, Pboolean sacl_defaulted) @cname("RtlGetSaclSecurityDescriptor");
+extern fn NtStatus rtl_replace_sid_in_sd(PSECURITYDESCRIPTOR_t security_descriptor, Psid old_sid, Psid new_sid, Ulong* num_changes) @cname("RtlReplaceSidInSd");
+extern fn NtStatus rtl_create_virtual_account_sid(PCUNICODESTRING_t name, Ulong base_sub_authority, Psid sid, Pulong sid_length) @cname("RtlCreateVirtualAccountSid");
+extern fn NtStatus rtl_convert_sid_to_unicode_string(PUnicodeString_t unicode_string, Psid sid, Boolean allocate_destination_string) @cname("RtlConvertSidToUnicodeString");
 extern fn void rtl_copy_luid(Pluid destination_luid, Pluid source_luid) @cname("RtlCopyLuid");
-extern fn Ntstatus rtl_create_acl(Pacl acl, Ulong acl_length, Ulong acl_revision) @cname("RtlCreateAcl");
-extern fn Ntstatus rtl_get_aces_buffer_size(Pacl acl, Pulong aces_buffer_size) @cname("RtlGetAcesBufferSize");
-extern fn Ntstatus rtl_add_ace(Pacl acl, Ulong ace_revision, Ulong starting_ace_index, Pvoid ace_list, Ulong ace_list_length) @cname("RtlAddAce");
-extern fn Ntstatus rtl_delete_ace(Pacl acl, Ulong ace_index) @cname("RtlDeleteAce");
-extern fn Ntstatus rtl_get_ace(Pacl acl, Ulong ace_index, Pvoid* ace) @cname("RtlGetAce");
-extern fn Ntstatus rtl_add_access_allowed_ace(Pacl acl, Ulong ace_revision, ACCESSMASK_t access_mask, Psid sid) @cname("RtlAddAccessAllowedAce");
-extern fn Ntstatus rtl_add_access_allowed_ace_ex(Pacl acl, Ulong ace_revision, Ulong ace_flags, ACCESSMASK_t access_mask, Psid sid) @cname("RtlAddAccessAllowedAceEx");
-extern fn Ntstatus rtl_create_security_descriptor_relative(PISECURITYDESCRIPTORRELATIVE_t security_descriptor, Ulong revision) @cname("RtlCreateSecurityDescriptorRelative");
-extern fn Ntstatus rtl_get_dacl_security_descriptor(PSECURITYDESCRIPTOR_t security_descriptor, Pboolean dacl_present, Pacl* dacl, Pboolean dacl_defaulted) @cname("RtlGetDaclSecurityDescriptor");
-extern fn Ntstatus rtl_set_owner_security_descriptor(PSECURITYDESCRIPTOR_t security_descriptor, Psid owner, Boolean owner_defaulted) @cname("RtlSetOwnerSecurityDescriptor");
-extern fn Ntstatus rtl_set_group_security_descriptor(PSECURITYDESCRIPTOR_t security_descriptor, Psid group, Boolean group_defaulted) @cname("RtlSetGroupSecurityDescriptor");
-extern fn Ntstatus rtl_get_group_security_descriptor(PSECURITYDESCRIPTOR_t security_descriptor, Psid* group, Pboolean group_defaulted) @cname("RtlGetGroupSecurityDescriptor");
-extern fn Ntstatus rtl_absolute_to_self_relative_sd(PSECURITYDESCRIPTOR_t absolute_security_descriptor, PSECURITYDESCRIPTOR_t self_relative_security_descriptor, Pulong buffer_length) @cname("RtlAbsoluteToSelfRelativeSD");
-extern fn Ntstatus rtl_self_relative_to_absolute_sd(PSECURITYDESCRIPTOR_t self_relative_security_descriptor, PSECURITYDESCRIPTOR_t absolute_security_descriptor, Pulong absolute_security_descriptor_size, Pacl dacl, Pulong dacl_size, Pacl sacl, Pulong sacl_size, Psid owner, Pulong owner_size, Psid primary_group, Pulong primary_group_size) @cname("RtlSelfRelativeToAbsoluteSD");
-extern fn Ntstatus rtl_get_owner_security_descriptor(PSECURITYDESCRIPTOR_t security_descriptor, Psid* owner, Pboolean owner_defaulted) @cname("RtlGetOwnerSecurityDescriptor");
-extern fn Ulong rtl_nt_status_to_dos_error(Ntstatus status) @cname("RtlNtStatusToDosError");
-extern fn Ulong rtl_nt_status_to_dos_error_no_teb(Ntstatus status) @cname("RtlNtStatusToDosErrorNoTeb");
-extern fn Ntstatus rtl_custom_cp_to_unicode_n(Pcptableinfo custom_cp, Pwch unicode_string, Ulong max_bytes_in_unicode_string, Pulong bytes_in_unicode_string, Pch custom_cp_string, Ulong bytes_in_custom_cp_string) @cname("RtlCustomCPToUnicodeN");
-extern fn Ntstatus rtl_unicode_to_custom_cpn(Pcptableinfo custom_cp, Pch custom_cp_string, Ulong max_bytes_in_custom_cp_string, Pulong bytes_in_custom_cp_string, Pwch unicode_string, Ulong bytes_in_unicode_string) @cname("RtlUnicodeToCustomCPN");
-extern fn Ntstatus rtl_upcase_unicode_to_custom_cpn(Pcptableinfo custom_cp, Pch custom_cp_string, Ulong max_bytes_in_custom_cp_string, Pulong bytes_in_custom_cp_string, Pwch unicode_string, Ulong bytes_in_unicode_string) @cname("RtlUpcaseUnicodeToCustomCPN");
+extern fn NtStatus rtl_create_acl(Pacl acl, Ulong acl_length, Ulong acl_revision) @cname("RtlCreateAcl");
+extern fn NtStatus rtl_get_aces_buffer_size(Pacl acl, Pulong aces_buffer_size) @cname("RtlGetAcesBufferSize");
+extern fn NtStatus rtl_add_ace(Pacl acl, Ulong ace_revision, Ulong starting_ace_index, Pvoid ace_list, Ulong ace_list_length) @cname("RtlAddAce");
+extern fn NtStatus rtl_delete_ace(Pacl acl, Ulong ace_index) @cname("RtlDeleteAce");
+extern fn NtStatus rtl_get_ace(Pacl acl, Ulong ace_index, Pvoid* ace) @cname("RtlGetAce");
+extern fn NtStatus rtl_add_access_allowed_ace(Pacl acl, Ulong ace_revision, ACCESSMASK_t access_mask, Psid sid) @cname("RtlAddAccessAllowedAce");
+extern fn NtStatus rtl_add_access_allowed_ace_ex(Pacl acl, Ulong ace_revision, Ulong ace_flags, ACCESSMASK_t access_mask, Psid sid) @cname("RtlAddAccessAllowedAceEx");
+extern fn NtStatus rtl_create_security_descriptor_relative(PISECURITYDESCRIPTORRELATIVE_t security_descriptor, Ulong revision) @cname("RtlCreateSecurityDescriptorRelative");
+extern fn NtStatus rtl_get_dacl_security_descriptor(PSECURITYDESCRIPTOR_t security_descriptor, Pboolean dacl_present, Pacl* dacl, Pboolean dacl_defaulted) @cname("RtlGetDaclSecurityDescriptor");
+extern fn NtStatus rtl_set_owner_security_descriptor(PSECURITYDESCRIPTOR_t security_descriptor, Psid owner, Boolean owner_defaulted) @cname("RtlSetOwnerSecurityDescriptor");
+extern fn NtStatus rtl_set_group_security_descriptor(PSECURITYDESCRIPTOR_t security_descriptor, Psid group, Boolean group_defaulted) @cname("RtlSetGroupSecurityDescriptor");
+extern fn NtStatus rtl_get_group_security_descriptor(PSECURITYDESCRIPTOR_t security_descriptor, Psid* group, Pboolean group_defaulted) @cname("RtlGetGroupSecurityDescriptor");
+extern fn NtStatus rtl_absolute_to_self_relative_sd(PSECURITYDESCRIPTOR_t absolute_security_descriptor, PSECURITYDESCRIPTOR_t self_relative_security_descriptor, Pulong buffer_length) @cname("RtlAbsoluteToSelfRelativeSD");
+extern fn NtStatus rtl_self_relative_to_absolute_sd(PSECURITYDESCRIPTOR_t self_relative_security_descriptor, PSECURITYDESCRIPTOR_t absolute_security_descriptor, Pulong absolute_security_descriptor_size, Pacl dacl, Pulong dacl_size, Pacl sacl, Pulong sacl_size, Psid owner, Pulong owner_size, Psid primary_group, Pulong primary_group_size) @cname("RtlSelfRelativeToAbsoluteSD");
+extern fn NtStatus rtl_get_owner_security_descriptor(PSECURITYDESCRIPTOR_t security_descriptor, Psid* owner, Pboolean owner_defaulted) @cname("RtlGetOwnerSecurityDescriptor");
+extern fn Ulong rtl_nt_status_to_dos_error(NtStatus status) @cname("RtlNtStatusToDosError");
+extern fn Ulong rtl_nt_status_to_dos_error_no_teb(NtStatus status) @cname("RtlNtStatusToDosErrorNoTeb");
+extern fn NtStatus rtl_custom_cp_to_unicode_n(Pcptableinfo custom_cp, Pwch unicode_string, Ulong max_bytes_in_unicode_string, Pulong bytes_in_unicode_string, Pch custom_cp_string, Ulong bytes_in_custom_cp_string) @cname("RtlCustomCPToUnicodeN");
+extern fn NtStatus rtl_unicode_to_custom_cpn(Pcptableinfo custom_cp, Pch custom_cp_string, Ulong max_bytes_in_custom_cp_string, Pulong bytes_in_custom_cp_string, Pwch unicode_string, Ulong bytes_in_unicode_string) @cname("RtlUnicodeToCustomCPN");
+extern fn NtStatus rtl_upcase_unicode_to_custom_cpn(Pcptableinfo custom_cp, Pch custom_cp_string, Ulong max_bytes_in_custom_cp_string, Pulong bytes_in_custom_cp_string, Pwch unicode_string, Ulong bytes_in_unicode_string) @cname("RtlUpcaseUnicodeToCustomCPN");
 extern fn void rtl_init_code_page_table(Pushort table_base, Pcptableinfo code_page_table) @cname("RtlInitCodePageTable");
-extern fn Ntstatus rtl_create_system_volume_information_folder(PCUNICODESTRING_t volume_root_path) @cname("RtlCreateSystemVolumeInformationFolder");
+extern fn NtStatus rtl_create_system_volume_information_folder(PCUNICODESTRING_t volume_root_path) @cname("RtlCreateSystemVolumeInformationFolder");
 extern fn Long rtl_compare_altitudes(PCUNICODESTRING_t altitude1, PCUNICODESTRING_t altitude2) @cname("RtlCompareAltitudes");
-extern fn Ntstatus rtl_query_package_identity(Pvoid token_object, Pwstr package_full_name, PSIZET_t package_size, Pwstr app_id, PSIZET_t app_id_size, Pboolean packaged) @cname("RtlQueryPackageIdentity");
-extern fn Ntstatus rtl_query_package_identity_ex(Pvoid token_object, Pwstr package_full_name, PSIZET_t package_size, Pwstr app_id, PSIZET_t app_id_size, Lpguid dynamic_id, PulongVT flags) @cname("RtlQueryPackageIdentityEx");
+extern fn NtStatus rtl_query_package_identity(Pvoid token_object, Pwstr package_full_name, PSIZET_t package_size, Pwstr app_id, PSIZET_t app_id_size, Pboolean packaged) @cname("RtlQueryPackageIdentity");
+extern fn NtStatus rtl_query_package_identity_ex(Pvoid token_object, Pwstr package_full_name, PSIZET_t package_size, Pwstr app_id, PSIZET_t app_id_size, Lpguid dynamic_id, PulongVT flags) @cname("RtlQueryPackageIdentityEx");
 extern fn Boolean rtl_is_non_empty_directory_reparse_point_allowed(Ulong reparse_tag) @cname("RtlIsNonEmptyDirectoryReparsePointAllowed");
 extern fn Boolean rtl_is_cloud_files_placeholder(Ulong file_attributes, Ulong reparse_tag) @cname("RtlIsCloudFilesPlaceholder");
 extern fn Boolean rtl_is_partial_placeholder(Ulong file_attributes, Ulong reparse_tag) @cname("RtlIsPartialPlaceholder");
-extern fn Ntstatus rtl_is_partial_placeholder_file_handle(Handle file_handle, Pboolean is_partial_placeholder) @cname("RtlIsPartialPlaceholderFileHandle");
-extern fn Ntstatus rtl_is_partial_placeholder_file_info(void* info_buffer, FILEINFORMATIONCLASS_t info_class, Pboolean is_partial_placeholder) @cname("RtlIsPartialPlaceholderFileInfo");
+extern fn NtStatus rtl_is_partial_placeholder_file_handle(Handle file_handle, Pboolean is_partial_placeholder) @cname("RtlIsPartialPlaceholderFileHandle");
+extern fn NtStatus rtl_is_partial_placeholder_file_info(void* info_buffer, FILEINFORMATIONCLASS_t info_class, Pboolean is_partial_placeholder) @cname("RtlIsPartialPlaceholderFileInfo");
 extern fn Char rtl_query_thread_placeholder_compatibility_mode() @cname("RtlQueryThreadPlaceholderCompatibilityMode");
 extern fn Char rtl_set_thread_placeholder_compatibility_mode(Char mode) @cname("RtlSetThreadPlaceholderCompatibilityMode");
 extern fn Char rtl_query_process_placeholder_compatibility_mode() @cname("RtlQueryProcessPlaceholderCompatibilityMode");
@@ -7306,39 +7306,39 @@ extern fn Char rtl_set_process_placeholder_compatibility_mode(Char mode) @cname(
 extern fn Ushort rtl_capture_stack_back_trace(Ulong frames_to_skip, Ulong frames_to_capture, Pvoid* back_trace, Pulong back_trace_hash) @cname("RtlCaptureStackBackTrace");
 extern fn void rtl_capture_context(Pcontext context_record) @cname("RtlCaptureContext");
 extern fn void rtl_capture_context2(Pcontext context_record) @cname("RtlCaptureContext2");
-extern fn Ntstatus nt_set_information_thread(Handle thread_handle, Threadinfoclass thread_information_class, Pvoid thread_information, Ulong thread_information_length) @cname("NtSetInformationThread");
-extern fn Ntstatus lsa_register_logon_process(PLSASTRING_t logon_process_name, Phandle lsa_handle, PLSAOPERATIONALMODE_t security_mode) @cname("LsaRegisterLogonProcess");
-extern fn Ntstatus lsa_logon_user(Handle lsa_handle, PLSASTRING_t origin_name, SECURITYLOGONTYPE_t logon_type, Ulong authentication_package, Pvoid authentication_information, Ulong authentication_information_length, PTOKENGROUPS_t local_groups, PTOKENSOURCE_t source_context, Pvoid* profile_buffer, Pulong profile_buffer_length, Pluid logon_id, Phandle token, PQUOTALIMITS_t quotas, Pntstatus sub_status) @cname("LsaLogonUser");
-extern fn Ntstatus lsa_free_return_buffer(Pvoid buffer) @cname("LsaFreeReturnBuffer");
-extern fn Ntstatus nt_create_file(Phandle file_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PIOSTATUSBLOCK_t io_status_block, PLARGEINTEGER_t allocation_size, Ulong file_attributes, Ulong share_access, Ulong create_disposition, Ulong create_options, Pvoid ea_buffer, Ulong ea_length) @cname("NtCreateFile");
-extern fn Ntstatus nt_device_io_control_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Ulong io_control_code, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length) @cname("NtDeviceIoControlFile");
-extern fn Ntstatus nt_fs_control_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Ulong fs_control_code, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length) @cname("NtFsControlFile");
-extern fn Ntstatus nt_lock_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, PLARGEINTEGER_t byte_offset, PLARGEINTEGER_t length, Ulong key, Boolean fail_immediately, Boolean exclusive_lock) @cname("NtLockFile");
-extern fn Ntstatus nt_open_file(Phandle file_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PIOSTATUSBLOCK_t io_status_block, Ulong share_access, Ulong open_options) @cname("NtOpenFile");
-extern fn Ntstatus nt_query_directory_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class, Boolean return_single_entry, PUNICODESTRING_t file_name, Boolean restart_scan) @cname("NtQueryDirectoryFile");
-extern fn Ntstatus nt_query_directory_file_ex(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class, Ulong query_flags, PUNICODESTRING_t file_name) @cname("NtQueryDirectoryFileEx");
-extern fn Ntstatus nt_query_information_by_name(POBJECTATTRIBUTES_t object_attributes, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class) @cname("NtQueryInformationByName");
-extern fn Ntstatus nt_query_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class) @cname("NtQueryInformationFile");
-extern fn Ntstatus nt_query_quota_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length, Boolean return_single_entry, Pvoid sid_list, Ulong sid_list_length, Psid start_sid, Boolean restart_scan) @cname("NtQueryQuotaInformationFile");
-extern fn Ntstatus nt_query_volume_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid fs_information, Ulong length, FSINFORMATIONCLASS_t fs_information_class) @cname("NtQueryVolumeInformationFile");
-extern fn Ntstatus nt_read_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length, PLARGEINTEGER_t byte_offset, Pulong key) @cname("NtReadFile");
-extern fn Ntstatus nt_set_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class) @cname("NtSetInformationFile");
-extern fn Ntstatus nt_set_quota_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length) @cname("NtSetQuotaInformationFile");
-extern fn Ntstatus nt_set_volume_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid fs_information, Ulong length, FSINFORMATIONCLASS_t fs_information_class) @cname("NtSetVolumeInformationFile");
-extern fn Ntstatus nt_write_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length, PLARGEINTEGER_t byte_offset, Pulong key) @cname("NtWriteFile");
-extern fn Ntstatus nt_unlock_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, PLARGEINTEGER_t byte_offset, PLARGEINTEGER_t length, Ulong key) @cname("NtUnlockFile");
-extern fn Ntstatus nt_flush_buffers_file_ex(Handle file_handle, Ulong flags, Pvoid parameters, Ulong parameters_size, PIOSTATUSBLOCK_t io_status_block) @cname("NtFlushBuffersFileEx");
-extern fn Ntstatus nt_copy_file_chunk(Handle source_handle, Handle dest_handle, Handle event, PIOSTATUSBLOCK_t io_status_block, Ulong length, PLARGEINTEGER_t source_offset, PLARGEINTEGER_t dest_offset, Pulong source_key, Pulong dest_key, Ulong flags) @cname("NtCopyFileChunk");
-extern fn Ntstatus nt_query_object(Handle handle, OBJECTINFORMATIONCLASS_t object_information_class, Pvoid object_information, Ulong object_information_length, Pulong return_length) @cname("NtQueryObject");
-extern fn Ntstatus nt_set_security_object(Handle handle, SECURITYINFORMATION_t security_information, PSECURITYDESCRIPTOR_t security_descriptor) @cname("NtSetSecurityObject");
-extern fn Ntstatus nt_query_security_object(Handle handle, SECURITYINFORMATION_t security_information, PSECURITYDESCRIPTOR_t security_descriptor, Ulong length, Pulong length_needed) @cname("NtQuerySecurityObject");
-extern fn Ntstatus nt_close(Handle handle) @cname("NtClose");
-extern fn Ntstatus nt_create_section(Phandle section_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PLARGEINTEGER_t maximum_size, Ulong section_page_protection, Ulong allocation_attributes, Handle file_handle) @cname("NtCreateSection");
-extern fn Ntstatus nt_create_section_ex(Phandle section_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PLARGEINTEGER_t maximum_size, Ulong section_page_protection, Ulong allocation_attributes, Handle file_handle, PMEMEXTENDEDPARAMETER_t extended_parameters, Ulong extended_parameter_count) @cname("NtCreateSectionEx");
-extern fn Ntstatus nt_allocate_virtual_memory(Handle process_handle, Pvoid* base_address, ULONGPTR_t zero_bits, PSIZET_t region_size, Ulong allocation_type, Ulong protect) @cname("NtAllocateVirtualMemory");
-extern fn Ntstatus nt_free_virtual_memory(Handle process_handle, Pvoid* base_address, PSIZET_t region_size, Ulong free_type) @cname("NtFreeVirtualMemory");
-extern fn Ntstatus nt_query_virtual_memory(Handle process_handle, Pvoid base_address, MEMORYINFORMATIONCLASS_t memory_information_class, Pvoid memory_information, SIZET_t memory_information_length, PSIZET_t return_length) @cname("NtQueryVirtualMemory");
-extern fn Ntstatus nt_set_information_virtual_memory(Handle process_handle, VIRTUALMEMORYINFORMATIONCLASS_t vm_information_class, ULONGPTR_t number_of_entries, PMEMORYRANGEENTRY_t virtual_addresses, Pvoid vm_information, Ulong vm_information_length) @cname("NtSetInformationVirtualMemory");
+extern fn NtStatus nt_set_information_thread(Handle thread_handle, Threadinfoclass thread_information_class, Pvoid thread_information, Ulong thread_information_length) @cname("NtSetInformationThread");
+extern fn NtStatus lsa_register_logon_process(PLSASTRING_t logon_process_name, Phandle lsa_handle, PLSAOPERATIONALMODE_t security_mode) @cname("LsaRegisterLogonProcess");
+extern fn NtStatus lsa_logon_user(Handle lsa_handle, PLSASTRING_t origin_name, SECURITYLOGONTYPE_t logon_type, Ulong authentication_package, Pvoid authentication_information, Ulong authentication_information_length, PTOKENGROUPS_t local_groups, PTOKENSOURCE_t source_context, Pvoid* profile_buffer, Pulong profile_buffer_length, Pluid logon_id, Phandle token, PQUOTALIMITS_t quotas, Pntstatus sub_status) @cname("LsaLogonUser");
+extern fn NtStatus lsa_free_return_buffer(Pvoid buffer) @cname("LsaFreeReturnBuffer");
+extern fn NtStatus nt_create_file(Phandle file_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PIOSTATUSBLOCK_t io_status_block, PLARGEINTEGER_t allocation_size, Ulong file_attributes, Ulong share_access, Ulong create_disposition, Ulong create_options, Pvoid ea_buffer, Ulong ea_length) @cname("NtCreateFile");
+extern fn NtStatus nt_device_io_control_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Ulong io_control_code, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length) @cname("NtDeviceIoControlFile");
+extern fn NtStatus nt_fs_control_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Ulong fs_control_code, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length) @cname("NtFsControlFile");
+extern fn NtStatus nt_lock_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, PLARGEINTEGER_t byte_offset, PLARGEINTEGER_t length, Ulong key, Boolean fail_immediately, Boolean exclusive_lock) @cname("NtLockFile");
+extern fn NtStatus nt_open_file(Phandle file_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PIOSTATUSBLOCK_t io_status_block, Ulong share_access, Ulong open_options) @cname("NtOpenFile");
+extern fn NtStatus nt_query_directory_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class, Boolean return_single_entry, PUnicodeString_t file_name, Boolean restart_scan) @cname("NtQueryDirectoryFile");
+extern fn NtStatus nt_query_directory_file_ex(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class, Ulong query_flags, PUnicodeString_t file_name) @cname("NtQueryDirectoryFileEx");
+extern fn NtStatus nt_query_information_by_name(POBJECTATTRIBUTES_t object_attributes, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class) @cname("NtQueryInformationByName");
+extern fn NtStatus nt_query_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class) @cname("NtQueryInformationFile");
+extern fn NtStatus nt_query_quota_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length, Boolean return_single_entry, Pvoid sid_list, Ulong sid_list_length, Psid start_sid, Boolean restart_scan) @cname("NtQueryQuotaInformationFile");
+extern fn NtStatus nt_query_volume_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid fs_information, Ulong length, FSINFORMATIONCLASS_t fs_information_class) @cname("NtQueryVolumeInformationFile");
+extern fn NtStatus nt_read_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length, PLARGEINTEGER_t byte_offset, Pulong key) @cname("NtReadFile");
+extern fn NtStatus nt_set_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class) @cname("NtSetInformationFile");
+extern fn NtStatus nt_set_quota_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length) @cname("NtSetQuotaInformationFile");
+extern fn NtStatus nt_set_volume_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid fs_information, Ulong length, FSINFORMATIONCLASS_t fs_information_class) @cname("NtSetVolumeInformationFile");
+extern fn NtStatus nt_write_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length, PLARGEINTEGER_t byte_offset, Pulong key) @cname("NtWriteFile");
+extern fn NtStatus nt_unlock_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, PLARGEINTEGER_t byte_offset, PLARGEINTEGER_t length, Ulong key) @cname("NtUnlockFile");
+extern fn NtStatus nt_flush_buffers_file_ex(Handle file_handle, Ulong flags, Pvoid parameters, Ulong parameters_size, PIOSTATUSBLOCK_t io_status_block) @cname("NtFlushBuffersFileEx");
+extern fn NtStatus nt_copy_file_chunk(Handle source_handle, Handle dest_handle, Handle event, PIOSTATUSBLOCK_t io_status_block, Ulong length, PLARGEINTEGER_t source_offset, PLARGEINTEGER_t dest_offset, Pulong source_key, Pulong dest_key, Ulong flags) @cname("NtCopyFileChunk");
+extern fn NtStatus nt_query_object(Handle handle, OBJECTINFORMATIONCLASS_t object_information_class, Pvoid object_information, Ulong object_information_length, Pulong return_length) @cname("NtQueryObject");
+extern fn NtStatus nt_set_security_object(Handle handle, SECURITYINFORMATION_t security_information, PSECURITYDESCRIPTOR_t security_descriptor) @cname("NtSetSecurityObject");
+extern fn NtStatus nt_query_security_object(Handle handle, SECURITYINFORMATION_t security_information, PSECURITYDESCRIPTOR_t security_descriptor, Ulong length, Pulong length_needed) @cname("NtQuerySecurityObject");
+extern fn NtStatus nt_close(Handle handle) @cname("NtClose");
+extern fn NtStatus nt_create_section(Phandle section_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PLARGEINTEGER_t maximum_size, Ulong section_page_protection, Ulong allocation_attributes, Handle file_handle) @cname("NtCreateSection");
+extern fn NtStatus nt_create_section_ex(Phandle section_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PLARGEINTEGER_t maximum_size, Ulong section_page_protection, Ulong allocation_attributes, Handle file_handle, PMEMEXTENDEDPARAMETER_t extended_parameters, Ulong extended_parameter_count) @cname("NtCreateSectionEx");
+extern fn NtStatus nt_allocate_virtual_memory(Handle process_handle, Pvoid* base_address, ULONGPTR_t zero_bits, PSIZET_t region_size, Ulong allocation_type, Ulong protect) @cname("NtAllocateVirtualMemory");
+extern fn NtStatus nt_free_virtual_memory(Handle process_handle, Pvoid* base_address, PSIZET_t region_size, Ulong free_type) @cname("NtFreeVirtualMemory");
+extern fn NtStatus nt_query_virtual_memory(Handle process_handle, Pvoid base_address, MEMORYINFORMATIONCLASS_t memory_information_class, Pvoid memory_information, SIZET_t memory_information_length, PSIZET_t return_length) @cname("NtQueryVirtualMemory");
+extern fn NtStatus nt_set_information_virtual_memory(Handle process_handle, VIRTUALMEMORYINFORMATIONCLASS_t vm_information_class, ULONGPTR_t number_of_entries, PMEMORYRANGEENTRY_t virtual_addresses, Pvoid vm_information, Ulong vm_information_length) @cname("NtSetInformationVirtualMemory");
 extern fn void ke_initialize_mutant(Prkmutant mutant, Boolean initial_owner) @cname("KeInitializeMutant");
 extern fn void ke_query_owner_mutant(Pkmutant mutant, PCLIENTID_t client_id) @cname("KeQueryOwnerMutant");
 extern fn Long ke_read_state_mutant(Prkmutant mutant) @cname("KeReadStateMutant");
@@ -7354,14 +7354,14 @@ extern fn void ke_attach_process(Prkprocess process) @cname("KeAttachProcess");
 extern fn void ke_detach_process() @cname("KeDetachProcess");
 extern fn void ke_stack_attach_process(Prkprocess process, PRKAPCSTATE_t apc_state) @cname("KeStackAttachProcess");
 extern fn void ke_unstack_detach_process(PRKAPCSTATE_t apc_state) @cname("KeUnstackDetachProcess");
-extern fn Ntstatus ke_expand_kernel_stack_and_callout_ex(PEXPANDSTACKCALLOUT_t callout, Pvoid parameter, SIZET_t size, Boolean wait, Pvoid context) @cname("KeExpandKernelStackAndCalloutEx");
+extern fn NtStatus ke_expand_kernel_stack_and_callout_ex(PEXPANDSTACKCALLOUT_t callout, Pvoid parameter, SIZET_t size, Boolean wait, Pvoid context) @cname("KeExpandKernelStackAndCalloutEx");
 extern fn Uchar ke_set_ideal_processor_thread(Pkthread thread, Uchar processor) @cname("KeSetIdealProcessorThread");
 extern fn Boolean ke_set_kernel_stack_swap_enable(Boolean enable) @cname("KeSetKernelStackSwapEnable");
 extern fn Kirql ke_acquire_queued_spin_lock(KSPINLOCKQUEUENUMBER_t number) @cname("KeAcquireQueuedSpinLock");
 extern fn void ke_release_queued_spin_lock(KSPINLOCKQUEUENUMBER_t number, Kirql old_irql) @cname("KeReleaseQueuedSpinLock");
 extern fn Logical ke_try_to_acquire_queued_spin_lock(KSPINLOCKQUEUENUMBER_t number, Pkirql old_irql) @cname("KeTryToAcquireQueuedSpinLock");
 extern fn Kirql ke_acquire_spin_lock_raise_to_synch(PKSPINLOCK_t spin_lock) @cname("KeAcquireSpinLockRaiseToSynch");
-extern fn Ntstatus ke_get_processor_number_from_index(Ulong proc_index, PPROCESSORNUMBER_t proc_number) @cname("KeGetProcessorNumberFromIndex");
+extern fn NtStatus ke_get_processor_number_from_index(Ulong proc_index, PPROCESSORNUMBER_t proc_number) @cname("KeGetProcessorNumberFromIndex");
 extern fn Ulong ke_get_processor_index_from_number(PPROCESSORNUMBER_t proc_number) @cname("KeGetProcessorIndexFromNumber");
 extern fn SIZET_t ex_query_pool_block_size(Pvoid pool_block, Pboolean quota_charged) @cname("ExQueryPoolBlockSize");
 extern fn void ex_adjust_lookaside_depth() @cname("ExAdjustLookasideDepth");
@@ -7372,16 +7372,16 @@ extern fn void se_capture_subject_context(PSECURITYSUBJECTCONTEXT_t subject_cont
 extern fn void se_lock_subject_context(PSECURITYSUBJECTCONTEXT_t subject_context) @cname("SeLockSubjectContext");
 extern fn void se_unlock_subject_context(PSECURITYSUBJECTCONTEXT_t subject_context) @cname("SeUnlockSubjectContext");
 extern fn void se_release_subject_context(PSECURITYSUBJECTCONTEXT_t subject_context) @cname("SeReleaseSubjectContext");
-extern fn Ntstatus se_report_security_event_with_sub_category(Ulong flags, PUNICODESTRING_t source_name, Psid user_sid, PSEADTPARAMETERARRAY_t audit_parameters, Ulong audit_subcategory_id) @cname("SeReportSecurityEventWithSubCategory");
+extern fn NtStatus se_report_security_event_with_sub_category(Ulong flags, PUnicodeString_t source_name, Psid user_sid, PSEADTPARAMETERARRAY_t audit_parameters, Ulong audit_subcategory_id) @cname("SeReportSecurityEventWithSubCategory");
 extern fn Boolean se_access_check_from_state(PSECURITYDESCRIPTOR_t security_descriptor, PTOKENACCESSINFORMATION_t primary_token_information, PTOKENACCESSINFORMATION_t client_token_information, ACCESSMASK_t desired_access, ACCESSMASK_t previously_granted_access, PPRIVILEGESET_t* privileges, PGENERICMAPPING_t generic_mapping, KPROCESSORMODE_t access_mode, PACCESSMASK_t granted_access, Pntstatus access_status) @cname("SeAccessCheckFromState");
 extern fn Boolean se_access_check_from_state_ex(PSECURITYDESCRIPTOR_t security_descriptor, PACCESSTOKEN_t primary_token, PACCESSTOKEN_t client_token, ACCESSMASK_t desired_access, ACCESSMASK_t previously_granted_access, PPRIVILEGESET_t* privileges, PGENERICMAPPING_t generic_mapping, KPROCESSORMODE_t access_mode, PACCESSMASK_t granted_access, Pntstatus access_status) @cname("SeAccessCheckFromStateEx");
-extern fn Ntstatus se_token_from_access_information(PTOKENACCESSINFORMATION_t access_information, PACCESSTOKEN_t token, Ulong length, Pulong required_length) @cname("SeTokenFromAccessInformation");
+extern fn NtStatus se_token_from_access_information(PTOKENACCESSINFORMATION_t access_information, PACCESSTOKEN_t token, Ulong length, Pulong required_length) @cname("SeTokenFromAccessInformation");
 extern fn Boolean se_privilege_check(PPRIVILEGESET_t required_privileges, PSECURITYSUBJECTCONTEXT_t subject_security_context, KPROCESSORMODE_t access_mode) @cname("SePrivilegeCheck");
 extern fn void se_free_privileges(PPRIVILEGESET_t privileges) @cname("SeFreePrivileges");
-extern fn void se_open_object_audit_alarm(PUNICODESTRING_t object_type_name, Pvoid object, PUNICODESTRING_t absolute_object_name, PSECURITYDESCRIPTOR_t security_descriptor, PACCESSSTATE_t access_state, Boolean object_created, Boolean access_granted, KPROCESSORMODE_t access_mode, Pboolean generate_on_close) @cname("SeOpenObjectAuditAlarm");
-extern fn void se_open_object_audit_alarm_with_transaction(PUNICODESTRING_t object_type_name, Pvoid object, PUNICODESTRING_t absolute_object_name, PSECURITYDESCRIPTOR_t security_descriptor, PACCESSSTATE_t access_state, Boolean object_created, Boolean access_granted, KPROCESSORMODE_t access_mode, Guid* transaction_id, Pboolean generate_on_close) @cname("SeOpenObjectAuditAlarmWithTransaction");
-extern fn void se_open_object_for_delete_audit_alarm(PUNICODESTRING_t object_type_name, Pvoid object, PUNICODESTRING_t absolute_object_name, PSECURITYDESCRIPTOR_t security_descriptor, PACCESSSTATE_t access_state, Boolean object_created, Boolean access_granted, KPROCESSORMODE_t access_mode, Pboolean generate_on_close) @cname("SeOpenObjectForDeleteAuditAlarm");
-extern fn void se_open_object_for_delete_audit_alarm_with_transaction(PUNICODESTRING_t object_type_name, Pvoid object, PUNICODESTRING_t absolute_object_name, PSECURITYDESCRIPTOR_t security_descriptor, PACCESSSTATE_t access_state, Boolean object_created, Boolean access_granted, KPROCESSORMODE_t access_mode, Guid* transaction_id, Pboolean generate_on_close) @cname("SeOpenObjectForDeleteAuditAlarmWithTransaction");
+extern fn void se_open_object_audit_alarm(PUnicodeString_t object_type_name, Pvoid object, PUnicodeString_t absolute_object_name, PSECURITYDESCRIPTOR_t security_descriptor, PACCESSSTATE_t access_state, Boolean object_created, Boolean access_granted, KPROCESSORMODE_t access_mode, Pboolean generate_on_close) @cname("SeOpenObjectAuditAlarm");
+extern fn void se_open_object_audit_alarm_with_transaction(PUnicodeString_t object_type_name, Pvoid object, PUnicodeString_t absolute_object_name, PSECURITYDESCRIPTOR_t security_descriptor, PACCESSSTATE_t access_state, Boolean object_created, Boolean access_granted, KPROCESSORMODE_t access_mode, Guid* transaction_id, Pboolean generate_on_close) @cname("SeOpenObjectAuditAlarmWithTransaction");
+extern fn void se_open_object_for_delete_audit_alarm(PUnicodeString_t object_type_name, Pvoid object, PUnicodeString_t absolute_object_name, PSECURITYDESCRIPTOR_t security_descriptor, PACCESSSTATE_t access_state, Boolean object_created, Boolean access_granted, KPROCESSORMODE_t access_mode, Pboolean generate_on_close) @cname("SeOpenObjectForDeleteAuditAlarm");
+extern fn void se_open_object_for_delete_audit_alarm_with_transaction(PUnicodeString_t object_type_name, Pvoid object, PUnicodeString_t absolute_object_name, PSECURITYDESCRIPTOR_t security_descriptor, PACCESSSTATE_t access_state, Boolean object_created, Boolean access_granted, KPROCESSORMODE_t access_mode, Guid* transaction_id, Pboolean generate_on_close) @cname("SeOpenObjectForDeleteAuditAlarmWithTransaction");
 extern fn void se_examine_sacl(Pacl sacl, Pacl resource_sacl, PACCESSTOKEN_t token, ACCESSMASK_t desired_access, Boolean access_granted, Pboolean generate_audit, Pboolean generate_alarm) @cname("SeExamineSacl");
 extern fn void se_delete_object_audit_alarm(Pvoid object, Handle handle) @cname("SeDeleteObjectAuditAlarm");
 extern fn void se_delete_object_audit_alarm_with_transaction(Pvoid object, Handle handle, Guid* transaction_id) @cname("SeDeleteObjectAuditAlarmWithTransaction");
@@ -7394,23 +7394,23 @@ extern fn void se_token_set_no_child_process_restricted(PACCESSTOKEN_t token, Bo
 extern fn void se_token_get_no_child_process_restricted(PACCESSTOKEN_t token, Pboolean enforced, Pboolean unless_secure, Pboolean audit_only) @cname("SeTokenGetNoChildProcessRestricted");
 extern fn void se_token_set_redirection_trust_policy(PACCESSTOKEN_t token, Boolean audit_only) @cname("SeTokenSetRedirectionTrustPolicy");
 extern fn void se_token_get_redirection_trust_policy(PACCESSTOKEN_t token, Pboolean enforced, Pboolean audit_only) @cname("SeTokenGetRedirectionTrustPolicy");
-extern fn Ntstatus se_filter_token(PACCESSTOKEN_t existing_token, Ulong flags, PTOKENGROUPS_t sids_to_disable, PTOKENPRIVILEGES_t privileges_to_delete, PTOKENGROUPS_t restricted_sids, PACCESSTOKEN_t* filtered_token) @cname("SeFilterToken");
-extern fn Ntstatus se_query_authentication_id_token(PACCESSTOKEN_t token, Pluid authentication_id) @cname("SeQueryAuthenticationIdToken");
+extern fn NtStatus se_filter_token(PACCESSTOKEN_t existing_token, Ulong flags, PTOKENGROUPS_t sids_to_disable, PTOKENPRIVILEGES_t privileges_to_delete, PTOKENGROUPS_t restricted_sids, PACCESSTOKEN_t* filtered_token) @cname("SeFilterToken");
+extern fn NtStatus se_query_authentication_id_token(PACCESSTOKEN_t token, Pluid authentication_id) @cname("SeQueryAuthenticationIdToken");
 extern fn void se_query_token_integrity(PACCESSTOKEN_t token, PSIDANDATTRIBUTES_t integrity_sa) @cname("SeQueryTokenIntegrity");
-extern fn Ntstatus se_query_session_id_token(PACCESSTOKEN_t token, Pulong session_id) @cname("SeQuerySessionIdToken");
-extern fn Ntstatus se_query_session_id_token_ex(PACCESSTOKEN_t token, Pulong session_id, Pboolean is_service_session) @cname("SeQuerySessionIdTokenEx");
-extern fn Ntstatus se_query_server_silo_token(PACCESSTOKEN_t token, Pesilo* p_server_silo) @cname("SeQueryServerSiloToken");
-extern fn Ntstatus se_set_session_id_token(PACCESSTOKEN_t token, Ulong session_id) @cname("SeSetSessionIdToken");
-extern fn Ntstatus se_create_client_security(Pethread client_thread, PSECURITYQUALITYOFSERVICE_t client_security_qos, Boolean remote_session, PSECURITYCLIENTCONTEXT_t client_context) @cname("SeCreateClientSecurity");
+extern fn NtStatus se_query_session_id_token(PACCESSTOKEN_t token, Pulong session_id) @cname("SeQuerySessionIdToken");
+extern fn NtStatus se_query_session_id_token_ex(PACCESSTOKEN_t token, Pulong session_id, Pboolean is_service_session) @cname("SeQuerySessionIdTokenEx");
+extern fn NtStatus se_query_server_silo_token(PACCESSTOKEN_t token, Pesilo* p_server_silo) @cname("SeQueryServerSiloToken");
+extern fn NtStatus se_set_session_id_token(PACCESSTOKEN_t token, Ulong session_id) @cname("SeSetSessionIdToken");
+extern fn NtStatus se_create_client_security(Pethread client_thread, PSECURITYQUALITYOFSERVICE_t client_security_qos, Boolean remote_session, PSECURITYCLIENTCONTEXT_t client_context) @cname("SeCreateClientSecurity");
 extern fn void se_impersonate_client(PSECURITYCLIENTCONTEXT_t client_context, Pethread server_thread) @cname("SeImpersonateClient");
-extern fn Ntstatus se_impersonate_client_ex(PSECURITYCLIENTCONTEXT_t client_context, Pethread server_thread) @cname("SeImpersonateClientEx");
-extern fn Ntstatus se_create_client_security_from_subject_context(PSECURITYSUBJECTCONTEXT_t subject_context, PSECURITYQUALITYOFSERVICE_t client_security_qos, Boolean server_is_remote, PSECURITYCLIENTCONTEXT_t client_context) @cname("SeCreateClientSecurityFromSubjectContext");
-extern fn Ntstatus se_query_security_descriptor_info(PSECURITYINFORMATION_t security_information, PSECURITYDESCRIPTOR_t security_descriptor, Pulong length, PSECURITYDESCRIPTOR_t* objects_security_descriptor) @cname("SeQuerySecurityDescriptorInfo");
-extern fn Ntstatus se_set_security_descriptor_info(Pvoid object, PSECURITYINFORMATION_t security_information, PSECURITYDESCRIPTOR_t modification_descriptor, PSECURITYDESCRIPTOR_t* objects_security_descriptor, POOLTYPE_t pool_type, PGENERICMAPPING_t generic_mapping) @cname("SeSetSecurityDescriptorInfo");
-extern fn Ntstatus se_set_security_descriptor_info_ex(Pvoid object, PSECURITYINFORMATION_t security_information, PSECURITYDESCRIPTOR_t modification_descriptor, PSECURITYDESCRIPTOR_t* objects_security_descriptor, Ulong auto_inherit_flags, POOLTYPE_t pool_type, PGENERICMAPPING_t generic_mapping) @cname("SeSetSecurityDescriptorInfoEx");
-extern fn Ntstatus se_append_privileges(PACCESSSTATE_t access_state, PPRIVILEGESET_t privileges) @cname("SeAppendPrivileges");
-extern fn void se_audit_hard_link_creation(PUNICODESTRING_t file_name, PUNICODESTRING_t link_name, Boolean b_success) @cname("SeAuditHardLinkCreation");
-extern fn void se_audit_hard_link_creation_with_transaction(PUNICODESTRING_t file_name, PUNICODESTRING_t link_name, Boolean b_success, Guid* transaction_id) @cname("SeAuditHardLinkCreationWithTransaction");
+extern fn NtStatus se_impersonate_client_ex(PSECURITYCLIENTCONTEXT_t client_context, Pethread server_thread) @cname("SeImpersonateClientEx");
+extern fn NtStatus se_create_client_security_from_subject_context(PSECURITYSUBJECTCONTEXT_t subject_context, PSECURITYQUALITYOFSERVICE_t client_security_qos, Boolean server_is_remote, PSECURITYCLIENTCONTEXT_t client_context) @cname("SeCreateClientSecurityFromSubjectContext");
+extern fn NtStatus se_query_security_descriptor_info(PSECURITYINFORMATION_t security_information, PSECURITYDESCRIPTOR_t security_descriptor, Pulong length, PSECURITYDESCRIPTOR_t* objects_security_descriptor) @cname("SeQuerySecurityDescriptorInfo");
+extern fn NtStatus se_set_security_descriptor_info(Pvoid object, PSECURITYINFORMATION_t security_information, PSECURITYDESCRIPTOR_t modification_descriptor, PSECURITYDESCRIPTOR_t* objects_security_descriptor, POOLTYPE_t pool_type, PGENERICMAPPING_t generic_mapping) @cname("SeSetSecurityDescriptorInfo");
+extern fn NtStatus se_set_security_descriptor_info_ex(Pvoid object, PSECURITYINFORMATION_t security_information, PSECURITYDESCRIPTOR_t modification_descriptor, PSECURITYDESCRIPTOR_t* objects_security_descriptor, Ulong auto_inherit_flags, POOLTYPE_t pool_type, PGENERICMAPPING_t generic_mapping) @cname("SeSetSecurityDescriptorInfoEx");
+extern fn NtStatus se_append_privileges(PACCESSSTATE_t access_state, PPRIVILEGESET_t privileges) @cname("SeAppendPrivileges");
+extern fn void se_audit_hard_link_creation(PUnicodeString_t file_name, PUnicodeString_t link_name, Boolean b_success) @cname("SeAuditHardLinkCreation");
+extern fn void se_audit_hard_link_creation_with_transaction(PUnicodeString_t file_name, PUnicodeString_t link_name, Boolean b_success, Guid* transaction_id) @cname("SeAuditHardLinkCreationWithTransaction");
 extern fn void se_audit_fips_crypto_selftests(Boolean b_success, Ulong selftest_code) @cname("SeAuditFipsCryptoSelftests");
 extern fn void se_audit_transaction_state_change(Guid* transaction_id, Guid* resource_manager_id, Ulong new_transaction_state) @cname("SeAuditTransactionStateChange");
 extern fn Boolean se_auditing_file_events(Boolean access_granted, PSECURITYDESCRIPTOR_t security_descriptor) @cname("SeAuditingFileEvents");
@@ -7425,125 +7425,125 @@ extern fn Boolean se_auditing_hard_link_events(Boolean access_granted, PSECURITY
 extern fn Boolean se_auditing_hard_link_events_with_context(Boolean access_granted, PSECURITYDESCRIPTOR_t security_descriptor, PSECURITYSUBJECTCONTEXT_t subject_security_context) @cname("SeAuditingHardLinkEventsWithContext");
 extern fn Boolean se_auditing_file_or_global_events(Boolean access_granted, PSECURITYDESCRIPTOR_t security_descriptor, PSECURITYSUBJECTCONTEXT_t subject_security_context) @cname("SeAuditingFileOrGlobalEvents");
 extern fn void se_set_access_state_generic_mapping(PACCESSSTATE_t access_state, PGENERICMAPPING_t generic_mapping) @cname("SeSetAccessStateGenericMapping");
-extern fn Ntstatus se_register_logon_session_terminated_routine(PSELOGONSESSIONTERMINATEDROUTINE_t callback_routine) @cname("SeRegisterLogonSessionTerminatedRoutine");
-extern fn Ntstatus se_unregister_logon_session_terminated_routine(PSELOGONSESSIONTERMINATEDROUTINE_t callback_routine) @cname("SeUnregisterLogonSessionTerminatedRoutine");
-extern fn Ntstatus se_register_logon_session_terminated_routine_ex(PSELOGONSESSIONTERMINATEDROUTINEEX_t callback_routine, Pvoid context) @cname("SeRegisterLogonSessionTerminatedRoutineEx");
-extern fn Ntstatus se_unregister_logon_session_terminated_routine_ex(PSELOGONSESSIONTERMINATEDROUTINEEX_t callback_routine, Pvoid context) @cname("SeUnregisterLogonSessionTerminatedRoutineEx");
-extern fn Ntstatus se_mark_logon_session_for_termination_notification(Pluid logon_id) @cname("SeMarkLogonSessionForTerminationNotification");
-extern fn Ntstatus se_mark_logon_session_for_termination_notification_ex(Pluid logon_id, Pesilo p_server_silo) @cname("SeMarkLogonSessionForTerminationNotificationEx");
-extern fn Ntstatus se_query_information_token(PACCESSTOKEN_t token, TOKENINFORMATIONCLASS_t token_information_class, Pvoid* token_information) @cname("SeQueryInformationToken");
-extern fn Ntstatus se_locate_process_image_name(Peprocess process, PUNICODESTRING_t* p_image_file_name) @cname("SeLocateProcessImageName");
-extern fn void se_examine_global_sacl(PUNICODESTRING_t object_type, Pacl resource_sacl, PACCESSTOKEN_t token, ACCESSMASK_t desired_access, Boolean access_granted, Pboolean generate_audit, Pboolean generate_alarm) @cname("SeExamineGlobalSacl");
-extern fn void se_maximum_audit_mask_from_global_sacl(PUNICODESTRING_t object_type_name, ACCESSMASK_t granted_access, PACCESSTOKEN_t token, PACCESSMASK_t audit_mask) @cname("SeMaximumAuditMaskFromGlobalSacl");
+extern fn NtStatus se_register_logon_session_terminated_routine(PSELOGONSESSIONTERMINATEDROUTINE_t callback_routine) @cname("SeRegisterLogonSessionTerminatedRoutine");
+extern fn NtStatus se_unregister_logon_session_terminated_routine(PSELOGONSESSIONTERMINATEDROUTINE_t callback_routine) @cname("SeUnregisterLogonSessionTerminatedRoutine");
+extern fn NtStatus se_register_logon_session_terminated_routine_ex(PSELOGONSESSIONTERMINATEDROUTINEEX_t callback_routine, Pvoid context) @cname("SeRegisterLogonSessionTerminatedRoutineEx");
+extern fn NtStatus se_unregister_logon_session_terminated_routine_ex(PSELOGONSESSIONTERMINATEDROUTINEEX_t callback_routine, Pvoid context) @cname("SeUnregisterLogonSessionTerminatedRoutineEx");
+extern fn NtStatus se_mark_logon_session_for_termination_notification(Pluid logon_id) @cname("SeMarkLogonSessionForTerminationNotification");
+extern fn NtStatus se_mark_logon_session_for_termination_notification_ex(Pluid logon_id, Pesilo p_server_silo) @cname("SeMarkLogonSessionForTerminationNotificationEx");
+extern fn NtStatus se_query_information_token(PACCESSTOKEN_t token, TOKENINFORMATIONCLASS_t token_information_class, Pvoid* token_information) @cname("SeQueryInformationToken");
+extern fn NtStatus se_locate_process_image_name(Peprocess process, PUnicodeString_t* p_image_file_name) @cname("SeLocateProcessImageName");
+extern fn void se_examine_global_sacl(PUnicodeString_t object_type, Pacl resource_sacl, PACCESSTOKEN_t token, ACCESSMASK_t desired_access, Boolean access_granted, Pboolean generate_audit, Pboolean generate_alarm) @cname("SeExamineGlobalSacl");
+extern fn void se_maximum_audit_mask_from_global_sacl(PUnicodeString_t object_type_name, ACCESSMASK_t granted_access, PACCESSTOKEN_t token, PACCESSMASK_t audit_mask) @cname("SeMaximumAuditMaskFromGlobalSacl");
 extern fn Boolean rtl_is_sandboxed_token_handle(Handle token_handle, KPROCESSORMODE_t previous_mode) @cname("RtlIsSandboxedTokenHandle");
 extern fn Boolean rtl_is_sandboxed_token(PSECURITYSUBJECTCONTEXT_t context, KPROCESSORMODE_t previous_mode) @cname("RtlIsSandboxedToken");
 extern fn void se_check_for_critical_ace_removal(PSECURITYDESCRIPTOR_t current_descriptor, PSECURITYDESCRIPTOR_t new_descriptor, PSECURITYSUBJECTCONTEXT_t subject_security_context, Pboolean ace_removed) @cname("SeCheckForCriticalAceRemoval");
-extern fn Ntstatus se_adjust_object_security(PUNICODESTRING_t object_name, PSECURITYDESCRIPTOR_t original_descriptor, PSECURITYDESCRIPTOR_t proposed_descriptor, PSECURITYSUBJECTCONTEXT_t subject_security_context, PSECURITYDESCRIPTOR_t* adjusted_descriptor, Pboolean apply_adjusted_descriptor) @cname("SeAdjustObjectSecurity");
-extern fn Ntstatus ps_assign_impersonation_token(Pethread thread, Handle token) @cname("PsAssignImpersonationToken");
+extern fn NtStatus se_adjust_object_security(PUnicodeString_t object_name, PSECURITYDESCRIPTOR_t original_descriptor, PSECURITYDESCRIPTOR_t proposed_descriptor, PSECURITYSUBJECTCONTEXT_t subject_security_context, PSECURITYDESCRIPTOR_t* adjusted_descriptor, Pboolean apply_adjusted_descriptor) @cname("SeAdjustObjectSecurity");
+extern fn NtStatus ps_assign_impersonation_token(Pethread thread, Handle token) @cname("PsAssignImpersonationToken");
 extern fn PACCESSTOKEN_t ps_reference_primary_token(Peprocess process) @cname("PsReferencePrimaryToken");
 extern fn void ps_dereference_primary_token(PACCESSTOKEN_t primary_token) @cname("PsDereferencePrimaryToken");
 extern fn void ps_dereference_impersonation_token(PACCESSTOKEN_t impersonation_token) @cname("PsDereferenceImpersonationToken");
 extern fn PACCESSTOKEN_t ps_reference_impersonation_token(Pethread thread, Pboolean copy_on_open, Pboolean effective_only, PSECURITYIMPERSONATIONLEVEL_t impersonation_level) @cname("PsReferenceImpersonationToken");
 extern fn LARGEINTEGER_t ps_get_process_exit_time() @cname("PsGetProcessExitTime");
 extern fn Boolean ps_is_thread_terminating(Pethread thread) @cname("PsIsThreadTerminating");
-extern fn Ntstatus ps_impersonate_client(Pethread thread, PACCESSTOKEN_t token, Boolean copy_on_open, Boolean effective_only, SECURITYIMPERSONATIONLEVEL_t impersonation_level) @cname("PsImpersonateClient");
+extern fn NtStatus ps_impersonate_client(Pethread thread, PACCESSTOKEN_t token, Boolean copy_on_open, Boolean effective_only, SECURITYIMPERSONATIONLEVEL_t impersonation_level) @cname("PsImpersonateClient");
 extern fn Boolean ps_disable_impersonation(Pethread thread, PSEIMPERSONATIONSTATE_t impersonation_state) @cname("PsDisableImpersonation");
 extern fn void ps_restore_impersonation(Pethread thread, PSEIMPERSONATIONSTATE_t impersonation_state) @cname("PsRestoreImpersonation");
 extern fn void ps_revert_to_self() @cname("PsRevertToSelf");
-extern fn Ntstatus ps_lookup_process_by_process_id(Handle process_id, Peprocess* process) @cname("PsLookupProcessByProcessId");
-extern fn Ntstatus ps_lookup_thread_by_thread_id(Handle thread_id, Pethread* thread) @cname("PsLookupThreadByThreadId");
+extern fn NtStatus ps_lookup_process_by_process_id(Handle process_id, Peprocess* process) @cname("PsLookupProcessByProcessId");
+extern fn NtStatus ps_lookup_thread_by_thread_id(Handle thread_id, Pethread* thread) @cname("PsLookupThreadByThreadId");
 extern fn void ps_charge_pool_quota(Peprocess process, POOLTYPE_t pool_type, ULONGPTR_t amount) @cname("PsChargePoolQuota");
-extern fn Ntstatus ps_charge_process_pool_quota(Peprocess process, POOLTYPE_t pool_type, ULONGPTR_t amount) @cname("PsChargeProcessPoolQuota");
+extern fn NtStatus ps_charge_process_pool_quota(Peprocess process, POOLTYPE_t pool_type, ULONGPTR_t amount) @cname("PsChargeProcessPoolQuota");
 extern fn void ps_return_pool_quota(Peprocess process, POOLTYPE_t pool_type, ULONGPTR_t amount) @cname("PsReturnPoolQuota");
 extern fn Peprocess ps_get_thread_process(Pethread thread) @cname("PsGetThreadProcess");
 extern fn Boolean ps_is_system_thread(Pethread thread) @cname("PsIsSystemThread");
 extern fn void ps_update_disk_counters(Peprocess process, UlongVT bytes_read, UlongVT bytes_written, Ulong read_operation_count, Ulong write_operation_count, Ulong flush_operation_count) @cname("PsUpdateDiskCounters");
 extern fn Boolean ps_is_disk_counters_enabled() @cname("PsIsDiskCountersEnabled");
-extern fn Ntstatus fs_rtl_register_file_system_filter_callbacks(DRIVEROBJECT_t* filter_driver_object, PFSFILTERCALLBACKS_t callbacks) @cname("FsRtlRegisterFileSystemFilterCallbacks");
-extern fn Boolean fs_rtl_check_file_system_filter_callbacks_registered(DRIVEROBJECT_t* filter_driver_object) @cname("FsRtlCheckFileSystemFilterCallbacksRegistered");
-extern fn Ntstatus fs_rtl_notify_stream_file_object(FILEOBJECT_t* stream_file_object, DEVICEOBJECT_t* device_object_hint, FSFILTERSTREAMFONOTIFICATIONTYPE_t notification_type, Boolean safe_to_recurse) @cname("FsRtlNotifyStreamFileObject");
+extern fn NtStatus fs_rtl_register_file_system_filter_callbacks(DriverObject_t* filter_driver_object, PFSFILTERCALLBACKS_t callbacks) @cname("FsRtlRegisterFileSystemFilterCallbacks");
+extern fn Boolean fs_rtl_check_file_system_filter_callbacks_registered(DriverObject_t* filter_driver_object) @cname("FsRtlCheckFileSystemFilterCallbacksRegistered");
+extern fn NtStatus fs_rtl_notify_stream_file_object(FILEOBJECT_t* stream_file_object, DEVICEOBJECT_t* device_object_hint, FSFILTERSTREAMFONOTIFICATIONTYPE_t notification_type, Boolean safe_to_recurse) @cname("FsRtlNotifyStreamFileObject");
 extern fn void io_acquire_vpb_spin_lock(Pkirql irql) @cname("IoAcquireVpbSpinLock");
-extern fn Ntstatus io_check_desired_access(PACCESSMASK_t desired_access, ACCESSMASK_t granted_access) @cname("IoCheckDesiredAccess");
-extern fn Ntstatus io_check_ea_buffer_validity(PFILEFULLEAINFORMATION_t ea_buffer, Ulong ea_length, Pulong error_offset) @cname("IoCheckEaBufferValidity");
+extern fn NtStatus io_check_desired_access(PACCESSMASK_t desired_access, ACCESSMASK_t granted_access) @cname("IoCheckDesiredAccess");
+extern fn NtStatus io_check_ea_buffer_validity(PFILEFULLEAINFORMATION_t ea_buffer, Ulong ea_length, Pulong error_offset) @cname("IoCheckEaBufferValidity");
 extern fn Boolean io_check_file_object_opened_as_copy_destination(PFILEOBJECT_t file_object) @cname("IoCheckFileObjectOpenedAsCopyDestination");
 extern fn Boolean io_check_file_object_opened_as_copy_source(PFILEOBJECT_t file_object) @cname("IoCheckFileObjectOpenedAsCopySource");
-extern fn Ntstatus io_check_function_access(ACCESSMASK_t granted_access, Uchar major_function, Uchar minor_function, Ulong io_control_code, Pvoid arg1, Pvoid arg2) @cname("IoCheckFunctionAccess");
-extern fn Ntstatus io_check_query_set_file_information(FILEINFORMATIONCLASS_t file_information_class, Ulong length, Boolean set_operation) @cname("IoCheckQuerySetFileInformation");
-extern fn Ntstatus io_check_query_set_volume_information(FSINFORMATIONCLASS_t fs_information_class, Ulong length, Boolean set_operation) @cname("IoCheckQuerySetVolumeInformation");
-extern fn Ntstatus io_check_quota_buffer_validity(PFILEQUOTAINFORMATION_t quota_buffer, Ulong quota_length, Pulong error_offset) @cname("IoCheckQuotaBufferValidity");
-extern fn PFILEOBJECT_t io_create_stream_file_object(PFILEOBJECT_t file_object, PDEVICEOBJECT_t device_object) @cname("IoCreateStreamFileObject");
-extern fn PFILEOBJECT_t io_create_stream_file_object_ex(PFILEOBJECT_t file_object, PDEVICEOBJECT_t device_object, Phandle file_handle) @cname("IoCreateStreamFileObjectEx");
-extern fn PFILEOBJECT_t io_create_stream_file_object_lite(PFILEOBJECT_t file_object, PDEVICEOBJECT_t device_object) @cname("IoCreateStreamFileObjectLite");
-extern fn Ntstatus io_create_stream_file_object_ex2(PIOCREATESTREAMFILEOPTIONS_t create_options, PFILEOBJECT_t file_object, PDEVICEOBJECT_t device_object, PFILEOBJECT_t* stream_file_object, Phandle file_handle) @cname("IoCreateStreamFileObjectEx2");
+extern fn NtStatus io_check_function_access(ACCESSMASK_t granted_access, Uchar major_function, Uchar minor_function, Ulong io_control_code, Pvoid arg1, Pvoid arg2) @cname("IoCheckFunctionAccess");
+extern fn NtStatus io_check_query_set_file_information(FILEINFORMATIONCLASS_t file_information_class, Ulong length, Boolean set_operation) @cname("IoCheckQuerySetFileInformation");
+extern fn NtStatus io_check_query_set_volume_information(FSINFORMATIONCLASS_t fs_information_class, Ulong length, Boolean set_operation) @cname("IoCheckQuerySetVolumeInformation");
+extern fn NtStatus io_check_quota_buffer_validity(PFILEQUOTAINFORMATION_t quota_buffer, Ulong quota_length, Pulong error_offset) @cname("IoCheckQuotaBufferValidity");
+extern fn PFILEOBJECT_t io_create_stream_file_object(PFILEOBJECT_t file_object, PDeviceObject_t device_object) @cname("IoCreateStreamFileObject");
+extern fn PFILEOBJECT_t io_create_stream_file_object_ex(PFILEOBJECT_t file_object, PDeviceObject_t device_object, Phandle file_handle) @cname("IoCreateStreamFileObjectEx");
+extern fn PFILEOBJECT_t io_create_stream_file_object_lite(PFILEOBJECT_t file_object, PDeviceObject_t device_object) @cname("IoCreateStreamFileObjectLite");
+extern fn NtStatus io_create_stream_file_object_ex2(PIOCREATESTREAMFILEOPTIONS_t create_options, PFILEOBJECT_t file_object, PDeviceObject_t device_object, PFILEOBJECT_t* stream_file_object, Phandle file_handle) @cname("IoCreateStreamFileObjectEx2");
 extern fn Boolean io_fast_query_network_attributes(POBJECTATTRIBUTES_t object_attributes, ACCESSMASK_t desired_access, Ulong open_options, PIOSTATUSBLOCK_t io_status, PFILENETWORKOPENINFORMATION_t buffer) @cname("IoFastQueryNetworkAttributes");
-extern fn Ntstatus io_page_read(PFILEOBJECT_t file_object, Pmdl memory_descriptor_list, PLARGEINTEGER_t starting_offset, Pkevent event, PIOSTATUSBLOCK_t io_status_block) @cname("IoPageRead");
-extern fn PDEVICEOBJECT_t io_get_attached_device(PDEVICEOBJECT_t device_object) @cname("IoGetAttachedDevice");
-extern fn PDEVICEOBJECT_t io_get_attached_device_reference(PDEVICEOBJECT_t device_object) @cname("IoGetAttachedDeviceReference");
-extern fn PDEVICEOBJECT_t io_get_base_file_system_device_object(PFILEOBJECT_t file_object) @cname("IoGetBaseFileSystemDeviceObject");
+extern fn NtStatus io_page_read(PFILEOBJECT_t file_object, Pmdl memory_descriptor_list, PLARGEINTEGER_t starting_offset, Pkevent event, PIOSTATUSBLOCK_t io_status_block) @cname("IoPageRead");
+extern fn PDeviceObject_t io_get_attached_device(PDeviceObject_t device_object) @cname("IoGetAttachedDevice");
+extern fn PDeviceObject_t io_get_attached_device_reference(PDeviceObject_t device_object) @cname("IoGetAttachedDeviceReference");
+extern fn PDeviceObject_t io_get_base_file_system_device_object(PFILEOBJECT_t file_object) @cname("IoGetBaseFileSystemDeviceObject");
 extern fn PCONFIGURATIONINFORMATION_t io_get_configuration_information() @cname("IoGetConfigurationInformation");
-extern fn PDEVICEOBJECT_t io_get_device_to_verify(Pethread thread) @cname("IoGetDeviceToVerify");
+extern fn PDeviceObject_t io_get_device_to_verify(Pethread thread) @cname("IoGetDeviceToVerify");
 extern fn Ulong io_get_requestor_process_id(Pirp irp) @cname("IoGetRequestorProcessId");
 extern fn Peprocess io_get_requestor_process(Pirp irp) @cname("IoGetRequestorProcess");
 extern fn Pirp io_get_top_level_irp() @cname("IoGetTopLevelIrp");
 extern fn Boolean io_is_operation_synchronous(Pirp irp) @cname("IoIsOperationSynchronous");
 extern fn Boolean io_is_system_thread(Pethread thread) @cname("IoIsSystemThread");
-extern fn Ntstatus io_query_file_dos_device_name(PFILEOBJECT_t file_object, POBJECTNAMEINFORMATION_t* object_name_information) @cname("IoQueryFileDosDeviceName");
-extern fn Ntstatus io_query_file_information(PFILEOBJECT_t file_object, FILEINFORMATIONCLASS_t file_information_class, Ulong length, Pvoid file_information, Pulong returned_length) @cname("IoQueryFileInformation");
-extern fn Ntstatus io_query_volume_information(PFILEOBJECT_t file_object, FSINFORMATIONCLASS_t fs_information_class, Ulong length, Pvoid fs_information, Pulong returned_length) @cname("IoQueryVolumeInformation");
+extern fn NtStatus io_query_file_dos_device_name(PFILEOBJECT_t file_object, POBJECTNAMEINFORMATION_t* object_name_information) @cname("IoQueryFileDosDeviceName");
+extern fn NtStatus io_query_file_information(PFILEOBJECT_t file_object, FILEINFORMATIONCLASS_t file_information_class, Ulong length, Pvoid file_information, Pulong returned_length) @cname("IoQueryFileInformation");
+extern fn NtStatus io_query_volume_information(PFILEOBJECT_t file_object, FSINFORMATIONCLASS_t fs_information_class, Ulong length, Pvoid fs_information, Pulong returned_length) @cname("IoQueryVolumeInformation");
 extern fn void io_queue_thread_irp(Pirp irp) @cname("IoQueueThreadIrp");
-extern fn void io_register_file_system(PDEVICEOBJECT_t device_object) @cname("IoRegisterFileSystem");
-extern fn Ntstatus io_register_fs_registration_change(PDRIVEROBJECT_t driver_object, PDRIVERFSNOTIFICATION_t driver_notification_routine) @cname("IoRegisterFsRegistrationChange");
-extern fn Ntstatus io_register_fs_registration_change_mount_aware(PDRIVEROBJECT_t driver_object, PDRIVERFSNOTIFICATION_t driver_notification_routine, Boolean synchronize_with_mounts) @cname("IoRegisterFsRegistrationChangeMountAware");
-extern fn Ntstatus io_enumerate_registered_filters_list(PDRIVEROBJECT_t* driver_object_list, Ulong driver_object_list_size, Pulong actual_number_driver_objects) @cname("IoEnumerateRegisteredFiltersList");
-extern fn Ntstatus io_replace_file_object_name(PFILEOBJECT_t file_object, Pwstr new_file_name, Ushort file_name_length) @cname("IoReplaceFileObjectName");
+extern fn void io_register_file_system(PDeviceObject_t device_object) @cname("IoRegisterFileSystem");
+extern fn NtStatus io_register_fs_registration_change(PDRIVEROBJECT_t driver_object, PDRIVERFSNOTIFICATION_t driver_notification_routine) @cname("IoRegisterFsRegistrationChange");
+extern fn NtStatus io_register_fs_registration_change_mount_aware(PDRIVEROBJECT_t driver_object, PDRIVERFSNOTIFICATION_t driver_notification_routine, Boolean synchronize_with_mounts) @cname("IoRegisterFsRegistrationChangeMountAware");
+extern fn NtStatus io_enumerate_registered_filters_list(PDRIVEROBJECT_t* driver_object_list, Ulong driver_object_list_size, Pulong actual_number_driver_objects) @cname("IoEnumerateRegisteredFiltersList");
+extern fn NtStatus io_replace_file_object_name(PFILEOBJECT_t file_object, Pwstr new_file_name, Ushort file_name_length) @cname("IoReplaceFileObjectName");
 extern fn void io_release_vpb_spin_lock(Kirql irql) @cname("IoReleaseVpbSpinLock");
-extern fn void io_set_device_to_verify(Pethread thread, PDEVICEOBJECT_t device_object) @cname("IoSetDeviceToVerify");
-extern fn Ntstatus io_set_information(PFILEOBJECT_t file_object, FILEINFORMATIONCLASS_t file_information_class, Ulong length, Pvoid file_information) @cname("IoSetInformation");
+extern fn void io_set_device_to_verify(Pethread thread, PDeviceObject_t device_object) @cname("IoSetDeviceToVerify");
+extern fn NtStatus io_set_information(PFILEOBJECT_t file_object, FILEINFORMATIONCLASS_t file_information_class, Ulong length, Pvoid file_information) @cname("IoSetInformation");
 extern fn void io_set_top_level_irp(Pirp irp) @cname("IoSetTopLevelIrp");
-extern fn Ushort io_size_of_irp_ex(PDEVICEOBJECT_t device_object, Cchar stack_size) @cname("IoSizeOfIrpEx");
-extern fn void io_start_next_packet(PDEVICEOBJECT_t device_object, Boolean cancelable) @cname("IoStartNextPacket");
-extern fn void io_start_next_packet_by_key(PDEVICEOBJECT_t device_object, Boolean cancelable, Ulong key) @cname("IoStartNextPacketByKey");
-extern fn void io_start_packet(PDEVICEOBJECT_t device_object, Pirp irp, Pulong key, PDRIVERCANCEL_t cancel_function) @cname("IoStartPacket");
-extern fn void io_set_start_io_attributes(PDEVICEOBJECT_t device_object, Boolean deferred_start_io, Boolean non_cancelable) @cname("IoSetStartIoAttributes");
-extern fn Ntstatus io_synchronous_page_write(PFILEOBJECT_t file_object, Pmdl memory_descriptor_list, PLARGEINTEGER_t starting_offset, Pkevent event, PIOSTATUSBLOCK_t io_status_block) @cname("IoSynchronousPageWrite");
+extern fn Ushort io_size_of_irp_ex(PDeviceObject_t device_object, Cchar stack_size) @cname("IoSizeOfIrpEx");
+extern fn void io_start_next_packet(PDeviceObject_t device_object, Boolean cancelable) @cname("IoStartNextPacket");
+extern fn void io_start_next_packet_by_key(PDeviceObject_t device_object, Boolean cancelable, Ulong key) @cname("IoStartNextPacketByKey");
+extern fn void io_start_packet(PDeviceObject_t device_object, Pirp irp, Pulong key, PDRIVERCANCEL_t cancel_function) @cname("IoStartPacket");
+extern fn void io_set_start_io_attributes(PDeviceObject_t device_object, Boolean deferred_start_io, Boolean non_cancelable) @cname("IoSetStartIoAttributes");
+extern fn NtStatus io_synchronous_page_write(PFILEOBJECT_t file_object, Pmdl memory_descriptor_list, PLARGEINTEGER_t starting_offset, Pkevent event, PIOSTATUSBLOCK_t io_status_block) @cname("IoSynchronousPageWrite");
 extern fn Peprocess io_thread_to_process(Pethread thread) @cname("IoThreadToProcess");
-extern fn void io_unregister_file_system(PDEVICEOBJECT_t device_object) @cname("IoUnregisterFileSystem");
+extern fn void io_unregister_file_system(PDeviceObject_t device_object) @cname("IoUnregisterFileSystem");
 extern fn void io_unregister_fs_registration_change(PDRIVEROBJECT_t driver_object, PDRIVERFSNOTIFICATION_t driver_notification_routine) @cname("IoUnregisterFsRegistrationChange");
-extern fn Ntstatus io_verify_volume(PDEVICEOBJECT_t device_object, Boolean allow_raw_mount) @cname("IoVerifyVolume");
+extern fn NtStatus io_verify_volume(PDeviceObject_t device_object, Boolean allow_raw_mount) @cname("IoVerifyVolume");
 extern fn void io_write_error_log_entry(Pvoid el_entry) @cname("IoWriteErrorLogEntry");
-extern fn Ntstatus io_get_requestor_session_id(Pirp irp, Pulong p_session_id) @cname("IoGetRequestorSessionId");
-extern fn Ntstatus io_enumerate_device_object_list(PDRIVEROBJECT_t driver_object, PDEVICEOBJECT_t* device_object_list, Ulong device_object_list_size, Pulong actual_number_device_objects) @cname("IoEnumerateDeviceObjectList");
-extern fn PDEVICEOBJECT_t io_get_lower_device_object(PDEVICEOBJECT_t device_object) @cname("IoGetLowerDeviceObject");
-extern fn PDEVICEOBJECT_t io_get_device_attachment_base_ref(PDEVICEOBJECT_t device_object) @cname("IoGetDeviceAttachmentBaseRef");
-extern fn Ntstatus io_get_disk_device_object(PDEVICEOBJECT_t file_system_device_object, PDEVICEOBJECT_t* disk_device_object) @cname("IoGetDiskDeviceObject");
+extern fn NtStatus io_get_requestor_session_id(Pirp irp, Pulong p_session_id) @cname("IoGetRequestorSessionId");
+extern fn NtStatus io_enumerate_device_object_list(PDRIVEROBJECT_t driver_object, PDeviceObject_t* device_object_list, Ulong device_object_list_size, Pulong actual_number_device_objects) @cname("IoEnumerateDeviceObjectList");
+extern fn PDeviceObject_t io_get_lower_device_object(PDeviceObject_t device_object) @cname("IoGetLowerDeviceObject");
+extern fn PDeviceObject_t io_get_device_attachment_base_ref(PDeviceObject_t device_object) @cname("IoGetDeviceAttachmentBaseRef");
+extern fn NtStatus io_get_disk_device_object(PDeviceObject_t file_system_device_object, PDeviceObject_t* disk_device_object) @cname("IoGetDiskDeviceObject");
 extern fn void io_initialize_priority_info(PIOPRIORITYINFO_t priority_info) @cname("IoInitializePriorityInfo");
-extern fn Ntstatus io_retrieve_priority_info(Pirp irp, PFILEOBJECT_t file_object, Pethread thread, PIOPRIORITYINFO_t priority_info) @cname("IoRetrievePriorityInfo");
-extern fn Ntstatus io_apply_priority_info_thread(PIOPRIORITYINFO_t input_priority_info, PIOPRIORITYINFO_t output_priority_info, Pethread thread) @cname("IoApplyPriorityInfoThread");
-extern fn Ntstatus io_get_fs_zeroing_offset(Pirp irp, Pulong zeroing_offset) @cname("IoGetFsZeroingOffset");
-extern fn Ntstatus io_set_fs_zeroing_offset_required(Pirp irp) @cname("IoSetFsZeroingOffsetRequired");
-extern fn Ntstatus io_set_fs_zeroing_offset(Pirp irp, Ulong zeroing_offset) @cname("IoSetFsZeroingOffset");
-extern fn Ntstatus io_get_fs_track_offset_state(Pirp irp, PIOIRPEXTTRACKOFFSETHEADER_t* ret_fs_track_offset_blob, Longlong* ret_tracked_offset) @cname("IoGetFsTrackOffsetState");
-extern fn Ntstatus io_set_fs_track_offset_state(Pirp irp, PIOIRPEXTTRACKOFFSETHEADER_t fs_track_offset_blob, Longlong tracked_offset) @cname("IoSetFsTrackOffsetState");
-extern fn Ntstatus io_clear_fs_track_offset_state(Pirp irp) @cname("IoClearFsTrackOffsetState");
+extern fn NtStatus io_retrieve_priority_info(Pirp irp, PFILEOBJECT_t file_object, Pethread thread, PIOPRIORITYINFO_t priority_info) @cname("IoRetrievePriorityInfo");
+extern fn NtStatus io_apply_priority_info_thread(PIOPRIORITYINFO_t input_priority_info, PIOPRIORITYINFO_t output_priority_info, Pethread thread) @cname("IoApplyPriorityInfoThread");
+extern fn NtStatus io_get_fs_zeroing_offset(Pirp irp, Pulong zeroing_offset) @cname("IoGetFsZeroingOffset");
+extern fn NtStatus io_set_fs_zeroing_offset_required(Pirp irp) @cname("IoSetFsZeroingOffsetRequired");
+extern fn NtStatus io_set_fs_zeroing_offset(Pirp irp, Ulong zeroing_offset) @cname("IoSetFsZeroingOffset");
+extern fn NtStatus io_get_fs_track_offset_state(Pirp irp, PIOIRPEXTTRACKOFFSETHEADER_t* ret_fs_track_offset_blob, Longlong* ret_tracked_offset) @cname("IoGetFsTrackOffsetState");
+extern fn NtStatus io_set_fs_track_offset_state(Pirp irp, PIOIRPEXTTRACKOFFSETHEADER_t fs_track_offset_blob, Longlong tracked_offset) @cname("IoSetFsTrackOffsetState");
+extern fn NtStatus io_clear_fs_track_offset_state(Pirp irp) @cname("IoClearFsTrackOffsetState");
 extern fn Boolean io_irp_has_fs_track_offset_extension_type(Pirp irp) @cname("IoIrpHasFsTrackOffsetExtensionType");
-extern fn Ntstatus io_get_copy_information_extension(Pirp irp, PCOPYINFORMATION_t copy_information) @cname("IoGetCopyInformationExtension");
+extern fn NtStatus io_get_copy_information_extension(Pirp irp, PCOPYINFORMATION_t copy_information) @cname("IoGetCopyInformationExtension");
 extern fn Pvoid po_register_system_state(Pvoid state_handle, EXECUTIONSTATE_t flags) @cname("PoRegisterSystemState");
-extern fn Ntstatus po_create_power_request(Pvoid* power_request, PDEVICEOBJECT_t device_object, PCOUNTEDREASONCONTEXT_t context) @cname("PoCreatePowerRequest");
-extern fn Ntstatus po_set_power_request(Pvoid power_request, POWERREQUESTTYPE_t type) @cname("PoSetPowerRequest");
-extern fn Ntstatus po_clear_power_request(Pvoid power_request, POWERREQUESTTYPE_t type) @cname("PoClearPowerRequest");
+extern fn NtStatus po_create_power_request(Pvoid* power_request, PDeviceObject_t device_object, PCOUNTEDREASONCONTEXT_t context) @cname("PoCreatePowerRequest");
+extern fn NtStatus po_set_power_request(Pvoid power_request, POWERREQUESTTYPE_t type) @cname("PoSetPowerRequest");
+extern fn NtStatus po_clear_power_request(Pvoid power_request, POWERREQUESTTYPE_t type) @cname("PoClearPowerRequest");
 extern fn void po_delete_power_request(Pvoid power_request) @cname("PoDeletePowerRequest");
 extern fn void po_unregister_system_state(Pvoid state_handle) @cname("PoUnregisterSystemState");
-extern fn POWERSTATE_t po_set_power_state(PDEVICEOBJECT_t device_object, POWERSTATETYPE_t type, POWERSTATE_t state) @cname("PoSetPowerState");
-extern fn Ntstatus po_call_driver(PDEVICEOBJECT_t device_object, Pirp irp) @cname("PoCallDriver");
+extern fn POWERSTATE_t po_set_power_state(PDeviceObject_t device_object, POWERSTATETYPE_t type, POWERSTATE_t state) @cname("PoSetPowerState");
+extern fn NtStatus po_call_driver(PDeviceObject_t device_object, Pirp irp) @cname("PoCallDriver");
 extern fn void po_start_next_power_irp(Pirp irp) @cname("PoStartNextPowerIrp");
-extern fn Pulong po_register_device_for_idle_detection(PDEVICEOBJECT_t device_object, Ulong conservation_idle_time, Ulong performance_idle_time, DEVICEPOWERSTATE_t state) @cname("PoRegisterDeviceForIdleDetection");
+extern fn Pulong po_register_device_for_idle_detection(PDeviceObject_t device_object, Ulong conservation_idle_time, Ulong performance_idle_time, DEVICEPOWERSTATE_t state) @cname("PoRegisterDeviceForIdleDetection");
 extern fn void po_set_device_busy_ex(Pulong idle_pointer) @cname("PoSetDeviceBusyEx");
 extern fn void po_start_device_busy(Pulong idle_pointer) @cname("PoStartDeviceBusy");
 extern fn void po_end_device_busy(Pulong idle_pointer) @cname("PoEndDeviceBusy");
-extern fn Boolean po_query_watchdog_time(PDEVICEOBJECT_t pdo, Pulong seconds_remaining) @cname("PoQueryWatchdogTime");
-extern fn Ntstatus po_register_power_setting_callback(PDEVICEOBJECT_t device_object, Lpcguid setting_guid, PPOWERSETTINGCALLBACK_t callback, Pvoid context, Pvoid* handle) @cname("PoRegisterPowerSettingCallback");
-extern fn Ntstatus po_unregister_power_setting_callback(Pvoid handle) @cname("PoUnregisterPowerSettingCallback");
-extern fn Ntstatus po_queue_shutdown_work_item(PWORKQUEUEITEM_t work_item) @cname("PoQueueShutdownWorkItem");
+extern fn Boolean po_query_watchdog_time(PDeviceObject_t pdo, Pulong seconds_remaining) @cname("PoQueryWatchdogTime");
+extern fn NtStatus po_register_power_setting_callback(PDeviceObject_t device_object, Lpcguid setting_guid, PPOWERSETTINGCALLBACK_t callback, Pvoid context, Pvoid* handle) @cname("PoRegisterPowerSettingCallback");
+extern fn NtStatus po_unregister_power_setting_callback(Pvoid handle) @cname("PoUnregisterPowerSettingCallback");
+extern fn NtStatus po_queue_shutdown_work_item(PWORKQUEUEITEM_t work_item) @cname("PoQueueShutdownWorkItem");
 extern fn Boolean mm_is_recursive_io_fault() @cname("MmIsRecursiveIoFault");
 extern fn Boolean mm_force_section_closed(PSECTIONOBJECTPOINTERS_t section_object_pointer, Boolean delay_close) @cname("MmForceSectionClosed");
 extern fn Boolean mm_force_section_closed_ex(PSECTIONOBJECTPOINTERS_t section_object_pointer, Ulong force_close_flags) @cname("MmForceSectionClosedEx");
@@ -7551,38 +7551,38 @@ extern fn Ulonglong mm_get_maximum_file_section_size() @cname("MmGetMaximumFileS
 extern fn Boolean mm_flush_image_section(PSECTIONOBJECTPOINTERS_t section_object_pointer, MMFLUSHTYPE_t flush_type) @cname("MmFlushImageSection");
 extern fn Boolean mm_can_file_be_truncated(PSECTIONOBJECTPOINTERS_t section_pointer, PLARGEINTEGER_t new_file_size) @cname("MmCanFileBeTruncated");
 extern fn Boolean mm_set_address_range_modified(Pvoid address, SIZET_t length) @cname("MmSetAddressRangeModified");
-extern fn Ntstatus mm_is_file_section_active(PSECTIONOBJECTPOINTERS_t fs_section_pointer, Ulong flags, Plogical section_is_active) @cname("MmIsFileSectionActive");
-extern fn Ntstatus mm_prefetch_pages(Ulong number_of_lists, PREADLIST_t* read_lists) @cname("MmPrefetchPages");
+extern fn NtStatus mm_is_file_section_active(PSECTIONOBJECTPOINTERS_t fs_section_pointer, Ulong flags, Plogical section_is_active) @cname("MmIsFileSectionActive");
+extern fn NtStatus mm_prefetch_pages(Ulong number_of_lists, PREADLIST_t* read_lists) @cname("MmPrefetchPages");
 extern fn Ulong mm_does_file_have_user_writable_references(PSECTIONOBJECTPOINTERS_t section_pointer) @cname("MmDoesFileHaveUserWritableReferences");
 extern fn Logical mm_mdl_pages_are_zero(Pmdl mdl) @cname("MmMdlPagesAreZero");
 extern fn LARGEINTEGER_t ke_query_performance_counter(PLARGEINTEGER_t performance_frequency) @cname("KeQueryPerformanceCounter");
 extern fn void ke_stall_execution_processor(Ulong micro_seconds) @cname("KeStallExecutionProcessor");
-extern fn Ntstatus ob_insert_object(Pvoid object, PACCESSSTATE_t passed_access_state, ACCESSMASK_t desired_access, Ulong object_pointer_bias, Pvoid* new_object, Phandle handle) @cname("ObInsertObject");
-extern fn Ntstatus ob_close_handle_with_result(Handle handle, KPROCESSORMODE_t previous_mode, Ulong result_buffer_size, POBJECTCLOSERESULT_t result) @cname("ObCloseHandleWithResult");
-extern fn Ntstatus ob_open_object_by_pointer(Pvoid object, Ulong handle_attributes, PACCESSSTATE_t passed_access_state, ACCESSMASK_t desired_access, POBJECTTYPE_t object_type, KPROCESSORMODE_t access_mode, Phandle handle) @cname("ObOpenObjectByPointer");
-extern fn Ntstatus ob_open_object_by_pointer_with_tag(Pvoid object, Ulong handle_attributes, PACCESSSTATE_t passed_access_state, ACCESSMASK_t desired_access, POBJECTTYPE_t object_type, KPROCESSORMODE_t access_mode, Ulong tag, Phandle handle) @cname("ObOpenObjectByPointerWithTag");
+extern fn NtStatus ob_insert_object(Pvoid object, PACCESSSTATE_t passed_access_state, ACCESSMASK_t desired_access, Ulong object_pointer_bias, Pvoid* new_object, Phandle handle) @cname("ObInsertObject");
+extern fn NtStatus ob_close_handle_with_result(Handle handle, KPROCESSORMODE_t previous_mode, Ulong result_buffer_size, POBJECTCLOSERESULT_t result) @cname("ObCloseHandleWithResult");
+extern fn NtStatus ob_open_object_by_pointer(Pvoid object, Ulong handle_attributes, PACCESSSTATE_t passed_access_state, ACCESSMASK_t desired_access, POBJECTTYPE_t object_type, KPROCESSORMODE_t access_mode, Phandle handle) @cname("ObOpenObjectByPointer");
+extern fn NtStatus ob_open_object_by_pointer_with_tag(Pvoid object, Ulong handle_attributes, PACCESSSTATE_t passed_access_state, ACCESSMASK_t desired_access, POBJECTTYPE_t object_type, KPROCESSORMODE_t access_mode, Ulong tag, Phandle handle) @cname("ObOpenObjectByPointerWithTag");
 extern fn void ob_make_temporary_object(Pvoid object) @cname("ObMakeTemporaryObject");
-extern fn Ntstatus ob_query_name_string(Pvoid object, POBJECTNAMEINFORMATION_t object_name_info, Ulong length, Pulong return_length) @cname("ObQueryNameString");
+extern fn NtStatus ob_query_name_string(Pvoid object, POBJECTNAMEINFORMATION_t object_name_info, Ulong length, Pulong return_length) @cname("ObQueryNameString");
 extern fn Boolean ob_is_kernel_handle(Handle handle) @cname("ObIsKernelHandle");
-extern fn Ntstatus ob_query_object_auditing_by_handle(Handle handle, Pboolean generate_on_close) @cname("ObQueryObjectAuditingByHandle");
-extern fn Ntstatus io_request_device_removal_for_reset(PDEVICEOBJECT_t physical_device_object, Ulong flags) @cname("IoRequestDeviceRemovalForReset");
-extern fn Boolean fs_rtl_copy_read(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Ulong length, Boolean wait, Ulong lock_key, Pvoid buffer, PIOSTATUSBLOCK_t io_status, PDEVICEOBJECT_t device_object) @cname("FsRtlCopyRead");
-extern fn Boolean fs_rtl_copy_write(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Ulong length, Boolean wait, Ulong lock_key, Pvoid buffer, PIOSTATUSBLOCK_t io_status, PDEVICEOBJECT_t device_object) @cname("FsRtlCopyWrite");
-extern fn Ntstatus fs_rtl_mdl_read_ex(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Ulong length, Ulong lock_key, Pmdl* mdl_chain, PIOSTATUSBLOCK_t io_status) @cname("FsRtlMdlReadEx");
-extern fn Boolean fs_rtl_mdl_read_dev(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Ulong length, Ulong lock_key, Pmdl* mdl_chain, PIOSTATUSBLOCK_t io_status, PDEVICEOBJECT_t device_object) @cname("FsRtlMdlReadDev");
-extern fn Boolean fs_rtl_mdl_read_complete_dev(PFILEOBJECT_t file_object, Pmdl mdl_chain, PDEVICEOBJECT_t device_object) @cname("FsRtlMdlReadCompleteDev");
-extern fn Ntstatus fs_rtl_prepare_mdl_write_ex(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Ulong length, Ulong lock_key, Pmdl* mdl_chain, PIOSTATUSBLOCK_t io_status) @cname("FsRtlPrepareMdlWriteEx");
-extern fn Boolean fs_rtl_prepare_mdl_write_dev(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Ulong length, Ulong lock_key, Pmdl* mdl_chain, PIOSTATUSBLOCK_t io_status, PDEVICEOBJECT_t device_object) @cname("FsRtlPrepareMdlWriteDev");
-extern fn Boolean fs_rtl_mdl_write_complete_dev(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Pmdl mdl_chain, PDEVICEOBJECT_t device_object) @cname("FsRtlMdlWriteCompleteDev");
+extern fn NtStatus ob_query_object_auditing_by_handle(Handle handle, Pboolean generate_on_close) @cname("ObQueryObjectAuditingByHandle");
+extern fn NtStatus io_request_device_removal_for_reset(PDeviceObject_t physical_device_object, Ulong flags) @cname("IoRequestDeviceRemovalForReset");
+extern fn Boolean fs_rtl_copy_read(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Ulong length, Boolean wait, Ulong lock_key, Pvoid buffer, PIOSTATUSBLOCK_t io_status, PDeviceObject_t device_object) @cname("FsRtlCopyRead");
+extern fn Boolean fs_rtl_copy_write(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Ulong length, Boolean wait, Ulong lock_key, Pvoid buffer, PIOSTATUSBLOCK_t io_status, PDeviceObject_t device_object) @cname("FsRtlCopyWrite");
+extern fn NtStatus fs_rtl_mdl_read_ex(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Ulong length, Ulong lock_key, Pmdl* mdl_chain, PIOSTATUSBLOCK_t io_status) @cname("FsRtlMdlReadEx");
+extern fn Boolean fs_rtl_mdl_read_dev(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Ulong length, Ulong lock_key, Pmdl* mdl_chain, PIOSTATUSBLOCK_t io_status, PDeviceObject_t device_object) @cname("FsRtlMdlReadDev");
+extern fn Boolean fs_rtl_mdl_read_complete_dev(PFILEOBJECT_t file_object, Pmdl mdl_chain, PDeviceObject_t device_object) @cname("FsRtlMdlReadCompleteDev");
+extern fn NtStatus fs_rtl_prepare_mdl_write_ex(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Ulong length, Ulong lock_key, Pmdl* mdl_chain, PIOSTATUSBLOCK_t io_status) @cname("FsRtlPrepareMdlWriteEx");
+extern fn Boolean fs_rtl_prepare_mdl_write_dev(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Ulong length, Ulong lock_key, Pmdl* mdl_chain, PIOSTATUSBLOCK_t io_status, PDeviceObject_t device_object) @cname("FsRtlPrepareMdlWriteDev");
+extern fn Boolean fs_rtl_mdl_write_complete_dev(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Pmdl mdl_chain, PDeviceObject_t device_object) @cname("FsRtlMdlWriteCompleteDev");
 extern fn void fs_rtl_acquire_file_exclusive(PFILEOBJECT_t file_object) @cname("FsRtlAcquireFileExclusive");
 extern fn void fs_rtl_release_file(PFILEOBJECT_t file_object) @cname("FsRtlReleaseFile");
-extern fn Ntstatus fs_rtl_get_file_size(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_size) @cname("FsRtlGetFileSize");
-extern fn Boolean fs_rtl_is_total_device_failure(Ntstatus status) @cname("FsRtlIsTotalDeviceFailure");
+extern fn NtStatus fs_rtl_get_file_size(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_size) @cname("FsRtlGetFileSize");
+extern fn Boolean fs_rtl_is_total_device_failure(NtStatus status) @cname("FsRtlIsTotalDeviceFailure");
 extern fn PFILELOCK_t fs_rtl_allocate_file_lock(PCOMPLETELOCKIRPROUTINE_t complete_lock_irp_routine, PUNLOCKROUTINE_t unlock_routine) @cname("FsRtlAllocateFileLock");
 extern fn void fs_rtl_free_file_lock(PFILELOCK_t file_lock) @cname("FsRtlFreeFileLock");
 extern fn void fs_rtl_initialize_file_lock(PFILELOCK_t file_lock, PCOMPLETELOCKIRPROUTINE_t complete_lock_irp_routine, PUNLOCKROUTINE_t unlock_routine) @cname("FsRtlInitializeFileLock");
 extern fn void fs_rtl_uninitialize_file_lock(PFILELOCK_t file_lock) @cname("FsRtlUninitializeFileLock");
-extern fn Ntstatus fs_rtl_process_file_lock(PFILELOCK_t file_lock, Pirp irp, Pvoid context) @cname("FsRtlProcessFileLock");
+extern fn NtStatus fs_rtl_process_file_lock(PFILELOCK_t file_lock, Pirp irp, Pvoid context) @cname("FsRtlProcessFileLock");
 extern fn Boolean fs_rtl_check_lock_for_read_access(PFILELOCK_t file_lock, Pirp irp) @cname("FsRtlCheckLockForReadAccess");
 extern fn Boolean fs_rtl_check_lock_for_write_access(PFILELOCK_t file_lock, Pirp irp) @cname("FsRtlCheckLockForWriteAccess");
 extern fn Boolean fs_rtl_check_lock_for_oplock_request(PFILELOCK_t file_lock, PLARGEINTEGER_t allocation_size) @cname("FsRtlCheckLockForOplockRequest");
@@ -7591,15 +7591,15 @@ extern fn Boolean fs_rtl_fast_check_lock_for_write(PFILELOCK_t file_lock, PLARGE
 extern fn PFILELOCKINFO_t fs_rtl_get_next_file_lock(PFILELOCK_t file_lock, Boolean restart) @cname("FsRtlGetNextFileLock");
 extern fn Boolean fs_rtl_are_there_current_or_in_progress_file_locks(PFILELOCK_t file_lock) @cname("FsRtlAreThereCurrentOrInProgressFileLocks");
 extern fn Boolean fs_rtl_are_there_waiting_file_locks(PFILELOCK_t file_lock) @cname("FsRtlAreThereWaitingFileLocks");
-extern fn Ntstatus fs_rtl_fast_unlock_single(PFILELOCK_t file_lock, PFILEOBJECT_t file_object, LARGEINTEGER_t* file_offset, PLARGEINTEGER_t length, Peprocess process_id, Ulong key, Pvoid context, Boolean already_synchronized) @cname("FsRtlFastUnlockSingle");
-extern fn Ntstatus fs_rtl_fast_unlock_all(PFILELOCK_t file_lock, PFILEOBJECT_t file_object, Peprocess process_id, Pvoid context) @cname("FsRtlFastUnlockAll");
-extern fn Ntstatus fs_rtl_fast_unlock_all_by_key(PFILELOCK_t file_lock, PFILEOBJECT_t file_object, Peprocess process_id, Ulong key, Pvoid context) @cname("FsRtlFastUnlockAllByKey");
+extern fn NtStatus fs_rtl_fast_unlock_single(PFILELOCK_t file_lock, PFILEOBJECT_t file_object, LARGEINTEGER_t* file_offset, PLARGEINTEGER_t length, Peprocess process_id, Ulong key, Pvoid context, Boolean already_synchronized) @cname("FsRtlFastUnlockSingle");
+extern fn NtStatus fs_rtl_fast_unlock_all(PFILELOCK_t file_lock, PFILEOBJECT_t file_object, Peprocess process_id, Pvoid context) @cname("FsRtlFastUnlockAll");
+extern fn NtStatus fs_rtl_fast_unlock_all_by_key(PFILELOCK_t file_lock, PFILEOBJECT_t file_object, Peprocess process_id, Ulong key, Pvoid context) @cname("FsRtlFastUnlockAllByKey");
 extern fn Boolean fs_rtl_private_lock(PFILELOCK_t file_lock, PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, PLARGEINTEGER_t length, Peprocess process_id, Ulong key, Boolean fail_immediately, Boolean exclusive_lock, PIOSTATUSBLOCK_t iosb, Pirp irp, Pvoid context, Boolean already_synchronized) @cname("FsRtlPrivateLock");
 extern fn void fs_rtl_initialize_tunnel_cache(Tunnel* cache) @cname("FsRtlInitializeTunnelCache");
-extern fn void fs_rtl_add_to_tunnel_cache(Tunnel* cache, Ulonglong directory_key, UNICODESTRING_t* short_name, UNICODESTRING_t* long_name, Boolean key_by_short_name, Ulong data_length, void* data) @cname("FsRtlAddToTunnelCache");
-extern fn Boolean fs_rtl_find_in_tunnel_cache(Tunnel* cache, Ulonglong directory_key, UNICODESTRING_t* name, UNICODESTRING_t* short_name, UNICODESTRING_t* long_name, Ulong* data_length, void* data) @cname("FsRtlFindInTunnelCache");
-extern fn void fs_rtl_add_to_tunnel_cache_ex(Tunnel* cache, Ulonglong directory_key, UNICODESTRING_t* short_name, UNICODESTRING_t* long_name, Ulong flags, Ulong data_length, void* data) @cname("FsRtlAddToTunnelCacheEx");
-extern fn Boolean fs_rtl_find_in_tunnel_cache_ex(Tunnel* cache, Ulonglong directory_key, UNICODESTRING_t* name, UNICODESTRING_t* short_name, UNICODESTRING_t* long_name, Ulong flags, Ulong* data_length, void* data) @cname("FsRtlFindInTunnelCacheEx");
+extern fn void fs_rtl_add_to_tunnel_cache(Tunnel* cache, Ulonglong directory_key, UnicodeString_t* short_name, UnicodeString_t* long_name, Boolean key_by_short_name, Ulong data_length, void* data) @cname("FsRtlAddToTunnelCache");
+extern fn Boolean fs_rtl_find_in_tunnel_cache(Tunnel* cache, Ulonglong directory_key, UnicodeString_t* name, UnicodeString_t* short_name, UnicodeString_t* long_name, Ulong* data_length, void* data) @cname("FsRtlFindInTunnelCache");
+extern fn void fs_rtl_add_to_tunnel_cache_ex(Tunnel* cache, Ulonglong directory_key, UnicodeString_t* short_name, UnicodeString_t* long_name, Ulong flags, Ulong data_length, void* data) @cname("FsRtlAddToTunnelCacheEx");
+extern fn Boolean fs_rtl_find_in_tunnel_cache_ex(Tunnel* cache, Ulonglong directory_key, UnicodeString_t* name, UnicodeString_t* short_name, UnicodeString_t* long_name, Ulong flags, Ulong* data_length, void* data) @cname("FsRtlFindInTunnelCacheEx");
 extern fn void fs_rtl_delete_key_from_tunnel_cache(Tunnel* cache, Ulonglong directory_key) @cname("FsRtlDeleteKeyFromTunnelCache");
 extern fn void fs_rtl_delete_tunnel_cache(Tunnel* cache) @cname("FsRtlDeleteTunnelCache");
 extern fn void fs_rtl_dissect_dbcs(ANSISTRING_t path, PANSISTRING_t first_name, PANSISTRING_t remaining_name) @cname("FsRtlDissectDbcs");
@@ -7607,8 +7607,8 @@ extern fn Boolean fs_rtl_does_dbcs_contain_wild_cards(PANSISTRING_t name) @cname
 extern fn Boolean fs_rtl_is_dbcs_in_expression(PANSISTRING_t expression, PANSISTRING_t name) @cname("FsRtlIsDbcsInExpression");
 extern fn Boolean fs_rtl_is_fat_dbcs_legal(ANSISTRING_t dbcs_name, Boolean wild_cards_permissible, Boolean path_name_permissible, Boolean leading_backslash_permissible) @cname("FsRtlIsFatDbcsLegal");
 extern fn Boolean fs_rtl_is_hpfs_dbcs_legal(ANSISTRING_t dbcs_name, Boolean wild_cards_permissible, Boolean path_name_permissible, Boolean leading_backslash_permissible) @cname("FsRtlIsHpfsDbcsLegal");
-extern fn Ntstatus fs_rtl_normalize_ntstatus(Ntstatus exception, Ntstatus generic_exception) @cname("FsRtlNormalizeNtstatus");
-extern fn Boolean fs_rtl_is_ntstatus_expected(Ntstatus exception) @cname("FsRtlIsNtstatusExpected");
+extern fn NtStatus fs_rtl_normalize_ntstatus(NtStatus exception, NtStatus generic_exception) @cname("FsRtlNormalizeNtstatus");
+extern fn Boolean fs_rtl_is_ntstatus_expected(NtStatus exception) @cname("FsRtlIsNtstatusExpected");
 extern fn Peresource fs_rtl_allocate_resource() @cname("FsRtlAllocateResource");
 extern fn void fs_rtl_initialize_large_mcb(PLARGEMCB_t mcb, POOLTYPE_t pool_type) @cname("FsRtlInitializeLargeMcb");
 extern fn void fs_rtl_uninitialize_large_mcb(PLARGEMCB_t mcb) @cname("FsRtlUninitializeLargeMcb");
@@ -7628,7 +7628,7 @@ extern fn void fs_rtl_uninitialize_base_mcb(PBASEMCB_t mcb) @cname("FsRtlUniniti
 extern fn void fs_rtl_reset_base_mcb(PBASEMCB_t mcb) @cname("FsRtlResetBaseMcb");
 extern fn void fs_rtl_truncate_base_mcb(PBASEMCB_t mcb, Longlong vbn) @cname("FsRtlTruncateBaseMcb");
 extern fn Boolean fs_rtl_add_base_mcb_entry(PBASEMCB_t mcb, Longlong vbn, Longlong lbn, Longlong sector_count) @cname("FsRtlAddBaseMcbEntry");
-extern fn Ntstatus fs_rtl_add_base_mcb_entry_ex(PBASEMCB_t mcb, Longlong vbn, Longlong lbn, Longlong sector_count) @cname("FsRtlAddBaseMcbEntryEx");
+extern fn NtStatus fs_rtl_add_base_mcb_entry_ex(PBASEMCB_t mcb, Longlong vbn, Longlong lbn, Longlong sector_count) @cname("FsRtlAddBaseMcbEntryEx");
 extern fn Boolean fs_rtl_remove_base_mcb_entry(PBASEMCB_t mcb, Longlong vbn, Longlong sector_count) @cname("FsRtlRemoveBaseMcbEntry");
 extern fn Boolean fs_rtl_lookup_base_mcb_entry(PBASEMCB_t mcb, Longlong vbn, Plonglong lbn, Plonglong sector_count_from_lbn, Plonglong starting_lbn, Plonglong sector_count_from_starting_lbn, Pulong index) @cname("FsRtlLookupBaseMcbEntry");
 extern fn Boolean fs_rtl_lookup_last_base_mcb_entry(PBASEMCB_t mcb, Plonglong vbn, Plonglong lbn) @cname("FsRtlLookupLastBaseMcbEntry");
@@ -7645,27 +7645,27 @@ extern fn Boolean fs_rtl_lookup_mcb_entry(Pmcb mcb, Vbn vbn, Plbn lbn, Pulong se
 extern fn Boolean fs_rtl_lookup_last_mcb_entry(Pmcb mcb, Pvbn vbn, Plbn lbn) @cname("FsRtlLookupLastMcbEntry");
 extern fn Ulong fs_rtl_number_of_runs_in_mcb(Pmcb mcb) @cname("FsRtlNumberOfRunsInMcb");
 extern fn Boolean fs_rtl_get_next_mcb_entry(Pmcb mcb, Ulong run_index, Pvbn vbn, Plbn lbn, Pulong sector_count) @cname("FsRtlGetNextMcbEntry");
-extern fn Ntstatus fs_rtl_balance_reads(PDEVICEOBJECT_t target_device) @cname("FsRtlBalanceReads");
+extern fn NtStatus fs_rtl_balance_reads(PDeviceObject_t target_device) @cname("FsRtlBalanceReads");
 extern fn void fs_rtl_initialize_oplock(Poplock oplock) @cname("FsRtlInitializeOplock");
 extern fn void fs_rtl_uninitialize_oplock(Poplock oplock) @cname("FsRtlUninitializeOplock");
-extern fn Ntstatus fs_rtl_oplock_fsctrl(Poplock oplock, Pirp irp, Ulong open_count) @cname("FsRtlOplockFsctrl");
-extern fn Ntstatus fs_rtl_check_oplock(Poplock oplock, Pirp irp, Pvoid context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t post_irp_routine) @cname("FsRtlCheckOplock");
-extern fn Ntstatus fs_rtl_check_oplock_ex(Poplock oplock, Pirp irp, Ulong flags, Pvoid context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t post_irp_routine) @cname("FsRtlCheckOplockEx");
-extern fn Ntstatus fs_rtl_check_upper_oplock(Poplock oplock, Ulong new_lower_oplock_state, Pvoid completion_routine_context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t pre_pend_routine, Ulong flags) @cname("FsRtlCheckUpperOplock");
-extern fn Ntstatus fs_rtl_upper_oplock_fsctrl(Poplock oplock, Pirp irp, Ulong open_count, Ulong lower_oplock_state, Ulong flags) @cname("FsRtlUpperOplockFsctrl");
+extern fn NtStatus fs_rtl_oplock_fsctrl(Poplock oplock, Pirp irp, Ulong open_count) @cname("FsRtlOplockFsctrl");
+extern fn NtStatus fs_rtl_check_oplock(Poplock oplock, Pirp irp, Pvoid context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t post_irp_routine) @cname("FsRtlCheckOplock");
+extern fn NtStatus fs_rtl_check_oplock_ex(Poplock oplock, Pirp irp, Ulong flags, Pvoid context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t post_irp_routine) @cname("FsRtlCheckOplockEx");
+extern fn NtStatus fs_rtl_check_upper_oplock(Poplock oplock, Ulong new_lower_oplock_state, Pvoid completion_routine_context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t pre_pend_routine, Ulong flags) @cname("FsRtlCheckUpperOplock");
+extern fn NtStatus fs_rtl_upper_oplock_fsctrl(Poplock oplock, Pirp irp, Ulong open_count, Ulong lower_oplock_state, Ulong flags) @cname("FsRtlUpperOplockFsctrl");
 extern fn Boolean fs_rtl_oplock_is_fast_io_possible(Poplock oplock) @cname("FsRtlOplockIsFastIoPossible");
 extern fn Boolean fs_rtl_current_batch_oplock(Poplock oplock) @cname("FsRtlCurrentBatchOplock");
 extern fn Boolean fs_rtl_current_oplock(Poplock oplock) @cname("FsRtlCurrentOplock");
-extern fn Ntstatus fs_rtl_oplock_break_to_none(Poplock oplock, PIOSTACKLOCATION_t irp_sp, Pirp irp, Pvoid context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t post_irp_routine) @cname("FsRtlOplockBreakToNone");
+extern fn NtStatus fs_rtl_oplock_break_to_none(Poplock oplock, PIOSTACKLOCATION_t irp_sp, Pirp irp, Pvoid context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t post_irp_routine) @cname("FsRtlOplockBreakToNone");
 extern fn Boolean fs_rtl_oplock_is_shared_request(Pirp irp) @cname("FsRtlOplockIsSharedRequest");
-extern fn Ntstatus fs_rtl_oplock_break_h(Poplock oplock, Pirp irp, Ulong flags, Pvoid context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t post_irp_routine) @cname("FsRtlOplockBreakH");
-extern fn Ntstatus fs_rtl_oplock_break_h2(Poplock oplock, Pirp irp, Ulong flags, Pvoid context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t post_irp_routine, PACCESSMASK_t granted_access, Pushort share_access) @cname("FsRtlOplockBreakH2");
+extern fn NtStatus fs_rtl_oplock_break_h(Poplock oplock, Pirp irp, Ulong flags, Pvoid context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t post_irp_routine) @cname("FsRtlOplockBreakH");
+extern fn NtStatus fs_rtl_oplock_break_h2(Poplock oplock, Pirp irp, Ulong flags, Pvoid context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t post_irp_routine, PACCESSMASK_t granted_access, Pushort share_access) @cname("FsRtlOplockBreakH2");
 extern fn Boolean fs_rtl_current_oplock_h(Poplock oplock) @cname("FsRtlCurrentOplockH");
-extern fn Ntstatus fs_rtl_oplock_break_to_none_ex(Poplock oplock, Pirp irp, Ulong flags, Pvoid context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t post_irp_routine) @cname("FsRtlOplockBreakToNoneEx");
-extern fn Ntstatus fs_rtl_oplock_fsctrl_ex(Poplock oplock, Pirp irp, Ulong open_count, Ulong flags) @cname("FsRtlOplockFsctrlEx");
+extern fn NtStatus fs_rtl_oplock_break_to_none_ex(Poplock oplock, Pirp irp, Ulong flags, Pvoid context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t post_irp_routine) @cname("FsRtlOplockBreakToNoneEx");
+extern fn NtStatus fs_rtl_oplock_fsctrl_ex(Poplock oplock, Pirp irp, Ulong open_count, Ulong flags) @cname("FsRtlOplockFsctrlEx");
 extern fn Boolean fs_rtl_oplock_keys_equal(PFILEOBJECT_t fo1, PFILEOBJECT_t fo2) @cname("FsRtlOplockKeysEqual");
-extern fn Ntstatus fs_rtl_notify_volume_event(PFILEOBJECT_t file_object, Ulong event_code) @cname("FsRtlNotifyVolumeEvent");
-extern fn Ntstatus fs_rtl_notify_volume_event_ex(PFILEOBJECT_t file_object, Ulong event_code, PTARGETDEVICECUSTOMNOTIFICATION_t event) @cname("FsRtlNotifyVolumeEventEx");
+extern fn NtStatus fs_rtl_notify_volume_event(PFILEOBJECT_t file_object, Ulong event_code) @cname("FsRtlNotifyVolumeEvent");
+extern fn NtStatus fs_rtl_notify_volume_event_ex(PFILEOBJECT_t file_object, Ulong event_code, PTARGETDEVICECUSTOMNOTIFICATION_t event) @cname("FsRtlNotifyVolumeEventEx");
 extern fn void fs_rtl_notify_initialize_sync(PNOTIFYSYNC_t* notify_sync) @cname("FsRtlNotifyInitializeSync");
 extern fn void fs_rtl_notify_uninitialize_sync(PNOTIFYSYNC_t* notify_sync) @cname("FsRtlNotifyUninitializeSync");
 extern fn void fs_rtl_notify_full_change_directory(PNOTIFYSYNC_t notify_sync, PLISTENTRY_t notify_list, Pvoid fs_context, Pstring full_directory_name, Boolean watch_tree, Boolean ignore_buffer, Ulong completion_filter, Pirp notify_irp, PCHECKFORTRAVERSEACCESS_t traverse_callback, PSECURITYSUBJECTCONTEXT_t subject_context) @cname("FsRtlNotifyFullChangeDirectory");
@@ -7674,33 +7674,33 @@ extern fn void fs_rtl_notify_filter_report_change(PNOTIFYSYNC_t notify_sync, PLI
 extern fn void fs_rtl_notify_full_report_change(PNOTIFYSYNC_t notify_sync, PLISTENTRY_t notify_list, Pstring full_target_name, Ushort target_name_offset, Pstring stream_name, Pstring normalized_parent_name, Ulong filter_match, Ulong action, Pvoid target_context) @cname("FsRtlNotifyFullReportChange");
 extern fn void fs_rtl_notify_cleanup(PNOTIFYSYNC_t notify_sync, PLISTENTRY_t notify_list, Pvoid fs_context) @cname("FsRtlNotifyCleanup");
 extern fn void fs_rtl_notify_cleanup_all(PNOTIFYSYNC_t notify_sync, PLISTENTRY_t notify_list) @cname("FsRtlNotifyCleanupAll");
-extern fn void fs_rtl_dissect_name(UNICODESTRING_t path, PUNICODESTRING_t first_name, PUNICODESTRING_t remaining_name) @cname("FsRtlDissectName");
-extern fn Boolean fs_rtl_does_name_contain_wild_cards(PUNICODESTRING_t name) @cname("FsRtlDoesNameContainWildCards");
+extern fn void fs_rtl_dissect_name(UnicodeString_t path, PUnicodeString_t first_name, PUnicodeString_t remaining_name) @cname("FsRtlDissectName");
+extern fn Boolean fs_rtl_does_name_contain_wild_cards(PUnicodeString_t name) @cname("FsRtlDoesNameContainWildCards");
 extern fn Boolean fs_rtl_are_names_equal(PCUNICODESTRING_t constant_name_a, PCUNICODESTRING_t constant_name_b, Boolean ignore_case, Pcwch upcase_table) @cname("FsRtlAreNamesEqual");
-extern fn Boolean fs_rtl_is_name_in_expression(PUNICODESTRING_t expression, PUNICODESTRING_t name, Boolean ignore_case, Pwch upcase_table) @cname("FsRtlIsNameInExpression");
-extern fn Boolean fs_rtl_is_name_in_un_upcased_expression(PUNICODESTRING_t expression, PUNICODESTRING_t name, Boolean ignore_case, Pwch upcase_table) @cname("FsRtlIsNameInUnUpcasedExpression");
+extern fn Boolean fs_rtl_is_name_in_expression(PUnicodeString_t expression, PUnicodeString_t name, Boolean ignore_case, Pwch upcase_table) @cname("FsRtlIsNameInExpression");
+extern fn Boolean fs_rtl_is_name_in_un_upcased_expression(PUnicodeString_t expression, PUnicodeString_t name, Boolean ignore_case, Pwch upcase_table) @cname("FsRtlIsNameInUnUpcasedExpression");
 extern fn void fs_rtl_post_stack_overflow(Pvoid context, Pkevent event, PFSRTLSTACKOVERFLOWROUTINE_t stack_overflow_routine) @cname("FsRtlPostStackOverflow");
 extern fn void fs_rtl_post_paging_file_stack_overflow(Pvoid context, Pkevent event, PFSRTLSTACKOVERFLOWROUTINE_t stack_overflow_routine) @cname("FsRtlPostPagingFileStackOverflow");
-extern fn Ntstatus fs_rtl_register_unc_provider(Phandle mup_handle, PCUNICODESTRING_t redirector_device_name, Boolean mailslots_supported) @cname("FsRtlRegisterUncProvider");
-extern fn Ntstatus fs_rtl_register_unc_provider_ex(Phandle mup_handle, PCUNICODESTRING_t redir_dev_name, PDEVICEOBJECT_t device_object, FSRTLUNCPROVIDERFLAGS_t flags) @cname("FsRtlRegisterUncProviderEx");
-extern fn Ntstatus fs_rtl_register_unc_provider_ex2(PCUNICODESTRING_t redir_dev_name, PDEVICEOBJECT_t device_object, FSRTLUNCPROVIDERREGISTRATION_t* registration, Phandle mup_handle) @cname("FsRtlRegisterUncProviderEx2");
+extern fn NtStatus fs_rtl_register_unc_provider(Phandle mup_handle, PCUNICODESTRING_t redirector_device_name, Boolean mailslots_supported) @cname("FsRtlRegisterUncProvider");
+extern fn NtStatus fs_rtl_register_unc_provider_ex(Phandle mup_handle, PCUNICODESTRING_t redir_dev_name, PDeviceObject_t device_object, FSRTLUNCPROVIDERFLAGS_t flags) @cname("FsRtlRegisterUncProviderEx");
+extern fn NtStatus fs_rtl_register_unc_provider_ex2(PCUNICODESTRING_t redir_dev_name, PDeviceObject_t device_object, FSRTLUNCPROVIDERREGISTRATION_t* registration, Phandle mup_handle) @cname("FsRtlRegisterUncProviderEx2");
 extern fn void fs_rtl_deregister_unc_provider(Handle handle) @cname("FsRtlDeregisterUncProvider");
-extern fn Ntstatus fs_rtl_cancellable_wait_for_single_object(Pvoid object, PLARGEINTEGER_t timeout, Pirp irp) @cname("FsRtlCancellableWaitForSingleObject");
-extern fn Ntstatus fs_rtl_cancellable_wait_for_multiple_objects(Ulong count, Pvoid* object_array, WAITTYPE_t wait_type, PLARGEINTEGER_t timeout, PKWAITBLOCK_t wait_block_array, Pirp irp) @cname("FsRtlCancellableWaitForMultipleObjects");
-extern fn Ntstatus fs_rtl_mup_get_provider_info_from_file_object(PFILEOBJECT_t p_file_object, Ulong level, Pvoid p_buffer, Pulong p_buffer_size) @cname("FsRtlMupGetProviderInfoFromFileObject");
-extern fn Ntstatus fs_rtl_mup_get_provider_id_from_name(PCUNICODESTRING_t p_provider_name, PulongSR p_provider_id) @cname("FsRtlMupGetProviderIdFromName");
-extern fn Ntstatus fs_rtl_insert_per_file_context(Pvoid* per_file_context_pointer, PFSRTLPERFILECONTEXT_t ptr) @cname("FsRtlInsertPerFileContext");
+extern fn NtStatus fs_rtl_cancellable_wait_for_single_object(Pvoid object, PLARGEINTEGER_t timeout, Pirp irp) @cname("FsRtlCancellableWaitForSingleObject");
+extern fn NtStatus fs_rtl_cancellable_wait_for_multiple_objects(Ulong count, Pvoid* object_array, WAITTYPE_t wait_type, PLARGEINTEGER_t timeout, PKWAITBLOCK_t wait_block_array, Pirp irp) @cname("FsRtlCancellableWaitForMultipleObjects");
+extern fn NtStatus fs_rtl_mup_get_provider_info_from_file_object(PFILEOBJECT_t p_file_object, Ulong level, Pvoid p_buffer, Pulong p_buffer_size) @cname("FsRtlMupGetProviderInfoFromFileObject");
+extern fn NtStatus fs_rtl_mup_get_provider_id_from_name(PCUNICODESTRING_t p_provider_name, PulongSR p_provider_id) @cname("FsRtlMupGetProviderIdFromName");
+extern fn NtStatus fs_rtl_insert_per_file_context(Pvoid* per_file_context_pointer, PFSRTLPERFILECONTEXT_t ptr) @cname("FsRtlInsertPerFileContext");
 extern fn PFSRTLPERFILECONTEXT_t fs_rtl_lookup_per_file_context(Pvoid* per_file_context_pointer, Pvoid owner_id, Pvoid instance_id) @cname("FsRtlLookupPerFileContext");
 extern fn PFSRTLPERFILECONTEXT_t fs_rtl_remove_per_file_context(Pvoid* per_file_context_pointer, Pvoid owner_id, Pvoid instance_id) @cname("FsRtlRemovePerFileContext");
 extern fn void fs_rtl_teardown_per_file_contexts(Pvoid* per_file_context_pointer) @cname("FsRtlTeardownPerFileContexts");
-extern fn Ntstatus fs_rtl_insert_per_stream_context(PFSRTLADVANCEDFCBHEADER_t per_stream_context, PFSRTLPERSTREAMCONTEXT_t ptr) @cname("FsRtlInsertPerStreamContext");
+extern fn NtStatus fs_rtl_insert_per_stream_context(PFSRTLADVANCEDFCBHEADER_t per_stream_context, PFSRTLPERSTREAMCONTEXT_t ptr) @cname("FsRtlInsertPerStreamContext");
 extern fn PFSRTLPERSTREAMCONTEXT_t fs_rtl_lookup_per_stream_context_internal(PFSRTLADVANCEDFCBHEADER_t stream_context, Pvoid owner_id, Pvoid instance_id) @cname("FsRtlLookupPerStreamContextInternal");
 extern fn PFSRTLPERSTREAMCONTEXT_t fs_rtl_remove_per_stream_context(PFSRTLADVANCEDFCBHEADER_t stream_context, Pvoid owner_id, Pvoid instance_id) @cname("FsRtlRemovePerStreamContext");
 extern fn Pvoid fs_rtl_allocate_ae_push_lock(POOLTYPE_t pool_type, Ulong tag) @cname("FsRtlAllocateAePushLock");
 extern fn void fs_rtl_free_ae_push_lock(Pvoid ae_push_lock) @cname("FsRtlFreeAePushLock");
 extern fn void fs_rtl_setup_advanced_header(Pvoid adv_hdr, PFASTMUTEX_t f_mutex) @cname("FsRtlSetupAdvancedHeader");
 extern fn void fs_rtl_teardown_per_stream_contexts(PFSRTLADVANCEDFCBHEADER_t advanced_header) @cname("FsRtlTeardownPerStreamContexts");
-extern fn Ntstatus fs_rtl_insert_per_file_object_context(PFILEOBJECT_t file_object, PFSRTLPERFILEOBJECTCONTEXT_t ptr) @cname("FsRtlInsertPerFileObjectContext");
+extern fn NtStatus fs_rtl_insert_per_file_object_context(PFILEOBJECT_t file_object, PFSRTLPERFILEOBJECTCONTEXT_t ptr) @cname("FsRtlInsertPerFileObjectContext");
 extern fn PFSRTLPERFILEOBJECTCONTEXT_t fs_rtl_lookup_per_file_object_context(PFILEOBJECT_t file_object, Pvoid owner_id, Pvoid instance_id) @cname("FsRtlLookupPerFileObjectContext");
 extern fn PFSRTLPERFILEOBJECTCONTEXT_t fs_rtl_remove_per_file_object_context(PFILEOBJECT_t file_object, Pvoid owner_id, Pvoid instance_id) @cname("FsRtlRemovePerFileObjectContext");
 extern fn void fs_rtl_increment_cc_fast_read_not_possible() @cname("FsRtlIncrementCcFastReadNotPossible");
@@ -7710,58 +7710,58 @@ extern fn void fs_rtl_increment_cc_fast_read_resource_miss() @cname("FsRtlIncrem
 extern fn void fs_rtl_increment_cc_fast_mdl_read_wait() @cname("FsRtlIncrementCcFastMdlReadWait");
 extern fn Logical fs_rtl_is_paging_file(PFILEOBJECT_t file_object) @cname("FsRtlIsPagingFile");
 extern fn Logical fs_rtl_is_system_paging_file(PFILEOBJECT_t file_object) @cname("FsRtlIsSystemPagingFile");
-extern fn Ntstatus fs_rtl_create_section_for_data_scan(Phandle section_handle, Pvoid* section_object, PLARGEINTEGER_t section_file_size, PFILEOBJECT_t file_object, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PLARGEINTEGER_t maximum_size, Ulong section_page_protection, Ulong allocation_attributes, Ulong flags) @cname("FsRtlCreateSectionForDataScan");
-extern fn Ntstatus fs_rtl_validate_reparse_point_buffer(Ulong buffer_length, PREPARSEDATABUFFER_t reparse_buffer) @cname("FsRtlValidateReparsePointBuffer");
-extern fn Ntstatus fs_rtl_remove_dots_from_path(Pwstr original_string, Ushort path_length, Ushort* new_length) @cname("FsRtlRemoveDotsFromPath");
+extern fn NtStatus fs_rtl_create_section_for_data_scan(Phandle section_handle, Pvoid* section_object, PLARGEINTEGER_t section_file_size, PFILEOBJECT_t file_object, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PLARGEINTEGER_t maximum_size, Ulong section_page_protection, Ulong allocation_attributes, Ulong flags) @cname("FsRtlCreateSectionForDataScan");
+extern fn NtStatus fs_rtl_validate_reparse_point_buffer(Ulong buffer_length, PREPARSEDATABUFFER_t reparse_buffer) @cname("FsRtlValidateReparsePointBuffer");
+extern fn NtStatus fs_rtl_remove_dots_from_path(Pwstr original_string, Ushort path_length, Ushort* new_length) @cname("FsRtlRemoveDotsFromPath");
 extern fn Boolean fs_rtl_is_non_empty_directory_reparse_point_allowed(Ulong reparse_tag) @cname("FsRtlIsNonEmptyDirectoryReparsePointAllowed");
-extern fn Ntstatus fs_rtl_allocate_extra_create_parameter_list(FSRTLALLOCATEECPLISTFLAGS_t flags, PECPLIST_t* ecp_list) @cname("FsRtlAllocateExtraCreateParameterList");
+extern fn NtStatus fs_rtl_allocate_extra_create_parameter_list(FSRTLALLOCATEECPLISTFLAGS_t flags, PECPLIST_t* ecp_list) @cname("FsRtlAllocateExtraCreateParameterList");
 extern fn void fs_rtl_free_extra_create_parameter_list(PECPLIST_t ecp_list) @cname("FsRtlFreeExtraCreateParameterList");
-extern fn Ntstatus fs_rtl_initialize_extra_create_parameter_list(PECPLIST_t ecp_list) @cname("FsRtlInitializeExtraCreateParameterList");
-extern fn Ntstatus fs_rtl_allocate_extra_create_parameter(Lpcguid ecp_type, Ulong size_of_context, FSRTLALLOCATEECPFLAGS_t flags, PFSRTLEXTRACREATEPARAMETERCLEANUPCALLBACK_t cleanup_callback, Ulong pool_tag, Pvoid* ecp_context) @cname("FsRtlAllocateExtraCreateParameter");
+extern fn NtStatus fs_rtl_initialize_extra_create_parameter_list(PECPLIST_t ecp_list) @cname("FsRtlInitializeExtraCreateParameterList");
+extern fn NtStatus fs_rtl_allocate_extra_create_parameter(Lpcguid ecp_type, Ulong size_of_context, FSRTLALLOCATEECPFLAGS_t flags, PFSRTLEXTRACREATEPARAMETERCLEANUPCALLBACK_t cleanup_callback, Ulong pool_tag, Pvoid* ecp_context) @cname("FsRtlAllocateExtraCreateParameter");
 extern fn void fs_rtl_free_extra_create_parameter(Pvoid ecp_context) @cname("FsRtlFreeExtraCreateParameter");
 extern fn void fs_rtl_initialize_extra_create_parameter(PECPHEADER_t ecp, Ulong ecp_flags, PFSRTLEXTRACREATEPARAMETERCLEANUPCALLBACK_t cleanup_callback, Ulong total_size, Lpcguid ecp_type, Pvoid list_allocated_from) @cname("FsRtlInitializeExtraCreateParameter");
 extern fn void fs_rtl_init_extra_create_parameter_lookaside_list(Pvoid lookaside, FSRTLECPLOOKASIDEFLAGS_t flags, SIZET_t size, Ulong tag) @cname("FsRtlInitExtraCreateParameterLookasideList");
 extern fn void fs_rtl_delete_extra_create_parameter_lookaside_list(Pvoid lookaside, FSRTLECPLOOKASIDEFLAGS_t flags) @cname("FsRtlDeleteExtraCreateParameterLookasideList");
-extern fn Ntstatus fs_rtl_allocate_extra_create_parameter_from_lookaside_list(Lpcguid ecp_type, Ulong size_of_context, FSRTLALLOCATEECPFLAGS_t flags, PFSRTLEXTRACREATEPARAMETERCLEANUPCALLBACK_t cleanup_callback, Pvoid lookaside_list, Pvoid* ecp_context) @cname("FsRtlAllocateExtraCreateParameterFromLookasideList");
-extern fn Ntstatus fs_rtl_insert_extra_create_parameter(PECPLIST_t ecp_list, Pvoid ecp_context) @cname("FsRtlInsertExtraCreateParameter");
-extern fn Ntstatus fs_rtl_find_extra_create_parameter(PECPLIST_t ecp_list, Lpcguid ecp_type, Pvoid* ecp_context, Ulong* ecp_context_size) @cname("FsRtlFindExtraCreateParameter");
-extern fn Ntstatus fs_rtl_remove_extra_create_parameter(PECPLIST_t ecp_list, Lpcguid ecp_type, Pvoid* ecp_context, Ulong* ecp_context_size) @cname("FsRtlRemoveExtraCreateParameter");
-extern fn Ntstatus fs_rtl_get_ecp_list_from_irp(Pirp irp, PECPLIST_t* ecp_list) @cname("FsRtlGetEcpListFromIrp");
-extern fn Ntstatus fs_rtl_set_ecp_list_into_irp(Pirp irp, PECPLIST_t ecp_list) @cname("FsRtlSetEcpListIntoIrp");
-extern fn Ntstatus fs_rtl_get_next_extra_create_parameter(PECPLIST_t ecp_list, Pvoid current_ecp_context, Lpguid next_ecp_type, Pvoid* next_ecp_context, Ulong* next_ecp_context_size) @cname("FsRtlGetNextExtraCreateParameter");
+extern fn NtStatus fs_rtl_allocate_extra_create_parameter_from_lookaside_list(Lpcguid ecp_type, Ulong size_of_context, FSRTLALLOCATEECPFLAGS_t flags, PFSRTLEXTRACREATEPARAMETERCLEANUPCALLBACK_t cleanup_callback, Pvoid lookaside_list, Pvoid* ecp_context) @cname("FsRtlAllocateExtraCreateParameterFromLookasideList");
+extern fn NtStatus fs_rtl_insert_extra_create_parameter(PECPLIST_t ecp_list, Pvoid ecp_context) @cname("FsRtlInsertExtraCreateParameter");
+extern fn NtStatus fs_rtl_find_extra_create_parameter(PECPLIST_t ecp_list, Lpcguid ecp_type, Pvoid* ecp_context, Ulong* ecp_context_size) @cname("FsRtlFindExtraCreateParameter");
+extern fn NtStatus fs_rtl_remove_extra_create_parameter(PECPLIST_t ecp_list, Lpcguid ecp_type, Pvoid* ecp_context, Ulong* ecp_context_size) @cname("FsRtlRemoveExtraCreateParameter");
+extern fn NtStatus fs_rtl_get_ecp_list_from_irp(Pirp irp, PECPLIST_t* ecp_list) @cname("FsRtlGetEcpListFromIrp");
+extern fn NtStatus fs_rtl_set_ecp_list_into_irp(Pirp irp, PECPLIST_t ecp_list) @cname("FsRtlSetEcpListIntoIrp");
+extern fn NtStatus fs_rtl_get_next_extra_create_parameter(PECPLIST_t ecp_list, Pvoid current_ecp_context, Lpguid next_ecp_type, Pvoid* next_ecp_context, Ulong* next_ecp_context_size) @cname("FsRtlGetNextExtraCreateParameter");
 extern fn void fs_rtl_acknowledge_ecp(Pvoid ecp_context) @cname("FsRtlAcknowledgeEcp");
 extern fn void fs_rtl_prepare_to_reuse_ecp(Pvoid ecp_context) @cname("FsRtlPrepareToReuseEcp");
 extern fn Boolean fs_rtl_is_ecp_acknowledged(Pvoid ecp_context) @cname("FsRtlIsEcpAcknowledged");
 extern fn Boolean fs_rtl_is_ecp_from_user_mode(Pvoid ecp_context) @cname("FsRtlIsEcpFromUserMode");
 extern fn Peprocess fs_rtl_oplock_get_any_break_owner_process(Poplock oplock) @cname("FsRtlOplockGetAnyBreakOwnerProcess");
-extern fn Ntstatus fs_rtl_check_oplock_ex2(Poplock oplock, Pirp irp, Ulong flags, Ulong flags_ex2, Pvoid completion_routine_context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t post_irp_routine, Ulonglong timeout, Pvoid notify_context, POPLOCKNOTIFYROUTINE_t notify_routine) @cname("FsRtlCheckOplockEx2");
-extern fn Ntstatus fs_rtl_check_oplock_for_fs_filter_callback(Poplock oplock, Pvoid callback_data, Ulong flags) @cname("FsRtlCheckOplockForFsFilterCallback");
+extern fn NtStatus fs_rtl_check_oplock_ex2(Poplock oplock, Pirp irp, Ulong flags, Ulong flags_ex2, Pvoid completion_routine_context, POPLOCKWAITCOMPLETEROUTINE_t completion_routine, POPLOCKFSPREPOSTIRP_t post_irp_routine, Ulonglong timeout, Pvoid notify_context, POPLOCKNOTIFYROUTINE_t notify_routine) @cname("FsRtlCheckOplockEx2");
+extern fn NtStatus fs_rtl_check_oplock_for_fs_filter_callback(Poplock oplock, Pvoid callback_data, Ulong flags) @cname("FsRtlCheckOplockForFsFilterCallback");
 extern fn PLISTENTRY_t fs_rtl_get_current_process_loader_list() @cname("FsRtlGetCurrentProcessLoaderList");
 extern fn Boolean fs_rtl_is32_bit_process(Peprocess process) @cname("FsRtlIs32BitProcess");
-extern fn Ntstatus fs_rtl_change_backing_file_object(PFILEOBJECT_t current_file_object, PFILEOBJECT_t new_file_object, FSRTLCHANGEBACKINGTYPE_t change_backing_type, Ulong flags) @cname("FsRtlChangeBackingFileObject");
-extern fn Ntstatus fs_rtl_log_cc_flush_error(PUNICODESTRING_t file_name, PDEVICEOBJECT_t device_object, PSECTIONOBJECTPOINTERS_t section_object_pointer, Ntstatus flush_error, Ulong flags) @cname("FsRtlLogCcFlushError");
+extern fn NtStatus fs_rtl_change_backing_file_object(PFILEOBJECT_t current_file_object, PFILEOBJECT_t new_file_object, FSRTLCHANGEBACKINGTYPE_t change_backing_type, Ulong flags) @cname("FsRtlChangeBackingFileObject");
+extern fn NtStatus fs_rtl_log_cc_flush_error(PUnicodeString_t file_name, PDeviceObject_t device_object, PSECTIONOBJECTPOINTERS_t section_object_pointer, NtStatus flush_error, Ulong flags) @cname("FsRtlLogCcFlushError");
 extern fn Boolean fs_rtl_are_volume_startup_applications_complete() @cname("FsRtlAreVolumeStartupApplicationsComplete");
 extern fn Ulong fs_rtl_query_maximum_virtual_disk_nesting_level() @cname("FsRtlQueryMaximumVirtualDiskNestingLevel");
-extern fn Ntstatus fs_rtl_get_virtual_disk_nesting_level(PDEVICEOBJECT_t device_object, Pulong nesting_level, Pulong nesting_flags) @cname("FsRtlGetVirtualDiskNestingLevel");
-extern fn Ntstatus fs_rtl_volume_device_to_correlation_id(PDEVICEOBJECT_t volume_device_object, Guid* guid) @cname("FsRtlVolumeDeviceToCorrelationId");
-extern fn Ntstatus fs_rtl_issue_device_io_control(PDEVICEOBJECT_t device_object, Ulong io_ctl, Uchar flags, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length, PULONGPTR_t iosb_information) @cname("FsRtlIssueDeviceIoControl");
-extern fn Ntstatus fs_rtl_get_sector_size_information(PDEVICEOBJECT_t device_object, PFILEFSSECTORSIZEINFORMATION_t sector_size_info) @cname("FsRtlGetSectorSizeInformation");
-extern fn Ntstatus fs_rtl_get_supported_features(PDEVICEOBJECT_t device_object, Pulong supported_features) @cname("FsRtlGetSupportedFeatures");
-extern fn Ntstatus fs_rtl_kernel_fs_control_file(PFILEOBJECT_t file_object, Ulong fs_control_code, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length, Pulong ret_output_buffer_size) @cname("FsRtlKernelFsControlFile");
-extern fn Ntstatus fs_rtl_query_kernel_ea_file(PFILEOBJECT_t file_object, Pvoid returned_ea_data, Ulong length, Boolean return_single_entry, Pvoid ea_list, Ulong ea_list_length, Pulong ea_index, Boolean restart_scan, Pulong length_returned) @cname("FsRtlQueryKernelEaFile");
-extern fn Ntstatus fs_rtl_set_kernel_ea_file(PFILEOBJECT_t file_object, Pvoid ea_buffer, Ulong length) @cname("FsRtlSetKernelEaFile");
-extern fn Ntstatus fs_rtl_query_information_file(PFILEOBJECT_t file_object, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class, Pulong ret_file_information_size) @cname("FsRtlQueryInformationFile");
-extern fn Ntstatus fs_rtl_query_cached_vdl(PFILEOBJECT_t file_object, Plonglong vdl) @cname("FsRtlQueryCachedVdl");
+extern fn NtStatus fs_rtl_get_virtual_disk_nesting_level(PDeviceObject_t device_object, Pulong nesting_level, Pulong nesting_flags) @cname("FsRtlGetVirtualDiskNestingLevel");
+extern fn NtStatus fs_rtl_volume_device_to_correlation_id(PDeviceObject_t volume_device_object, Guid* guid) @cname("FsRtlVolumeDeviceToCorrelationId");
+extern fn NtStatus fs_rtl_issue_device_io_control(PDeviceObject_t device_object, Ulong io_ctl, Uchar flags, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length, PULONGPTR_t iosb_information) @cname("FsRtlIssueDeviceIoControl");
+extern fn NtStatus fs_rtl_get_sector_size_information(PDeviceObject_t device_object, PFILEFSSECTORSIZEINFORMATION_t sector_size_info) @cname("FsRtlGetSectorSizeInformation");
+extern fn NtStatus fs_rtl_get_supported_features(PDeviceObject_t device_object, Pulong supported_features) @cname("FsRtlGetSupportedFeatures");
+extern fn NtStatus fs_rtl_kernel_fs_control_file(PFILEOBJECT_t file_object, Ulong fs_control_code, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length, Pulong ret_output_buffer_size) @cname("FsRtlKernelFsControlFile");
+extern fn NtStatus fs_rtl_query_kernel_ea_file(PFILEOBJECT_t file_object, Pvoid returned_ea_data, Ulong length, Boolean return_single_entry, Pvoid ea_list, Ulong ea_list_length, Pulong ea_index, Boolean restart_scan, Pulong length_returned) @cname("FsRtlQueryKernelEaFile");
+extern fn NtStatus fs_rtl_set_kernel_ea_file(PFILEOBJECT_t file_object, Pvoid ea_buffer, Ulong length) @cname("FsRtlSetKernelEaFile");
+extern fn NtStatus fs_rtl_query_information_file(PFILEOBJECT_t file_object, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class, Pulong ret_file_information_size) @cname("FsRtlQueryInformationFile");
+extern fn NtStatus fs_rtl_query_cached_vdl(PFILEOBJECT_t file_object, Plonglong vdl) @cname("FsRtlQueryCachedVdl");
 extern fn void fs_rtl_update_disk_counters(UlongVT bytes_read, UlongVT bytes_written) @cname("FsRtlUpdateDiskCounters");
-extern fn void fs_rtl_dismount_complete(PDEVICEOBJECT_t device_object, Ntstatus dismount_status) @cname("FsRtlDismountComplete");
-extern fn Ntstatus fs_rtl_set_driver_backing(PDRIVEROBJECT_t driver_obj, Ulong flags) @cname("FsRtlSetDriverBacking");
+extern fn void fs_rtl_dismount_complete(PDeviceObject_t device_object, NtStatus dismount_status) @cname("FsRtlDismountComplete");
+extern fn NtStatus fs_rtl_set_driver_backing(PDRIVEROBJECT_t driver_obj, Ulong flags) @cname("FsRtlSetDriverBacking");
 extern fn Boolean fs_rtl_is_mobile_os() @cname("FsRtlIsMobileOS");
 extern fn Boolean fs_rtl_is_dax_volume(PFILEOBJECT_t file_object) @cname("FsRtlIsDaxVolume");
 extern fn void cc_initialize_cache_map(PFILEOBJECT_t file_object, PCCFILESIZES_t file_sizes, Boolean pin_access, PCACHEMANAGERCALLBACKS_t callbacks, Pvoid lazy_write_context) @cname("CcInitializeCacheMap");
 extern fn Boolean cc_uninitialize_cache_map(PFILEOBJECT_t file_object, PLARGEINTEGER_t truncate_size, PCACHEUNINITIALIZEEVENT_t uninitialize_event) @cname("CcUninitializeCacheMap");
 extern fn void cc_set_file_sizes(PFILEOBJECT_t file_object, PCCFILESIZES_t file_sizes) @cname("CcSetFileSizes");
-extern fn Ntstatus cc_set_file_sizes_ex(PFILEOBJECT_t file_object, PCCFILESIZES_t file_sizes) @cname("CcSetFileSizesEx");
-extern fn Ntstatus cc_set_cache_file_sizes(PSECTIONOBJECTPOINTERS_t section_object_pointer, PCCFILESIZES_t file_sizes) @cname("CcSetCacheFileSizes");
+extern fn NtStatus cc_set_file_sizes_ex(PFILEOBJECT_t file_object, PCCFILESIZES_t file_sizes) @cname("CcSetFileSizesEx");
+extern fn NtStatus cc_set_cache_file_sizes(PSECTIONOBJECTPOINTERS_t section_object_pointer, PCCFILESIZES_t file_sizes) @cname("CcSetCacheFileSizes");
 extern fn Longlong cc_get_cache_file_size(SECTIONOBJECTPOINTERS_t* section_object_pointer) @cname("CcGetCacheFileSize");
 extern fn void cc_set_cache_file_size(PSECTIONOBJECTPOINTERS_t section_object_pointer, Longlong new_file_size) @cname("CcSetCacheFileSize");
 extern fn Boolean cc_purge_cache_section(PSECTIONOBJECTPOINTERS_t section_object_pointer, PLARGEINTEGER_t file_offset, Ulong length, Ulong flags) @cname("CcPurgeCacheSection");
@@ -7789,7 +7789,7 @@ extern fn void cc_prepare_mdl_write(PFILEOBJECT_t file_object, PLARGEINTEGER_t f
 extern fn void cc_mdl_write_complete(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Pmdl mdl_chain) @cname("CcMdlWriteComplete");
 extern fn void cc_mdl_write_abort(PFILEOBJECT_t file_object, Pmdl mdl_chain) @cname("CcMdlWriteAbort");
 extern fn void cc_schedule_read_ahead(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Ulong length) @cname("CcScheduleReadAhead");
-extern fn Ntstatus cc_wait_for_current_lazy_writer_activity() @cname("CcWaitForCurrentLazyWriterActivity");
+extern fn NtStatus cc_wait_for_current_lazy_writer_activity() @cname("CcWaitForCurrentLazyWriterActivity");
 extern fn void cc_set_read_ahead_granularity(PFILEOBJECT_t file_object, Ulong granularity) @cname("CcSetReadAheadGranularity");
 extern fn Boolean cc_copy_write_ex(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Ulong length, Boolean wait, Pvoid buffer, Pethread io_issuer_thread) @cname("CcCopyWriteEx");
 extern fn Boolean cc_copy_read_ex(PFILEOBJECT_t file_object, PLARGEINTEGER_t file_offset, Ulong length, Boolean wait, Pvoid buffer, PIOSTATUSBLOCK_t io_status, Pethread io_issuer_thread) @cname("CcCopyReadEx");
@@ -7812,18 +7812,18 @@ extern fn void cc_set_log_handle_for_file(PFILEOBJECT_t file_object, Pvoid log_h
 extern fn LARGEINTEGER_t cc_get_dirty_pages(Pvoid log_handle, PDIRTYPAGEROUTINE_t dirty_page_routine, Pvoid context1, Pvoid context2) @cname("CcGetDirtyPages");
 extern fn Boolean cc_is_there_dirty_data(Pvpb vpb) @cname("CcIsThereDirtyData");
 extern fn Boolean cc_is_there_dirty_data_ex(Pvpb vpb, Pulong number_of_dirty_pages) @cname("CcIsThereDirtyDataEx");
-extern fn Boolean cc_is_cache_manager_callback_needed(Ntstatus status) @cname("CcIsCacheManagerCallbackNeeded");
-extern fn Ntstatus cc_error_callback_routine(PCCERRORCALLBACKCONTEXT_t context) @cname("CcErrorCallbackRoutine");
-extern fn Ntstatus cc_register_external_cache_ex(PFILEOBJECT_t file_object, PEXTERNALCACHECALLBACKEX_t callback, Pvoid* external_cache_context) @cname("CcRegisterExternalCacheEx");
+extern fn Boolean cc_is_cache_manager_callback_needed(NtStatus status) @cname("CcIsCacheManagerCallbackNeeded");
+extern fn NtStatus cc_error_callback_routine(PCCERRORCALLBACKCONTEXT_t context) @cname("CcErrorCallbackRoutine");
+extern fn NtStatus cc_register_external_cache_ex(PFILEOBJECT_t file_object, PEXTERNALCACHECALLBACKEX_t callback, Pvoid* external_cache_context) @cname("CcRegisterExternalCacheEx");
 extern fn void cc_unregister_external_cache_ex(Pvoid external_cache_context) @cname("CcUnregisterExternalCacheEx");
-extern fn Ntstatus cc_update_external_cache_info_ex(Pvoid external_cache_context, PCCDIRTYPAGESINFO_t dirty_pages_info) @cname("CcUpdateExternalCacheInfoEx");
+extern fn NtStatus cc_update_external_cache_info_ex(Pvoid external_cache_context, PCCDIRTYPAGESINFO_t dirty_pages_info) @cname("CcUpdateExternalCacheInfoEx");
 extern fn SECURITYSTATUS_t acquire_credentials_handle_w(PSECURITYSTRING_t p_principal, PSECURITYSTRING_t p_package, CULong f_credential_use, void* pv_logon_id, void* p_auth_data, SECGETKEYFN_t p_get_key_fn, void* pv_get_key_argument, PCredHandle ph_credential, PTimeStamp pts_expiry) @cname("AcquireCredentialsHandleW");
 extern fn SECURITYSTATUS_t free_credentials_handle(PCredHandle ph_credential) @cname("FreeCredentialsHandle");
 extern fn SECURITYSTATUS_t add_credentials_w(PCredHandle h_credentials, PSECURITYSTRING_t p_principal, PSECURITYSTRING_t p_package, CULong f_credential_use, void* p_auth_data, SECGETKEYFN_t p_get_key_fn, void* pv_get_key_argument, PTimeStamp pts_expiry) @cname("AddCredentialsW");
 extern fn SECURITYSTATUS_t add_credentials_a(PCredHandle h_credentials, Lpstr psz_principal, Lpstr psz_package, CULong f_credential_use, void* p_auth_data, SECGETKEYFN_t p_get_key_fn, void* pv_get_key_argument, PTimeStamp pts_expiry) @cname("AddCredentialsA");
 extern fn SspiAsyncContext* sspi_create_async_context() @cname("SspiCreateAsyncContext");
 extern fn void sspi_free_async_context(SspiAsyncContext* handle) @cname("SspiFreeAsyncContext");
-extern fn Ntstatus sspi_reinit_async_context(SspiAsyncContext* handle) @cname("SspiReinitAsyncContext");
+extern fn NtStatus sspi_reinit_async_context(SspiAsyncContext* handle) @cname("SspiReinitAsyncContext");
 extern fn SECURITYSTATUS_t sspi_set_async_notify_callback(SspiAsyncContext* context, SspiAsyncNotifyCallback callback, void* callback_data) @cname("SspiSetAsyncNotifyCallback");
 extern fn Boolean sspi_async_context_requires_notify(SspiAsyncContext* async_context) @cname("SspiAsyncContextRequiresNotify");
 extern fn SECURITYSTATUS_t sspi_get_async_call_status(SspiAsyncContext* handle) @cname("SspiGetAsyncCallStatus");
@@ -7860,12 +7860,12 @@ extern fn SECURITYSTATUS_t enumerate_security_packages_w(CULong* pc_packages, PS
 extern fn SECURITYSTATUS_t query_security_package_info_w(PSECURITYSTRING_t p_package_name, PSecPkgInfoW* pp_package_info) @cname("QuerySecurityPackageInfoW");
 extern fn SECURITYSTATUS_t export_security_context(PCtxtHandle ph_context, Ulong f_flags, PSecBuffer p_packed_context, void** p_token) @cname("ExportSecurityContext");
 extern fn SECURITYSTATUS_t import_security_context_w(PSECURITYSTRING_t psz_package, PSecBuffer p_packed_context, void* token, PCtxtHandle ph_context) @cname("ImportSecurityContextW");
-extern fn Ntstatus sec_make_spn(PUNICODESTRING_t service_class, PUNICODESTRING_t service_name, PUNICODESTRING_t instance_name, Ushort instance_port, PUNICODESTRING_t referrer, PUNICODESTRING_t spn, Pulong length, Boolean allocate) @cname("SecMakeSPN");
-extern fn Ntstatus sec_make_spn_ex(PUNICODESTRING_t service_class, PUNICODESTRING_t service_name, PUNICODESTRING_t instance_name, Ushort instance_port, PUNICODESTRING_t referrer, PUNICODESTRING_t target_info, PUNICODESTRING_t spn, Pulong length, Boolean allocate) @cname("SecMakeSPNEx");
-extern fn Ntstatus sec_make_spn_ex2(PUNICODESTRING_t service_class, PUNICODESTRING_t service_name, PUNICODESTRING_t instance_name, Ushort instance_port, PUNICODESTRING_t referrer, PUNICODESTRING_t in_target_info, PUNICODESTRING_t spn, Pulong total_size, Boolean allocate, Boolean is_target_info_marshaled) @cname("SecMakeSPNEx2");
-extern fn Ntstatus sec_lookup_account_sid(Psid sid, Pulong name_size, PUNICODESTRING_t name_buffer, Pulong domain_size, PUNICODESTRING_t domain_buffer, PSIDNAMEUSE_t name_use) @cname("SecLookupAccountSid");
-extern fn Ntstatus sec_lookup_account_name(PUNICODESTRING_t name, Pulong sid_size, Psid sid, PSIDNAMEUSE_t name_use, Pulong domain_size, PUNICODESTRING_t referenced_domain) @cname("SecLookupAccountName");
-extern fn Ntstatus sec_lookup_well_known_sid(WELLKNOWNSIDTYPE_t sid_type, Psid sid, Ulong sid_buffer_size, Pulong sid_size) @cname("SecLookupWellKnownSid");
+extern fn NtStatus sec_make_spn(PUnicodeString_t service_class, PUnicodeString_t service_name, PUnicodeString_t instance_name, Ushort instance_port, PUnicodeString_t referrer, PUnicodeString_t spn, Pulong length, Boolean allocate) @cname("SecMakeSPN");
+extern fn NtStatus sec_make_spn_ex(PUnicodeString_t service_class, PUnicodeString_t service_name, PUnicodeString_t instance_name, Ushort instance_port, PUnicodeString_t referrer, PUnicodeString_t target_info, PUnicodeString_t spn, Pulong length, Boolean allocate) @cname("SecMakeSPNEx");
+extern fn NtStatus sec_make_spn_ex2(PUnicodeString_t service_class, PUnicodeString_t service_name, PUnicodeString_t instance_name, Ushort instance_port, PUnicodeString_t referrer, PUnicodeString_t in_target_info, PUnicodeString_t spn, Pulong total_size, Boolean allocate, Boolean is_target_info_marshaled) @cname("SecMakeSPNEx2");
+extern fn NtStatus sec_lookup_account_sid(Psid sid, Pulong name_size, PUnicodeString_t name_buffer, Pulong domain_size, PUnicodeString_t domain_buffer, PSIDNAMEUSE_t name_use) @cname("SecLookupAccountSid");
+extern fn NtStatus sec_lookup_account_name(PUnicodeString_t name, Pulong sid_size, Psid sid, PSIDNAMEUSE_t name_use, Pulong domain_size, PUnicodeString_t referenced_domain) @cname("SecLookupAccountName");
+extern fn NtStatus sec_lookup_well_known_sid(WELLKNOWNSIDTYPE_t sid_type, Psid sid, Ulong sid_buffer_size, Pulong sid_size) @cname("SecLookupWellKnownSid");
 extern fn PSecurityFunctionTableW init_security_interface_w() @cname("InitSecurityInterfaceW");
 extern fn SECURITYSTATUS_t sspi_encode_auth_identity_as_strings(PSECWINNTAUTHIDENTITYOPAQUE_t p_auth_identity, Pcwstr* ppsz_user_name, Pcwstr* ppsz_domain_name, Pcwstr* ppsz_packed_credentials_string) @cname("SspiEncodeAuthIdentityAsStrings");
 extern fn SECURITYSTATUS_t sspi_validate_auth_identity(PSECWINNTAUTHIDENTITYOPAQUE_t auth_data) @cname("SspiValidateAuthIdentity");
@@ -7880,43 +7880,43 @@ extern fn SECURITYSTATUS_t sspi_unmarshal_auth_identity(CULong auth_identity_len
 extern fn Boolean sspi_is_prompting_needed(CULong error_or_nt_status) @cname("SspiIsPromptingNeeded");
 extern fn SECURITYSTATUS_t sspi_get_target_host_name(Pcwstr psz_target_name, Pwstr* psz_host_name) @cname("SspiGetTargetHostName");
 extern fn SECURITYSTATUS_t sspi_exclude_package(PSECWINNTAUTHIDENTITYOPAQUE_t auth_identity, Pcwstr psz_package_name, PSECWINNTAUTHIDENTITYOPAQUE_t* pp_new_auth_identity) @cname("SspiExcludePackage");
-extern fn Ntstatus get_security_user_info(Pluid logon_id, Ulong flags, PSecurityUserData* user_information) @cname("GetSecurityUserInfo");
-extern fn Ntstatus map_security_error(SECURITYSTATUS_t sec_status) @cname("MapSecurityError");
-extern fn Ntstatus zw_query_object(Handle handle, OBJECTINFORMATIONCLASS_t object_information_class, Pvoid object_information, Ulong object_information_length, Pulong return_length) @cname("ZwQueryObject");
-extern fn Ntstatus zw_notify_change_key(Handle key_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Ulong completion_filter, Boolean watch_tree, Pvoid buffer, Ulong buffer_size, Boolean asynchronous) @cname("ZwNotifyChangeKey");
-extern fn Ntstatus zw_create_event(Phandle event_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, EVENTTYPE_t event_type, Boolean initial_state) @cname("ZwCreateEvent");
-extern fn Ntstatus zw_delete_file(POBJECTATTRIBUTES_t object_attributes) @cname("ZwDeleteFile");
-extern fn Ntstatus zw_device_io_control_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Ulong io_control_code, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length) @cname("ZwDeviceIoControlFile");
-extern fn Ntstatus zw_query_directory_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class, Boolean return_single_entry, PUNICODESTRING_t file_name, Boolean restart_scan) @cname("ZwQueryDirectoryFile");
-extern fn Ntstatus zw_query_directory_file_ex(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class, Ulong query_flags, PUNICODESTRING_t file_name) @cname("ZwQueryDirectoryFileEx");
-extern fn Ntstatus zw_query_volume_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid fs_information, Ulong length, FSINFORMATIONCLASS_t fs_information_class) @cname("ZwQueryVolumeInformationFile");
-extern fn Ntstatus zw_set_volume_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid fs_information, Ulong length, FSINFORMATIONCLASS_t fs_information_class) @cname("ZwSetVolumeInformationFile");
-extern fn Ntstatus zw_fs_control_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Ulong fs_control_code, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length) @cname("ZwFsControlFile");
-extern fn Ntstatus zw_duplicate_object(Handle source_process_handle, Handle source_handle, Handle target_process_handle, Phandle target_handle, ACCESSMASK_t desired_access, Ulong handle_attributes, Ulong options) @cname("ZwDuplicateObject");
-extern fn Ntstatus zw_open_directory_object(Phandle directory_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes) @cname("ZwOpenDirectoryObject");
-extern fn Ntstatus zw_allocate_virtual_memory(Handle process_handle, Pvoid* base_address, ULONGPTR_t zero_bits, PSIZET_t region_size, Ulong allocation_type, Ulong protect) @cname("ZwAllocateVirtualMemory");
-extern fn Ntstatus zw_allocate_virtual_memory_ex(Handle process_handle, Pvoid* base_address, PSIZET_t region_size, Ulong allocation_type, Ulong page_protection, PMEMEXTENDEDPARAMETER_t extended_parameters, Ulong extended_parameter_count) @cname("ZwAllocateVirtualMemoryEx");
-extern fn Ntstatus zw_free_virtual_memory(Handle process_handle, Pvoid* base_address, PSIZET_t region_size, Ulong free_type) @cname("ZwFreeVirtualMemory");
-extern fn Ntstatus zw_query_virtual_memory(Handle process_handle, Pvoid base_address, MEMORYINFORMATIONCLASS_t memory_information_class, Pvoid memory_information, SIZET_t memory_information_length, PSIZET_t return_length) @cname("ZwQueryVirtualMemory");
-extern fn Ntstatus zw_set_information_virtual_memory(Handle process_handle, VIRTUALMEMORYINFORMATIONCLASS_t vm_information_class, ULONGPTR_t number_of_entries, PMEMORYRANGEENTRY_t virtual_addresses, Pvoid vm_information, Ulong vm_information_length) @cname("ZwSetInformationVirtualMemory");
-extern fn Ntstatus zw_wait_for_single_object(Handle handle, Boolean alertable, PLARGEINTEGER_t timeout) @cname("ZwWaitForSingleObject");
-extern fn Ntstatus zw_set_event(Handle event_handle, Plong previous_state) @cname("ZwSetEvent");
-extern fn Ntstatus zw_flush_virtual_memory(Handle process_handle, Pvoid* base_address, PSIZET_t region_size, PIOSTATUSBLOCK_t io_status) @cname("ZwFlushVirtualMemory");
-extern fn Ntstatus zw_open_process_token_ex(Handle process_handle, ACCESSMASK_t desired_access, Ulong handle_attributes, Phandle token_handle) @cname("ZwOpenProcessTokenEx");
-extern fn Ntstatus zw_open_thread_token_ex(Handle thread_handle, ACCESSMASK_t desired_access, Boolean open_as_self, Ulong handle_attributes, Phandle token_handle) @cname("ZwOpenThreadTokenEx");
-extern fn Ntstatus zw_query_information_token(Handle token_handle, TOKENINFORMATIONCLASS_t token_information_class, Pvoid token_information, Ulong token_information_length, Pulong return_length) @cname("ZwQueryInformationToken");
-extern fn Ntstatus zw_set_information_token(Handle token_handle, TOKENINFORMATIONCLASS_t token_information_class, Pvoid token_information, Ulong token_information_length) @cname("ZwSetInformationToken");
-extern fn Ntstatus zw_set_security_object(Handle handle, SECURITYINFORMATION_t security_information, PSECURITYDESCRIPTOR_t security_descriptor) @cname("ZwSetSecurityObject");
-extern fn Ntstatus zw_query_security_object(Handle handle, SECURITYINFORMATION_t security_information, PSECURITYDESCRIPTOR_t security_descriptor, Ulong length, Pulong length_needed) @cname("ZwQuerySecurityObject");
-extern fn Ntstatus zw_lock_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, PLARGEINTEGER_t byte_offset, PLARGEINTEGER_t length, Ulong key, Boolean fail_immediately, Boolean exclusive_lock) @cname("ZwLockFile");
-extern fn Ntstatus zw_unlock_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, PLARGEINTEGER_t byte_offset, PLARGEINTEGER_t length, Ulong key) @cname("ZwUnlockFile");
-extern fn Ntstatus zw_query_quota_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length, Boolean return_single_entry, Pvoid sid_list, Ulong sid_list_length, Psid start_sid, Boolean restart_scan) @cname("ZwQueryQuotaInformationFile");
-extern fn Ntstatus zw_set_quota_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length) @cname("ZwSetQuotaInformationFile");
-extern fn Ntstatus zw_flush_buffers_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block) @cname("ZwFlushBuffersFile");
-extern fn Ntstatus zw_flush_buffers_file_ex(Handle file_handle, Ulong f_lags, Pvoid parameters, Ulong parameters_size, PIOSTATUSBLOCK_t io_status_block) @cname("ZwFlushBuffersFileEx");
-extern fn Ntstatus zw_query_ea_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length, Boolean return_single_entry, Pvoid ea_list, Ulong ea_list_length, Pulong ea_index, Boolean restart_scan) @cname("ZwQueryEaFile");
-extern fn Ntstatus zw_set_ea_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length) @cname("ZwSetEaFile");
-extern fn Ntstatus zw_duplicate_token(Handle existing_token_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, Boolean effective_only, TOKENTYPE_t token_type, Phandle new_token_handle) @cname("ZwDuplicateToken");
+extern fn NtStatus get_security_user_info(Pluid logon_id, Ulong flags, PSecurityUserData* user_information) @cname("GetSecurityUserInfo");
+extern fn NtStatus map_security_error(SECURITYSTATUS_t sec_status) @cname("MapSecurityError");
+extern fn NtStatus zw_query_object(Handle handle, OBJECTINFORMATIONCLASS_t object_information_class, Pvoid object_information, Ulong object_information_length, Pulong return_length) @cname("ZwQueryObject");
+extern fn NtStatus zw_notify_change_key(Handle key_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Ulong completion_filter, Boolean watch_tree, Pvoid buffer, Ulong buffer_size, Boolean asynchronous) @cname("ZwNotifyChangeKey");
+extern fn NtStatus zw_create_event(Phandle event_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, EVENTTYPE_t event_type, Boolean initial_state) @cname("ZwCreateEvent");
+extern fn NtStatus zw_delete_file(POBJECTATTRIBUTES_t object_attributes) @cname("ZwDeleteFile");
+extern fn NtStatus zw_device_io_control_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Ulong io_control_code, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length) @cname("ZwDeviceIoControlFile");
+extern fn NtStatus zw_query_directory_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class, Boolean return_single_entry, PUnicodeString_t file_name, Boolean restart_scan) @cname("ZwQueryDirectoryFile");
+extern fn NtStatus zw_query_directory_file_ex(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class, Ulong query_flags, PUnicodeString_t file_name) @cname("ZwQueryDirectoryFileEx");
+extern fn NtStatus zw_query_volume_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid fs_information, Ulong length, FSINFORMATIONCLASS_t fs_information_class) @cname("ZwQueryVolumeInformationFile");
+extern fn NtStatus zw_set_volume_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid fs_information, Ulong length, FSINFORMATIONCLASS_t fs_information_class) @cname("ZwSetVolumeInformationFile");
+extern fn NtStatus zw_fs_control_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Ulong fs_control_code, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length) @cname("ZwFsControlFile");
+extern fn NtStatus zw_duplicate_object(Handle source_process_handle, Handle source_handle, Handle target_process_handle, Phandle target_handle, ACCESSMASK_t desired_access, Ulong handle_attributes, Ulong options) @cname("ZwDuplicateObject");
+extern fn NtStatus zw_open_directory_object(Phandle directory_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes) @cname("ZwOpenDirectoryObject");
+extern fn NtStatus zw_allocate_virtual_memory(Handle process_handle, Pvoid* base_address, ULONGPTR_t zero_bits, PSIZET_t region_size, Ulong allocation_type, Ulong protect) @cname("ZwAllocateVirtualMemory");
+extern fn NtStatus zw_allocate_virtual_memory_ex(Handle process_handle, Pvoid* base_address, PSIZET_t region_size, Ulong allocation_type, Ulong page_protection, PMEMEXTENDEDPARAMETER_t extended_parameters, Ulong extended_parameter_count) @cname("ZwAllocateVirtualMemoryEx");
+extern fn NtStatus zw_free_virtual_memory(Handle process_handle, Pvoid* base_address, PSIZET_t region_size, Ulong free_type) @cname("ZwFreeVirtualMemory");
+extern fn NtStatus zw_query_virtual_memory(Handle process_handle, Pvoid base_address, MEMORYINFORMATIONCLASS_t memory_information_class, Pvoid memory_information, SIZET_t memory_information_length, PSIZET_t return_length) @cname("ZwQueryVirtualMemory");
+extern fn NtStatus zw_set_information_virtual_memory(Handle process_handle, VIRTUALMEMORYINFORMATIONCLASS_t vm_information_class, ULONGPTR_t number_of_entries, PMEMORYRANGEENTRY_t virtual_addresses, Pvoid vm_information, Ulong vm_information_length) @cname("ZwSetInformationVirtualMemory");
+extern fn NtStatus zw_wait_for_single_object(Handle handle, Boolean alertable, PLARGEINTEGER_t timeout) @cname("ZwWaitForSingleObject");
+extern fn NtStatus zw_set_event(Handle event_handle, Plong previous_state) @cname("ZwSetEvent");
+extern fn NtStatus zw_flush_virtual_memory(Handle process_handle, Pvoid* base_address, PSIZET_t region_size, PIOSTATUSBLOCK_t io_status) @cname("ZwFlushVirtualMemory");
+extern fn NtStatus zw_open_process_token_ex(Handle process_handle, ACCESSMASK_t desired_access, Ulong handle_attributes, Phandle token_handle) @cname("ZwOpenProcessTokenEx");
+extern fn NtStatus zw_open_thread_token_ex(Handle thread_handle, ACCESSMASK_t desired_access, Boolean open_as_self, Ulong handle_attributes, Phandle token_handle) @cname("ZwOpenThreadTokenEx");
+extern fn NtStatus zw_query_information_token(Handle token_handle, TOKENINFORMATIONCLASS_t token_information_class, Pvoid token_information, Ulong token_information_length, Pulong return_length) @cname("ZwQueryInformationToken");
+extern fn NtStatus zw_set_information_token(Handle token_handle, TOKENINFORMATIONCLASS_t token_information_class, Pvoid token_information, Ulong token_information_length) @cname("ZwSetInformationToken");
+extern fn NtStatus zw_set_security_object(Handle handle, SECURITYINFORMATION_t security_information, PSECURITYDESCRIPTOR_t security_descriptor) @cname("ZwSetSecurityObject");
+extern fn NtStatus zw_query_security_object(Handle handle, SECURITYINFORMATION_t security_information, PSECURITYDESCRIPTOR_t security_descriptor, Ulong length, Pulong length_needed) @cname("ZwQuerySecurityObject");
+extern fn NtStatus zw_lock_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, PLARGEINTEGER_t byte_offset, PLARGEINTEGER_t length, Ulong key, Boolean fail_immediately, Boolean exclusive_lock) @cname("ZwLockFile");
+extern fn NtStatus zw_unlock_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, PLARGEINTEGER_t byte_offset, PLARGEINTEGER_t length, Ulong key) @cname("ZwUnlockFile");
+extern fn NtStatus zw_query_quota_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length, Boolean return_single_entry, Pvoid sid_list, Ulong sid_list_length, Psid start_sid, Boolean restart_scan) @cname("ZwQueryQuotaInformationFile");
+extern fn NtStatus zw_set_quota_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length) @cname("ZwSetQuotaInformationFile");
+extern fn NtStatus zw_flush_buffers_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block) @cname("ZwFlushBuffersFile");
+extern fn NtStatus zw_flush_buffers_file_ex(Handle file_handle, Ulong f_lags, Pvoid parameters, Ulong parameters_size, PIOSTATUSBLOCK_t io_status_block) @cname("ZwFlushBuffersFileEx");
+extern fn NtStatus zw_query_ea_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length, Boolean return_single_entry, Pvoid ea_list, Ulong ea_list_length, Pulong ea_index, Boolean restart_scan) @cname("ZwQueryEaFile");
+extern fn NtStatus zw_set_ea_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid buffer, Ulong length) @cname("ZwSetEaFile");
+extern fn NtStatus zw_duplicate_token(Handle existing_token_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, Boolean effective_only, TOKENTYPE_t token_type, Phandle new_token_handle) @cname("ZwDuplicateToken");
 
 // Global Variables
 extern Cchar ke_number_processors @cname("KeNumberProcessors");

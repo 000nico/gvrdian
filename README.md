@@ -56,8 +56,8 @@
 # clone repo
 git clone https://github.com/000nico/gvrdian/.git
 
-# compile
-c3c build usermode
+# compile the usermode client -> client/build/client.exe
+c3c build client
 /hypervisor/build
 ```
 

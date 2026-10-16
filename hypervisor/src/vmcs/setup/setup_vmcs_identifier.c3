@@ -5,7 +5,7 @@ import bit;
 import assembly;
 
 fn void identifier(bool shadow_vmcs, ulong vmcs_region_physical, void* vmcs_region_virtual) {
-	// bits 0.30
+	// bits 0 to 30
 	ulong ia32_vmx_basic = assembly::read_msr(0x480);
 	uint identifier = 0;
 
@@ -29,7 +29,7 @@ fn void identifier(bool shadow_vmcs, ulong vmcs_region_physical, void* vmcs_regi
 	uint* region_as_uint = (uint*)vmcs_region_virtual;
 	*region_as_uint = identifier;
 
-	// pass reference because they deref this with [rcx]
+	// pass by reference because the asm derefs it with [rcx]
 	if(!assembly::vm_clear(&vmcs_region_physical)) wdm::dbg_print("failed to execute vm_clear");
 	if(!assembly::vm_ptrld(&vmcs_region_physical)) wdm::dbg_print("failed to execute vm_ptrld");
 }

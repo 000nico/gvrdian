@@ -12,20 +12,20 @@ fn void setup_host_state() {
 	assembly::vm_write(vmcs_fields::HOST_CR4, assembly::read_cr4());
 
 	// stack
-	wdm::PHYSICALADDRESS_t max_addr;
+	wdm::PhysicalAddress_t max_addr;
 	max_addr.quad_part = (wdm::Longlong)0xFFFFFFFFFFFFFFFF;
 	void* host_stack = wdm::mm_allocate_contiguous_memory(0x6000, max_addr);
 	ulong host_rsp = (ulong)host_stack + 0x6000;
 	assembly::vm_write(vmcs_fields::HOST_RSP, host_rsp);
 	assembly::vm_write(vmcs_fields::HOST_RIP, assembly::get_exit_handler_address());
 
-	assembly::vm_write(vmcs_fields::HOST_CS_SELECTOR, assembly::read_cs() & 0xFFF8);
-	assembly::vm_write(vmcs_fields::HOST_SS_SELECTOR, assembly::read_ss() & 0xFFF8);
-	assembly::vm_write(vmcs_fields::HOST_DS_SELECTOR, assembly::read_ds() & 0xFFF8);
-	assembly::vm_write(vmcs_fields::HOST_ES_SELECTOR, assembly::read_es() & 0xFFF8);
-	assembly::vm_write(vmcs_fields::HOST_FS_SELECTOR, assembly::read_fs() & 0xFFF8);
-	assembly::vm_write(vmcs_fields::HOST_GS_SELECTOR, assembly::read_gs() & 0xFFF8);
-	assembly::vm_write(vmcs_fields::HOST_TR_SELECTOR, assembly::read_tr() & 0xFFF8);
+	assembly::vm_write(vmcs_fields::HOST_CS_SELECTOR, (ulong)(assembly::read_cs() & 0xFFF8));
+	assembly::vm_write(vmcs_fields::HOST_SS_SELECTOR, (ulong)(assembly::read_ss() & 0xFFF8));
+	assembly::vm_write(vmcs_fields::HOST_DS_SELECTOR, (ulong)(assembly::read_ds() & 0xFFF8));
+	assembly::vm_write(vmcs_fields::HOST_ES_SELECTOR, (ulong)(assembly::read_es() & 0xFFF8));
+	assembly::vm_write(vmcs_fields::HOST_FS_SELECTOR, (ulong)(assembly::read_fs() & 0xFFF8));
+	assembly::vm_write(vmcs_fields::HOST_GS_SELECTOR, (ulong)(assembly::read_gs() & 0xFFF8));
+	assembly::vm_write(vmcs_fields::HOST_TR_SELECTOR, (ulong)(assembly::read_tr() & 0xFFF8));
 
 	// bases
 	assembly::vm_write(vmcs_fields::HOST_FS_BASE,   assembly::read_msr(0xC0000100));

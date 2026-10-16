@@ -48,17 +48,17 @@ const ulong EPT_POINTER                             = 0x201A;
 // ============================================================
 // 64-Bit Read-Only Fields
 // ============================================================
-const ulong GUEST_PHYSICAL_ADDRESS                  = 0x2400; // EPT violation GPA
+const ulong GUEST_PHYSICAL_ADDRESS                  = 0x2400; // GPA of the EPT violation
 
 // ============================================================
 // 64-Bit Guest-State Fields
 // ============================================================
-const ulong VMCS_LINK_POINTER                       = 0x2800; // siempre 0xFFFFFFFFFFFFFFFF si no usas nested
+const ulong VMCS_LINK_POINTER                       = 0x2800; // always 0xFFFFFFFFFFFFFFFF if nested virtualization is not used
 const ulong GUEST_IA32_DEBUGCTL                     = 0x2802;
-const ulong GUEST_IA32_PAT                          = 0x2804; // requiere load IA32_PAT en entry controls (bit 14)
-const ulong GUEST_IA32_EFER                         = 0x2806; // requiere load IA32_EFER en entry controls (bit 15)
+const ulong GUEST_IA32_PAT                          = 0x2804; // requires loading IA32_PAT in entry controls (bit 14)
+const ulong GUEST_IA32_EFER                         = 0x2806; // requires loading IA32_EFER in entry controls (bit 15)
 const ulong GUEST_IA32_PERF_GLOBAL_CTRL             = 0x2808;
-const ulong GUEST_PDPTE0                            = 0x280A; // solo si PAE paging sin EPT
+const ulong GUEST_PDPTE0                            = 0x280A; // only with PAE paging without EPT
 const ulong GUEST_PDPTE1                            = 0x280C;
 const ulong GUEST_PDPTE2                            = 0x280E;
 const ulong GUEST_PDPTE3                            = 0x2810;
@@ -66,8 +66,8 @@ const ulong GUEST_PDPTE3                            = 0x2810;
 // ============================================================
 // 64-Bit Host-State Fields
 // ============================================================
-const ulong HOST_IA32_PAT                           = 0x2C00; // requiere load IA32_PAT en exit controls (bit 19)
-const ulong HOST_IA32_EFER                          = 0x2C02; // requiere load IA32_EFER en exit controls (bit 21)
+const ulong HOST_IA32_PAT                           = 0x2C00; // requires loading IA32_PAT in exit controls (bit 19)
+const ulong HOST_IA32_EFER                          = 0x2C02; // requires loading IA32_EFER in exit controls (bit 21)
 const ulong HOST_IA32_PERF_GLOBAL_CTRL              = 0x2C04;
 
 // ============================================================
@@ -85,22 +85,22 @@ const ulong VM_EXIT_MSR_LOAD_COUNT                  = 0x4010;
 const ulong VM_ENTRY_CONTROLS                       = 0x4012;
 const ulong VM_ENTRY_MSR_LOAD_COUNT                 = 0x4014;
 const ulong VMENTRY_INTERRUPTION_INFO               = 0x4016; // event injection: valid(31) | type(10:8) | vector(7:0)
-const ulong VMENTRY_EXCEPTION_ERROR_CODE            = 0x4018; // error code para exceptions que lo requieren
-const ulong VM_ENTRY_INSTRUCTION_LEN               = 0x401A; // para software interrupts/exceptions
+const ulong VMENTRY_EXCEPTION_ERROR_CODE            = 0x4018; // error code for exceptions that require it
+const ulong VM_ENTRY_INSTRUCTION_LEN               = 0x401A; // for software interrupts/exceptions
 const ulong TPR_THRESHOLD                           = 0x401C;
 const ulong SECONDARY_VM_EXEC_CONTROL               = 0x401E;
 
 // ============================================================
 // 32-Bit Read-Only Fields
 // ============================================================
-const ulong VM_INSTRUCTION_ERROR                    = 0x4400; // leer si VMLAUNCH/VMRESUME falla (ZF=1)
+const ulong VM_INSTRUCTION_ERROR                    = 0x4400; // read when VMLAUNCH/VMRESUME fails (ZF=1)
 const ulong VM_EXIT_REASON                          = 0x4402; // bits 15:0 = reason, bit 31 = entry failure
-const ulong VM_EXIT_INTR_INFO                       = 0x4404; // excepcion/NMI que causo el exit
-const ulong VM_EXIT_INTR_ERROR_CODE                 = 0x4406; // error code de la excepcion (si aplica)
-const ulong IDT_VECTORING_INFO_FIELD                = 0x4408; // evento que estaba en delivery cuando ocurrio el exit
-const ulong IDT_VECTORING_ERROR_CODE                = 0x440A; // error code de ese evento
-const ulong VM_EXIT_INSTRUCTION_LEN                 = 0x440C; // longitud de la instruccion que causo el exit
-const ulong VMX_INSTRUCTION_INFO                    = 0x440E; // info adicional de instrucciones VMX (VMREAD, VMWRITE, etc)
+const ulong VM_EXIT_INTR_INFO                       = 0x4404; // exception/NMI that caused the exit
+const ulong VM_EXIT_INTR_ERROR_CODE                 = 0x4406; // error code of the exception (if any)
+const ulong IDT_VECTORING_INFO_FIELD                = 0x4408; // event that was being delivered when the exit happened
+const ulong IDT_VECTORING_ERROR_CODE                = 0x440A; // error code of that event
+const ulong VM_EXIT_INSTRUCTION_LEN                 = 0x440C; // length of the instruction that caused the exit
+const ulong VMX_INSTRUCTION_INFO                    = 0x440E; // extra info for VMX instructions (VMREAD, VMWRITE, etc)
 
 // ============================================================
 // 32-Bit Guest-State Fields
@@ -197,7 +197,7 @@ const ulong HOST_RSP                                = 0x6C14;
 const ulong HOST_RIP                                = 0x6C16;
 
 // ============================================================
-// Bits de control utiles (no son field encodings, son valores)
+// Useful control bits (not field encodings, these are values)
 // ============================================================
 
 // Primary processor-based controls (CPU_BASED_VM_EXEC_CONTROL)
@@ -251,7 +251,7 @@ const ulong CTRL_PIN_PROCESS_POSTED_INTERRUPTS      = 1UL << 7;
 
 // VM-exit controls (VM_EXIT_CONTROLS)
 const ulong CTRL_EXIT_SAVE_DEBUG_CONTROLS           = 1UL << 2;
-const ulong CTRL_EXIT_HOST_ADDR_SPACE_SIZE          = 1UL << 9;  // host en 64-bit, obligatorio
+const ulong CTRL_EXIT_HOST_ADDR_SPACE_SIZE          = 1UL << 9;  // host in 64-bit mode, required
 const ulong CTRL_EXIT_LOAD_IA32_PERF_GLOBAL_CTRL    = 1UL << 12;
 const ulong CTRL_EXIT_ACKNOWLEDGE_INTERRUPT         = 1UL << 15;
 const ulong CTRL_EXIT_SAVE_IA32_PAT                 = 1UL << 18;
@@ -262,13 +262,13 @@ const ulong CTRL_EXIT_SAVE_VMX_PREEMPTION_TIMER     = 1UL << 22;
 
 // VM-entry controls (VM_ENTRY_CONTROLS)
 const ulong CTRL_ENTRY_LOAD_DEBUG_CONTROLS          = 1UL << 2;
-const ulong CTRL_ENTRY_IA32E_MODE_GUEST             = 1UL << 9;  // guest en 64-bit, obligatorio
+const ulong CTRL_ENTRY_IA32E_MODE_GUEST             = 1UL << 9;  // guest in 64-bit mode, required
 const ulong CTRL_ENTRY_ENTRY_TO_SMM                 = 1UL << 10;
 const ulong CTRL_ENTRY_LOAD_IA32_PERF_GLOBAL_CTRL   = 1UL << 13;
 const ulong CTRL_ENTRY_LOAD_IA32_PAT                = 1UL << 14;
 const ulong CTRL_ENTRY_LOAD_IA32_EFER               = 1UL << 15;
 
-// Event injection types (para VMENTRY_INTERRUPTION_INFO bits 10:8)
+// Event injection types (for VMENTRY_INTERRUPTION_INFO bits 10:8)
 const ulong INJECT_TYPE_EXTERNAL_INTERRUPT          = 0;
 const ulong INJECT_TYPE_NMI                         = 2;
 const ulong INJECT_TYPE_HARDWARE_EXCEPTION          = 3;
@@ -276,7 +276,7 @@ const ulong INJECT_TYPE_SOFTWARE_INTERRUPT          = 4;
 const ulong INJECT_TYPE_PRIVILEGED_SW_EXCEPTION     = 5;
 const ulong INJECT_TYPE_SOFTWARE_EXCEPTION          = 6;
 
-// Exception vectors comunes
+// Common exception vectors
 const ulong VECTOR_DE                               = 0;  // divide error
 const ulong VECTOR_DB                               = 1;  // debug
 const ulong VECTOR_NMI                              = 2;  // non-maskable interrupt
@@ -302,7 +302,7 @@ const ulong ACTIVITY_HLT                            = 1;
 const ulong ACTIVITY_SHUTDOWN                       = 2;
 const ulong ACTIVITY_WAIT_FOR_SIPI                  = 3;
 
-// Exit reasons comunes
+// Common exit reasons
 const ulong EXIT_REASON_EXCEPTION_NMI               = 0;
 const ulong EXIT_REASON_EXTERNAL_INTERRUPT          = 1;
 const ulong EXIT_REASON_TRIPLE_FAULT                = 2;

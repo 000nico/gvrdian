@@ -3,7 +3,7 @@
 ; --- Control registers ---
 
 writecr0 PROC
-    ; rcx = valor nuevo
+    ; rcx = new value
     mov cr0, rcx
     ret
 writecr0 ENDP
@@ -19,10 +19,10 @@ writecr4 PROC
 writecr4 ENDP
 
 ; --- MSR ---
-; rcx = msr id, rdx = 64 values to write
+; rcx = msr id, rdx = 64-bit value to write
 
 writemsr PROC
-    ; wrmsr needs  ecx = msr id, edx:eax = valor (high:low)
+    ; wrmsr needs  ecx = msr id, edx:eax = value (high:low)
     mov eax, edx          
     mov r8, rdx      
     shr r8, 32

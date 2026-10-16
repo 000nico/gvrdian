@@ -57,4 +57,4 @@ extern fn ulong read_idt_limit() @cname("readidtlimit");
 extern fn void exit_handler_entry() @cname("exit_handler_entry");
 extern fn ulong get_exit_handler_address() @cname("get_exit_handler_address");
 
-extern fn void read_tsc() @cname("read_tsc");
+extern fn ulong read_tsc() @cname("read_tsc");

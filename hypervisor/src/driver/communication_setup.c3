@@ -3,13 +3,13 @@ module communication_setup;
 import wdm;
 import std::core::string;
 
-fn wdm::Ntstatus setup_device(wdm::DRIVEROBJECT_t* driver_object) 
+fn wdm::NtStatus setup_device(wdm::DriverObject_t* driver_object) 
 {
-    wdm::Ntstatus status;
-    wdm::PDEVICEOBJECT_t device_object = null;
+    wdm::NtStatus status;
+    wdm::PDeviceObject_t device_object = null;
     
-    wdm::UNICODESTRING_t device_name;
-    wdm::UNICODESTRING_t symbolic_link;
+    wdm::UnicodeString_t device_name;
+    wdm::UnicodeString_t symbolic_link;
 
     wdm::rtl_init_unicode_string(&device_name, std::core::string::@wstring("\\Device\\gvrdiandevice"));
     wdm::rtl_init_unicode_string(&symbolic_link, std::core::string::@wstring("\\DosDevices\\gvrdiandevice"));
@@ -35,9 +35,9 @@ fn wdm::Ntstatus setup_device(wdm::DRIVEROBJECT_t* driver_object)
     return wdm::STATUS_SUCCESS;
 }
 
-fn wdm::Ntstatus create_close(wdm::PDEVICEOBJECT_t device_object, wdm::Pirp irp) 
+fn wdm::NtStatus create_close(wdm::PDeviceObject_t device_object, wdm::Pirp irp) 
 {
-    //irp.io_status.status = wdm::STATUS_SUCCESS;
+    irp.io_status._field1 = (void*)(ulong)wdm::STATUS_SUCCESS;
     irp.io_status.information = 0;
     wdm::iof_complete_request(irp, wdm::IO_NO_INCREMENT);
     

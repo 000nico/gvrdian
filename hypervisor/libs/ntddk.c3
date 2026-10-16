@@ -34,8 +34,8 @@ alias RTLAVLALLOCATEROUTINE_t = fn Pvoid(RTLAVLTABLE_t*, Clong);
 alias PRTLAVLALLOCATEROUTINE_t = fn Pvoid(RTLAVLTABLE_t*, Clong);
 alias RTLAVLFREEROUTINE_t = fn void(RTLAVLTABLE_t*, Pvoid);
 alias PRTLAVLFREEROUTINE_t = fn void(RTLAVLTABLE_t*, Pvoid);
-alias RTLAVLMATCHFUNCTION_t = fn Ntstatus(RTLAVLTABLE_t*, Pvoid, Pvoid);
-alias PRTLAVLMATCHFUNCTION_t = fn Ntstatus(RTLAVLTABLE_t*, Pvoid, Pvoid);
+alias RTLAVLMATCHFUNCTION_t = fn NtStatus(RTLAVLTABLE_t*, Pvoid, Pvoid);
+alias PRTLAVLMATCHFUNCTION_t = fn NtStatus(RTLAVLTABLE_t*, Pvoid, Pvoid);
 alias PRTLBALANCEDLINKS_t = RTLBALANCEDLINKS_t*;
 alias PRTLAVLTABLE_t = RTLAVLTABLE_t*;
 alias PRTLSPLAYLINKS_t = RTLSPLAYLINKS_t*;
@@ -134,7 +134,7 @@ alias PPOWERTHROTTLINGPROCESSSTATE_t = POWERTHROTTLINGPROCESSSTATE_t*;
 alias PPOWERTHROTTLINGTHREADSTATE_t = POWERTHROTTLINGTHREADSTATE_t*;
 alias PPROCESSSYSCALLPROVIDERINFORMATION_t = PROCESSSYSCALLPROVIDERINFORMATION_t*;
 alias PSYSTEMFIRMWARETABLEINFORMATION_t = SYSTEMFIRMWARETABLEINFORMATION_t*;
-alias Pfnfth = fn Ntstatus(PSYSTEMFIRMWARETABLEINFORMATION_t);
+alias Pfnfth = fn NtStatus(PSYSTEMFIRMWARETABLEINFORMATION_t);
 alias PSYSTEMFIRMWARETABLEHANDLER_t = SYSTEMFIRMWARETABLEHANDLER_t*;
 alias PTIMERAPCROUTINE_t = fn void(Pvoid, Ulong, Long);
 alias PTIMERSETCOALESCABLETIMERINFO_t = TIMERSETCOALESCABLETIMERINFO_t*;
@@ -152,7 +152,7 @@ alias PZONESEGMENTHEADER_t = ZONESEGMENTHEADER_t*;
 alias PZONEHEADER_t = ZONEHEADER_t*;
 alias Uuid = Guid;
 alias PPHYSICALMEMORYRANGE_t = PHYSICALMEMORYRANGE_t*;
-alias PMMROTATECOPYCALLBACKFUNCTION_t = fn Ntstatus(Pmdl, Pmdl, Pvoid);
+alias PMMROTATECOPYCALLBACKFUNCTION_t = fn NtStatus(Pmdl, Pmdl, Pvoid);
 alias PMMROTATEDIRECTION_t = MMROTATEDIRECTION_t*;
 alias PMMCOPYADDRESS_t = MMCOPYADDRESS_t*;
 alias NODEREQUIREMENT_t = Ulong;
@@ -162,18 +162,18 @@ alias PCREATEPROCESSNOTIFYROUTINEEX_t = fn void(Peprocess, Handle, PPSCREATENOTI
 alias PCREATETHREADNOTIFYROUTINE_t = fn void(Handle, Handle, Boolean);
 alias PIMAGEINFO_t = IMAGEINFO_t*;
 alias PIMAGEINFOEX_t = IMAGEINFOEX_t*;
-alias PLOADIMAGENOTIFYROUTINE_t = fn void(PUNICODESTRING_t, Handle, PIMAGEINFO_t);
+alias PLOADIMAGENOTIFYROUTINE_t = fn void(PUnicodeString_t, Handle, PIMAGEINFO_t);
 alias SILOCONTEXTCLEANUPCALLBACK_t = fn void(Pvoid);
-alias SILOMONITORCREATECALLBACK_t = fn Ntstatus(Pesilo);
+alias SILOMONITORCREATECALLBACK_t = fn NtStatus(Pesilo);
 alias SILOMONITORTERMINATECALLBACK_t = fn void(Pesilo);
 alias PSILOMONITORREGISTRATION_t = SILOMONITORREGISTRATION_t*;
 alias PKAFFINITYEX_t = KAFFINITYEX_t*;
 alias PSAVAILABLECPUSCHANGECALLBACK_t = fn void(Pvoid);
 alias PSAVAILABLECPUSCHANGEREGISTRATION_t = Pvoid;
-alias PIOQUERYDEVICEROUTINE_t = fn Ntstatus(Pvoid, PUNICODESTRING_t, INTERFACETYPE_t, Ulong, PKEYVALUEFULLINFORMATION_t*, CONFIGURATIONTYPE_t, Ulong, PKEYVALUEFULLINFORMATION_t*, CONFIGURATIONTYPE_t, Ulong, PKEYVALUEFULLINFORMATION_t*);
+alias PIOQUERYDEVICEROUTINE_t = fn NtStatus(Pvoid, PUnicodeString_t, INTERFACETYPE_t, Ulong, PKEYVALUEFULLINFORMATION_t*, CONFIGURATIONTYPE_t, Ulong, PKEYVALUEFULLINFORMATION_t*, CONFIGURATIONTYPE_t, Ulong, PKEYVALUEFULLINFORMATION_t*);
 alias PIOQUERYDEVICEDATAFORMAT_t = IOQUERYDEVICEDATAFORMAT_t*;
-alias DRIVERREINITIALIZE_t = fn void(DRIVEROBJECT_t*, Pvoid, Ulong);
-alias PDRIVERREINITIALIZE_t = fn void(DRIVEROBJECT_t*, Pvoid, Ulong);
+alias DRIVERREINITIALIZE_t = fn void(DriverObject_t*, Pvoid, Ulong);
+alias PDRIVERREINITIALIZE_t = fn void(DriverObject_t*, Pvoid, Ulong);
 alias PCONTROLLEROBJECT_t = CONTROLLEROBJECT_t*;
 alias PCONFIGURATIONINFORMATION_t = CONFIGURATIONINFORMATION_t*;
 alias PDISKSIGNATURE_t = DISKSIGNATURE_t*;
@@ -192,7 +192,7 @@ alias PBDCBIMAGEINFORMATION_t = BDCBIMAGEINFORMATION_t*;
 alias BOOTDRIVERCALLBACKFUNCTION_t = fn void(Pvoid, BDCBCALLBACKTYPE_t, PBDCBIMAGEINFORMATION_t);
 alias PBOOTDRIVERCALLBACKFUNCTION_t = fn void(Pvoid, BDCBCALLBACKTYPE_t, PBDCBIMAGEINFORMATION_t);
 alias PAGPTARGETBUSINTERFACESTANDARD_t = AGPTARGETBUSINTERFACESTANDARD_t*;
-alias PGETLOCATIONSTRING_t = fn Ntstatus(Pvoid, Pzzwstr*);
+alias PGETLOCATIONSTRING_t = fn NtStatus(Pvoid, Pzzwstr*);
 alias PPNPLOCATIONINTERFACE_t = PNPLOCATIONINTERFACE_t*;
 alias PARBITERACTION_t = ARBITERACTION_t*;
 alias PARBITERCONFLICTINFO_t = ARBITERCONFLICTINFO_t*;
@@ -205,10 +205,10 @@ alias PARBITERQUERYARBITRATEPARAMETERS_t = ARBITERQUERYARBITRATEPARAMETERS_t*;
 alias PARBITERADDRESERVEDPARAMETERS_t = ARBITERADDRESERVEDPARAMETERS_t*;
 alias PARBITERPARAMETERS_t = ARBITERPARAMETERS_t*;
 alias PARBITERLISTENTRY_t = ARBITERLISTENTRY_t*;
-alias PARBITERHANDLER_t = fn Ntstatus(Pvoid, ARBITERACTION_t, PARBITERPARAMETERS_t);
+alias PARBITERHANDLER_t = fn NtStatus(Pvoid, ARBITERACTION_t, PARBITERPARAMETERS_t);
 alias PARBITERINTERFACE_t = ARBITERINTERFACE_t*;
-alias PTRANSLATERESOURCEHANDLER_t = fn Ntstatus(Pvoid, PCMPARTIALRESOURCEDESCRIPTOR_t, RESOURCETRANSLATIONDIRECTION_t, Ulong, IORESOURCEDESCRIPTOR_t*, PDEVICEOBJECT_t, PCMPARTIALRESOURCEDESCRIPTOR_t);
-alias PTRANSLATERESOURCEREQUIREMENTSHANDLER_t = fn Ntstatus(Pvoid, PIORESOURCEDESCRIPTOR_t, PDEVICEOBJECT_t, Pulong, PIORESOURCEDESCRIPTOR_t*);
+alias PTRANSLATERESOURCEHANDLER_t = fn NtStatus(Pvoid, PCMPARTIALRESOURCEDESCRIPTOR_t, RESOURCETRANSLATIONDIRECTION_t, Ulong, IORESOURCEDESCRIPTOR_t*, PDeviceObject_t, PCMPARTIALRESOURCEDESCRIPTOR_t);
+alias PTRANSLATERESOURCEREQUIREMENTSHANDLER_t = fn NtStatus(Pvoid, PIORESOURCEDESCRIPTOR_t, PDeviceObject_t, Pulong, PIORESOURCEDESCRIPTOR_t*);
 alias PTRANSLATORINTERFACE_t = TRANSLATORINTERFACE_t*;
 alias PHALRESETDISPLAYPARAMETERS_t = fn Boolean(Ulong, Ulong);
 alias PHALDMACRASHDUMPREGISTERTYPE_t = HALDMACRASHDUMPREGISTERTYPE_t*;
@@ -221,29 +221,29 @@ alias HALPMUNOTIFICATIONCALLBACK_t = fn void(Pvoid, PHALPMUNOTIFICATION_t);
 alias PHALPMUNOTIFICATIONCALLBACK_t = fn void(Pvoid, PHALPMUNOTIFICATION_t);
 alias PHALREGISTERPMUNOTIFICATIONINPUT_t = HALREGISTERPMUNOTIFICATIONINPUT_t*;
 alias PHALUNREGISTERPMUNOTIFICATIONINPUT_t = HALUNREGISTERPMUNOTIFICATIONINPUT_t*;
-alias PHalQuerySystemInformation = fn Ntstatus(HALQUERYINFORMATIONCLASS_t, Ulong, Pvoid, Pulong);
-alias PHalSetSystemInformation = fn Ntstatus(HALSETINFORMATIONCLASS_t, Ulong, Pvoid);
-alias PHalExamineMBR = fn void(PDEVICEOBJECT_t, Ulong, Ulong, Pvoid*);
-alias PHalIoReadPartitionTable = fn Ntstatus(PDEVICEOBJECT_t, Ulong, Boolean, DRIVELAYOUTINFORMATION_t**);
-alias PHalIoSetPartitionInformation = fn Ntstatus(PDEVICEOBJECT_t, Ulong, Ulong, Ulong);
-alias PHalIoWritePartitionTable = fn Ntstatus(PDEVICEOBJECT_t, Ulong, Ulong, Ulong, DRIVELAYOUTINFORMATION_t*);
-alias PHalQueryBusSlots = fn Ntstatus(PBUSHANDLER_t, Ulong, Pulong, Pulong);
-alias PHalInitPnpDriver = fn Ntstatus();
+alias PHalQuerySystemInformation = fn NtStatus(HALQUERYINFORMATIONCLASS_t, Ulong, Pvoid, Pulong);
+alias PHalSetSystemInformation = fn NtStatus(HALSETINFORMATIONCLASS_t, Ulong, Pvoid);
+alias PHalExamineMBR = fn void(PDeviceObject_t, Ulong, Ulong, Pvoid*);
+alias PHalIoReadPartitionTable = fn NtStatus(PDeviceObject_t, Ulong, Boolean, DRIVELAYOUTINFORMATION_t**);
+alias PHalIoSetPartitionInformation = fn NtStatus(PDeviceObject_t, Ulong, Ulong, Ulong);
+alias PHalIoWritePartitionTable = fn NtStatus(PDeviceObject_t, Ulong, Ulong, Ulong, DRIVELAYOUTINFORMATION_t*);
+alias PHalQueryBusSlots = fn NtStatus(PBUSHANDLER_t, Ulong, Pulong, Pulong);
+alias PHalInitPnpDriver = fn NtStatus();
 alias PPMDISPATCHTABLE_t = PMDISPATCHTABLE_t*;
-alias PHalInitPowerManagement = fn Ntstatus(PPMDISPATCHTABLE_t, PPMDISPATCHTABLE_t*);
+alias PHalInitPowerManagement = fn NtStatus(PPMDISPATCHTABLE_t, PPMDISPATCHTABLE_t*);
 alias PHalGetDmaAdapter = fn DMAADAPTER_t*(Pvoid, DEVICEDESCRIPTION_t*, Pulong);
-alias PHalGetInterruptTranslator = fn Ntstatus(INTERFACETYPE_t, Ulong, INTERFACETYPE_t, Ushort, Ushort, PTRANSLATORINTERFACE_t, Pulong);
-alias PHalTranslateBusAddress = fn Boolean(INTERFACETYPE_t, Ulong, PHYSICALADDRESS_t, Pulong, PPHYSICALADDRESS_t);
-alias PHalAssignSlotResources = fn Ntstatus(PUNICODESTRING_t, PUNICODESTRING_t, PDRIVEROBJECT_t, PDEVICEOBJECT_t, INTERFACETYPE_t, Ulong, Ulong, PCMRESOURCELIST_t*);
+alias PHalGetInterruptTranslator = fn NtStatus(INTERFACETYPE_t, Ulong, INTERFACETYPE_t, Ushort, Ushort, PTRANSLATORINTERFACE_t, Pulong);
+alias PHalTranslateBusAddress = fn Boolean(INTERFACETYPE_t, Ulong, PhysicalAddress_t, Pulong, PPHYSICALADDRESS_t);
+alias PHalAssignSlotResources = fn NtStatus(PUnicodeString_t, PUnicodeString_t, PDRIVEROBJECT_t, PDeviceObject_t, INTERFACETYPE_t, Ulong, Ulong, PCMRESOURCELIST_t*);
 alias PHalHaltSystem = fn void();
 alias PHalResetDisplay = fn Boolean();
 alias PMAPREGISTERENTRY_t = MAPREGISTERENTRY_t*;
 alias PHalVectorToIDTEntry = fn Uchar(Ulong);
-alias PHalFindBusAddressTranslation = fn Boolean(PHYSICALADDRESS_t, Pulong, PPHYSICALADDRESS_t, PULONGPTR_t, Boolean);
-alias PHalStartMirroring = fn Ntstatus();
-alias PHalEndMirroring = fn Ntstatus(Ulong);
-alias PHalMirrorPhysicalMemory = fn Ntstatus(PHYSICALADDRESS_t, LARGEINTEGER_t);
-alias PHalMirrorVerify = fn Ntstatus(PHYSICALADDRESS_t, LARGEINTEGER_t);
+alias PHalFindBusAddressTranslation = fn Boolean(PhysicalAddress_t, Pulong, PPHYSICALADDRESS_t, PULONGPTR_t, Boolean);
+alias PHalStartMirroring = fn NtStatus();
+alias PHalEndMirroring = fn NtStatus(Ulong);
+alias PHalMirrorPhysicalMemory = fn NtStatus(PhysicalAddress_t, LARGEINTEGER_t);
+alias PHalMirrorVerify = fn NtStatus(PhysicalAddress_t, LARGEINTEGER_t);
 alias PDEBUGDEVICEADDRESS_t = DEBUGDEVICEADDRESS_t*;
 alias PDEBUGMEMORYREQUIREMENTS_t = DEBUGMEMORYREQUIREMENTS_t*;
 alias PKDNAMESPACEENUM_t = KDNAMESPACEENUM_t*;
@@ -257,15 +257,15 @@ alias PACPIDEBUGGINGDEVICEINUSE_t = ACPIDEBUGGINGDEVICEINUSE_t*;
 alias PDEBUGGINGDEVICEINUSE_t = DEBUGGINGDEVICEINUSE_t*;
 alias PDEBUGGINGDEVICEINUSEINFORMATION_t = DEBUGGINGDEVICEINUSEINFORMATION_t*;
 alias PDEBUGDEVICEFOUNDFUNCTION_t = fn KDCALLBACKACTION_t(PDEBUGDEVICEDESCRIPTOR_t);
-alias PKdEnumerateDebuggingDevices = fn Ntstatus(Pvoid, PDEBUGDEVICEDESCRIPTOR_t, PDEBUGDEVICEFOUNDFUNCTION_t);
-alias PKdSetupPciDeviceForDebugging = fn Ntstatus(Pvoid, PDEBUGDEVICEDESCRIPTOR_t);
-alias PKdReleasePciDeviceForDebugging = fn Ntstatus(PDEBUGDEVICEDESCRIPTOR_t);
-alias PKdSetupIntegratedDeviceForDebugging = fn Ntstatus(Pvoid, PDEBUGDEVICEDESCRIPTOR_t);
-alias PKdReleaseIntegratedDeviceForDebugging = fn Ntstatus(PDEBUGDEVICEDESCRIPTOR_t);
+alias PKdEnumerateDebuggingDevices = fn NtStatus(Pvoid, PDEBUGDEVICEDESCRIPTOR_t, PDEBUGDEVICEFOUNDFUNCTION_t);
+alias PKdSetupPciDeviceForDebugging = fn NtStatus(Pvoid, PDEBUGDEVICEDESCRIPTOR_t);
+alias PKdReleasePciDeviceForDebugging = fn NtStatus(PDEBUGDEVICEDESCRIPTOR_t);
+alias PKdSetupIntegratedDeviceForDebugging = fn NtStatus(Pvoid, PDEBUGDEVICEDESCRIPTOR_t);
+alias PKdReleaseIntegratedDeviceForDebugging = fn NtStatus(PDEBUGDEVICEDESCRIPTOR_t);
 alias PKdGetAcpiTablePhase0 = fn Pvoid(LOADERPARAMETERBLOCK_t*, Ulong);
 alias PKdCheckPowerButton = fn void();
 alias PHalEndOfBoot = fn void();
-alias PKdMapPhysicalMemory64 = fn Pvoid(PHYSICALADDRESS_t, Ulong, Boolean);
+alias PKdMapPhysicalMemory64 = fn Pvoid(PhysicalAddress_t, Ulong, Boolean);
 alias PKdUnmapVirtualAddress = fn void(Pvoid, Ulong, Boolean);
 alias PKdGetPciDataByOffset = fn Ulong(Ulong, Ulong, Pvoid, Ulong, Ulong);
 alias PKdSetPciDataByOffset = fn Ulong(Ulong, Ulong, Pvoid, Ulong, Ulong);
@@ -273,11 +273,11 @@ alias PHalGetAcpiTable = fn Pvoid(Ulong, Pcstr, Pcstr);
 alias PCIERRORHANDLERCALLBACK_t = fn void();
 alias PHalSetPciErrorHandlerCallback = fn void(PCIERRORHANDLERCALLBACK_t);
 alias PHalGetPrmCache = fn void(PLISTENTRY_t*, PLISTENTRY_t*);
-alias PHalInvokePrmFwHandler = fn Ntstatus(Lpguid, Pvoid, Pvoid);
-alias PHalFfaMsgSendDirectReq2 = fn Ntstatus(FFAMSGSENDDIRECTREQ2PARAMETERS_t*);
-alias PHalFfaRunTarget = fn Ntstatus(FFARUNTARGETINPUTPARAMETERS_t*, FFARUNTARGETOUTPUTPARAMETERS_t*);
-alias PHalFfaRegisterNotification = fn Ntstatus(FFANOTIFICATIONREGISTRATIONPARAMETERS_t*, Pvoid*);
-alias PHalFfaUnregisterNotification = fn Ntstatus(Pvoid);
+alias PHalInvokePrmFwHandler = fn NtStatus(Lpguid, Pvoid, Pvoid);
+alias PHalFfaMsgSendDirectReq2 = fn NtStatus(FFAMSGSENDDIRECTREQ2PARAMETERS_t*);
+alias PHalFfaRunTarget = fn NtStatus(FFARUNTARGETINPUTPARAMETERS_t*, FFARUNTARGETOUTPUTPARAMETERS_t*);
+alias PHalFfaRegisterNotification = fn NtStatus(FFANOTIFICATIONREGISTRATIONPARAMETERS_t*, Pvoid*);
+alias PHalFfaUnregisterNotification = fn NtStatus(Pvoid);
 alias PHALDISPATCH_t = HALDISPATCH_t*;
 alias PHALBUSINFORMATION_t = HALBUSINFORMATION_t*;
 alias PHALDISPLAYBIOSINFORMATION_t = HALDISPLAYBIOSINFORMATION_t*;
@@ -285,11 +285,11 @@ alias PHALPOWERINFORMATION_t = HALPOWERINFORMATION_t*;
 alias PHALPROCESSORSPEEDINFORMATION_t = HALPROCESSORSPEEDINFO_t*;
 alias PHALCALLBACKS_t = HALCALLBACKS_t*;
 alias PHALPOSTSLEEPSTATS_t = HALPOSTSLEEPSTATS_t*;
-alias Phalioreadwritehandler = fn Ntstatus(Boolean, Ulong, Ulong, Pulong);
+alias Phalioreadwritehandler = fn NtStatus(Boolean, Ulong, Ulong, Pulong);
 alias PHALAMLIBADIOADDRESSLIST_t = HALAMLIBADIOADDRESSLIST_t*;
 alias Phalmcainterfacelock = fn void();
 alias Phalmcainterfaceunlock = fn void();
-alias Phalmcainterfacereadregister = fn Ntstatus(Uchar, Pvoid);
+alias Phalmcainterfacereadregister = fn NtStatus(Uchar, Pvoid);
 alias PHALAPICDESTINATIONMODE_t = HALAPICDESTINATIONMODE_t*;
 alias PMCADRIVERINFO_t = MCADRIVERINFO_t*;
 alias PHALERRORINFO_t = HALERRORINFO_t*;
@@ -442,10 +442,10 @@ alias PPCIEXPRESSCXLDVSECCAPABILITYV11_t = PCIEXPRESSCXLDVSECCAPABILITYV11_t*;
 alias PPCILINKWIDTH_t = PCILINKWIDTH_t*;
 alias PPCILINKSPEED_t = PCILINKSPEED_t*;
 alias PPCILINKINFORMATION_t = PCILINKINFORMATION_t*;
-alias PCISETMAXLINKBANDWIDTH_t = fn Ntstatus(Pvoid, Ulong, Boolean, Pboolean, PPCILINKSPEED_t);
-alias PPCISETMAXLINKBANDWIDTH_t = fn Ntstatus(Pvoid, Ulong, Boolean, Pboolean, PPCILINKSPEED_t);
-alias PCIGETLINKINFORMATION_t = fn Ntstatus(Pvoid, PPCILINKINFORMATION_t);
-alias PPCIGETLINKINFORMATION_t = fn Ntstatus(Pvoid, PPCILINKINFORMATION_t);
+alias PCISETMAXLINKBANDWIDTH_t = fn NtStatus(Pvoid, Ulong, Boolean, Pboolean, PPCILINKSPEED_t);
+alias PPCISETMAXLINKBANDWIDTH_t = fn NtStatus(Pvoid, Ulong, Boolean, Pboolean, PPCILINKSPEED_t);
+alias PCIGETLINKINFORMATION_t = fn NtStatus(Pvoid, PPCILINKINFORMATION_t);
+alias PPCIGETLINKINFORMATION_t = fn NtStatus(Pvoid, PPCILINKINFORMATION_t);
 alias PPCILINKCONFIGINTERFACEV1_t = PCILINKCONFIGINTERFACEV1_t*;
 alias PCIREADWRITECONFIG_t = fn Ulong(Pvoid, Ulong, Ulong, Pvoid, Ulong, Ulong);
 alias PPCIREADWRITECONFIG_t = fn Ulong(Pvoid, Ulong, Ulong, Pvoid, Ulong, Ulong);
@@ -462,9 +462,9 @@ alias PPCIPREPAREMULTISTAGERESUME_t = fn void(Pvoid);
 alias PPCIBUSINTERFACESTANDARD_t = PCIBUSINTERFACESTANDARD_t*;
 alias PWHEAERRORSOURCETYPE_t = WHEAERRORSOURCETYPE_t*;
 alias PWHEAERRORSOURCESTATE_t = WHEAERRORSOURCESTATE_t*;
-alias WHEAERRORSOURCEINITIALIZEDEVICEDRIVER_t = fn Ntstatus(Pvoid, Ulong);
+alias WHEAERRORSOURCEINITIALIZEDEVICEDRIVER_t = fn NtStatus(Pvoid, Ulong);
 alias WHEAERRORSOURCEUNINITIALIZEDEVICEDRIVER_t = fn void(Pvoid);
-alias WHEAERRORSOURCECORRECTDEVICEDRIVER_t = fn Ntstatus(Pvoid, Pulong);
+alias WHEAERRORSOURCECORRECTDEVICEDRIVER_t = fn NtStatus(Pvoid, Pulong);
 alias PWHEAERRORSOURCECONFIGURATIONDD_t = WHEAERRORSOURCECONFIGURATIONDD_t*;
 alias WHEAERRORHANDLE_t = Pvoid;
 alias PWHEAERRORSOURCECONFIGURATIONDEVICEDRIVERV1_t = WHEAERRORSOURCECONFIGURATIONDEVICEDRIVERV1_t*;
@@ -758,10 +758,10 @@ alias PWHEAGENERICERROR_t = WHEAGENERICERROR_t*;
 alias PWHEAGENERICERRORDATAENTRYV1_t = WHEAGENERICERRORDATAENTRYV1_t*;
 alias PWHEAGENERICERRORDATAENTRYV2_t = WHEAGENERICERRORDATAENTRYV2_t*;
 alias PWHEAGENERICERRORDATAENTRY_t = WHEAGENERICERRORDATAENTRYV2_t*;
-alias WHEAERRORSOURCECORRECT_t = fn Ntstatus(PWHEAERRORSOURCEDESCRIPTOR_t, Pulong);
-alias WHEAERRORSOURCEINITIALIZE_t = fn Ntstatus(Ulong, PWHEAERRORSOURCEDESCRIPTOR_t, Pvoid);
-alias WHEAERRORSOURCECREATERECORD_t = fn Ntstatus(PWHEAERRORSOURCEDESCRIPTOR_t, PWHEAERRORPACKET_t, PWHEAERRORRECORD_t, Ulong, Pvoid);
-alias WHEAERRORSOURCERECOVER_t = fn Ntstatus(Pvoid, PWHEAERRORSEVERITY_t);
+alias WHEAERRORSOURCECORRECT_t = fn NtStatus(PWHEAERRORSOURCEDESCRIPTOR_t, Pulong);
+alias WHEAERRORSOURCEINITIALIZE_t = fn NtStatus(Ulong, PWHEAERRORSOURCEDESCRIPTOR_t, Pvoid);
+alias WHEAERRORSOURCECREATERECORD_t = fn NtStatus(PWHEAERRORSOURCEDESCRIPTOR_t, PWHEAERRORPACKET_t, PWHEAERRORRECORD_t, Ulong, Pvoid);
+alias WHEAERRORSOURCERECOVER_t = fn NtStatus(Pvoid, PWHEAERRORSEVERITY_t);
 alias WHEAERRORSOURCEUNINITIALIZE_t = fn void(Pvoid);
 alias PWHEAERRORSOURCECONFIGURATION_t = WHEAERRORSOURCECONFIGURATION_t*;
 alias PWHEAREPORTHWERRORDEVICEDRIVERFLAGS_t = WHEAREPORTHWERRORDEVICEDRIVERFLAGS_t*;
@@ -769,7 +769,7 @@ alias PWHEAPACKETLOGDATA_t = WHEAPACKETLOGDATA_t*;
 alias PERRORSOURCEINFO_t = ERRORSOURCEINFO_t*;
 alias WHEASIGNALHANDLEROVERRIDECALLBACK_t = fn Boolean(UINTPTR_t);
 alias PWHEAERRORSOURCEOVERRIDESETTINGS_t = WHEAERRORSOURCEOVERRIDESETTINGS_t*;
-alias PFNWHEAHIGHIRQLLOGSELEVENTHANDLER_t = fn Ntstatus(Pvoid, PIPMIOSSELRECORD_t);
+alias PFNWHEAHIGHIRQLLOGSELEVENTHANDLER_t = fn NtStatus(Pvoid, PIPMIOSSELRECORD_t);
 alias PWHEAERRORINJECTIONCAPABILITIES_t = WHEAERRORINJECTIONCAPABILITIES_t*;
 alias PPSHEDPIVENDORDEFINEDACTION_t = PSHEDPIVENDORDEFINEDACTION_t*;
 alias PFNINUSEPAGEOFFLINENOTIFY_t = fn Boolean(int, Boolean, Pvoid, Pntstatus);
@@ -777,23 +777,23 @@ alias PWHEAINUSEPAGENOTIFYFLAGS_t = WHEAINUSEPAGENOTIFYFLAGS_t*;
 alias PWHEARECOVERYCONTEXTERRORTYPE_t = WHEARECOVERYCONTEXTERRORTYPE_t*;
 alias PWHEARECOVERYCONTEXTPAGEINFO_t = WHEARECOVERYCONTEXTPAGEINFO_t*;
 alias PWHEARECOVERYCONTEXT_t = WHEARECOVERYCONTEXT_t*;
-alias HVLWHEAERRORNOTIFICATION_t = fn Ntstatus(PWHEARECOVERYCONTEXT_t, Boolean);
-alias PHVLWHEAERRORNOTIFICATION_t = fn Ntstatus(PWHEARECOVERYCONTEXT_t, Boolean);
-alias PSHEDPIGETALLERRORSOURCES_t = fn Ntstatus(Pvoid, Pulong, PWHEAERRORSOURCEDESCRIPTOR_t*, Pulong);
-alias PSHEDPIGETERRORSOURCEINFO_t = fn Ntstatus(Pvoid, PWHEAERRORSOURCEDESCRIPTOR_t);
-alias PSHEDPISETERRORSOURCEINFO_t = fn Ntstatus(Pvoid, PWHEAERRORSOURCEDESCRIPTOR_t);
-alias PSHEDPIENABLEERRORSOURCE_t = fn Ntstatus(Pvoid, PWHEAERRORSOURCEDESCRIPTOR_t);
-alias PSHEDPIDISABLEERRORSOURCE_t = fn Ntstatus(Pvoid, PWHEAERRORSOURCEDESCRIPTOR_t);
-alias PSHEDPIWRITEERRORRECORD_t = fn Ntstatus(Pvoid, Ulong, Ulong, PWHEAERRORRECORD_t);
-alias PSHEDPIREADERRORRECORD_t = fn Ntstatus(Pvoid, Ulong, Ulonglong, Pulonglong, Pulong, PWHEAERRORRECORD_t);
-alias PSHEDPICLEARERRORRECORD_t = fn Ntstatus(Pvoid, Ulong, Ulonglong);
-alias PSHEDPIRETRIEVEERRORINFO_t = fn Ntstatus(Pvoid, PWHEAERRORSOURCEDESCRIPTOR_t, Ulonglong, PWHEAERRORPACKET_t);
-alias PSHEDPIFINALIZEERRORRECORD_t = fn Ntstatus(Pvoid, PWHEAERRORSOURCEDESCRIPTOR_t, Ulong, PWHEAERRORRECORD_t);
-alias PSHEDPICLEARERRORSTATUS_t = fn Ntstatus(Pvoid, PWHEAERRORSOURCEDESCRIPTOR_t, Ulong, PWHEAERRORRECORD_t);
-alias PSHEDPIATTEMPTERRORRECOVERY_t = fn Ntstatus(Pvoid, Ulong, PWHEAERRORRECORD_t);
-alias PSHEDPIGETINJECTIONCAPABILITIES_t = fn Ntstatus(Pvoid, PWHEAERRORINJECTIONCAPABILITIES_t);
-alias PSHEDPIINJECTERROR_t = fn Ntstatus(Pvoid, Ulonglong, Ulonglong, Ulonglong, Ulonglong, Ulonglong);
-alias PSHEDPIVENDORDEFINED_t = fn Ntstatus(PSHEDPIVENDORDEFINEDACTION_t, UintSR, UintSR, PuintX, PuintSR, PuintX);
+alias HVLWHEAERRORNOTIFICATION_t = fn NtStatus(PWHEARECOVERYCONTEXT_t, Boolean);
+alias PHVLWHEAERRORNOTIFICATION_t = fn NtStatus(PWHEARECOVERYCONTEXT_t, Boolean);
+alias PSHEDPIGETALLERRORSOURCES_t = fn NtStatus(Pvoid, Pulong, PWHEAERRORSOURCEDESCRIPTOR_t*, Pulong);
+alias PSHEDPIGETERRORSOURCEINFO_t = fn NtStatus(Pvoid, PWHEAERRORSOURCEDESCRIPTOR_t);
+alias PSHEDPISETERRORSOURCEINFO_t = fn NtStatus(Pvoid, PWHEAERRORSOURCEDESCRIPTOR_t);
+alias PSHEDPIENABLEERRORSOURCE_t = fn NtStatus(Pvoid, PWHEAERRORSOURCEDESCRIPTOR_t);
+alias PSHEDPIDISABLEERRORSOURCE_t = fn NtStatus(Pvoid, PWHEAERRORSOURCEDESCRIPTOR_t);
+alias PSHEDPIWRITEERRORRECORD_t = fn NtStatus(Pvoid, Ulong, Ulong, PWHEAERRORRECORD_t);
+alias PSHEDPIREADERRORRECORD_t = fn NtStatus(Pvoid, Ulong, Ulonglong, Pulonglong, Pulong, PWHEAERRORRECORD_t);
+alias PSHEDPICLEARERRORRECORD_t = fn NtStatus(Pvoid, Ulong, Ulonglong);
+alias PSHEDPIRETRIEVEERRORINFO_t = fn NtStatus(Pvoid, PWHEAERRORSOURCEDESCRIPTOR_t, Ulonglong, PWHEAERRORPACKET_t);
+alias PSHEDPIFINALIZEERRORRECORD_t = fn NtStatus(Pvoid, PWHEAERRORSOURCEDESCRIPTOR_t, Ulong, PWHEAERRORRECORD_t);
+alias PSHEDPICLEARERRORSTATUS_t = fn NtStatus(Pvoid, PWHEAERRORSOURCEDESCRIPTOR_t, Ulong, PWHEAERRORRECORD_t);
+alias PSHEDPIATTEMPTERRORRECOVERY_t = fn NtStatus(Pvoid, Ulong, PWHEAERRORRECORD_t);
+alias PSHEDPIGETINJECTIONCAPABILITIES_t = fn NtStatus(Pvoid, PWHEAERRORINJECTIONCAPABILITIES_t);
+alias PSHEDPIINJECTERROR_t = fn NtStatus(Pvoid, Ulonglong, Ulonglong, Ulonglong, Ulonglong, Ulonglong);
+alias PSHEDPIVENDORDEFINED_t = fn NtStatus(PSHEDPIVENDORDEFINEDACTION_t, UintSR, UintSR, PuintX, PuintSR, PuintX);
 alias PWHEAPSHEDPLUGINCALLBACKS_t = WHEAPSHEDPLUGINCALLBACKS_t*;
 alias WHEAPSHEDPLUGINREGISTRATIONPACKET_t = WHEAPSHEDPLUGINREGISTRATIONPACKETV2_t;
 alias PWHEAPSHEDPLUGINREGISTRATIONPACKET_t = WHEAPSHEDPLUGINREGISTRATIONPACKET_t*;
@@ -818,15 +818,15 @@ alias UintVT = ulong;
 alias PSYSTEMLOGICALPROCESSORINFORMATIONEX_t = SYSTEMLOGICALPROCESSORINFORMATIONEX_t*;
 alias PDEVICEDESCRIPTION_t = DEVICEDESCRIPTION_t*;
 alias Pwchar = Wchar*;
-alias PCUNICODESTRING_t = UNICODESTRING_t*;
+alias PCUNICODESTRING_t = UnicodeString_t*;
 alias PCLIENTID_t = CLIENTID_t*;
 alias PEXCEPTIONROUTINE_t = EXCEPTIONROUTINE_t*;
 alias Logical = CULong;
-alias PDEVICEOBJECT_t = DEVICEOBJECT_t*;
+alias PDeviceObject_t = DEVICEOBJECT_t*;
 alias PuintSR = uint*;
 alias PKEYVALUEFULLINFORMATION_t = KEYVALUEFULLINFORMATION_t*;
 alias PPROCESSORNUMBER_t = PROCESSORNUMBER_t*;
-alias PHYSICALADDRESS_t = LARGEINTEGER_t;
+alias PhysicalAddress_t = LARGEINTEGER_t;
 alias PCMRESOURCELIST_t = CMRESOURCELIST_t*;
 alias Pkaffinity = Kaffinity*;
 alias PCMPARTIALRESOURCELIST_t = CMPARTIALRESOURCELIST_t*;
@@ -840,7 +840,7 @@ alias PuintX = char*;
 alias Kaffinity = ulong;
 alias Uchar = char;
 alias Pirp = Irp*;
-alias PUNICODESTRING_t = UNICODESTRING_t*;
+alias PUnicodeString_t = UnicodeString_t*;
 alias PDRIVERLISTCONTROL_t = DRIVERLISTCONTROL_t*;
 alias PIORESOURCEREQUIREMENTSLIST_t = IORESOURCEREQUIREMENTSLIST_t*;
 alias PFILEOBJECT_t = FILEOBJECT_t*;
@@ -881,7 +881,7 @@ alias UlongVT = ulong;
 alias Puchar = Uchar*;
 alias PKSPINLOCK_t = KSPINLOCK_t*;
 alias PINTERFACEREFERENCE_t = void*;
-alias Pntstatus = Ntstatus*;
+alias Pntstatus = NtStatus*;
 alias PDRIVERCONTROL_t = DRIVERCONTROL_t*;
 alias Lpguid = Guid*;
 alias Pboolean = Boolean*;
@@ -889,14 +889,14 @@ alias PSECURITYDESCRIPTOR_t = void*;
 alias Pch = Char*;
 alias PIOSTATUSBLOCK_t = IOSTATUSBLOCK_t*;
 alias UlongSR = uint;
-alias PDRIVEROBJECT_t = DRIVEROBJECT_t*;
+alias PDRIVEROBJECT_t = DriverObject_t*;
 alias PACCESSMASK_t = ACCESSMASK_t*;
 alias Cchar = char;
 alias Pushort = Ushort*;
 alias PGETSETDEVICEDATA_t = GETSETDEVICEDATA_t*;
 alias LONGPTR_t = long;
 alias Ushort = ushort;
-alias Ntstatus = CLong;
+alias NtStatus = CLong;
 alias PPHYSICALADDRESS_t = LARGEINTEGER_t*;
 alias PLARGEINTEGER_t = LARGEINTEGER_t*;
 alias Kirql = char;
@@ -2803,7 +2803,7 @@ struct PROCESSWSWATCHINFORMATION_t
 
 struct PROCESSBASICINFORMATION_t
 {
-	Ntstatus exit_status;
+	NtStatus exit_status;
 	Ppeb peb_base_address;
 	ULONGPTR_t affinity_mask;
 	Kpriority base_priority;
@@ -3086,7 +3086,7 @@ struct PROCESSKEEPALIVECOUNTINFORMATION_t
 
 struct PROCESSREVOKEFILEHANDLESINFORMATION_t
 {
-	UNICODESTRING_t target_device_path;
+	UnicodeString_t target_device_path;
 }
 
 struct POOLEDUSAGEANDLIMITS_t
@@ -3313,7 +3313,7 @@ struct ZONEHEADER_t
 
 struct PHYSICALMEMORYRANGE_t
 {
-	PHYSICALADDRESS_t base_address;
+	PhysicalAddress_t base_address;
 	LARGEINTEGER_t number_of_bytes;
 }
 
@@ -3331,7 +3331,7 @@ struct PSCREATENOTIFYINFO_t
 	FILEOBJECT_t* file_object;
 	PCUNICODESTRING_t image_file_name;
 	PCUNICODESTRING_t command_line;
-	Ntstatus creation_status;
+	NtStatus creation_status;
 }
 
 struct IMAGEINFO_t
@@ -3450,10 +3450,10 @@ struct BDCBIMAGEINFORMATION_t
 {
 	BDCBCLASSIFICATION_t classification;
 	Ulong image_flags;
-	UNICODESTRING_t image_name;
-	UNICODESTRING_t registry_path;
-	UNICODESTRING_t certificate_publisher;
-	UNICODESTRING_t certificate_issuer;
+	UnicodeString_t image_name;
+	UnicodeString_t registry_path;
+	UnicodeString_t certificate_publisher;
+	UnicodeString_t certificate_issuer;
 	Pvoid image_hash;
 	Pvoid certificate_thumbprint;
 	Ulong image_hash_algorithm;
@@ -3486,7 +3486,7 @@ struct PNPLOCATIONINTERFACE_t
 
 struct ARBITERCONFLICTINFO_t
 {
-	PDEVICEOBJECT_t owning_object;
+	PDeviceObject_t owning_object;
 	Ulonglong start;
 	Ulonglong end;
 }
@@ -3517,7 +3517,7 @@ struct ARBITERQUERYALLOCATEDRESOURCESPARAMETERS_t
 
 struct ARBITERQUERYCONFLICTPARAMETERS_t
 {
-	PDEVICEOBJECT_t physical_device_object;
+	PDeviceObject_t physical_device_object;
 	PIORESOURCEDESCRIPTOR_t conflicting_resource;
 	Pulong conflict_count;
 	PARBITERCONFLICTINFO_t* conflicts;
@@ -3530,7 +3530,7 @@ struct ARBITERQUERYARBITRATEPARAMETERS_t
 
 struct ARBITERADDRESERVEDPARAMETERS_t
 {
-	PDEVICEOBJECT_t reserve_device;
+	PDeviceObject_t reserve_device;
 }
 
 struct ARBITERPARAMETERS_t
@@ -3543,7 +3543,7 @@ struct ARBITERLISTENTRY_t
 	LISTENTRY_t list_entry;
 	Ulong alternative_count;
 	PIORESOURCEDESCRIPTOR_t alternatives;
-	PDEVICEOBJECT_t physical_device_object;
+	PDeviceObject_t physical_device_object;
 	ARBITERREQUESTSOURCE_t request_source;
 	Ulong flags;
 	LONGPTR_t work_space;
@@ -3624,8 +3624,8 @@ struct DEBUGDEVICEADDRESS_t
 
 struct DEBUGMEMORYREQUIREMENTS_t
 {
-	PHYSICALADDRESS_t start;
-	PHYSICALADDRESS_t max_end;
+	PhysicalAddress_t start;
+	PhysicalAddress_t max_end;
 	Pvoid virtual_address;
 	Ulong length;
 	Boolean cached;
@@ -6540,7 +6540,7 @@ struct WHEAPPFAMEMORYOFFLINEDNOTIFYCALLBACKACTION_t
 	WHEAEVENTLOGENTRY_t whea_event_log_entry;
 	Ulong page;
 	Ulong component_tag;
-	Ntstatus status;
+	NtStatus status;
 	WHEARECOVERYCONTEXTACTIONTAKEN_t action_taken;
 	WHEARECOVERYCONTEXTACTIONTAKENADDITIONALINFO_t action_taken_additional_info;
 }
@@ -6553,7 +6553,7 @@ struct WHEAPPSHEDINJECTERROR_t
 	Ulonglong parameter2;
 	Ulonglong parameter3;
 	Ulonglong parameter4;
-	Ntstatus injection_status;
+	NtStatus injection_status;
 	Boolean injection_attempted;
 	Boolean injection_by_plugin;
 }
@@ -6571,7 +6571,7 @@ struct WHEAPPSHEDPLUGINREGISTER_t
 	Ulong version;
 	Ulong length;
 	Ulong functional_area_mask;
-	Ntstatus status;
+	NtStatus status;
 }
 
 struct WHEAPPFAMEMORYREMOVEMONITOR_t
@@ -6612,7 +6612,7 @@ struct WHEAPADDREMOVEERRORSOURCEEVENT_t
 {
 	WHEAEVENTLOGENTRY_t whea_event_log_entry;
 	WHEAERRORSOURCEDESCRIPTOR_t descriptor;
-	Ntstatus status;
+	NtStatus status;
 	Boolean is_remove;
 }
 
@@ -6622,7 +6622,7 @@ struct WHEAPATTEMPTRECOVERYEVENT_t
 	WHEAERRORRECORDHEADER_t error_header;
 	Boolean architectural_recovery;
 	Boolean pshed_recovery;
-	Ntstatus status;
+	NtStatus status;
 }
 
 struct WHEAPFOUNDERRORINBANKEVENT_t
@@ -6707,7 +6707,7 @@ struct WHEAPCREATEGENERICRECORDEVENT_t
 	WHEAEVENTLOGENTRY_t whea_event_log_entry;
 	Char[32] error;
 	Ulong entry_count;
-	Ntstatus status;
+	NtStatus status;
 }
 
 struct WHEAPERRORRECORDEVENT_t
@@ -6822,7 +6822,7 @@ struct WHEAPSHEDPLUGINPLATFORMSUPPORTEVENT_t
 struct WHEAPSHEDPLUGININITFAILEDEVENT_t
 {
 	WHEAEVENTLOGENTRY_t whea_event_log_entry;
-	Ntstatus status;
+	NtStatus status;
 }
 
 struct WHEAPSHEDPLUGINHEARTBEAT_t
@@ -6942,7 +6942,7 @@ struct WHEASRARDETAILEVENT_t
 	WHEAEVENTLOGENTRY_t whea_event_log_entry;
 	UintSR recovery_context_flags;
 	UintVT recovery_context_pa;
-	Ntstatus page_offline_status;
+	NtStatus page_offline_status;
 	Boolean kernel_consumer_error;
 }
 
@@ -7018,7 +7018,7 @@ struct WHEAPPCIEREADOVERRIDESERR_t
 {
 	WHEAEVENTLOGENTRY_t whea_event_log_entry;
 	UintSR failure_reason;
-	Ntstatus failure_status;
+	NtStatus failure_status;
 }
 
 struct WHEAPPCIECONFIGINFO_t
@@ -7041,7 +7041,7 @@ struct WHEATHROTTLEPCIEADDEVENT_t
 	WHEAPCIEADDRESS_t address;
 	UintSR mask;
 	Boolean updated;
-	Ntstatus status;
+	NtStatus status;
 }
 
 struct WHEATHROTTLEMEMORYADDORREMOVEEVENT_t
@@ -7084,13 +7084,13 @@ struct WHEAREGISTERKEYNOTIFICATIONFAILEDEVENT_t
 struct WHEAMEMORYTHROTTLESUMMARYFAILEDEVENT_t
 {
 	WHEAEVENTLOGENTRY_t whea_event_log_entry;
-	Ntstatus status;
+	NtStatus status;
 }
 
 struct WHEAPSHEDPICPUBUSESINITFAILEDEVENT_t
 {
 	WHEAEVENTLOGENTRY_t whea_event_log_entry;
-	Ntstatus status;
+	NtStatus status;
 }
 
 struct WHEAPSHEDPITRACEEVENT_t
@@ -7219,8 +7219,8 @@ struct WHEACRASHDUMPEVENTLOGENTRYWITHSTATUS_t
 {
 	WHEAEVENTLOGENTRY_t whea_event_log_entry;
 	Ulong source_location_id;
-	Ntstatus status;
-	Ntstatus io_status;
+	NtStatus status;
+	NtStatus io_status;
 }
 
 struct WHEACRASHDUMPEVENTLOGENTRYULONG1_t
@@ -7241,7 +7241,7 @@ struct WHEAREADVENDORDEFINEDINJECTIONAREALOGENTRY_t
 	UintSR offset;
 	UintSR bytes_to_read;
 	UintSR output_buffer_length;
-	Ntstatus status;
+	NtStatus status;
 	UintSR reason;
 }
 
@@ -7250,7 +7250,7 @@ struct WHEAWRITEVENDORDEFINEDINJECTIONAREALOGENTRY_t
 	WHEAEVENTLOGENTRY_t whea_event_log_entry;
 	UintSR offset;
 	UintSR input_length;
-	Ntstatus status;
+	NtStatus status;
 	UintSR reason;
 }
 
@@ -7375,7 +7375,7 @@ union WHEAINUSEPAGENOTIFYFLAGS_t
 struct WHEARECOVERYCONTEXTPAGEINFO_t
 {
 	Ulong component_tag;
-	Ntstatus page_status;
+	NtStatus page_status;
 	WHEARECOVERYCONTEXTACTIONTAKEN_t action_taken;
 	WHEAINUSEPAGENOTIFYFLAGS_t notify_flags;
 	Boolean immediate_success;
@@ -7617,7 +7617,7 @@ struct DEVICEDESCRIPTION_t
 	Ulong dma_address_width;
 	Ulong dma_controller_instance;
 	Ulong dma_request_line;
-	PHYSICALADDRESS_t device_address;
+	PhysicalAddress_t device_address;
 }
 
 struct DMAADAPTER_t
@@ -7708,7 +7708,7 @@ struct GENERICMAPPING_t
 	ACCESSMASK_t generic_all;
 }
 
-struct UNICODESTRING_t
+struct UnicodeString_t
 {
 	Ushort length;
 	Ushort maximum_length;
@@ -7732,18 +7732,18 @@ struct KSYSTEMTIME_t
 	Long high2_time;
 }
 
-struct DRIVEROBJECT_t
+struct DriverObject_t
 {
 	Cshort type;
 	Cshort size;
-	PDEVICEOBJECT_t device_object;
+	PDeviceObject_t device_object;
 	Ulong flags;
 	Pvoid driver_start;
 	Ulong driver_size;
 	Pvoid driver_section;
 	PDRIVEREXTENSION_t driver_extension;
-	UNICODESTRING_t driver_name;
-	PUNICODESTRING_t hardware_database;
+	UnicodeString_t driver_name;
+	PUnicodeString_t hardware_database;
 	PFASTIODISPATCH_t fast_io_dispatch;
 	PDRIVERINITIALIZE_t driver_init;
 	PDRIVERSTARTIO_t driver_start_io;
@@ -7772,13 +7772,13 @@ struct FILEOBJECT_t
 {
 	Cshort type;
 	Cshort size;
-	PDEVICEOBJECT_t device_object;
+	PDeviceObject_t device_object;
 	Pvpb vpb;
 	Pvoid fs_context;
 	Pvoid fs_context2;
 	PSECTIONOBJECTPOINTERS_t section_object_pointer;
 	Pvoid private_cache_map;
-	Ntstatus final_status;
+	NtStatus final_status;
 	FILEOBJECT_t* related_file_object;
 	Boolean lock_operation;
 	Boolean delete_pending;
@@ -7789,7 +7789,7 @@ struct FILEOBJECT_t
 	Boolean shared_write;
 	Boolean shared_delete;
 	Ulong flags;
-	UNICODESTRING_t file_name;
+	UnicodeString_t file_name;
 	LARGEINTEGER_t current_byte_offset;
 	Ulong waiters;
 	Ulong busy;
@@ -7886,9 +7886,9 @@ struct DRIVERDISPATCH_t { void* _unused; }
 
 // Functions
 extern fn void rtl_run_once_initialize(PRTLRUNONCE_t run_once) @cname("RtlRunOnceInitialize");
-extern fn Ntstatus rtl_run_once_execute_once(PRTLRUNONCE_t run_once, PRTLRUNONCEINITFN_t init_fn, Pvoid parameter, Pvoid* context) @cname("RtlRunOnceExecuteOnce");
-extern fn Ntstatus rtl_run_once_begin_initialize(PRTLRUNONCE_t run_once, Ulong flags, Pvoid* context) @cname("RtlRunOnceBeginInitialize");
-extern fn Ntstatus rtl_run_once_complete(PRTLRUNONCE_t run_once, Ulong flags, Pvoid context) @cname("RtlRunOnceComplete");
+extern fn NtStatus rtl_run_once_execute_once(PRTLRUNONCE_t run_once, PRTLRUNONCEINITFN_t init_fn, Pvoid parameter, Pvoid* context) @cname("RtlRunOnceExecuteOnce");
+extern fn NtStatus rtl_run_once_begin_initialize(PRTLRUNONCE_t run_once, Ulong flags, Pvoid* context) @cname("RtlRunOnceBeginInitialize");
+extern fn NtStatus rtl_run_once_complete(PRTLRUNONCE_t run_once, Ulong flags, Pvoid context) @cname("RtlRunOnceComplete");
 extern fn void rtl_initialize_generic_table_avl(PRTLAVLTABLE_t table, PRTLAVLCOMPAREROUTINE_t compare_routine, PRTLAVLALLOCATEROUTINE_t allocate_routine, PRTLAVLFREEROUTINE_t free_routine, Pvoid table_context) @cname("RtlInitializeGenericTableAvl");
 extern fn Pvoid rtl_insert_element_generic_table_avl(PRTLAVLTABLE_t table, Pvoid buffer, Clong buffer_size, Pboolean new_element) @cname("RtlInsertElementGenericTableAvl");
 extern fn Pvoid rtl_insert_element_generic_table_full_avl(PRTLAVLTABLE_t table, Pvoid buffer, Clong buffer_size, Pboolean new_element, Pvoid node_or_parent, TABLESEARCHRESULT_t search_result) @cname("RtlInsertElementGenericTableFullAvl");
@@ -7954,7 +7954,7 @@ extern fn void* _return_address() @cname("_ReturnAddress");
 extern fn void rtl_get_callers_address(Pvoid* callers_address, Pvoid* callers_caller) @cname("RtlGetCallersAddress");
 extern fn Ulong rtl_walk_frame_chain(Pvoid* callers, Ulong count, Ulong flags) @cname("RtlWalkFrameChain");
 extern fn UlongVT rtl_get_enabled_extended_features(UlongVT feature_mask) @cname("RtlGetEnabledExtendedFeatures");
-extern fn Ntstatus rtl_char_to_integer(Pcsz string, Ulong base, Pulong value) @cname("RtlCharToInteger");
+extern fn NtStatus rtl_char_to_integer(Pcsz string, Ulong base, Pulong value) @cname("RtlCharToInteger");
 extern fn void rtl_copy_string(Pstring destination_string, String* source_string) @cname("RtlCopyString");
 extern fn Char rtl_upper_char(Char character) @cname("RtlUpperChar");
 extern fn Long rtl_compare_string(String* string1, String* string2, Boolean case_in_sensitive) @cname("RtlCompareString");
@@ -7962,51 +7962,51 @@ extern fn Boolean rtl_equal_string(String* string1, String* string2, Boolean cas
 extern fn void rtl_upper_string(Pstring destination_string, String* source_string) @cname("RtlUpperString");
 extern fn Boolean rtl_prefix_unicode_string(PCUNICODESTRING_t string1, PCUNICODESTRING_t string2, Boolean case_in_sensitive) @cname("RtlPrefixUnicodeString");
 extern fn Boolean rtl_suffix_unicode_string(PCUNICODESTRING_t string1, PCUNICODESTRING_t string2, Boolean case_in_sensitive) @cname("RtlSuffixUnicodeString");
-extern fn Ntstatus rtl_upcase_unicode_string(PUNICODESTRING_t destination_string, PCUNICODESTRING_t source_string, Boolean allocate_destination_string) @cname("RtlUpcaseUnicodeString");
+extern fn NtStatus rtl_upcase_unicode_string(PUnicodeString_t destination_string, PCUNICODESTRING_t source_string, Boolean allocate_destination_string) @cname("RtlUpcaseUnicodeString");
 extern fn LARGEINTEGER_t rtl_large_integer_divide(LARGEINTEGER_t dividend, LARGEINTEGER_t divisor, PLARGEINTEGER_t remainder) @cname("RtlLargeIntegerDivide");
-extern fn Ntstatus rtl_query_registry_value_with_fallback(Handle primary_handle, Handle fallback_handle, PUNICODESTRING_t value_name, Ulong value_length, Pulong value_type, Pvoid value_data, Pulong result_length) @cname("RtlQueryRegistryValueWithFallback");
+extern fn NtStatus rtl_query_registry_value_with_fallback(Handle primary_handle, Handle fallback_handle, PUnicodeString_t value_name, Ulong value_length, Pulong value_type, Pvoid value_data, Pulong result_length) @cname("RtlQueryRegistryValueWithFallback");
 extern fn Luid rtl_convert_long_to_luid(Long long_) @cname("RtlConvertLongToLuid");
 extern fn Luid rtl_convert_ulong_to_luid(Ulong ulong_) @cname("RtlConvertUlongToLuid");
 extern fn Longlong rtl_convert_luid_to_longlong(Luid luid) @cname("RtlConvertLuidToLonglong");
 extern fn void rtl_map_generic_mask(PACCESSMASK_t access_mask, GENERICMAPPING_t* generic_mapping) @cname("RtlMapGenericMask");
-extern fn Ntstatus rtl_volume_device_to_dos_name(Pvoid volume_device_object, PUNICODESTRING_t dos_name) @cname("RtlVolumeDeviceToDosName");
+extern fn NtStatus rtl_volume_device_to_dos_name(Pvoid volume_device_object, PUnicodeString_t dos_name) @cname("RtlVolumeDeviceToDosName");
 extern fn Ulong dbg_prompt(Pcch prompt, Pch response, Ulong length) @cname("DbgPrompt");
 extern fn Boolean rtl_get_product_info(Ulong os_major_version, Ulong os_minor_version, Ulong sp_major_version, Ulong sp_minor_version, Pulong returned_product_type) @cname("RtlGetProductInfo");
-extern fn Ntstatus rtl_is_untrusted_object(Handle handle, Pvoid object, Pboolean untrusted_object) @cname("RtlIsUntrustedObject");
+extern fn NtStatus rtl_is_untrusted_object(Handle handle, Pvoid object, Pboolean untrusted_object) @cname("RtlIsUntrustedObject");
 extern fn Ulong rtl_get_active_console_id() @cname("RtlGetActiveConsoleId");
 extern fn Ulonglong rtl_get_console_session_foreground_process_id() @cname("RtlGetConsoleSessionForegroundProcessId");
 extern fn Ulong rtl_get_suite_mask() @cname("RtlGetSuiteMask");
 extern fn Boolean rtl_is_multi_session_sku() @cname("RtlIsMultiSessionSku");
 extern fn Boolean rtl_is_state_separation_enabled() @cname("RtlIsStateSeparationEnabled");
-extern fn Ntstatus rtl_get_persisted_state_location(Pcwstr source_id, Pcwstr custom_value, Pcwstr default_path, STATELOCATIONTYPE_t state_location_type, Pwchar target_path, Ulong buffer_length_in, Pulong buffer_length_out) @cname("RtlGetPersistedStateLocation");
-extern fn Ntstatus rtl_is_api_set_implemented(Pcstr api_set_name) @cname("RtlIsApiSetImplemented");
+extern fn NtStatus rtl_get_persisted_state_location(Pcwstr source_id, Pcwstr custom_value, Pcwstr default_path, STATELOCATIONTYPE_t state_location_type, Pwchar target_path, Ulong buffer_length_in, Pulong buffer_length_out) @cname("RtlGetPersistedStateLocation");
+extern fn NtStatus rtl_is_api_set_implemented(Pcstr api_set_name) @cname("RtlIsApiSetImplemented");
 extern fn Boolean rtl_is_multi_users_in_session_sku() @cname("RtlIsMultiUsersInSessionSku");
 extern fn Boolean rtl_get_nt_product_type(PNTPRODUCTTYPE_t nt_product_type) @cname("RtlGetNtProductType");
 extern fn Pcwstr rtl_get_nt_system_root() @cname("RtlGetNtSystemRoot");
-extern fn Ntstatus rtl_get_non_volatile_token(Pvoid nv_buffer, SIZET_t size, Pvoid* nv_token) @cname("RtlGetNonVolatileToken");
-extern fn Ntstatus rtl_free_non_volatile_token(Pvoid nv_token) @cname("RtlFreeNonVolatileToken");
-extern fn Ntstatus rtl_flush_non_volatile_memory(Pvoid nv_token, Pvoid nv_buffer, SIZET_t size, Ulong flags) @cname("RtlFlushNonVolatileMemory");
-extern fn Ntstatus rtl_drain_non_volatile_flush(Pvoid nv_token) @cname("RtlDrainNonVolatileFlush");
-extern fn Ntstatus rtl_write_non_volatile_memory(Pvoid nv_token, void* nv_destination, void* source, SIZET_t size, Ulong flags) @cname("RtlWriteNonVolatileMemory");
-extern fn Ntstatus rtl_fill_non_volatile_memory(Pvoid nv_token, void* nv_destination, SIZET_t size, Uchar value, Ulong flags) @cname("RtlFillNonVolatileMemory");
-extern fn Ntstatus rtl_flush_non_volatile_memory_ranges(Pvoid nv_token, PNVMEMORYRANGE_t nv_ranges, SIZET_t num_ranges, Ulong flags) @cname("RtlFlushNonVolatileMemoryRanges");
-extern fn Ntstatus rtl_initialize_correlation_vector(PCORRELATIONVECTOR_t correlation_vector, int version, Guid* guid) @cname("RtlInitializeCorrelationVector");
-extern fn Ntstatus rtl_increment_correlation_vector(PCORRELATIONVECTOR_t correlation_vector) @cname("RtlIncrementCorrelationVector");
-extern fn Ntstatus rtl_extend_correlation_vector(PCORRELATIONVECTOR_t correlation_vector) @cname("RtlExtendCorrelationVector");
-extern fn Ntstatus rtl_validate_correlation_vector(PCORRELATIONVECTOR_t vector) @cname("RtlValidateCorrelationVector");
+extern fn NtStatus rtl_get_non_volatile_token(Pvoid nv_buffer, SIZET_t size, Pvoid* nv_token) @cname("RtlGetNonVolatileToken");
+extern fn NtStatus rtl_free_non_volatile_token(Pvoid nv_token) @cname("RtlFreeNonVolatileToken");
+extern fn NtStatus rtl_flush_non_volatile_memory(Pvoid nv_token, Pvoid nv_buffer, SIZET_t size, Ulong flags) @cname("RtlFlushNonVolatileMemory");
+extern fn NtStatus rtl_drain_non_volatile_flush(Pvoid nv_token) @cname("RtlDrainNonVolatileFlush");
+extern fn NtStatus rtl_write_non_volatile_memory(Pvoid nv_token, void* nv_destination, void* source, SIZET_t size, Ulong flags) @cname("RtlWriteNonVolatileMemory");
+extern fn NtStatus rtl_fill_non_volatile_memory(Pvoid nv_token, void* nv_destination, SIZET_t size, Uchar value, Ulong flags) @cname("RtlFillNonVolatileMemory");
+extern fn NtStatus rtl_flush_non_volatile_memory_ranges(Pvoid nv_token, PNVMEMORYRANGE_t nv_ranges, SIZET_t num_ranges, Ulong flags) @cname("RtlFlushNonVolatileMemoryRanges");
+extern fn NtStatus rtl_initialize_correlation_vector(PCORRELATIONVECTOR_t correlation_vector, int version, Guid* guid) @cname("RtlInitializeCorrelationVector");
+extern fn NtStatus rtl_increment_correlation_vector(PCORRELATIONVECTOR_t correlation_vector) @cname("RtlIncrementCorrelationVector");
+extern fn NtStatus rtl_extend_correlation_vector(PCORRELATIONVECTOR_t correlation_vector) @cname("RtlExtendCorrelationVector");
+extern fn NtStatus rtl_validate_correlation_vector(PCORRELATIONVECTOR_t vector) @cname("RtlValidateCorrelationVector");
 extern fn void custom_system_event_trigger_init(PCUSTOMSYSTEMEVENTTRIGGERCONFIG_t config, Pcwstr trigger_id) @cname("CUSTOM_SYSTEM_EVENT_TRIGGER_INIT");
-extern fn Ntstatus rtl_raise_custom_system_event_trigger(PCUSTOMSYSTEMEVENTTRIGGERCONFIG_t trigger_config) @cname("RtlRaiseCustomSystemEventTrigger");
+extern fn NtStatus rtl_raise_custom_system_event_trigger(PCUSTOMSYSTEMEVENTTRIGGERCONFIG_t trigger_config) @cname("RtlRaiseCustomSystemEventTrigger");
 extern fn Boolean rtl_is_zero_memory(Pvoid buffer, SIZET_t length) @cname("RtlIsZeroMemory");
 extern fn Boolean rtl_normalize_security_descriptor(PSECURITYDESCRIPTOR_t* security_descriptor, Ulong security_descriptor_length, PSECURITYDESCRIPTOR_t* new_security_descriptor, Pulong new_security_descriptor_length, Boolean check_only) @cname("RtlNormalizeSecurityDescriptor");
-extern fn Ntstatus rtl_get_system_global_data(RTLSYSTEMGLOBALDATAID_t data_id, Pvoid buffer, Ulong size) @cname("RtlGetSystemGlobalData");
-extern fn Ntstatus rtl_set_system_global_data(RTLSYSTEMGLOBALDATAID_t data_id, Pvoid buffer, Ulong size) @cname("RtlSetSystemGlobalData");
-extern fn Ntstatus nt_open_process(Phandle process_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PCLIENTID_t client_id) @cname("NtOpenProcess");
-extern fn Ntstatus ke_initialize_crash_dump_header(Ulong dump_type, Ulong flags, Pvoid buffer, Ulong buffer_size, Pulong buffer_needed) @cname("KeInitializeCrashDumpHeader");
+extern fn NtStatus rtl_get_system_global_data(RTLSYSTEMGLOBALDATAID_t data_id, Pvoid buffer, Ulong size) @cname("RtlGetSystemGlobalData");
+extern fn NtStatus rtl_set_system_global_data(RTLSYSTEMGLOBALDATAID_t data_id, Pvoid buffer, Ulong size) @cname("RtlSetSystemGlobalData");
+extern fn NtStatus nt_open_process(Phandle process_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PCLIENTID_t client_id) @cname("NtOpenProcess");
+extern fn NtStatus ke_initialize_crash_dump_header(Ulong dump_type, Ulong flags, Pvoid buffer, Ulong buffer_size, Pulong buffer_needed) @cname("KeInitializeCrashDumpHeader");
 extern fn void ke_set_importance_dpc(Prkdpc dpc, KDPCIMPORTANCE_t importance) @cname("KeSetImportanceDpc");
 extern fn void ke_set_target_processor_dpc(Prkdpc dpc, Cchar number) @cname("KeSetTargetProcessorDpc");
 extern fn Long ke_pulse_event(Prkevent event, Kpriority increment, Boolean wait) @cname("KePulseEvent");
-extern fn Ntstatus ke_expand_kernel_stack_and_callout(PEXPANDSTACKCALLOUT_t callout, Pvoid parameter, SIZET_t size) @cname("KeExpandKernelStackAndCallout");
-extern fn Ntstatus ke_expand_kernel_stack_and_callout_ex(PEXPANDSTACKCALLOUT_t callout, Pvoid parameter, SIZET_t size, Boolean wait, Pvoid context) @cname("KeExpandKernelStackAndCalloutEx");
+extern fn NtStatus ke_expand_kernel_stack_and_callout(PEXPANDSTACKCALLOUT_t callout, Pvoid parameter, SIZET_t size) @cname("KeExpandKernelStackAndCallout");
+extern fn NtStatus ke_expand_kernel_stack_and_callout_ex(PEXPANDSTACKCALLOUT_t callout, Pvoid parameter, SIZET_t size, Boolean wait, Pvoid context) @cname("KeExpandKernelStackAndCalloutEx");
 extern fn Long ke_set_base_priority_thread(Pkthread thread, Long increment) @cname("KeSetBasePriorityThread");
 extern fn void ke_enter_critical_region() @cname("KeEnterCriticalRegion");
 extern fn void ke_leave_critical_region() @cname("KeLeaveCriticalRegion");
@@ -8029,38 +8029,38 @@ extern fn void ke_query_node_active_affinity(Ushort node_number, PGROUPAFFINITY_
 extern fn Ushort ke_query_node_maximum_processor_count(Ushort node_number) @cname("KeQueryNodeMaximumProcessorCount");
 extern fn Ushort ke_query_highest_node_number() @cname("KeQueryHighestNodeNumber");
 extern fn Ushort ke_get_current_node_number() @cname("KeGetCurrentNodeNumber");
-extern fn Ntstatus ke_query_logical_processor_relationship(PPROCESSORNUMBER_t processor_number, LOGICALPROCESSORRELATIONSHIP_t relationship_type, PSYSTEMLOGICALPROCESSORINFORMATIONEX_t information, Pulong length) @cname("KeQueryLogicalProcessorRelationship");
+extern fn NtStatus ke_query_logical_processor_relationship(PPROCESSORNUMBER_t processor_number, LOGICALPROCESSORRELATIONSHIP_t relationship_type, PSYSTEMLOGICALPROCESSORINFORMATIONEX_t information, Pulong length) @cname("KeQueryLogicalProcessorRelationship");
 extern fn Logical ke_should_yield_processor() @cname("KeShouldYieldProcessor");
-extern fn Ntstatus ke_query_node_active_affinity2(Ushort node_number, PGROUPAFFINITY_t group_affinities, Ushort group_affinities_count, Pushort group_affinities_required) @cname("KeQueryNodeActiveAffinity2");
+extern fn NtStatus ke_query_node_active_affinity2(Ushort node_number, PGROUPAFFINITY_t group_affinities, Ushort group_affinities_count, Pushort group_affinities_required) @cname("KeQueryNodeActiveAffinity2");
 extern fn Ulong ke_query_node_active_processor_count(Ushort node_number) @cname("KeQueryNodeActiveProcessorCount");
-extern fn Ntstatus ke_set_hardware_counter_configuration(PHARDWARECOUNTER_t counter_array, Ulong count) @cname("KeSetHardwareCounterConfiguration");
-extern fn Ntstatus ke_query_hardware_counter_configuration(PHARDWARECOUNTER_t counter_array, Ulong maximum_count, Pulong count) @cname("KeQueryHardwareCounterConfiguration");
+extern fn NtStatus ke_set_hardware_counter_configuration(PHARDWARECOUNTER_t counter_array, Ulong count) @cname("KeSetHardwareCounterConfiguration");
+extern fn NtStatus ke_query_hardware_counter_configuration(PHARDWARECOUNTER_t counter_array, Ulong maximum_count, Pulong count) @cname("KeQueryHardwareCounterConfiguration");
 extern fn void ex_raise_datatype_misalignment() @cname("ExRaiseDatatypeMisalignment");
 extern fn void ex_raise_access_violation() @cname("ExRaiseAccessViolation");
-extern fn Ntstatus ex_initialize_zone(PZONEHEADER_t zone, Ulong block_size, Pvoid initial_segment, Ulong initial_segment_size) @cname("ExInitializeZone");
-extern fn Ntstatus ex_extend_zone(PZONEHEADER_t zone, Pvoid segment, Ulong segment_size) @cname("ExExtendZone");
-extern fn Ntstatus ex_interlocked_extend_zone(PZONEHEADER_t zone, Pvoid segment, Ulong segment_size, PKSPINLOCK_t lock) @cname("ExInterlockedExtendZone");
-extern fn Ntstatus ex_uuid_create(Uuid* uuid) @cname("ExUuidCreate");
+extern fn NtStatus ex_initialize_zone(PZONEHEADER_t zone, Ulong block_size, Pvoid initial_segment, Ulong initial_segment_size) @cname("ExInitializeZone");
+extern fn NtStatus ex_extend_zone(PZONEHEADER_t zone, Pvoid segment, Ulong segment_size) @cname("ExExtendZone");
+extern fn NtStatus ex_interlocked_extend_zone(PZONEHEADER_t zone, Pvoid segment, Ulong segment_size, PKSPINLOCK_t lock) @cname("ExInterlockedExtendZone");
+extern fn NtStatus ex_uuid_create(Uuid* uuid) @cname("ExUuidCreate");
 extern fn Boolean mm_is_this_an_nt_as_system() @cname("MmIsThisAnNtAsSystem");
-extern fn Ntstatus mm_map_user_addresses_to_page(Pvoid base_address, SIZET_t number_of_bytes, Pvoid page_address) @cname("MmMapUserAddressesToPage");
-extern fn Ntstatus mm_add_physical_memory(PPHYSICALADDRESS_t start_address, PLARGEINTEGER_t number_of_bytes) @cname("MmAddPhysicalMemory");
-extern fn Ntstatus mm_rotate_physical_view(Pvoid virtual_address, PSIZET_t number_of_bytes, Pmdl new_mdl, MMROTATEDIRECTION_t direction, PMMROTATECOPYCALLBACKFUNCTION_t copy_function, Pvoid context) @cname("MmRotatePhysicalView");
-extern fn Ntstatus mm_remove_physical_memory(PPHYSICALADDRESS_t start_address, PLARGEINTEGER_t number_of_bytes) @cname("MmRemovePhysicalMemory");
+extern fn NtStatus mm_map_user_addresses_to_page(Pvoid base_address, SIZET_t number_of_bytes, Pvoid page_address) @cname("MmMapUserAddressesToPage");
+extern fn NtStatus mm_add_physical_memory(PPHYSICALADDRESS_t start_address, PLARGEINTEGER_t number_of_bytes) @cname("MmAddPhysicalMemory");
+extern fn NtStatus mm_rotate_physical_view(Pvoid virtual_address, PSIZET_t number_of_bytes, Pmdl new_mdl, MMROTATEDIRECTION_t direction, PMMROTATECOPYCALLBACKFUNCTION_t copy_function, Pvoid context) @cname("MmRotatePhysicalView");
+extern fn NtStatus mm_remove_physical_memory(PPHYSICALADDRESS_t start_address, PLARGEINTEGER_t number_of_bytes) @cname("MmRemovePhysicalMemory");
 extern fn PPHYSICALMEMORYRANGE_t mm_get_physical_memory_ranges() @cname("MmGetPhysicalMemoryRanges");
 extern fn PPHYSICALMEMORYRANGE_t mm_get_physical_memory_ranges_ex(Pvoid partition_object) @cname("MmGetPhysicalMemoryRangesEx");
 extern fn PPHYSICALMEMORYRANGE_t mm_get_physical_memory_ranges_ex2(Pvoid partition_object, Ulong flags) @cname("MmGetPhysicalMemoryRangesEx2");
-extern fn Pvoid mm_map_video_display(PHYSICALADDRESS_t physical_address, SIZET_t number_of_bytes, MEMORYCACHINGTYPE_t cache_type) @cname("MmMapVideoDisplay");
+extern fn Pvoid mm_map_video_display(PhysicalAddress_t physical_address, SIZET_t number_of_bytes, MEMORYCACHINGTYPE_t cache_type) @cname("MmMapVideoDisplay");
 extern fn void mm_unmap_video_display(Pvoid base_address, SIZET_t number_of_bytes) @cname("MmUnmapVideoDisplay");
-extern fn PHYSICALADDRESS_t mm_get_physical_address(Pvoid base_address) @cname("MmGetPhysicalAddress");
-extern fn Ntstatus mm_get_cache_attribute(PHYSICALADDRESS_t physical_address, MEMORYCACHINGTYPE_t* cache_type) @cname("MmGetCacheAttribute");
-extern fn Ntstatus mm_copy_memory(Pvoid target_address, MMCOPYADDRESS_t source_address, SIZET_t number_of_bytes, Ulong flags, PSIZET_t number_of_bytes_transferred) @cname("MmCopyMemory");
-extern fn Ntstatus mm_get_cache_attribute_ex(PHYSICALADDRESS_t physical_address, Ulong flags, MEMORYCACHINGTYPE_t* cache_type) @cname("MmGetCacheAttributeEx");
-extern fn Pvoid mm_get_virtual_for_physical(PHYSICALADDRESS_t physical_address) @cname("MmGetVirtualForPhysical");
-extern fn Pvoid mm_allocate_contiguous_memory(SIZET_t number_of_bytes, PHYSICALADDRESS_t highest_acceptable_address) @cname("MmAllocateContiguousMemory");
-extern fn Pvoid mm_allocate_contiguous_memory_specify_cache(SIZET_t number_of_bytes, PHYSICALADDRESS_t lowest_acceptable_address, PHYSICALADDRESS_t highest_acceptable_address, PHYSICALADDRESS_t boundary_address_multiple, MEMORYCACHINGTYPE_t cache_type) @cname("MmAllocateContiguousMemorySpecifyCache");
-extern fn Pvoid mm_allocate_contiguous_memory_specify_cache_node(SIZET_t number_of_bytes, PHYSICALADDRESS_t lowest_acceptable_address, PHYSICALADDRESS_t highest_acceptable_address, PHYSICALADDRESS_t boundary_address_multiple, MEMORYCACHINGTYPE_t cache_type, NODEREQUIREMENT_t preferred_node) @cname("MmAllocateContiguousMemorySpecifyCacheNode");
-extern fn Pvoid mm_allocate_contiguous_node_memory(SIZET_t number_of_bytes, PHYSICALADDRESS_t lowest_acceptable_address, PHYSICALADDRESS_t highest_acceptable_address, PHYSICALADDRESS_t boundary_address_multiple, Ulong protect, NODEREQUIREMENT_t preferred_node) @cname("MmAllocateContiguousNodeMemory");
-extern fn Ntstatus mm_allocate_contiguous_memory_ex(PSIZET_t number_of_bytes, PHYSICALADDRESS_t lowest_acceptable_address, PHYSICALADDRESS_t highest_acceptable_address, PHYSICALADDRESS_t boundary_address_multiple, NODEREQUIREMENT_t preferred_node, Ulong protect, Pvoid partition_object, Ulong tag, Ulong flags, Pvoid* base_address) @cname("MmAllocateContiguousMemoryEx");
+extern fn PhysicalAddress_t mm_get_physical_address(Pvoid base_address) @cname("MmGetPhysicalAddress");
+extern fn NtStatus mm_get_cache_attribute(PhysicalAddress_t physical_address, MEMORYCACHINGTYPE_t* cache_type) @cname("MmGetCacheAttribute");
+extern fn NtStatus mm_copy_memory(Pvoid target_address, MMCOPYADDRESS_t source_address, SIZET_t number_of_bytes, Ulong flags, PSIZET_t number_of_bytes_transferred) @cname("MmCopyMemory");
+extern fn NtStatus mm_get_cache_attribute_ex(PhysicalAddress_t physical_address, Ulong flags, MEMORYCACHINGTYPE_t* cache_type) @cname("MmGetCacheAttributeEx");
+extern fn Pvoid mm_get_virtual_for_physical(PhysicalAddress_t physical_address) @cname("MmGetVirtualForPhysical");
+extern fn Pvoid mm_allocate_contiguous_memory(SIZET_t number_of_bytes, PhysicalAddress_t highest_acceptable_address) @cname("MmAllocateContiguousMemory");
+extern fn Pvoid mm_allocate_contiguous_memory_specify_cache(SIZET_t number_of_bytes, PhysicalAddress_t lowest_acceptable_address, PhysicalAddress_t highest_acceptable_address, PhysicalAddress_t boundary_address_multiple, MEMORYCACHINGTYPE_t cache_type) @cname("MmAllocateContiguousMemorySpecifyCache");
+extern fn Pvoid mm_allocate_contiguous_memory_specify_cache_node(SIZET_t number_of_bytes, PhysicalAddress_t lowest_acceptable_address, PhysicalAddress_t highest_acceptable_address, PhysicalAddress_t boundary_address_multiple, MEMORYCACHINGTYPE_t cache_type, NODEREQUIREMENT_t preferred_node) @cname("MmAllocateContiguousMemorySpecifyCacheNode");
+extern fn Pvoid mm_allocate_contiguous_node_memory(SIZET_t number_of_bytes, PhysicalAddress_t lowest_acceptable_address, PhysicalAddress_t highest_acceptable_address, PhysicalAddress_t boundary_address_multiple, Ulong protect, NODEREQUIREMENT_t preferred_node) @cname("MmAllocateContiguousNodeMemory");
+extern fn NtStatus mm_allocate_contiguous_memory_ex(PSIZET_t number_of_bytes, PhysicalAddress_t lowest_acceptable_address, PhysicalAddress_t highest_acceptable_address, PhysicalAddress_t boundary_address_multiple, NODEREQUIREMENT_t preferred_node, Ulong protect, Pvoid partition_object, Ulong tag, Ulong flags, Pvoid* base_address) @cname("MmAllocateContiguousMemoryEx");
 extern fn void mm_free_contiguous_memory(Pvoid base_address) @cname("MmFreeContiguousMemory");
 extern fn void mm_free_contiguous_memory_specify_cache(Pvoid base_address, SIZET_t number_of_bytes, MEMORYCACHINGTYPE_t cache_type) @cname("MmFreeContiguousMemorySpecifyCache");
 extern fn Pvoid mm_allocate_non_cached_memory(SIZET_t number_of_bytes) @cname("MmAllocateNonCachedMemory");
@@ -8071,39 +8071,39 @@ extern fn void mm_lock_pagable_section_by_handle(Pvoid image_section_handle) @cn
 extern fn Handle mm_secure_virtual_memory(Pvoid address, SIZET_t size, Ulong probe_mode) @cname("MmSecureVirtualMemory");
 extern fn Handle mm_secure_virtual_memory_ex(Pvoid address, SIZET_t size, Ulong probe_mode, Ulong flags) @cname("MmSecureVirtualMemoryEx");
 extern fn void mm_unsecure_virtual_memory(Handle secure_handle) @cname("MmUnsecureVirtualMemory");
-extern fn Ntstatus mm_map_view_in_system_space_ex(Pvoid section, Pvoid* mapped_base, PSIZET_t view_size, PLARGEINTEGER_t section_offset, ULONGPTR_t flags) @cname("MmMapViewInSystemSpaceEx");
-extern fn Ntstatus mm_map_view_in_system_space(Pvoid section, Pvoid* mapped_base, PSIZET_t view_size) @cname("MmMapViewInSystemSpace");
-extern fn Ntstatus mm_unmap_view_in_system_space(Pvoid mapped_base) @cname("MmUnmapViewInSystemSpace");
-extern fn Ntstatus mm_map_view_in_session_space_ex(Pvoid section, Pvoid* mapped_base, PSIZET_t view_size, PLARGEINTEGER_t section_offset, ULONGPTR_t flags) @cname("MmMapViewInSessionSpaceEx");
-extern fn Ntstatus mm_map_view_in_session_space(Pvoid section, Pvoid* mapped_base, PSIZET_t view_size) @cname("MmMapViewInSessionSpace");
-extern fn Ntstatus mm_unmap_view_in_session_space(Pvoid mapped_base) @cname("MmUnmapViewInSessionSpace");
-extern fn Ntstatus mm_create_mirror() @cname("MmCreateMirror");
+extern fn NtStatus mm_map_view_in_system_space_ex(Pvoid section, Pvoid* mapped_base, PSIZET_t view_size, PLARGEINTEGER_t section_offset, ULONGPTR_t flags) @cname("MmMapViewInSystemSpaceEx");
+extern fn NtStatus mm_map_view_in_system_space(Pvoid section, Pvoid* mapped_base, PSIZET_t view_size) @cname("MmMapViewInSystemSpace");
+extern fn NtStatus mm_unmap_view_in_system_space(Pvoid mapped_base) @cname("MmUnmapViewInSystemSpace");
+extern fn NtStatus mm_map_view_in_session_space_ex(Pvoid section, Pvoid* mapped_base, PSIZET_t view_size, PLARGEINTEGER_t section_offset, ULONGPTR_t flags) @cname("MmMapViewInSessionSpaceEx");
+extern fn NtStatus mm_map_view_in_session_space(Pvoid section, Pvoid* mapped_base, PSIZET_t view_size) @cname("MmMapViewInSessionSpace");
+extern fn NtStatus mm_unmap_view_in_session_space(Pvoid mapped_base) @cname("MmUnmapViewInSessionSpace");
+extern fn NtStatus mm_create_mirror() @cname("MmCreateMirror");
 extern fn Boolean se_single_privilege_check(Luid privilege_value, KPROCESSORMODE_t previous_mode) @cname("SeSinglePrivilegeCheck");
-extern fn Ntstatus ps_set_create_process_notify_routine(PCREATEPROCESSNOTIFYROUTINE_t notify_routine, Boolean remove) @cname("PsSetCreateProcessNotifyRoutine");
-extern fn Ntstatus ps_set_create_process_notify_routine_ex(PCREATEPROCESSNOTIFYROUTINEEX_t notify_routine, Boolean remove) @cname("PsSetCreateProcessNotifyRoutineEx");
-extern fn Ntstatus ps_set_create_process_notify_routine_ex2(Pscreateprocessnotifytype notify_type, Pvoid notify_information, Boolean remove) @cname("PsSetCreateProcessNotifyRoutineEx2");
-extern fn Ntstatus ps_set_create_thread_notify_routine(PCREATETHREADNOTIFYROUTINE_t notify_routine) @cname("PsSetCreateThreadNotifyRoutine");
-extern fn Ntstatus ps_set_create_thread_notify_routine_ex(Pscreatethreadnotifytype notify_type, Pvoid notify_information) @cname("PsSetCreateThreadNotifyRoutineEx");
-extern fn Ntstatus ps_remove_create_thread_notify_routine(PCREATETHREADNOTIFYROUTINE_t notify_routine) @cname("PsRemoveCreateThreadNotifyRoutine");
-extern fn Ntstatus ps_set_load_image_notify_routine(PLOADIMAGENOTIFYROUTINE_t notify_routine) @cname("PsSetLoadImageNotifyRoutine");
-extern fn Ntstatus ps_set_load_image_notify_routine_ex(PLOADIMAGENOTIFYROUTINE_t notify_routine, ULONGPTR_t flags) @cname("PsSetLoadImageNotifyRoutineEx");
-extern fn Ntstatus ps_remove_load_image_notify_routine(PLOADIMAGENOTIFYROUTINE_t notify_routine) @cname("PsRemoveLoadImageNotifyRoutine");
+extern fn NtStatus ps_set_create_process_notify_routine(PCREATEPROCESSNOTIFYROUTINE_t notify_routine, Boolean remove) @cname("PsSetCreateProcessNotifyRoutine");
+extern fn NtStatus ps_set_create_process_notify_routine_ex(PCREATEPROCESSNOTIFYROUTINEEX_t notify_routine, Boolean remove) @cname("PsSetCreateProcessNotifyRoutineEx");
+extern fn NtStatus ps_set_create_process_notify_routine_ex2(Pscreateprocessnotifytype notify_type, Pvoid notify_information, Boolean remove) @cname("PsSetCreateProcessNotifyRoutineEx2");
+extern fn NtStatus ps_set_create_thread_notify_routine(PCREATETHREADNOTIFYROUTINE_t notify_routine) @cname("PsSetCreateThreadNotifyRoutine");
+extern fn NtStatus ps_set_create_thread_notify_routine_ex(Pscreatethreadnotifytype notify_type, Pvoid notify_information) @cname("PsSetCreateThreadNotifyRoutineEx");
+extern fn NtStatus ps_remove_create_thread_notify_routine(PCREATETHREADNOTIFYROUTINE_t notify_routine) @cname("PsRemoveCreateThreadNotifyRoutine");
+extern fn NtStatus ps_set_load_image_notify_routine(PLOADIMAGENOTIFYROUTINE_t notify_routine) @cname("PsSetLoadImageNotifyRoutine");
+extern fn NtStatus ps_set_load_image_notify_routine_ex(PLOADIMAGENOTIFYROUTINE_t notify_routine, ULONGPTR_t flags) @cname("PsSetLoadImageNotifyRoutineEx");
+extern fn NtStatus ps_remove_load_image_notify_routine(PLOADIMAGENOTIFYROUTINE_t notify_routine) @cname("PsRemoveLoadImageNotifyRoutine");
 extern fn Handle ps_get_current_process_id() @cname("PsGetCurrentProcessId");
 extern fn Handle ps_get_current_thread_id() @cname("PsGetCurrentThreadId");
 extern fn Boolean ps_set_current_thread_prefetching(Boolean prefetching) @cname("PsSetCurrentThreadPrefetching");
 extern fn Boolean ps_is_current_thread_prefetching() @cname("PsIsCurrentThreadPrefetching");
 extern fn Longlong ps_get_process_create_time_quad_part(Peprocess process) @cname("PsGetProcessCreateTimeQuadPart");
 extern fn Ulonglong ps_get_process_start_key(Peprocess process) @cname("PsGetProcessStartKey");
-extern fn Ntstatus ps_get_process_exit_status(Peprocess process) @cname("PsGetProcessExitStatus");
-extern fn Ntstatus ps_get_thread_exit_status(Pethread thread) @cname("PsGetThreadExitStatus");
+extern fn NtStatus ps_get_process_exit_status(Peprocess process) @cname("PsGetProcessExitStatus");
+extern fn NtStatus ps_get_thread_exit_status(Pethread thread) @cname("PsGetThreadExitStatus");
 extern fn Handle ps_get_process_id(Peprocess process) @cname("PsGetProcessId");
 extern fn Handle ps_get_thread_id(Pethread thread) @cname("PsGetThreadId");
 extern fn Pvoid ps_get_thread_property(Pethread thread, ULONGPTR_t key, Ulong flags) @cname("PsGetThreadProperty");
 extern fn Handle ps_get_thread_process_id(Pethread thread) @cname("PsGetThreadProcessId");
 extern fn Longlong ps_get_thread_create_time(Pethread thread) @cname("PsGetThreadCreateTime");
 extern fn Pvoid ps_get_current_thread_teb() @cname("PsGetCurrentThreadTeb");
-extern fn Ntstatus ps_get_job_silo(Pejob job, Pesilo* silo) @cname("PsGetJobSilo");
-extern fn Ntstatus ps_get_job_server_silo(Pejob job, Pesilo* server_silo) @cname("PsGetJobServerSilo");
+extern fn NtStatus ps_get_job_silo(Pejob job, Pesilo* silo) @cname("PsGetJobSilo");
+extern fn NtStatus ps_get_job_server_silo(Pejob job, Pesilo* server_silo) @cname("PsGetJobServerSilo");
 extern fn Pesilo ps_get_effective_server_silo(Pesilo silo) @cname("PsGetEffectiveServerSilo");
 extern fn Pesilo ps_attach_silo_to_current_thread(Pesilo silo) @cname("PsAttachSiloToCurrentThread");
 extern fn void ps_detach_silo_from_current_thread(Pesilo previous_silo) @cname("PsDetachSiloFromCurrentThread");
@@ -8112,161 +8112,161 @@ extern fn Boolean ps_is_thread_attached_to_specific_silo(Pethread thread, Pesilo
 extern fn Pesilo ps_get_host_silo() @cname("PsGetHostSilo");
 extern fn Pesilo ps_get_current_silo() @cname("PsGetCurrentSilo");
 extern fn Pesilo ps_get_current_server_silo() @cname("PsGetCurrentServerSilo");
-extern fn PUNICODESTRING_t ps_get_current_server_silo_name() @cname("PsGetCurrentServerSiloName");
+extern fn PUnicodeString_t ps_get_current_server_silo_name() @cname("PsGetCurrentServerSiloName");
 extern fn Boolean ps_is_current_thread_in_server_silo() @cname("PsIsCurrentThreadInServerSilo");
-extern fn Ntstatus ps_acquire_silo_hard_reference(Pesilo silo) @cname("PsAcquireSiloHardReference");
+extern fn NtStatus ps_acquire_silo_hard_reference(Pesilo silo) @cname("PsAcquireSiloHardReference");
 extern fn void ps_release_silo_hard_reference(Pesilo silo) @cname("PsReleaseSiloHardReference");
-extern fn Ntstatus ps_alloc_silo_context_slot(ULONGPTR_t reserved, Ulong* returned_context_slot) @cname("PsAllocSiloContextSlot");
-extern fn Ntstatus ps_free_silo_context_slot(Ulong context_slot) @cname("PsFreeSiloContextSlot");
-extern fn Ntstatus ps_create_silo_context(Pesilo silo, Ulong size, POOLTYPE_t pool_type, SILOCONTEXTCLEANUPCALLBACK_t context_cleanup_callback, Pvoid* returned_silo_context) @cname("PsCreateSiloContext");
-extern fn Ntstatus ps_insert_silo_context(Pesilo silo, Ulong context_slot, Pvoid silo_context) @cname("PsInsertSiloContext");
-extern fn Ntstatus ps_replace_silo_context(Pesilo silo, Ulong context_slot, Pvoid new_silo_context, Pvoid* old_silo_context) @cname("PsReplaceSiloContext");
-extern fn Ntstatus ps_get_silo_context(Pesilo silo, Ulong context_slot, Pvoid* returned_silo_context) @cname("PsGetSiloContext");
-extern fn Ntstatus ps_remove_silo_context(Pesilo silo, Ulong context_slot, Pvoid* removed_silo_context) @cname("PsRemoveSiloContext");
+extern fn NtStatus ps_alloc_silo_context_slot(ULONGPTR_t reserved, Ulong* returned_context_slot) @cname("PsAllocSiloContextSlot");
+extern fn NtStatus ps_free_silo_context_slot(Ulong context_slot) @cname("PsFreeSiloContextSlot");
+extern fn NtStatus ps_create_silo_context(Pesilo silo, Ulong size, POOLTYPE_t pool_type, SILOCONTEXTCLEANUPCALLBACK_t context_cleanup_callback, Pvoid* returned_silo_context) @cname("PsCreateSiloContext");
+extern fn NtStatus ps_insert_silo_context(Pesilo silo, Ulong context_slot, Pvoid silo_context) @cname("PsInsertSiloContext");
+extern fn NtStatus ps_replace_silo_context(Pesilo silo, Ulong context_slot, Pvoid new_silo_context, Pvoid* old_silo_context) @cname("PsReplaceSiloContext");
+extern fn NtStatus ps_get_silo_context(Pesilo silo, Ulong context_slot, Pvoid* returned_silo_context) @cname("PsGetSiloContext");
+extern fn NtStatus ps_remove_silo_context(Pesilo silo, Ulong context_slot, Pvoid* removed_silo_context) @cname("PsRemoveSiloContext");
 extern fn void ps_reference_silo_context(Pvoid silo_context) @cname("PsReferenceSiloContext");
 extern fn void ps_dereference_silo_context(Pvoid silo_context) @cname("PsDereferenceSiloContext");
-extern fn Ntstatus ps_insert_permanent_silo_context(Pesilo silo, Ulong context_slot, Pvoid silo_context) @cname("PsInsertPermanentSiloContext");
-extern fn Ntstatus ps_make_silo_context_permanent(Pesilo silo, Ulong context_slot) @cname("PsMakeSiloContextPermanent");
-extern fn Ntstatus ps_get_permanent_silo_context(Pesilo silo, Ulong context_slot, Pvoid* returned_silo_context) @cname("PsGetPermanentSiloContext");
-extern fn Ntstatus ps_register_silo_monitor(PSILOMONITORREGISTRATION_t registration, PSILOMONITOR_t* returned_monitor) @cname("PsRegisterSiloMonitor");
-extern fn Ntstatus ps_start_silo_monitor(PSILOMONITOR_t monitor) @cname("PsStartSiloMonitor");
+extern fn NtStatus ps_insert_permanent_silo_context(Pesilo silo, Ulong context_slot, Pvoid silo_context) @cname("PsInsertPermanentSiloContext");
+extern fn NtStatus ps_make_silo_context_permanent(Pesilo silo, Ulong context_slot) @cname("PsMakeSiloContextPermanent");
+extern fn NtStatus ps_get_permanent_silo_context(Pesilo silo, Ulong context_slot, Pvoid* returned_silo_context) @cname("PsGetPermanentSiloContext");
+extern fn NtStatus ps_register_silo_monitor(PSILOMONITORREGISTRATION_t registration, PSILOMONITOR_t* returned_monitor) @cname("PsRegisterSiloMonitor");
+extern fn NtStatus ps_start_silo_monitor(PSILOMONITOR_t monitor) @cname("PsStartSiloMonitor");
 extern fn Ulong ps_get_silo_monitor_context_slot(PSILOMONITOR_t monitor) @cname("PsGetSiloMonitorContextSlot");
 extern fn void ps_unregister_silo_monitor(PSILOMONITOR_t monitor) @cname("PsUnregisterSiloMonitor");
 extern fn Ulong ps_get_server_silo_service_session_id(Pesilo silo) @cname("PsGetServerSiloServiceSessionId");
 extern fn Ulong ps_get_server_silo_active_console_id(Pesilo silo) @cname("PsGetServerSiloActiveConsoleId");
-extern fn void ps_terminate_server_silo(Pesilo server_silo, Ntstatus exit_status) @cname("PsTerminateServerSilo");
+extern fn void ps_terminate_server_silo(Pesilo server_silo, NtStatus exit_status) @cname("PsTerminateServerSilo");
 extern fn Pesilo ps_get_parent_silo(Pejob job) @cname("PsGetParentSilo");
 extern fn Pesilo ps_get_thread_server_silo(Pethread thread) @cname("PsGetThreadServerSilo");
 extern fn Guid* ps_get_silo_container_id(Pesilo silo) @cname("PsGetSiloContainerId");
-extern fn Ntstatus ps_query_process_available_cpus(Peprocess process, PKAFFINITYEX_t affinity, PulongVT observed_sequence_number, PulongVT sequence_number) @cname("PsQueryProcessAvailableCpus");
-extern fn Ntstatus ps_query_process_available_cpus_count(Peprocess process, Pulong available_cpu_count, PulongVT sequence_number) @cname("PsQueryProcessAvailableCpusCount");
-extern fn Ntstatus ps_query_system_available_cpus(PKAFFINITYEX_t affinity, PulongVT observed_sequence_number, PulongVT sequence_number) @cname("PsQuerySystemAvailableCpus");
-extern fn Ntstatus ps_query_system_available_cpus_count(Pulong available_cpu_count, PulongVT sequence_number) @cname("PsQuerySystemAvailableCpusCount");
-extern fn Ntstatus ps_register_process_available_cpus_change_notification(Peprocess process, PSAVAILABLECPUSCHANGECALLBACK_t* callback, Pvoid context, PulongVT observed_sequence_number, PSAVAILABLECPUSCHANGEREGISTRATION_t* registration_handle) @cname("PsRegisterProcessAvailableCpusChangeNotification");
-extern fn Ntstatus ps_register_system_available_cpus_change_notification(PSAVAILABLECPUSCHANGECALLBACK_t* callback, Pvoid context, PulongVT observed_sequence_number, PSAVAILABLECPUSCHANGEREGISTRATION_t* registration_handle) @cname("PsRegisterSystemAvailableCpusChangeNotification");
+extern fn NtStatus ps_query_process_available_cpus(Peprocess process, PKAFFINITYEX_t affinity, PulongVT observed_sequence_number, PulongVT sequence_number) @cname("PsQueryProcessAvailableCpus");
+extern fn NtStatus ps_query_process_available_cpus_count(Peprocess process, Pulong available_cpu_count, PulongVT sequence_number) @cname("PsQueryProcessAvailableCpusCount");
+extern fn NtStatus ps_query_system_available_cpus(PKAFFINITYEX_t affinity, PulongVT observed_sequence_number, PulongVT sequence_number) @cname("PsQuerySystemAvailableCpus");
+extern fn NtStatus ps_query_system_available_cpus_count(Pulong available_cpu_count, PulongVT sequence_number) @cname("PsQuerySystemAvailableCpusCount");
+extern fn NtStatus ps_register_process_available_cpus_change_notification(Peprocess process, PSAVAILABLECPUSCHANGECALLBACK_t* callback, Pvoid context, PulongVT observed_sequence_number, PSAVAILABLECPUSCHANGEREGISTRATION_t* registration_handle) @cname("PsRegisterProcessAvailableCpusChangeNotification");
+extern fn NtStatus ps_register_system_available_cpus_change_notification(PSAVAILABLECPUSCHANGECALLBACK_t* callback, Pvoid context, PulongVT observed_sequence_number, PSAVAILABLECPUSCHANGEREGISTRATION_t* registration_handle) @cname("PsRegisterSystemAvailableCpusChangeNotification");
 extern fn void ps_unregister_available_cpus_change_notification(PSAVAILABLECPUSCHANGEREGISTRATION_t registration_handle) @cname("PsUnregisterAvailableCpusChangeNotification");
-extern fn void io_allocate_controller(PCONTROLLEROBJECT_t controller_object, PDEVICEOBJECT_t device_object, PDRIVERCONTROL_t execution_routine, Pvoid context) @cname("IoAllocateController");
-extern fn Ntstatus io_assign_resources(PUNICODESTRING_t registry_path, PUNICODESTRING_t driver_class_name, PDRIVEROBJECT_t driver_object, PDEVICEOBJECT_t device_object, PIORESOURCEREQUIREMENTSLIST_t requested_resources, PCMRESOURCELIST_t* allocated_resources) @cname("IoAssignResources");
-extern fn Ntstatus io_attach_device_by_pointer(PDEVICEOBJECT_t source_device, PDEVICEOBJECT_t target_device) @cname("IoAttachDeviceByPointer");
+extern fn void io_allocate_controller(PCONTROLLEROBJECT_t controller_object, PDeviceObject_t device_object, PDRIVERCONTROL_t execution_routine, Pvoid context) @cname("IoAllocateController");
+extern fn NtStatus io_assign_resources(PUnicodeString_t registry_path, PUnicodeString_t driver_class_name, PDRIVEROBJECT_t driver_object, PDeviceObject_t device_object, PIORESOURCEREQUIREMENTSLIST_t requested_resources, PCMRESOURCELIST_t* allocated_resources) @cname("IoAssignResources");
+extern fn NtStatus io_attach_device_by_pointer(PDeviceObject_t source_device, PDeviceObject_t target_device) @cname("IoAttachDeviceByPointer");
 extern fn PCONTROLLEROBJECT_t io_create_controller(Ulong size) @cname("IoCreateController");
 extern fn void io_delete_controller(PCONTROLLEROBJECT_t controller_object) @cname("IoDeleteController");
 extern fn void io_free_controller(PCONTROLLEROBJECT_t controller_object) @cname("IoFreeController");
 extern fn PCONFIGURATIONINFORMATION_t io_get_configuration_information() @cname("IoGetConfigurationInformation");
 extern fn PGENERICMAPPING_t io_get_file_object_generic_mapping() @cname("IoGetFileObjectGenericMapping");
-extern fn void io_cancel_file_open(PDEVICEOBJECT_t device_object, PFILEOBJECT_t file_object) @cname("IoCancelFileOpen");
+extern fn void io_cancel_file_open(PDeviceObject_t device_object, PFILEOBJECT_t file_object) @cname("IoCancelFileOpen");
 extern fn Pirp io_make_associated_irp(Pirp irp, Cchar stack_size) @cname("IoMakeAssociatedIrp");
-extern fn Pirp io_make_associated_irp_ex(Pirp irp, PDEVICEOBJECT_t device_object, Cchar stack_size) @cname("IoMakeAssociatedIrpEx");
-extern fn Ntstatus io_query_device_description(PINTERFACETYPE_t bus_type, Pulong bus_number, PCONFIGURATIONTYPE_t controller_type, Pulong controller_number, PCONFIGURATIONTYPE_t peripheral_type, Pulong peripheral_number, PIOQUERYDEVICEROUTINE_t callout_routine, Pvoid context) @cname("IoQueryDeviceDescription");
-extern fn void io_raise_hard_error(Pirp irp, Pvpb vpb, PDEVICEOBJECT_t real_device_object) @cname("IoRaiseHardError");
-extern fn Boolean io_raise_informational_hard_error(Ntstatus error_status, PUNICODESTRING_t string, Pkthread thread) @cname("IoRaiseInformationalHardError");
+extern fn Pirp io_make_associated_irp_ex(Pirp irp, PDeviceObject_t device_object, Cchar stack_size) @cname("IoMakeAssociatedIrpEx");
+extern fn NtStatus io_query_device_description(PINTERFACETYPE_t bus_type, Pulong bus_number, PCONFIGURATIONTYPE_t controller_type, Pulong controller_number, PCONFIGURATIONTYPE_t peripheral_type, Pulong peripheral_number, PIOQUERYDEVICEROUTINE_t callout_routine, Pvoid context) @cname("IoQueryDeviceDescription");
+extern fn void io_raise_hard_error(Pirp irp, Pvpb vpb, PDeviceObject_t real_device_object) @cname("IoRaiseHardError");
+extern fn Boolean io_raise_informational_hard_error(NtStatus error_status, PUnicodeString_t string, Pkthread thread) @cname("IoRaiseInformationalHardError");
 extern fn Boolean io_set_thread_hard_error_mode(Boolean enable_hard_errors) @cname("IoSetThreadHardErrorMode");
 extern fn void io_register_boot_driver_reinitialization(PDRIVEROBJECT_t driver_object, PDRIVERREINITIALIZE_t driver_reinitialization_routine, Pvoid context) @cname("IoRegisterBootDriverReinitialization");
 extern fn void io_register_driver_reinitialization(PDRIVEROBJECT_t driver_object, PDRIVERREINITIALIZE_t driver_reinitialization_routine, Pvoid context) @cname("IoRegisterDriverReinitialization");
-extern fn Ntstatus io_report_resource_usage(PUNICODESTRING_t driver_class_name, PDRIVEROBJECT_t driver_object, PCMRESOURCELIST_t driver_list, Ulong driver_list_size, PDEVICEOBJECT_t device_object, PCMRESOURCELIST_t device_list, Ulong device_list_size, Boolean override_conflict, Pboolean conflict_detected) @cname("IoReportResourceUsage");
-extern fn Boolean io_translate_bus_address(INTERFACETYPE_t interface_type, Ulong bus_number, PHYSICALADDRESS_t bus_address, Pulong address_space, PPHYSICALADDRESS_t translated_address) @cname("IoTranslateBusAddress");
-extern fn void io_set_hard_error_or_verify_device(Pirp irp, PDEVICEOBJECT_t device_object) @cname("IoSetHardErrorOrVerifyDevice");
-extern fn void hal_examine_mbr(PDEVICEOBJECT_t device_object, Ulong sector_size, Ulong mbr_type_identifier, Pvoid* buffer) @cname("HalExamineMBR");
-extern fn Ntstatus io_read_partition_table(PDEVICEOBJECT_t device_object, Ulong sector_size, Boolean return_recognized_partitions, DRIVELAYOUTINFORMATION_t** partition_buffer) @cname("IoReadPartitionTable");
-extern fn Ntstatus io_set_partition_information(PDEVICEOBJECT_t device_object, Ulong sector_size, Ulong partition_number, Ulong partition_type) @cname("IoSetPartitionInformation");
-extern fn Ntstatus io_write_partition_table(PDEVICEOBJECT_t device_object, Ulong sector_size, Ulong sectors_per_track, Ulong number_of_heads, DRIVELAYOUTINFORMATION_t* partition_buffer) @cname("IoWritePartitionTable");
-extern fn Ntstatus io_create_disk(PDEVICEOBJECT_t device_object, CREATEDISK_t* disk) @cname("IoCreateDisk");
-extern fn Ntstatus io_read_partition_table_ex(PDEVICEOBJECT_t device_object, DRIVELAYOUTINFORMATIONEX_t** drive_layout) @cname("IoReadPartitionTableEx");
-extern fn Ntstatus io_write_partition_table_ex(PDEVICEOBJECT_t device_object, DRIVELAYOUTINFORMATIONEX_t* drive_layout) @cname("IoWritePartitionTableEx");
-extern fn Ntstatus io_set_partition_information_ex(PDEVICEOBJECT_t device_object, Ulong partition_number, SETPARTITIONINFORMATIONEX_t* partition_info) @cname("IoSetPartitionInformationEx");
-extern fn Ntstatus io_verify_partition_table(PDEVICEOBJECT_t device_object, Boolean fix_errors) @cname("IoVerifyPartitionTable");
-extern fn Ntstatus io_read_disk_signature(PDEVICEOBJECT_t device_object, Ulong bytes_per_sector, PDISKSIGNATURE_t signature) @cname("IoReadDiskSignature");
-extern fn Ntstatus io_volume_device_to_dos_name(Pvoid volume_device_object, PUNICODESTRING_t dos_name) @cname("IoVolumeDeviceToDosName");
-extern fn Ntstatus io_volume_device_to_guid_path(Pvoid volume_device_object, PUNICODESTRING_t guid_path) @cname("IoVolumeDeviceToGuidPath");
-extern fn Ntstatus io_volume_device_to_guid(Pvoid volume_device_object, Guid* guid) @cname("IoVolumeDeviceToGuid");
-extern fn Ntstatus io_volume_device_name_to_guid(PUNICODESTRING_t volume_device_name, Guid* guid) @cname("IoVolumeDeviceNameToGuid");
-extern fn Ntstatus io_volume_device_name_to_guid_path(PUNICODESTRING_t volume_device_name, PUNICODESTRING_t guid_path) @cname("IoVolumeDeviceNameToGuidPath");
-extern fn Ntstatus io_set_system_partition(PUNICODESTRING_t volume_name_string) @cname("IoSetSystemPartition");
-extern fn Ntstatus io_create_file_specify_device_object_hint(Phandle file_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PIOSTATUSBLOCK_t io_status_block, PLARGEINTEGER_t allocation_size, Ulong file_attributes, Ulong share_access, Ulong disposition, Ulong create_options, Pvoid ea_buffer, Ulong ea_length, CREATEFILETYPE_t create_file_type, Pvoid internal_parameters, Ulong options, Pvoid device_object) @cname("IoCreateFileSpecifyDeviceObjectHint");
+extern fn NtStatus io_report_resource_usage(PUnicodeString_t driver_class_name, PDRIVEROBJECT_t driver_object, PCMRESOURCELIST_t driver_list, Ulong driver_list_size, PDeviceObject_t device_object, PCMRESOURCELIST_t device_list, Ulong device_list_size, Boolean override_conflict, Pboolean conflict_detected) @cname("IoReportResourceUsage");
+extern fn Boolean io_translate_bus_address(INTERFACETYPE_t interface_type, Ulong bus_number, PhysicalAddress_t bus_address, Pulong address_space, PPHYSICALADDRESS_t translated_address) @cname("IoTranslateBusAddress");
+extern fn void io_set_hard_error_or_verify_device(Pirp irp, PDeviceObject_t device_object) @cname("IoSetHardErrorOrVerifyDevice");
+extern fn void hal_examine_mbr(PDeviceObject_t device_object, Ulong sector_size, Ulong mbr_type_identifier, Pvoid* buffer) @cname("HalExamineMBR");
+extern fn NtStatus io_read_partition_table(PDeviceObject_t device_object, Ulong sector_size, Boolean return_recognized_partitions, DRIVELAYOUTINFORMATION_t** partition_buffer) @cname("IoReadPartitionTable");
+extern fn NtStatus io_set_partition_information(PDeviceObject_t device_object, Ulong sector_size, Ulong partition_number, Ulong partition_type) @cname("IoSetPartitionInformation");
+extern fn NtStatus io_write_partition_table(PDeviceObject_t device_object, Ulong sector_size, Ulong sectors_per_track, Ulong number_of_heads, DRIVELAYOUTINFORMATION_t* partition_buffer) @cname("IoWritePartitionTable");
+extern fn NtStatus io_create_disk(PDeviceObject_t device_object, CREATEDISK_t* disk) @cname("IoCreateDisk");
+extern fn NtStatus io_read_partition_table_ex(PDeviceObject_t device_object, DRIVELAYOUTINFORMATIONEX_t** drive_layout) @cname("IoReadPartitionTableEx");
+extern fn NtStatus io_write_partition_table_ex(PDeviceObject_t device_object, DRIVELAYOUTINFORMATIONEX_t* drive_layout) @cname("IoWritePartitionTableEx");
+extern fn NtStatus io_set_partition_information_ex(PDeviceObject_t device_object, Ulong partition_number, SETPARTITIONINFORMATIONEX_t* partition_info) @cname("IoSetPartitionInformationEx");
+extern fn NtStatus io_verify_partition_table(PDeviceObject_t device_object, Boolean fix_errors) @cname("IoVerifyPartitionTable");
+extern fn NtStatus io_read_disk_signature(PDeviceObject_t device_object, Ulong bytes_per_sector, PDISKSIGNATURE_t signature) @cname("IoReadDiskSignature");
+extern fn NtStatus io_volume_device_to_dos_name(Pvoid volume_device_object, PUnicodeString_t dos_name) @cname("IoVolumeDeviceToDosName");
+extern fn NtStatus io_volume_device_to_guid_path(Pvoid volume_device_object, PUnicodeString_t guid_path) @cname("IoVolumeDeviceToGuidPath");
+extern fn NtStatus io_volume_device_to_guid(Pvoid volume_device_object, Guid* guid) @cname("IoVolumeDeviceToGuid");
+extern fn NtStatus io_volume_device_name_to_guid(PUnicodeString_t volume_device_name, Guid* guid) @cname("IoVolumeDeviceNameToGuid");
+extern fn NtStatus io_volume_device_name_to_guid_path(PUnicodeString_t volume_device_name, PUnicodeString_t guid_path) @cname("IoVolumeDeviceNameToGuidPath");
+extern fn NtStatus io_set_system_partition(PUnicodeString_t volume_name_string) @cname("IoSetSystemPartition");
+extern fn NtStatus io_create_file_specify_device_object_hint(Phandle file_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PIOSTATUSBLOCK_t io_status_block, PLARGEINTEGER_t allocation_size, Ulong file_attributes, Ulong share_access, Ulong disposition, Ulong create_options, Pvoid ea_buffer, Ulong ea_length, CREATEFILETYPE_t create_file_type, Pvoid internal_parameters, Ulong options, Pvoid device_object) @cname("IoCreateFileSpecifyDeviceObjectHint");
 extern fn PIOFOEXTSILOPARAMETERS_t io_get_silo_parameters(PFILEOBJECT_t file_object) @cname("IoGetSiloParameters");
 extern fn Pesilo io_get_silo(PFILEOBJECT_t file_object) @cname("IoGetSilo");
 extern fn PTXNPARAMETERBLOCK_t io_get_transaction_parameter_block(PFILEOBJECT_t file_object) @cname("IoGetTransactionParameterBlock");
 extern fn POPLOCKKEYECPCONTEXT_t io_get_oplock_key_context(PFILEOBJECT_t file_object) @cname("IoGetOplockKeyContext");
 extern fn POPLOCKKEYCONTEXT_t io_get_oplock_key_context_ex(PFILEOBJECT_t file_object) @cname("IoGetOplockKeyContextEx");
 extern fn PIOFOEXTSHADOWFILE_t io_get_shadow_file_information(PFILEOBJECT_t file_object) @cname("IoGetShadowFileInformation");
-extern fn Ntstatus io_set_shadow_file_information(PFILEOBJECT_t file_object, PFILEOBJECT_t backing_file_object, Pvoid backing_flt_instance) @cname("IoSetShadowFileInformation");
+extern fn NtStatus io_set_shadow_file_information(PFILEOBJECT_t file_object, PFILEOBJECT_t backing_file_object, Pvoid backing_flt_instance) @cname("IoSetShadowFileInformation");
 extern fn void io_initialize_driver_create_context(PIODRIVERCREATECONTEXT_t driver_context) @cname("IoInitializeDriverCreateContext");
-extern fn Ntstatus io_create_file_ex(Phandle file_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PIOSTATUSBLOCK_t io_status_block, PLARGEINTEGER_t allocation_size, Ulong file_attributes, Ulong share_access, Ulong disposition, Ulong create_options, Pvoid ea_buffer, Ulong ea_length, CREATEFILETYPE_t create_file_type, Pvoid internal_parameters, Ulong options, PIODRIVERCREATECONTEXT_t driver_context) @cname("IoCreateFileEx");
-extern fn Ntstatus io_set_irp_extra_create_parameter(Pirp irp, ECPLIST_t* extra_create_parameter) @cname("IoSetIrpExtraCreateParameter");
+extern fn NtStatus io_create_file_ex(Phandle file_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PIOSTATUSBLOCK_t io_status_block, PLARGEINTEGER_t allocation_size, Ulong file_attributes, Ulong share_access, Ulong disposition, Ulong create_options, Pvoid ea_buffer, Ulong ea_length, CREATEFILETYPE_t create_file_type, Pvoid internal_parameters, Ulong options, PIODRIVERCREATECONTEXT_t driver_context) @cname("IoCreateFileEx");
+extern fn NtStatus io_set_irp_extra_create_parameter(Pirp irp, ECPLIST_t* extra_create_parameter) @cname("IoSetIrpExtraCreateParameter");
 extern fn void io_clear_irp_extra_create_parameter(Pirp irp) @cname("IoClearIrpExtraCreateParameter");
-extern fn Ntstatus io_get_irp_extra_create_parameter(Pirp irp, ECPLIST_t** extra_create_parameter) @cname("IoGetIrpExtraCreateParameter");
-extern fn Ntstatus io_query_information_by_name(POBJECTATTRIBUTES_t object_attributes, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class, Ulong options, PIODRIVERCREATECONTEXT_t driver_context) @cname("IoQueryInformationByName");
-extern fn Ntstatus io_attach_device_to_device_stack_safe(PDEVICEOBJECT_t source_device, PDEVICEOBJECT_t target_device, PDEVICEOBJECT_t* attached_to_device_object) @cname("IoAttachDeviceToDeviceStackSafe");
+extern fn NtStatus io_get_irp_extra_create_parameter(Pirp irp, ECPLIST_t** extra_create_parameter) @cname("IoGetIrpExtraCreateParameter");
+extern fn NtStatus io_query_information_by_name(POBJECTATTRIBUTES_t object_attributes, PIOSTATUSBLOCK_t io_status_block, Pvoid file_information, Ulong length, FILEINFORMATIONCLASS_t file_information_class, Ulong options, PIODRIVERCREATECONTEXT_t driver_context) @cname("IoQueryInformationByName");
+extern fn NtStatus io_attach_device_to_device_stack_safe(PDeviceObject_t source_device, PDeviceObject_t target_device, PDeviceObject_t* attached_to_device_object) @cname("IoAttachDeviceToDeviceStackSafe");
 extern fn Boolean io_is_file_origin_remote(PFILEOBJECT_t file_object) @cname("IoIsFileOriginRemote");
-extern fn Ntstatus io_set_file_origin(PFILEOBJECT_t file_object, Boolean remote) @cname("IoSetFileOrigin");
+extern fn NtStatus io_set_file_origin(PFILEOBJECT_t file_object, Boolean remote) @cname("IoSetFileOrigin");
 extern fn Boolean io_is_file_object_ignoring_sharing(PFILEOBJECT_t file_object) @cname("IoIsFileObjectIgnoringSharing");
-extern fn Ntstatus io_set_file_object_ignore_sharing(PFILEOBJECT_t file_object) @cname("IoSetFileObjectIgnoreSharing");
+extern fn NtStatus io_set_file_object_ignore_sharing(PFILEOBJECT_t file_object) @cname("IoSetFileObjectIgnoreSharing");
 extern fn IOPAGINGPRIORITY_t io_get_paging_io_priority(Pirp irp) @cname("IoGetPagingIoPriority");
 extern fn Pvoid io_register_boot_driver_callback(PBOOTDRIVERCALLBACKFUNCTION_t callback_function, Pvoid callback_context) @cname("IoRegisterBootDriverCallback");
 extern fn void io_unregister_boot_driver_callback(Pvoid callback_handle) @cname("IoUnregisterBootDriverCallback");
-extern fn Ntstatus io_get_activity_id_irp(Pirp irp, Lpguid guid) @cname("IoGetActivityIdIrp");
-extern fn Ntstatus io_set_activity_id_irp(Pirp irp, Lpcguid guid) @cname("IoSetActivityIdIrp");
-extern fn Ntstatus io_propagate_activity_id_to_thread(Pirp irp, Lpguid propagated_id, Lpcguid* original_id) @cname("IoPropagateActivityIdToThread");
+extern fn NtStatus io_get_activity_id_irp(Pirp irp, Lpguid guid) @cname("IoGetActivityIdIrp");
+extern fn NtStatus io_set_activity_id_irp(Pirp irp, Lpcguid guid) @cname("IoSetActivityIdIrp");
+extern fn NtStatus io_propagate_activity_id_to_thread(Pirp irp, Lpguid propagated_id, Lpcguid* original_id) @cname("IoPropagateActivityIdToThread");
 extern fn Lpcguid io_set_activity_id_thread(Lpcguid activity_id) @cname("IoSetActivityIdThread");
 extern fn void io_clear_activity_id_thread(Lpcguid original_id) @cname("IoClearActivityIdThread");
 extern fn Lpcguid io_get_activity_id_thread() @cname("IoGetActivityIdThread");
 extern fn void io_transfer_activity_id(Lpcguid activity_id, Lpcguid related_activity_id) @cname("IoTransferActivityId");
-extern fn Ntstatus io_get_fs_zeroing_offset(Pirp irp, Pulong zeroing_offset) @cname("IoGetFsZeroingOffset");
-extern fn Ntstatus io_set_fs_zeroing_offset_required(Pirp irp) @cname("IoSetFsZeroingOffsetRequired");
-extern fn Ntstatus io_set_fs_zeroing_offset(Pirp irp, Ulong zeroing_offset) @cname("IoSetFsZeroingOffset");
-extern fn Logical io_is_valid_irp_status(Ntstatus status) @cname("IoIsValidIrpStatus");
-extern fn Ntstatus io_increment_keep_alive_count(PFILEOBJECT_t file_object, Peprocess process) @cname("IoIncrementKeepAliveCount");
-extern fn Ntstatus io_decrement_keep_alive_count(PFILEOBJECT_t file_object, Peprocess process) @cname("IoDecrementKeepAliveCount");
+extern fn NtStatus io_get_fs_zeroing_offset(Pirp irp, Pulong zeroing_offset) @cname("IoGetFsZeroingOffset");
+extern fn NtStatus io_set_fs_zeroing_offset_required(Pirp irp) @cname("IoSetFsZeroingOffsetRequired");
+extern fn NtStatus io_set_fs_zeroing_offset(Pirp irp, Ulong zeroing_offset) @cname("IoSetFsZeroingOffset");
+extern fn Logical io_is_valid_irp_status(NtStatus status) @cname("IoIsValidIrpStatus");
+extern fn NtStatus io_increment_keep_alive_count(PFILEOBJECT_t file_object, Peprocess process) @cname("IoIncrementKeepAliveCount");
+extern fn NtStatus io_decrement_keep_alive_count(PFILEOBJECT_t file_object, Peprocess process) @cname("IoDecrementKeepAliveCount");
 extern fn Peprocess io_get_initiator_process(PFILEOBJECT_t file_object) @cname("IoGetInitiatorProcess");
-extern fn void io_set_master_irp_status(Pirp master_irp, Ntstatus status) @cname("IoSetMasterIrpStatus");
-extern fn Ntstatus io_query_full_driver_path(PDRIVEROBJECT_t driver_object, PUNICODESTRING_t full_path) @cname("IoQueryFullDriverPath");
-extern fn Ntstatus io_report_detected_device(PDRIVEROBJECT_t driver_object, INTERFACETYPE_t legacy_bus_type, Ulong bus_number, Ulong slot_number, PCMRESOURCELIST_t resource_list, PIORESOURCEREQUIREMENTSLIST_t resource_requirements, Boolean resource_assigned, PDEVICEOBJECT_t* device_object) @cname("IoReportDetectedDevice");
-extern fn Ntstatus io_report_root_device(PDRIVEROBJECT_t driver_object) @cname("IoReportRootDevice");
-extern fn Ntstatus io_report_resource_for_detection(PDRIVEROBJECT_t driver_object, PCMRESOURCELIST_t driver_list, Ulong driver_list_size, PDEVICEOBJECT_t device_object, PCMRESOURCELIST_t device_list, Ulong device_list_size, Pboolean conflict_detected) @cname("IoReportResourceForDetection");
+extern fn void io_set_master_irp_status(Pirp master_irp, NtStatus status) @cname("IoSetMasterIrpStatus");
+extern fn NtStatus io_query_full_driver_path(PDRIVEROBJECT_t driver_object, PUnicodeString_t full_path) @cname("IoQueryFullDriverPath");
+extern fn NtStatus io_report_detected_device(PDRIVEROBJECT_t driver_object, INTERFACETYPE_t legacy_bus_type, Ulong bus_number, Ulong slot_number, PCMRESOURCELIST_t resource_list, PIORESOURCEREQUIREMENTSLIST_t resource_requirements, Boolean resource_assigned, PDeviceObject_t* device_object) @cname("IoReportDetectedDevice");
+extern fn NtStatus io_report_root_device(PDRIVEROBJECT_t driver_object) @cname("IoReportRootDevice");
+extern fn NtStatus io_report_resource_for_detection(PDRIVEROBJECT_t driver_object, PCMRESOURCELIST_t driver_list, Ulong driver_list_size, PDeviceObject_t device_object, PCMRESOURCELIST_t device_list, Ulong device_list_size, Pboolean conflict_detected) @cname("IoReportResourceForDetection");
 extern fn void hal_acquire_display_ownership(PHALRESETDISPLAYPARAMETERS_t reset_display_parameters) @cname("HalAcquireDisplayOwnership");
 extern fn Ulong hal_set_bus_data_by_offset(BUSDATATYPE_t bus_data_type, Ulong bus_number, Ulong slot_number, Pvoid buffer, Ulong offset, Ulong length) @cname("HalSetBusDataByOffset");
-extern fn Boolean hal_translate_bus_address(INTERFACETYPE_t interface_type, Ulong bus_number, PHYSICALADDRESS_t bus_address, Pulong address_space, PPHYSICALADDRESS_t translated_address) @cname("HalTranslateBusAddress");
+extern fn Boolean hal_translate_bus_address(INTERFACETYPE_t interface_type, Ulong bus_number, PhysicalAddress_t bus_address, Pulong address_space, PPHYSICALADDRESS_t translated_address) @cname("HalTranslateBusAddress");
 extern fn Pvoid hal_allocate_crash_dump_registers(PADAPTEROBJECT_t adapter_object, Pulong number_of_map_registers) @cname("HalAllocateCrashDumpRegisters");
-extern fn Ntstatus hal_dma_allocate_crash_dump_registers_ex(PADAPTEROBJECT_t adapter, Ulong number_of_map_registers, HALDMACRASHDUMPREGISTERTYPE_t type, Pvoid* map_register_base, Pulong map_registers_available) @cname("HalDmaAllocateCrashDumpRegistersEx");
-extern fn Ntstatus hal_dma_free_crash_dump_registers_ex(PADAPTEROBJECT_t adapter, HALDMACRASHDUMPREGISTERTYPE_t type) @cname("HalDmaFreeCrashDumpRegistersEx");
+extern fn NtStatus hal_dma_allocate_crash_dump_registers_ex(PADAPTEROBJECT_t adapter, Ulong number_of_map_registers, HALDMACRASHDUMPREGISTERTYPE_t type, Pvoid* map_register_base, Pulong map_registers_available) @cname("HalDmaAllocateCrashDumpRegistersEx");
+extern fn NtStatus hal_dma_free_crash_dump_registers_ex(PADAPTEROBJECT_t adapter, HALDMACRASHDUMPREGISTERTYPE_t type) @cname("HalDmaFreeCrashDumpRegistersEx");
 extern fn Ulong hal_get_bus_data_by_offset(BUSDATATYPE_t bus_data_type, Ulong bus_number, Ulong slot_number, Pvoid buffer, Ulong offset, Ulong length) @cname("HalGetBusDataByOffset");
 extern fn PADAPTEROBJECT_t hal_get_adapter(PDEVICEDESCRIPTION_t device_description, Pulong number_of_map_registers) @cname("HalGetAdapter");
-extern fn Ntstatus hal_get_scatter_gather_list(PADAPTEROBJECT_t dma_adapter, PDEVICEOBJECT_t device_object, Pmdl mdl, Pvoid current_va, Ulong length, PDRIVERLISTCONTROL_t execution_routine, Pvoid context, Boolean write_to_device) @cname("HalGetScatterGatherList");
+extern fn NtStatus hal_get_scatter_gather_list(PADAPTEROBJECT_t dma_adapter, PDeviceObject_t device_object, Pmdl mdl, Pvoid current_va, Ulong length, PDRIVERLISTCONTROL_t execution_routine, Pvoid context, Boolean write_to_device) @cname("HalGetScatterGatherList");
 extern fn void hal_put_scatter_gather_list(PADAPTEROBJECT_t dma_adapter, PSCATTERGATHERLIST_t scatter_gather, Boolean write_to_device) @cname("HalPutScatterGatherList");
 extern fn void hal_put_dma_adapter(PADAPTEROBJECT_t dma_adapter) @cname("HalPutDmaAdapter");
 extern fn void hal_bug_check_system(PWHEAERRORSOURCEDESCRIPTOR_t error_source, PWHEAERRORRECORD_t error_record) @cname("HalBugCheckSystem");
-extern fn Ntstatus hal_allocate_hardware_counters(PGROUPAFFINITY_t group_affinty, Ulong group_count, PPHYSICALCOUNTERRESOURCELIST_t resource_list, Phandle counter_set_handle) @cname("HalAllocateHardwareCounters");
-extern fn Ntstatus hal_free_hardware_counters(Handle counter_set_handle) @cname("HalFreeHardwareCounters");
-extern fn Boolean fs_rtl_is_total_device_failure(Ntstatus status) @cname("FsRtlIsTotalDeviceFailure");
-extern fn Ntstatus zw_set_information_thread(Handle thread_handle, Threadinfoclass thread_information_class, Pvoid thread_information, Ulong thread_information_length) @cname("ZwSetInformationThread");
-extern fn Ntstatus zw_create_timer(Phandle timer_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, TIMERTYPE_t timer_type) @cname("ZwCreateTimer");
-extern fn Ntstatus zw_open_timer(Phandle timer_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes) @cname("ZwOpenTimer");
-extern fn Ntstatus zw_cancel_timer(Handle timer_handle, Pboolean current_state) @cname("ZwCancelTimer");
-extern fn Ntstatus zw_set_timer(Handle timer_handle, PLARGEINTEGER_t due_time, PTIMERAPCROUTINE_t timer_apc_routine, Pvoid timer_context, Boolean resume_timer, Long period, Pboolean previous_state) @cname("ZwSetTimer");
-extern fn Ntstatus zw_set_timer_ex(Handle timer_handle, TIMERSETINFORMATIONCLASS_t timer_set_information_class, Pvoid timer_set_information, Ulong timer_set_information_length) @cname("ZwSetTimerEx");
-extern fn Ntstatus zw_query_volume_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid fs_information, Ulong length, FSINFORMATIONCLASS_t fs_information_class) @cname("ZwQueryVolumeInformationFile");
-extern fn Ntstatus zw_device_io_control_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Ulong io_control_code, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length) @cname("ZwDeviceIoControlFile");
-extern fn Ntstatus zw_display_string(PUNICODESTRING_t string) @cname("ZwDisplayString");
-extern fn Ntstatus zw_power_information(POWERINFORMATIONLEVEL_t information_level, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length) @cname("ZwPowerInformation");
-extern fn Ntstatus zw_allocate_locally_unique_id(Pluid luid) @cname("ZwAllocateLocallyUniqueId");
-extern fn Ntstatus zw_terminate_process(Handle process_handle, Ntstatus exit_status) @cname("ZwTerminateProcess");
-extern fn Ntstatus zw_open_process(Phandle process_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PCLIENTID_t client_id) @cname("ZwOpenProcess");
+extern fn NtStatus hal_allocate_hardware_counters(PGROUPAFFINITY_t group_affinty, Ulong group_count, PPHYSICALCOUNTERRESOURCELIST_t resource_list, Phandle counter_set_handle) @cname("HalAllocateHardwareCounters");
+extern fn NtStatus hal_free_hardware_counters(Handle counter_set_handle) @cname("HalFreeHardwareCounters");
+extern fn Boolean fs_rtl_is_total_device_failure(NtStatus status) @cname("FsRtlIsTotalDeviceFailure");
+extern fn NtStatus zw_set_information_thread(Handle thread_handle, Threadinfoclass thread_information_class, Pvoid thread_information, Ulong thread_information_length) @cname("ZwSetInformationThread");
+extern fn NtStatus zw_create_timer(Phandle timer_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, TIMERTYPE_t timer_type) @cname("ZwCreateTimer");
+extern fn NtStatus zw_open_timer(Phandle timer_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes) @cname("ZwOpenTimer");
+extern fn NtStatus zw_cancel_timer(Handle timer_handle, Pboolean current_state) @cname("ZwCancelTimer");
+extern fn NtStatus zw_set_timer(Handle timer_handle, PLARGEINTEGER_t due_time, PTIMERAPCROUTINE_t timer_apc_routine, Pvoid timer_context, Boolean resume_timer, Long period, Pboolean previous_state) @cname("ZwSetTimer");
+extern fn NtStatus zw_set_timer_ex(Handle timer_handle, TIMERSETINFORMATIONCLASS_t timer_set_information_class, Pvoid timer_set_information, Ulong timer_set_information_length) @cname("ZwSetTimerEx");
+extern fn NtStatus zw_query_volume_information_file(Handle file_handle, PIOSTATUSBLOCK_t io_status_block, Pvoid fs_information, Ulong length, FSINFORMATIONCLASS_t fs_information_class) @cname("ZwQueryVolumeInformationFile");
+extern fn NtStatus zw_device_io_control_file(Handle file_handle, Handle event, PIOAPCROUTINE_t apc_routine, Pvoid apc_context, PIOSTATUSBLOCK_t io_status_block, Ulong io_control_code, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length) @cname("ZwDeviceIoControlFile");
+extern fn NtStatus zw_display_string(PUnicodeString_t string) @cname("ZwDisplayString");
+extern fn NtStatus zw_power_information(POWERINFORMATIONLEVEL_t information_level, Pvoid input_buffer, Ulong input_buffer_length, Pvoid output_buffer, Ulong output_buffer_length) @cname("ZwPowerInformation");
+extern fn NtStatus zw_allocate_locally_unique_id(Pluid luid) @cname("ZwAllocateLocallyUniqueId");
+extern fn NtStatus zw_terminate_process(Handle process_handle, NtStatus exit_status) @cname("ZwTerminateProcess");
+extern fn NtStatus zw_open_process(Phandle process_handle, ACCESSMASK_t desired_access, POBJECTATTRIBUTES_t object_attributes, PCLIENTID_t client_id) @cname("ZwOpenProcess");
 extern fn Boolean whea_is_ghes_assist_src(PWHEAERRORSOURCEDESCRIPTOR_t err_src) @cname("WheaIsGhesAssistSrc");
 extern fn void whea_init_event_log_entry(PWHEAEVENTLOGENTRY_t log_entry, WHEAEVENTLOGENTRYTYPE_t type, WHEAEVENTLOGENTRYID_t id, WHEAEVENTLOGENTRYFLAGS_t flags, Ulong owner_tag, Ulong payload_length) @cname("WheaInitEventLogEntry");
-extern fn Ntstatus whea_add_error_source_device_driver(Pvoid context, PWHEAERRORSOURCECONFIGURATIONDEVICEDRIVER_t configuration, Ulong number_preallocated_error_reports) @cname("WheaAddErrorSourceDeviceDriver");
-extern fn Ntstatus whea_add_error_source_device_driver_v1(Pvoid context, PWHEAERRORSOURCECONFIGURATIONDEVICEDRIVER_t configuration, Ulong num_buffers_to_preallocate, Ulong max_data_length) @cname("WheaAddErrorSourceDeviceDriverV1");
-extern fn Ntstatus whea_remove_error_source_device_driver(Ulong error_source_id) @cname("WheaRemoveErrorSourceDeviceDriver");
-extern fn Ntstatus whea_report_hw_error_device_driver(Ulong error_source_id, PDEVICEOBJECT_t device_object, Puchar error_data, Ulong error_data_length, Lpguid section_type_guid, WHEAERRORSEVERITY_t error_severity, Lpstr device_friendly_name) @cname("WheaReportHwErrorDeviceDriver");
-extern fn WHEAERRORHANDLE_t whea_create_hw_error_report_device_driver(Ulong error_source_id, PDEVICEOBJECT_t device_object) @cname("WheaCreateHwErrorReportDeviceDriver");
-extern fn Ntstatus whea_add_hw_error_report_section_device_driver(WHEAERRORHANDLE_t error_handle, Ulong section_data_length, PWHEADRIVERBUFFERSET_t buffer_set) @cname("WheaAddHwErrorReportSectionDeviceDriver");
-extern fn Ntstatus whea_hw_error_report_abandon_device_driver(WHEAERRORHANDLE_t error_handle) @cname("WheaHwErrorReportAbandonDeviceDriver");
-extern fn Ntstatus whea_hw_error_report_submit_device_driver(WHEAERRORHANDLE_t error_handle) @cname("WheaHwErrorReportSubmitDeviceDriver");
-extern fn Ntstatus whea_hw_error_report_set_severity_device_driver(WHEAERRORHANDLE_t error_handle, WHEAERRORSEVERITY_t error_severity) @cname("WheaHwErrorReportSetSeverityDeviceDriver");
-extern fn Ntstatus whea_hw_error_report_set_section_name_device_driver(PWHEADRIVERBUFFERSET_t buffer_set, Ulong name_length, Puchar name) @cname("WheaHwErrorReportSetSectionNameDeviceDriver");
-extern fn Ntstatus whea_report_hw_error(PWHEAERRORPACKET_t error_packet) @cname("WheaReportHwError");
-extern fn Ntstatus whea_add_error_source(PWHEAERRORSOURCEDESCRIPTOR_t error_source, Pvoid context) @cname("WheaAddErrorSource");
-extern fn Ntstatus whea_initialize_record_header(PWHEAERRORRECORDHEADER_t header) @cname("WheaInitializeRecordHeader");
-extern fn Ntstatus whea_configure_error_source(WHEAERRORSOURCETYPE_t source_type, PWHEAERRORSOURCECONFIGURATION_t configuration) @cname("WheaConfigureErrorSource");
-extern fn Ntstatus whea_unconfigure_error_source(WHEAERRORSOURCETYPE_t source_type) @cname("WheaUnconfigureErrorSource");
+extern fn NtStatus whea_add_error_source_device_driver(Pvoid context, PWHEAERRORSOURCECONFIGURATIONDEVICEDRIVER_t configuration, Ulong number_preallocated_error_reports) @cname("WheaAddErrorSourceDeviceDriver");
+extern fn NtStatus whea_add_error_source_device_driver_v1(Pvoid context, PWHEAERRORSOURCECONFIGURATIONDEVICEDRIVER_t configuration, Ulong num_buffers_to_preallocate, Ulong max_data_length) @cname("WheaAddErrorSourceDeviceDriverV1");
+extern fn NtStatus whea_remove_error_source_device_driver(Ulong error_source_id) @cname("WheaRemoveErrorSourceDeviceDriver");
+extern fn NtStatus whea_report_hw_error_device_driver(Ulong error_source_id, PDeviceObject_t device_object, Puchar error_data, Ulong error_data_length, Lpguid section_type_guid, WHEAERRORSEVERITY_t error_severity, Lpstr device_friendly_name) @cname("WheaReportHwErrorDeviceDriver");
+extern fn WHEAERRORHANDLE_t whea_create_hw_error_report_device_driver(Ulong error_source_id, PDeviceObject_t device_object) @cname("WheaCreateHwErrorReportDeviceDriver");
+extern fn NtStatus whea_add_hw_error_report_section_device_driver(WHEAERRORHANDLE_t error_handle, Ulong section_data_length, PWHEADRIVERBUFFERSET_t buffer_set) @cname("WheaAddHwErrorReportSectionDeviceDriver");
+extern fn NtStatus whea_hw_error_report_abandon_device_driver(WHEAERRORHANDLE_t error_handle) @cname("WheaHwErrorReportAbandonDeviceDriver");
+extern fn NtStatus whea_hw_error_report_submit_device_driver(WHEAERRORHANDLE_t error_handle) @cname("WheaHwErrorReportSubmitDeviceDriver");
+extern fn NtStatus whea_hw_error_report_set_severity_device_driver(WHEAERRORHANDLE_t error_handle, WHEAERRORSEVERITY_t error_severity) @cname("WheaHwErrorReportSetSeverityDeviceDriver");
+extern fn NtStatus whea_hw_error_report_set_section_name_device_driver(PWHEADRIVERBUFFERSET_t buffer_set, Ulong name_length, Puchar name) @cname("WheaHwErrorReportSetSectionNameDeviceDriver");
+extern fn NtStatus whea_report_hw_error(PWHEAERRORPACKET_t error_packet) @cname("WheaReportHwError");
+extern fn NtStatus whea_add_error_source(PWHEAERRORSOURCEDESCRIPTOR_t error_source, Pvoid context) @cname("WheaAddErrorSource");
+extern fn NtStatus whea_initialize_record_header(PWHEAERRORRECORDHEADER_t header) @cname("WheaInitializeRecordHeader");
+extern fn NtStatus whea_configure_error_source(WHEAERRORSOURCETYPE_t source_type, PWHEAERRORSOURCECONFIGURATION_t configuration) @cname("WheaConfigureErrorSource");
+extern fn NtStatus whea_unconfigure_error_source(WHEAERRORSOURCETYPE_t source_type) @cname("WheaUnconfigureErrorSource");
 extern fn void whea_remove_error_source(Ulong error_source_id) @cname("WheaRemoveErrorSource");
 extern fn Boolean whea_is_log_sel_handler_initialized() @cname("WheaIsLogSelHandlerInitialized");
 extern fn void whea_log_internal_event(PWHEAEVENTLOGENTRY_t entry) @cname("WheaLogInternalEvent");
@@ -8274,27 +8274,27 @@ extern fn WHEAERRORSOURCESTATE_t whea_error_source_get_state(Ulong error_source_
 extern fn Boolean whea_is_critical_state() @cname("WheaIsCriticalState");
 extern fn Boolean whea_signal_handler_override(WHEAERRORSOURCETYPE_t source_type, UINTPTR_t context) @cname("WheaSignalHandlerOverride");
 extern fn void whea_unregister_error_source_override(WHEAERRORSOURCETYPE_t type, UlongSR override_error_source_id) @cname("WheaUnregisterErrorSourceOverride");
-extern fn Ntstatus whea_register_error_source_override(WHEAERRORSOURCEOVERRIDESETTINGS_t override_settings, PWHEAERRORSOURCECONFIGURATION_t override_config, WHEASIGNALHANDLEROVERRIDECALLBACK_t override_callback) @cname("WheaRegisterErrorSourceOverride");
-extern fn Ntstatus whea_get_error_source_info(WHEAERRORSOURCETYPE_t source_type, Pulong error_count, PERRORSOURCEINFO_t* source_info, Ulong pool_tag) @cname("WheaGetErrorSourceInfo");
+extern fn NtStatus whea_register_error_source_override(WHEAERRORSOURCEOVERRIDESETTINGS_t override_settings, PWHEAERRORSOURCECONFIGURATION_t override_config, WHEASIGNALHANDLEROVERRIDECALLBACK_t override_callback) @cname("WheaRegisterErrorSourceOverride");
+extern fn NtStatus whea_get_error_source_info(WHEAERRORSOURCETYPE_t source_type, Pulong error_count, PERRORSOURCEINFO_t* source_info, Ulong pool_tag) @cname("WheaGetErrorSourceInfo");
 extern fn Boolean whea_high_irql_log_sel_event_handler_register(PFNWHEAHIGHIRQLLOGSELEVENTHANDLER_t handler, Pvoid context) @cname("WheaHighIrqlLogSelEventHandlerRegister");
 extern fn void whea_high_irql_log_sel_event_handler_unregister() @cname("WheaHighIrqlLogSelEventHandlerUnregister");
 extern fn PWHEAERRORPACKET_t whea_get_err_packet_from_err_record(PWHEAERRORRECORD_t record) @cname("WheaGetErrPacketFromErrRecord");
-extern fn Ntstatus whea_register_in_use_page_offline_notification(PFNINUSEPAGEOFFLINENOTIFY_t callback, Pvoid context) @cname("WheaRegisterInUsePageOfflineNotification");
-extern fn Ntstatus whea_unregister_in_use_page_offline_notification(PFNINUSEPAGEOFFLINENOTIFY_t callback) @cname("WheaUnregisterInUsePageOfflineNotification");
+extern fn NtStatus whea_register_in_use_page_offline_notification(PFNINUSEPAGEOFFLINENOTIFY_t callback, Pvoid context) @cname("WheaRegisterInUsePageOfflineNotification");
+extern fn NtStatus whea_unregister_in_use_page_offline_notification(PFNINUSEPAGEOFFLINENOTIFY_t callback) @cname("WheaUnregisterInUsePageOfflineNotification");
 extern fn Boolean whea_get_notify_all_offlines_policy() @cname("WheaGetNotifyAllOfflinesPolicy");
-extern fn Ntstatus hvl_register_whea_error_notification(PHVLWHEAERRORNOTIFICATION_t callback) @cname("HvlRegisterWheaErrorNotification");
-extern fn Ntstatus hvl_unregister_whea_error_notification(PHVLWHEAERRORNOTIFICATION_t callback) @cname("HvlUnregisterWheaErrorNotification");
+extern fn NtStatus hvl_register_whea_error_notification(PHVLWHEAERRORNOTIFICATION_t callback) @cname("HvlRegisterWheaErrorNotification");
+extern fn NtStatus hvl_unregister_whea_error_notification(PHVLWHEAERRORNOTIFICATION_t callback) @cname("HvlUnregisterWheaErrorNotification");
 extern fn Pvoid pshed_allocate_memory(Ulong size) @cname("PshedAllocateMemory");
 extern fn void pshed_free_memory(Pvoid address) @cname("PshedFreeMemory");
 extern fn Boolean pshed_is_system_whea_enabled() @cname("PshedIsSystemWheaEnabled");
-extern fn Ntstatus pshed_register_plugin(PWHEAPSHEDPLUGINREGISTRATIONPACKET_t packet) @cname("PshedRegisterPlugin");
+extern fn NtStatus pshed_register_plugin(PWHEAPSHEDPLUGINREGISTRATIONPACKET_t packet) @cname("PshedRegisterPlugin");
 extern fn void pshed_unregister_plugin(Pvoid plugin_handle) @cname("PshedUnregisterPlugin");
 extern fn Boolean pshed_synchronize_execution(PWHEAERRORSOURCEDESCRIPTOR_t error_source, PKSYNCHRONIZEROUTINE_t synchronize_routine, Pvoid synchronize_context) @cname("PshedSynchronizeExecution");
-extern fn Ntstatus whea_prm_translate_physical_address(UintVT physical_address, Pvoid dimm_address) @cname("WheaPrmTranslatePhysicalAddress");
-extern fn Ntstatus whea_prm_translate_dimm_address(Pvoid dimm_address, PuintVT physical_address) @cname("WheaPrmTranslateDimmAddress");
+extern fn NtStatus whea_prm_translate_physical_address(UintVT physical_address, Pvoid dimm_address) @cname("WheaPrmTranslatePhysicalAddress");
+extern fn NtStatus whea_prm_translate_dimm_address(Pvoid dimm_address, PuintVT physical_address) @cname("WheaPrmTranslateDimmAddress");
 extern fn Boolean whea_is_valid_error_record_signature(PWHEAERRORRECORD_t record) @cname("WheaIsValidErrorRecordSignature");
-extern fn Ntstatus whea_find_error_record_section(PWHEAERRORRECORD_t record, Guid* section_type, PWHEAERRORRECORDSECTIONDESCRIPTOR_t* section_descriptor, Pvoid* section_data) @cname("WheaFindErrorRecordSection");
-extern fn Ntstatus whea_find_next_error_record_section(PWHEAERRORRECORD_t record, Ulong* context, PWHEAERRORRECORDSECTIONDESCRIPTOR_t* section_descriptor, Pvoid* section_data) @cname("WheaFindNextErrorRecordSection");
+extern fn NtStatus whea_find_error_record_section(PWHEAERRORRECORD_t record, Guid* section_type, PWHEAERRORRECORDSECTIONDESCRIPTOR_t* section_descriptor, Pvoid* section_data) @cname("WheaFindErrorRecordSection");
+extern fn NtStatus whea_find_next_error_record_section(PWHEAERRORRECORD_t record, Ulong* context, PWHEAERRORRECORDSECTIONDESCRIPTOR_t* section_descriptor, Pvoid* section_data) @cname("WheaFindNextErrorRecordSection");
 extern fn void whea_error_record_builder_init(PWHEAERRORRECORD_t record, UintSR record_length, WHEAERRORSEVERITY_t severity, Guid notify) @cname("WheaErrorRecordBuilderInit");
 extern fn Pvoid whea_error_record_builder_add_section(PWHEAERRORRECORD_t record, UintSR max_section_count, UintSR section_length, WHEAERRORRECORDSECTIONDESCRIPTORFLAGS_t flags, Guid section_type, Pvoid descriptor_out) @cname("WheaErrorRecordBuilderAddSection");
 extern fn Pvoid whea_error_record_builder_add_packet(PWHEAERRORRECORD_t record, PWHEAERRORPACKETV2_t packet, UintSR max_section_count) @cname("WheaErrorRecordBuilderAddPacket");

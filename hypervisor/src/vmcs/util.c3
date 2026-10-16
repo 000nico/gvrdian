@@ -1,5 +1,7 @@
 module vmcs_utils;
 
+import bit;
+
 fn uint adjust_controls(uint desired, ulong capability_msr) {
     uint result = desired;
     for (int i = 0; i < 32; i++) {

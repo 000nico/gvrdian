@@ -10,10 +10,14 @@
   "build-dir": "build",
   "output": "build",
 
+  // Link the Windows CRT statically so the exe has no dependency on
+  // ucrtbase.dll / VCRUNTIME140.dll on other machines.
+  "wincrt": "static",
+
   "linked-libraries": ["advapi32", "kernel32"], 
 
   "targets": {
-    "usermode": {
+    "client": {
       "type": "executable",
       "sources": [
         "src/**",

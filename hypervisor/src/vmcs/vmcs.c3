@@ -15,7 +15,7 @@ fn void setup_vmcs() {
 	void* vmcs_virtual_addr = allocate_vmcs::allocate_vmcs();
 	ulong vmcs_phys_addr = (ulong)wdm::mm_get_physical_address(vmcs_virtual_addr).quad_part;
 
-	// configurate vmcs
+	// configure the vmcs
 	setup_vmcs_identifier::identifier(false, vmcs_phys_addr, vmcs_virtual_addr); // vmclear and vmptrld are executed here
 
 	setup_cr_shadow::setup_cr_shadow();
