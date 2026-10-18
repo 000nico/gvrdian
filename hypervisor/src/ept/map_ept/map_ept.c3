@@ -1,6 +1,7 @@
 module map_ept;
 
 import wdm;
+import ntddk;
 import bit;
 import assembly;
 
@@ -46,4 +47,76 @@ bitstruct EptPde2mb : ulong {
     ulong page_physical_addr : 21..51; // HPA of the 2MB page (shifted >> 21)
     ulong ignored_2        : 52..62;
     bool  suppress_ve      : 63;       // only if enabled EPT-VIOLATION #VE
+}
+
+struct EptPml4Table {
+    EptPml4e[512] entries;
+}
+
+struct EptPdptTable {
+    EptPdpte[512] entries;
+}
+
+struct EptPdTable {
+    EptPde2mb[512] entries; // huge pages of 2mb
+}
+
+fn void* allocate_aligned() {
+    ntddk::PhysicalAddress_t highest_addr;
+    highest_addr.quad_part = -1;
+    
+    void* table = ntddk::mm_allocate_contiguous_memory(0x1000, highest_addr);
+
+    if(table == null) return null;
+
+    wdm::rtl_zero_memory(table, 0x1000);
+    
+    return table;
+}
+
+// returns false if failed
+fn bool ram_weight(ulong* weight) {
+    ntddk::PPHYSICALMEMORYRANGE_t ranges = ntddk::mm_get_physical_memory_ranges_ex2(null, 0);
+
+    if (ranges == null) {
+        return false;
+    }
+
+    ulong total = 0;
+    int i = 0;
+
+    while (true) {
+        ntddk::LARGEINTEGER_t byte_count = ranges[i].number_of_bytes;
+        ntddk::PhysicalAddress_t base_address = ranges[i].base_address;
+
+        if (byte_count.quad_part == 0 && base_address.quad_part == 0) break;
+
+        total += (ulong)byte_count.quad_part;
+        i++;
+    }
+
+    *weight = total;
+
+    wdm::ex_free_pool(ranges);
+    return true;
+}
+
+fn void* map_tables() {
+    void* pml4_page = allocate_aligned();
+    ulong total_ram_bytes = 0;
+    if(!ram_weight(&total_ram_bytes)) return;
+    
+    // ...
+
+    ulong current_gpa = 0;
+
+    while(current_gpa < total_ram_bytes) {
+        // pml4 -> pdpt
+
+        // pdpt -> pd
+
+        // pd -> hpa
+    }
+
+    return pml4_page;
 }
