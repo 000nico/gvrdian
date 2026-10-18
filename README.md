@@ -1,10 +1,5 @@
 <div align="center">
-
-<img src="assets/gvrdian.jpg" alt="blue-pill" width="600">
-
-<br><br>
-
-[![license](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
+  
 [![architecture](https://img.shields.io/badge/arch-x86__64-orange?style=flat-square&logo=intel&logoColor=white)](https://www.intel.com)
 [![vt-x](https://img.shields.io/badge/virtualization-Intel%20VT--x-red?style=flat-square&logo=intel&logoColor=white)](https://en.wikipedia.org/wiki/X86_virtualization)
 [![language](https://img.shields.io/badge/language-C3-193549?style=flat-square&logo=c&logoColor=white)](https://c3-lang.org/)
