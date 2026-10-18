@@ -104,7 +104,7 @@ fn bool ram_weight(ulong* weight) {
 fn void* map_tables() {
     void* pml4_page = allocate_aligned();
     ulong total_ram_bytes = 0;
-    if(!ram_weight(&total_ram_bytes)) return;
+    if(!ram_weight(&total_ram_bytes)) return null;
     
     // ...
 

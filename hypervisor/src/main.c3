@@ -6,6 +6,7 @@ import vmcs;
 import assembly;
 import communication_setup;
 import global;
+import ept;
 
 const wdm::NtStatus STATUS_SUCCESS = 0;
 const wdm::NtStatus STATUS_FAILED  = (wdm::NtStatus)0xC0000001;
@@ -82,6 +83,15 @@ fn wdm::NtStatus driver_entry(wdm::DriverObject_t* driver_object, wdm::PUnicodeS
 	// vmcs
 	vmcs::setup_vmcs();
 	wdm::dbg_print("vmcs setup\n");
+
+	// ept
+	if(!ept::setup_ept()) {
+	    wdm::dbg_print("setup_ept failed");
+	    cleanup_device(driver_object);
+	    return STATUS_FAILED;
+	}
+
+	wdm::dbg_print("setup_ept success");
 	
 	// launch
     if (!assembly::vm_launch()) {
