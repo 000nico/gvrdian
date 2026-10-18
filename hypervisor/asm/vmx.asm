@@ -95,4 +95,10 @@ vm_resume_fail:
     ret
 vm_resume ENDP
 
+; invept
+global_invept PROC
+    invept 2, oword ptr [rdx]
+    ret
+global_invept ENDP
+
 END

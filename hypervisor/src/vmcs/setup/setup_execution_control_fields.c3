@@ -22,8 +22,11 @@ fn void setup_execution_control_fields() {
 
     // secondary
     uint secondary_desired = 0;
+    
     secondary_desired = (uint)bit::bit_set(secondary_desired, 1); // ept
+    //secondary_desired = (uint)bit::bit_set(secondary_desired, 5); // vpid
     uint secondary_final = vmcs_utils::adjust_controls(secondary_desired, assembly::read_msr(0x48B));
+    
     assembly::vm_write(vmcs_fields::SECONDARY_VM_EXEC_CONTROL, secondary_final);
 
     //assembly::vm_write(vmcs_fields::MSR_BITMAP, msr_bitmap);

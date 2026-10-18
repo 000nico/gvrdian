@@ -6,6 +6,12 @@ struct CpuId {
 	uint ecx;
 	uint edx;
 }
+
+struct InveptDescriptor {
+    ulong eptp;
+    ulong reserved;
+}
+
 extern fn void get_cpuid(uint leaf, uint subleaf, CpuId* regs) @cname("get_cpuid");
 
 // --- Control registers ---
@@ -56,5 +62,7 @@ extern fn ulong read_idt_limit() @cname("readidtlimit");
 // exit handler
 extern fn void exit_handler_entry() @cname("exit_handler_entry");
 extern fn ulong get_exit_handler_address() @cname("get_exit_handler_address");
+
+extern fn void global_invept(InveptDescriptor* descriptor) @cname("global_invept");
 
 extern fn ulong read_tsc() @cname("read_tsc");
