@@ -30,20 +30,6 @@
 - [x] `CPUID` interception and handling
 - [ ] `VMCALL` communication interface
 
-## Architecture
-
-```
-+-------------------------------------------------------------+
-|                     Virtual Machine (Guest)                 |
-+-------------------------------------------------------------+
-|              VMX Non-Root Operation (VCPU Context)          |
-+-------------------------------------------------------------+
-|        Blue Pill Type-1 Thin Hypervisor (VMX Root Mode)     |
-+-------------------------------------------------------------+
-|           Intel VT-x Hardware / CPU / Memory / EPT          |
-+-------------------------------------------------------------+
-```
-
 ## Install
 
 
@@ -51,9 +37,12 @@
 # clone repo
 git clone https://github.com/000nico/gvrdian/.git
 
-# compile the usermode client -> client/build/client.exe
-c3c build client
+# compile bot with
+./build.bat
+
+# builds located at
 /hypervisor/build
+/client/build
 ```
 
 ## Requirements
