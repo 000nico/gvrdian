@@ -158,7 +158,7 @@ fn EptPd_entry create_ept_pd_entry(Ept_capabilities caps, ulong gpa) {
     return e;
 }
 
-fn bool map_tables(Ept_capabilities caps, EptPml4Table** ept_pml4_addr_buffer) {
+fn bool map_tables(Ept_capabilities caps, ulong* ept_pml4_addr_buffer) {
     ulong total_ram_bytes = 0;
     if(!ram_weight(&total_ram_bytes)) return false;
 
@@ -222,6 +222,7 @@ fn bool map_tables(Ept_capabilities caps, EptPml4Table** ept_pml4_addr_buffer) {
         current_gpa += TWO_MB;
     }
 
-    *ept_pml4_addr_buffer = current_pml4_table;
+    wdm::PhysicalAddress_t ept_pml4_hpa = wdm::mm_get_physical_address(current_pml4_table);
+    *ept_pml4_addr_buffer = (ulong)ept_pml4_hpa.quad_part;
     return true;
 }

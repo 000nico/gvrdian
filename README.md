@@ -24,11 +24,12 @@
 - [ ] Hidden pages for guests
 
 ### Memory
-- [ ] Extended Page Tables (EPT) manipulation and protection
+- [x] Extended Page Tables (EPT)
 
 ### Exit Handlers 
-- [x] `CPUID` interception and handling
-- [ ] `VMCALL` communication interface
+- [x] `CPUID`
+- [x] `VMCLEAR, VMLAUNCH, VMPTRLD, VMPTRST, VMREAD, VMRESUME, VMWRITE, VMXON, VMXOFF, INVEPT, INVVPID, GETSEC, INVD, SEAMCALL, TDCALL`
+- [x] `VMCALL` communication interface
 
 ## Install
 
