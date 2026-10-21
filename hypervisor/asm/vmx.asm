@@ -97,8 +97,37 @@ vm_resume ENDP
 
 ; invept
 global_invept PROC
-    invept 2, oword ptr [rdx]
+    mov rax, 2
+    invept rax, OWORD PTR [rdx]
+    jc invept_fail
+    jz invept_fail
+    mov rax, 1
+    ret
+invept_fail:
+    xor rax, rax
     ret
 global_invept ENDP
+
+launch_vm PROC
+    mov r8, rsp
+    mov rcx, 681Ch
+    vmwrite rcx, r8
+
+    lea r8, resume_point
+    mov rcx, 681Eh
+    vmwrite rcx, r8
+
+    vmlaunch
+    jc launch_vm_fail
+    jz launch_vm_fail
+
+resume_point:
+    mov rax, 1
+    ret
+
+launch_vm_fail:
+    mov rax, 0
+    ret
+launch_vm ENDP
 
 END

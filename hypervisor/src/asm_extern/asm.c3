@@ -44,6 +44,7 @@ extern fn bool vm_write(ulong field, ulong value) @cname("vm_write");
 extern fn bool vm_launch() @cname("vm_launch");
 extern fn bool vm_resume() @cname("vm_resume");
 extern fn bool vmx_off() @cname("vmx_off");
+extern fn bool launch_vm() @cname("launch_vm");
 
 extern fn ulong read_dr7() @cname("readdr7");
 extern fn void write_dr7(ulong value) @cname("writedr7");

@@ -41,7 +41,7 @@ fn wdm::NtStatus driver_entry(wdm::DriverObject_t* driver_object, wdm::PUnicodeS
 	driver_object.major_function[wdm::IRP_MJ_CREATE] = &communication_setup::create_close;
 	driver_object.major_function[wdm::IRP_MJ_CLOSE]  = &communication_setup::create_close;
 	driver_object.driver_unload = &driver_unload;
-	
+
 	wdm::NtStatus status = communication_setup::setup_device(driver_object);
     if (status != wdm::STATUS_SUCCESS) {
         wdm::dbg_print("failed to create device or symbolic link\n");
@@ -85,6 +85,7 @@ fn wdm::NtStatus driver_entry(wdm::DriverObject_t* driver_object, wdm::PUnicodeS
 	wdm::dbg_print("vmcs setup\n");
 
 	// ept
+	/* 
 	if(!ept::setup_ept()) {
 	    wdm::dbg_print("setup_ept failed");
 	    cleanup_device(driver_object);
@@ -92,9 +93,10 @@ fn wdm::NtStatus driver_entry(wdm::DriverObject_t* driver_object, wdm::PUnicodeS
 	}
 
 	wdm::dbg_print("setup_ept success");
+	*/
 	
 	// launch
-    if (!assembly::vm_launch()) {
+    if (!assembly::launch_vm()) {
         wdm::dbg_print("vmlaunch failed\n");
         cleanup_device(driver_object);
         return STATUS_FAILED;

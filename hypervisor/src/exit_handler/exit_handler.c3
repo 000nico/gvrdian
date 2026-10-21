@@ -9,6 +9,8 @@ import h_cpuid;
 import h_vmcall;
 import h_rdmsr;
 import h_cr_fault;
+import h_wrmsr;
+import h_externalinterrupt;
 
 struct GuestRegisters {
 	ulong rax;
@@ -34,7 +36,7 @@ fn void exit_handler(GuestRegisters* regs) @export("exit_handler_dispatch") {
 
 	ulong reason;
 	assembly::vm_read(vmcs_fields::VM_EXIT_REASON, &reason);
-	wdm::dbg_print("Entering exit handler, reason: %d", reason);
+	wdm::dbg_print("Entering exit handler, reason: %d\n", reason);
 	
 	bool advance_rip = dispatcher(reason, regs);
 
@@ -56,6 +58,10 @@ fn void exit_handler(GuestRegisters* regs) @export("exit_handler_dispatch") {
 // if 1 -> advances rip, if 0 -> does not advance rip
 fn bool dispatcher(ulong reason, GuestRegisters* regs) {
 	switch(reason & 0xFFFF) {
+	    case 1:
+			h_externalinterrupt::handler();
+			return false;
+			
 		case 10: 
 			h_cpuid::handler(regs);
 			return true;
@@ -80,18 +86,22 @@ fn bool dispatcher(ulong reason, GuestRegisters* regs) {
         case 74: // seamcall
         case 77: // tdcall
 			event_injector::inject_ud();
-			return true;
+			return false;
 
 		case 31:
 			h_rdmsr::handler(regs);
 			return true;
 
+		case 32:
+		    h_wrmsr::handler(regs);
+			return true;
+		    
 		case 28: // MOV CRx, RAX fault
 			h_cr_fault::handler(regs);
 			return true;
 			
 		default: // unhandled
-			wdm::dbg_print("Unhandled exit reason %d", reason);
+			wdm::dbg_print("Unhandled exit reason %d\n", reason);
 			return true;
 	}
 }

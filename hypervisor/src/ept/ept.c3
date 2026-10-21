@@ -19,17 +19,17 @@ fn bool setup_ept() {
 
     // map ept tables 
     ulong ept_pml4_physical_addr = 0;
-    if(!map_ept::map_tables(caps, &ept_pml4_physical_addr)) { // receives a double pointer
-        wdm::dbg_print("map_tables failed");
+    if(!map_ept::map_tables(caps, &ept_pml4_physical_addr)) { 
+        wdm::dbg_print("map_tables failed\n");
         return false;
     }
-    wdm::dbg_print("ept tables succesfully mapped");
+    wdm::dbg_print("ept tables succesfully mapped\n");
         
     
     // configure eptp
     Eptp eptp = eptp::get_configured_eptp(ept_pml4_physical_addr, caps);
     if(!assembly::vm_write(vmcs_fields::EPT_POINTER, (ulong)eptp)) {
-        wdm::dbg_print("vm_write failed on writing EPT_POINTER");
+        wdm::dbg_print("vm_write failed on writing EPT_POINTER\n");
     }
 
     return true;

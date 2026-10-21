@@ -162,6 +162,8 @@ fn bool map_tables(Ept_capabilities caps, ulong* ept_pml4_addr_buffer) {
     ulong total_ram_bytes = 0;
     if(!ram_weight(&total_ram_bytes)) return false;
 
+    wdm::dbg_print("total ram bytes = %d\n", total_ram_bytes);
+
     ulong current_pml4_index = 0;
     ulong current_pdp_index = 0;
     ulong current_pd_index = 0;
@@ -221,7 +223,7 @@ fn bool map_tables(Ept_capabilities caps, ulong* ept_pml4_addr_buffer) {
         current_pd_index++;
         current_gpa += TWO_MB;
     }
-
+    
     wdm::PhysicalAddress_t ept_pml4_hpa = wdm::mm_get_physical_address(current_pml4_table);
     *ept_pml4_addr_buffer = (ulong)ept_pml4_hpa.quad_part;
     return true;
